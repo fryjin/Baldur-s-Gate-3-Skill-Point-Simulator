@@ -571,7 +571,12 @@
     @media(max-width:1180px){.route-level-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.target-level-summary,.route-overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:720px){.target-level-picker{grid-template-columns:1fr}.target-level-controls{grid-template-columns:44px minmax(80px,1fr) 44px}.target-level-controls select{grid-column:1/-1}.route-level-grid{grid-template-columns:1fr}.route-quick-fill{grid-template-columns:1fr}.progression-overview,.class-feature-summary{grid-template-columns:1fr}.target-level-summary,.route-overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-  </style>
+  
+.ability-point-split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.ability-point-split .point-box{padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.12)}
+.ability-point-split span{display:block;color:var(--muted);font-size:10px}
+.ability-point-split b{display:block;color:var(--gold2);font-size:20px;margin-top:4px}
+</style>
 </head>
 <body>
 <main class="app">
@@ -719,7 +724,7 @@
   <div class="ability-stage-item"><span>已解锁专长槽</span><b id="abilityFeatSlots">0</b><small>可选择专长或属性提升</small></div>
   <div class="ability-stage-item"><span>已选择属性提升</span><b id="abilityAsiSlots">0</b><small id="abilityAsiPoints">成长属性点 +0</small></div>
   <div class="ability-stage-item"><span>当前等级理论单项上限</span><b id="abilityTheoreticalCap">17</b><small>假设专长槽全部用于属性提升</small></div>
-</div><div class="point-buy-top"><div class="point-meter"><div class="point-meter-row"><span>已使用点数</span><span><b class="point-number" id="pointsUsed">0</b> / 27</span></div><div class="meter"><span id="pointMeterFill"></span></div></div><div class="subtle" id="pointStatus"></div></div><div class="ability-grid" id="abilityGrid"></div><div class="bonus-grid"><label class="field"><span class="label">1级创建加值 +2</span><select id="bonus2"></select></label><label class="field"><span class="label">1级创建加值 +1</span><select id="bonus1"></select></label></div>
+</div><div class="ability-point-split"><div class="point-box"><span>创建点购剩余</span><b id="creationPointRemaining">27</b></div><div class="point-box"><span>等级成长属性点剩余</span><b id="growthPointRemaining">0</b></div></div><div class="point-buy-top"><div class="point-meter"><div class="point-meter-row"><span>已使用点数</span><span><b class="point-number" id="pointsUsed">0</b> / 27</span></div><div class="meter"><span id="pointMeterFill"></span></div></div><div class="subtle" id="pointStatus"></div></div><div class="ability-grid" id="abilityGrid"></div><div class="bonus-grid"><label class="field"><span class="label">1级创建加值 +2</span><select id="bonus2"></select></label><label class="field"><span class="label">1级创建加值 +1</span><select id="bonus1"></select></label></div>
 <div class="ability-progression-note" id="abilityProgressionNote"></div>
 <div class="ability-impact-panel"><div class="ability-impact-head"><div><h3>属性会影响什么</h3><p>属性本身不会每加 1 点都产生变化；真正参与检定的是属性调整值。这里根据当前职业、等级、护甲和技能实时说明。</p></div><span class="ability-formula">调整值 = ⌊(属性 − 10) ÷ 2⌋</span></div><div class="ability-impact-grid" id="abilityImpactGrid"></div></div></div></section>
             <section class="card" id="skillsCard"><div class="card-header"><div class="card-title"><span class="step">5</span><div><h2>技能熟练与专精</h2><div class="subtle">按背景、种族、起始职业和多职业来源选择</div></div></div></div><div class="card-body"><div class="skill-source-grid" id="skillSources"></div><div class="section-divider"></div><div class="skill-overview-toolbar"><div><strong>当前构筑技能结果</strong><span>默认仅显示已熟练、已专精或由万事通生效的技能。</span></div><button class="btn small ghost" id="toggleAllSkillsBtn" type="button">查看全部 18 项</button></div><div class="skills-overview" id="skillsOverview"></div></div></section>
@@ -875,6 +880,12 @@ function abilityBreakdown(key){
 function finalScores(){return Object.fromEntries(abilities.map(a=>[a.key,abilityBreakdown(a.key).final]))}
 function selectedAsiSlots(){return featSlots().filter((_,i)=>state.feats[i]?.type==='asi')}
 function selectedAsiPoints(){return selectedAsiSlots().length*2}
+function abilityGrowthPointsUsed(){
+  return abilities.reduce((n,a)=>n+Math.max(0,abilityBreakdown(a.key).growth),0)
+}
+function abilityGrowthPointsRemaining(){
+  return Math.max(0,selectedAsiPoints()-abilityGrowthPointsUsed())
+}
 function theoreticalAbilityCap(){return Math.min(20,17+featSlots().length*2)}
 function featThresholdsFor(classKey){return [...new Set([4,8,12,...(classKey==='fighter'?[6]:[]),...(classKey==='rogue'?[10]:[])])].sort((a,b)=>a-b)}
 function nextFeatUnlock(){
@@ -904,8 +915,10 @@ function renderAbilities(){
   const used=usedPoints(),remain=27-used,total=currentLevel(),slots=featSlots(),asiSlots=selectedAsiSlots();
   $('pointsUsed').textContent=used;
   $('pointMeterFill').style.width=`${Math.min(100,used/27*100)}%`;
-  $('pointStatus').textContent=remain===0?'1级点购已全部分配':remain>0?`1级点购尚有 ${remain} 点可分配`:`点购超出 ${-remain} 点`;
+  $('pointStatus').textContent=remain===0?'创建点购已全部分配':remain>0?`创建点购剩余 ${remain} 点`:`创建点购超出 ${-remain} 点`;
   $('pointStatus').style.color=remain===0?'var(--good)':remain<0?'var(--bad)':'var(--muted)';
+  if($('creationPointRemaining')) $('creationPointRemaining').textContent=remain;
+  if($('growthPointRemaining')) $('growthPointRemaining').textContent=abilityGrowthPointsRemaining();
   $('abilityCurrentLevel').textContent=`${total}级`;
   $('abilityFeatSlots').textContent=slots.length;
   $('abilityAsiSlots').textContent=asiSlots.length;
@@ -933,7 +946,7 @@ function renderAbilities(){
     return `<span class="growth-node ${isAsi?'active':''}">${label} · ${isAsi?'属性提升 +2':choice?.type&&choice.type!=='none'?feats[choice.type]?.name:'尚未选择'}</span>`
   }).join('');
   $('abilityProgressionNote').innerHTML=slots.length
-    ? `<strong>等级成长已生效：</strong>当前 ${total} 级共解锁 ${slots.length} 个专长槽，其中 ${asiSlots.length} 个选择了属性提升。选择其他专长不会增加六维属性。${growthNodes?`<div class="growth-track">${growthNodes}</div>`:''}`
+    ? `<strong>等级成长已生效：</strong>当前 ${total} 级共解锁 ${slots.length} 个专长槽，其中 ${asiSlots.length} 个选择了属性提升；剩余可分配成长属性点 ${abilityGrowthPointsRemaining()}。选择其他专长不会增加六维属性。${growthNodes?`<div class="growth-track">${growthNodes}</div>`:''}`
     : `<strong>当前 ${total} 级尚未解锁等级属性提升。</strong>此处只能设置1级点购和创建加值，因此单项常规最高为17。${nextUnlock?`继续将${classes[nextUnlock.classKey].name}提升到职业${nextUnlock.at}级后，才会首次出现专长/属性提升槽。`:''}`;
   renderAbilityImpacts()
 }
