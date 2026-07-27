@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="dark" />
-  <title>博德之门 3｜加点模拟器</title>
+  <title>博德之门 3｜构筑模拟器与角色纸</title>
+  <meta name="description" content="按等级规划博德之门 3 的属性、职业、子职业、技能、戏法、法术与专长，并实时生成最终角色构筑结果。" />
   <style>
     :root {
       --bg:#0d0b0b; --panel:rgba(27,22,20,.95); --panel2:rgba(38,30,27,.9);
@@ -316,21 +317,225 @@
       .result-live-strip{grid-template-columns:repeat(5,62px)}
     }
 
+  
+    /* V10 — Adventurer's Codex design system */
+    :root{
+      --ink-950:#090807;--ink-900:#0f0d0c;--ink-850:#151210;--ink-800:#1c1715;
+      --leather-700:#32221d;--leather-600:#473027;--oxblood-700:#6f2624;--oxblood-600:#8b302d;
+      --brass-500:#c8a55f;--brass-400:#dfc17c;--parchment-100:#f1e5cf;--parchment-300:#d7c5a7;
+      --ash-400:#b9aa98;--ash-500:#998b7c;--success-500:#88bd91;--warning-500:#d5a85f;--danger-500:#d06f68;
+      --surface-1:rgba(21,18,16,.96);--surface-2:rgba(30,24,21,.96);--surface-3:rgba(43,32,27,.9);
+      --stroke-soft:rgba(200,165,95,.16);--stroke:rgba(200,165,95,.3);--stroke-strong:rgba(223,193,124,.58);
+      --focus:0 0 0 3px rgba(223,193,124,.22),0 0 0 1px var(--brass-400);
+      --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;
+      --radius-sm:10px;--radius-md:14px;--radius-lg:18px;--radius-xl:24px;
+      --ease:cubic-bezier(.2,.75,.25,1);
+    }
+    html{background:var(--ink-950)}
+    body{
+      color:var(--parchment-100);font-size:14px;line-height:1.55;
+      background:
+        radial-gradient(circle at 72% -10%,rgba(111,38,36,.18),transparent 32%),
+        radial-gradient(circle at 5% 22%,rgba(200,165,95,.08),transparent 26%),
+        linear-gradient(135deg,var(--ink-950),#120e0d 48%,#0b0908);
+    }
+    body:before{opacity:.1;background-size:64px 64px}
+    button,select,input{font:inherit}
+    button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:none;box-shadow:var(--focus)}
+    button{min-height:44px}
+    .app{width:min(1720px,calc(100% - 24px));padding:12px 0 42px}
+    .codex-command{
+      position:sticky;top:8px;z-index:31;display:grid;grid-template-columns:minmax(300px,.9fr) minmax(360px,1.15fr) auto;
+      gap:16px;align-items:center;padding:12px 14px;border:1px solid var(--stroke);border-radius:18px;
+      background:linear-gradient(110deg,rgba(50,34,29,.97),rgba(19,16,14,.97) 55%,rgba(25,19,17,.97));
+      box-shadow:0 16px 46px rgba(0,0,0,.36);backdrop-filter:blur(18px)
+    }
+    .codex-command:after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--brass-500),transparent);opacity:.55}
+    .command-brand{display:flex;gap:12px;align-items:center;min-width:0}
+    .command-sigil{position:relative;display:grid;place-items:center;flex:0 0 50px;width:50px;height:50px;color:var(--brass-400);font:15px Georgia,serif}
+    .command-sigil:before,.command-sigil:after{content:"";position:absolute;inset:5px;border:1px solid var(--stroke-strong);transform:rotate(45deg);border-radius:7px}
+    .command-sigil:after{inset:10px;border-color:rgba(200,165,95,.24)}
+    .command-sigil span{position:relative;z-index:1}
+    .command-brand-copy{min-width:0}.command-kicker{display:block;color:var(--brass-400);font-size:10px;letter-spacing:.18em}
+    .command-brand-copy h1{margin:2px 0 0;font:700 clamp(19px,1.7vw,28px)/1.1 Georgia,"Noto Serif SC",serif;white-space:nowrap}
+    .command-brand-copy p{margin:4px 0 0;color:var(--ash-400);font-size:11px;white-space:nowrap}
+    .command-build{display:grid;grid-template-columns:minmax(115px,.35fr) minmax(220px,1fr);gap:14px;align-items:center;min-width:0;padding:0 16px;border-left:1px solid var(--stroke-soft);border-right:1px solid var(--stroke-soft)}
+    .command-build-copy{min-width:0}.command-build-copy span,.level-path-head span{display:block;color:var(--ash-500);font-size:10px;letter-spacing:.08em}
+    .command-build-copy strong{display:block;overflow:hidden;margin-top:2px;color:var(--parchment-100);font:18px Georgia,"Noto Serif SC",serif;white-space:nowrap;text-overflow:ellipsis}
+    .command-build-copy small{display:block;overflow:hidden;margin-top:2px;color:var(--brass-400);font-size:11px;white-space:nowrap;text-overflow:ellipsis}
+    .level-path-wrap{min-width:0}.level-path-head{display:flex;justify-content:space-between;gap:8px;margin-bottom:7px}.level-path-head b{color:var(--brass-400);font-size:10px}
+    .level-path{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
+    .level-node{position:relative;height:14px;border:1px solid var(--stroke);border-radius:3px;background:rgba(255,255,255,.02);transition:.2s var(--ease)}
+    .level-node:before{content:"";position:absolute;inset:3px;border-radius:1px;background:transparent}
+    .level-node.complete{border-color:rgba(223,193,124,.7);background:rgba(200,165,95,.12)}
+    .level-node.complete:before{background:linear-gradient(90deg,var(--oxblood-600),var(--brass-500))}
+    .level-node.current{transform:translateY(-2px);box-shadow:0 5px 13px rgba(200,165,95,.16)}
+    .command-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+    .density-switch{display:flex;padding:3px;border:1px solid var(--stroke-soft);border-radius:11px;background:rgba(0,0,0,.18)}
+    .density-button{min-height:36px;padding:6px 10px;border:0;border-radius:8px;color:var(--ash-400);background:transparent;cursor:pointer;font-size:11px}
+    .density-button.active{color:var(--brass-400);background:rgba(200,165,95,.11);box-shadow:inset 0 0 0 1px var(--stroke-soft)}
+    .command-actions .btn{min-height:40px;padding:8px 12px}.command-secondary{color:var(--ash-400)}
+    .layout{grid-template-columns:202px minmax(0,1fr) minmax(360px,430px)!important;gap:14px;margin-top:14px}
+    .workspace-step-rail{top:92px;max-height:calc(100vh - 104px);padding:13px;border-radius:16px;background:linear-gradient(180deg,rgba(39,29,25,.98),rgba(16,14,13,.98));box-shadow:0 14px 36px rgba(0,0,0,.27)}
+    .rail-brand{padding:3px 5px 8px;border-bottom:1px solid var(--stroke-soft)}
+    .rail-brand strong{font-size:18px}.rail-brand p{font-size:11px}.rail-kicker,.result-panel-kicker{font-size:9px}
+    .rail-context{grid-template-columns:1fr}.rail-context div{display:grid;grid-template-columns:70px minmax(0,1fr);align-items:center;padding:8px 9px;text-align:left}
+    .rail-context span{font-size:10px}.rail-context b{margin:0;text-align:right;font-size:11px}
+    .workspace-step-list{gap:6px}
+    .workspace-step-button{position:relative;grid-template-columns:32px minmax(0,1fr);min-height:54px;padding:8px 9px;border-color:transparent;border-radius:12px}
+    .workspace-step-button:after{content:"";position:absolute;left:23px;top:43px;width:1px;height:17px;background:var(--stroke-soft)}
+    .workspace-step-button:last-child:after{display:none}
+    .workspace-step-button.active{border-color:var(--stroke-strong);background:linear-gradient(90deg,rgba(111,38,36,.28),rgba(200,165,95,.07));box-shadow:inset 3px 0 var(--brass-500),0 8px 18px rgba(0,0,0,.12)}
+    .workspace-step-button.is-complete .workspace-step-index:after{content:"✓";position:absolute;right:-5px;bottom:-5px;display:grid;place-items:center;width:15px;height:15px;border:2px solid var(--ink-800);border-radius:50%;color:#132015;background:var(--success-500);font-size:9px;font-weight:800}
+    .workspace-step-index{position:relative;width:30px;height:30px;border-radius:8px;font-size:11px}
+    .workspace-step-copy strong{font-size:13px}.workspace-step-copy small{font-size:10px}
+    .rail-actions .btn{min-height:42px}
+    .main-stack{display:grid;gap:12px}
+    .decision-context{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.75fr);gap:18px;align-items:center;padding:18px 20px;border:1px solid var(--stroke);border-radius:17px;background:linear-gradient(115deg,rgba(70,39,31,.52),rgba(26,21,18,.96) 52%,rgba(20,17,15,.98));box-shadow:0 12px 28px rgba(0,0,0,.2)}
+    .decision-context:before{content:"";position:absolute}
+    .decision-overline{color:var(--brass-400);font-size:10px;letter-spacing:.16em}
+    .decision-context h2{margin:4px 0 5px;font:700 clamp(22px,2vw,31px)/1.2 Georgia,"Noto Serif SC",serif}
+    .decision-context p{margin:0;max-width:720px;color:var(--ash-400);font-size:13px;line-height:1.7}
+    .decision-context-side{padding-left:18px;border-left:1px solid var(--stroke-soft)}
+    .decision-progress-copy{display:flex;justify-content:space-between;gap:10px}.decision-progress-copy span{color:var(--ash-500);font-size:10px}.decision-progress-copy b{color:var(--brass-400);font-size:11px}
+    .decision-progress,.build-completion-track{height:6px;margin-top:8px;overflow:hidden;border-radius:99px;background:rgba(255,255,255,.055)}
+    .decision-progress span,.build-completion-track span{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--oxblood-600),var(--brass-500));transition:width .28s var(--ease)}
+    .decision-affects{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}.decision-affects span{padding:5px 8px;border:1px solid var(--stroke-soft);border-radius:99px;color:var(--ash-400);background:rgba(200,165,95,.045);font-size:10px}
+    body.workspace-ready .main-stack>.workspace-panel.active-workspace-panel{animation:codexReveal .22s var(--ease)}
+    @keyframes codexReveal{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .main-stack>.card,.main-stack>.library-card{min-height:0;border-color:var(--stroke);border-radius:17px;background:linear-gradient(180deg,var(--surface-2),var(--surface-1));box-shadow:0 14px 32px rgba(0,0,0,.22)}
+    .main-stack>.card>.card-header{padding:15px 18px;background:linear-gradient(90deg,rgba(111,38,36,.16),transparent 50%)}
+    .main-stack>.card>.card-header .step{display:none}
+    .card-title h2{font:700 18px Georgia,"Noto Serif SC",serif}.card-title .subtle{font-size:11px}
+    .card-body{padding:18px}
+    .field-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .label{font-size:11px}.subtle,.source-detail,.feat-note{font-size:11px}
+    input[type=text],select{min-height:44px;border-color:var(--stroke-soft);border-radius:11px;background:rgba(8,7,6,.34)}
+    .point-buy-top{position:sticky;top:94px;z-index:6;margin:-2px 0 16px;padding:12px 14px;background:rgba(20,17,15,.95);backdrop-filter:blur(10px)}
+    .ability-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .ability{position:relative;min-height:170px;padding:15px 13px;border-color:var(--stroke-soft);border-radius:14px;text-align:left;background:linear-gradient(145deg,rgba(200,165,95,.055),rgba(0,0,0,.15))}
+    .ability-name{font-size:16px}.ability-code{position:absolute;right:12px;top:14px;font-size:10px}
+    .score-control{grid-template-columns:44px 1fr 44px;margin:18px 0 9px}.score-btn{width:44px;height:44px;border-radius:10px;font-size:18px}.score{text-align:center;font-size:34px}
+    .ability-final{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:11px}.ability-final b{font-size:17px}
+    .ability-impact-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.ability-impact-card{border-color:var(--stroke-soft);background:rgba(0,0,0,.15)}
+    .level-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.level-row{min-height:58px;padding:9px 10px;border-color:var(--stroke-soft)}
+    .level-number{width:38px;height:38px}.class-chip{min-height:34px;align-items:center}
+    .subclass-grid{display:none}
+    .subclass-class-block,.class-choice-group{padding:14px;border:1px solid var(--stroke-soft);border-radius:15px;background:rgba(0,0,0,.12)}
+    .subclass-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .subclass-card,.class-choice-option{position:relative;min-height:0;padding:14px;border-color:var(--stroke-soft);border-radius:13px;text-align:left;background:rgba(255,255,255,.025);transition:border-color .18s var(--ease),background .18s var(--ease),box-shadow .18s var(--ease)}
+    .subclass-card:hover,.class-choice-option:hover{border-color:var(--stroke-strong);background:rgba(200,165,95,.055)}
+    .subclass-card.selected,.class-choice-option.selected{border-color:var(--brass-500);background:linear-gradient(145deg,rgba(111,38,36,.22),rgba(200,165,95,.08));box-shadow:inset 3px 0 var(--brass-500)}
+    .subclass-selected-mark{color:var(--success-500);font-size:10px}.subclass-desc,.class-choice-option span{font-size:11px;line-height:1.65}
+    .skill-source-grid{gap:10px}.skill-source{border-color:var(--stroke-soft);background:rgba(0,0,0,.13)}
+    .skill-choice{min-height:40px;padding:8px 12px}.skill-choice.selected{position:relative;padding-right:28px}.skill-choice.selected:after{content:"✓";position:absolute;right:10px;color:var(--success-500);font-weight:800}
+    .skills-overview{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.skill-group{border-color:var(--stroke-soft)}
+    .skill-result{min-height:56px}.skill-result-name strong{font-size:13px}.skill-result-name span{font-size:10px}.skill-result-bonus{font-size:18px}
+    .spell-overview{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.spell-overview-item{border-color:var(--stroke-soft)}
+    .spell-source-tabs,.spell-level-tabs{gap:6px}.spell-tab{min-height:40px;padding:8px 11px}
+    .spell-library{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.spell-card{border-color:var(--stroke-soft);border-radius:14px;background:rgba(0,0,0,.14)}
+    .spell-card.selected{border-color:var(--brass-500);box-shadow:inset 3px 0 var(--brass-500)}
+    .spell-select{min-height:108px;padding:12px}.spell-thumb{width:64px;height:64px;border-radius:12px}.spell-name{font-size:14px}.spell-quick-desc{font-size:11px;line-height:1.6}
+    .spell-card details summary{min-height:42px;display:flex;align-items:center}
+    .feat-row{grid-template-columns:110px minmax(180px,1fr) minmax(220px,1.2fr);border-color:var(--stroke-soft)}
+    .library-card{overflow:visible}.library-topbar{position:sticky;top:94px;z-index:5;background:rgba(26,21,18,.96);backdrop-filter:blur(12px)}
+    .step-footer{margin:16px 18px 18px}.step-footer-actions .btn{min-height:44px}
+    .side-stack{top:92px;max-height:calc(100vh - 104px);border-color:var(--stroke);border-radius:17px;background:rgba(14,12,11,.96);box-shadow:0 18px 45px rgba(0,0,0,.34)}
+    .result-panel-shell{padding:12px;border-color:var(--stroke-soft);background:rgba(24,19,17,.98)}
+    .result-sheet-identity{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:11px;align-items:center}
+    .result-sheet-sigil{display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--stroke-strong);border-radius:50%;color:var(--brass-400);background:radial-gradient(circle,rgba(200,165,95,.12),transparent 68%);font:23px Georgia,serif;box-shadow:inset 0 0 0 4px rgba(200,165,95,.04)}
+    .result-sheet-copy{min-width:0}.result-sheet-copy strong{display:block;overflow:hidden;margin-top:2px;font:19px Georgia,"Noto Serif SC",serif;white-space:nowrap;text-overflow:ellipsis}.result-sheet-copy small{display:block;overflow:hidden;margin-top:2px;color:var(--ash-400);font-size:10px;white-space:nowrap;text-overflow:ellipsis}
+    .build-completion{margin-top:11px;padding-top:10px;border-top:1px solid var(--stroke-soft)}.build-completion>div:first-child{display:flex;justify-content:space-between}.build-completion span{color:var(--ash-500);font-size:10px}.build-completion b{color:var(--brass-400);font-size:10px}
+    .result-impact-note{margin:10px 0;padding:8px 10px;border-left:2px solid var(--brass-500);color:var(--ash-400);background:rgba(200,165,95,.05);font-size:10px;line-height:1.55}
+    .result-tabs{grid-template-columns:1.2fr 1fr 1fr;gap:4px;padding:3px;border-color:var(--stroke-soft)}.result-tab{min-height:38px;font-size:11px}
+    .result-live-strip{top:179px;padding:9px;border-color:var(--stroke-soft);background:rgba(17,14,13,.98)}
+    .result-live-strip div{padding:7px 2px;border-color:var(--stroke-soft)}.result-live-strip span{font-size:9px}.result-live-strip b{font-size:16px}
+    .side-stack .result-card .card-header{top:240px;padding:13px 14px}.side-stack .result-card .card-body{padding:11px}
+    .result-section{border-color:var(--stroke-soft);background:rgba(0,0,0,.13)}.result-section h3{font-size:13px}.result-row strong{font-size:11px}.result-row span{font-size:10px;line-height:1.55}.result-chip{font-size:10px}
+    .result-card.result-refresh{animation:resultPulse .38s var(--ease)}
+    @keyframes resultPulse{0%{box-shadow:0 0 0 0 rgba(200,165,95,.28)}100%{box-shadow:0 0 0 10px rgba(200,165,95,0)}}
+    .btn{border-color:var(--stroke);border-radius:11px;transition:background .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease);transform:none!important}
+    .btn:hover{border-color:var(--stroke-strong);background:rgba(200,165,95,.09)}
+    .btn.primary{border-color:rgba(200,165,95,.48);background:linear-gradient(180deg,var(--oxblood-600),var(--oxblood-700));box-shadow:0 7px 18px rgba(111,38,36,.25)}
+    .btn:active,.workspace-step-button:active,.subclass-card:active,.class-choice-option:active,.skill-choice:active,.spell-tab:active{filter:brightness(.88)}
+    [disabled]{cursor:not-allowed!important;opacity:.36!important}
+    body[data-density="compact"] .card-body{padding:13px}
+    body[data-density="compact"] .decision-context{padding:13px 16px}
+    body[data-density="compact"] .ability{min-height:148px;padding:12px}
+    body[data-density="compact"] .spell-select{min-height:96px;padding:9px}
+    body[data-density="compact"] .spell-thumb{width:54px;height:54px}
+    body[data-density="compact"] .level-row{min-height:50px;padding:6px 8px}
+    body[data-density="compact"] .skill-source{padding:11px}
+    @media(max-width:1450px) and (min-width:901px){
+      .codex-command{grid-template-columns:minmax(270px,.9fr) minmax(300px,1fr) auto}.command-brand-copy p{display:none}.density-switch{display:none}
+      body.workspace-ready .layout{grid-template-columns:minmax(0,1fr) minmax(360px,400px)!important}.workspace-step-rail{top:92px}.decision-context{grid-template-columns:1fr}.decision-context-side{padding:12px 0 0;border-left:0;border-top:1px solid var(--stroke-soft)}
+    }
+    @media(max-width:1100px) and (min-width:901px){
+      .codex-command{grid-template-columns:minmax(230px,1fr) auto}.command-build{display:none}.command-actions{gap:5px}.command-actions .btn{padding:7px 9px}
+      .spell-library,.subclass-cards{grid-template-columns:1fr}.ability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:900px){
+      body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.app{width:100%;padding-top:0}
+      .codex-command{position:sticky;top:0;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:9px 10px;border-width:0 0 1px;border-radius:0}.command-sigil{width:40px;height:40px;flex-basis:40px}.command-brand-copy h1{font-size:17px}.command-brand-copy p,.command-kicker,.command-build,.density-switch,.command-actions .command-secondary{display:none}.command-actions .btn{min-height:40px;padding:7px 10px;font-size:11px}
+      .layout{display:block!important;margin-top:8px}.workspace-step-rail{top:59px;margin:0 8px 8px;padding:8px;max-height:none}.workspace-step-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;overflow:visible}.workspace-step-button{display:grid;grid-template-columns:1fr;justify-items:center;min-height:57px;padding:6px 3px;text-align:center}.workspace-step-button:after{display:none}.workspace-step-index{width:25px;height:25px}.workspace-step-copy strong{font-size:9px;white-space:nowrap}.workspace-step-copy small{display:none}
+      .main-stack{padding:0 8px}.decision-context{grid-template-columns:1fr;gap:12px;padding:14px 15px}.decision-context-side{padding:11px 0 0;border-left:0;border-top:1px solid var(--stroke-soft)}.decision-context h2{font-size:23px}.decision-context p{font-size:12px}.decision-affects{display:none}
+      .main-stack>.card,.main-stack>.library-card{border-radius:14px}.card-body{padding:14px}.field-grid,.ability-impact-grid{grid-template-columns:1fr}.ability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.level-grid{grid-template-columns:1fr}.subclass-cards,.spell-library,.skills-overview{grid-template-columns:1fr}.spell-overview{grid-template-columns:1fr}.feat-row{grid-template-columns:1fr}
+      .side-stack{inset:8px;top:auto}.result-panel-shell{padding-top:max(12px,env(safe-area-inset-top))}.result-live-strip{top:181px}.side-stack .result-card .card-header{top:242px}
+    }
+    @media(max-width:520px){
+      .workspace-step-list{grid-template-columns:repeat(4,1fr)}.workspace-step-button:nth-child(n+5){grid-column:auto}.ability-grid{grid-template-columns:1fr}.ability{min-height:148px}.result-tabs{grid-template-columns:1.15fr 1fr 1fr}.result-live-strip{grid-template-columns:repeat(5,62px)}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    }
+
+  
+    /* V10 result panel flow correction */
+    .result-live-strip{position:static!important;top:auto!important}
+    .side-stack .result-card .card-header{position:static!important;top:auto!important}
+
   </style>
 </head>
 <body>
 <main class="app">
-  <section class="hero">
-    <div><div class="eyebrow">Unofficial Character Planner</div><h1>博德之门 3 · 加点模拟器</h1><p>按步骤选择属性、职业等级、子职业、技能、戏法、法术与专长；右侧实时展示当前等级的最终构筑结果和未完成项。规则以 Patch 8 / 原版 12 级为基础。当前版本已启用职业等级联动与本地图标。</p></div>
-    <div class="hero-actions"><button class="btn primary" id="copySummaryBtn">复制构筑摘要</button><button class="btn" id="exportBtn">导出 JSON</button><button class="btn" id="importBtn">导入</button><input class="hidden" type="file" id="importFile" accept="application/json" /></div>
-  </section>
+  <header class="codex-command" id="codexCommand">
+  <div class="command-brand">
+    <span class="command-sigil" aria-hidden="true"><span>III</span></span>
+    <div class="command-brand-copy">
+      <span class="command-kicker">ADVENTURER'S CODEX</span>
+      <h1>博德之门 3 · 构筑模拟器</h1>
+      <p>按当前角色等级完成属性、职业、技能与法术决策。</p>
+    </div>
+  </div>
+  <div class="command-build" aria-live="polite">
+    <div class="command-build-copy">
+      <span>当前构筑</span>
+      <strong id="headerBuildName">未命名角色</strong>
+      <small id="headerBuildRoute">战士 1</small>
+    </div>
+    <div class="level-path-wrap">
+      <div class="level-path-head"><span>角色等级轨迹</span><b id="headerLevelLabel">1 / 12</b></div>
+      <div class="level-path" id="headerLevelTrack" aria-label="角色等级轨迹"></div>
+    </div>
+  </div>
+  <div class="command-actions">
+    <div class="density-switch" aria-label="页面密度">
+      <button type="button" class="density-button active" data-density-mode="comfortable" aria-pressed="true">标准</button>
+      <button type="button" class="density-button" data-density-mode="compact" aria-pressed="false">紧凑</button>
+    </div>
+    <button class="btn primary command-primary" id="copySummaryBtn">复制构筑</button>
+    <button class="btn command-secondary" id="exportBtn">导出</button>
+    <button class="btn command-secondary" id="importBtn">导入</button>
+    <input class="hidden" type="file" id="importFile" accept="application/json" />
+  </div>
+</header>
 <div class="layout">
 
     <aside class="workspace-step-rail" id="workspaceStepRail" aria-label="构筑步骤">
       <div class="rail-brand">
-        <span class="rail-kicker">BUILD WORKSPACE</span>
-        <strong>构筑流程</strong>
-        <p>按步骤完成选择，右侧实时核对结果。</p>
+        <span class="rail-kicker">DECISION PATH</span>
+        <strong>构筑决策</strong>
+        <p>一次处理一种选择；完成状态会同步到角色纸。</p>
       </div>
       <div class="rail-context" aria-live="polite">
         <div><span>当前等级</span><b id="railLevel">1</b></div>
@@ -361,12 +566,24 @@
         </button>
       </nav>
       <div class="rail-actions">
-        <button class="btn small" type="button" data-side-view-trigger="result">查看当前构筑结果</button>
-        <button class="btn small ghost" type="button" data-side-view-trigger="check">检查未完成项</button>
+        <button class="btn small" type="button" data-side-view-trigger="result">打开角色纸</button>
+        <button class="btn small ghost" type="button" data-side-view-trigger="check">查看待处理项</button>
       </div>
     </aside>
 
     <div class="main-stack">
+      <section class="decision-context" id="decisionContext" aria-live="polite">
+        <div class="decision-context-main">
+          <span class="decision-overline" id="decisionOverline">STEP 01 · 角色基础</span>
+          <h2 id="decisionTitle">确定角色起点</h2>
+          <p id="decisionDescription">设置种族、背景和护甲模拟。它们会决定固定技能来源与部分最终数值。</p>
+        </div>
+        <div class="decision-context-side">
+          <div class="decision-progress-copy"><span>本步骤状态</span><b id="decisionCompletion">准备设置</b></div>
+          <div class="decision-progress"><span id="decisionProgressFill"></span></div>
+          <div class="decision-affects" id="decisionAffects"><span>技能来源</span><span>身份摘要</span><span>护甲等级</span></div>
+        </div>
+      </section>
       <section class="card" id="basicCard"><div class="card-header"><div class="card-title"><span class="step">1</span><div><h2>角色基础</h2><div class="subtle">名称、种族、背景与护甲模拟</div></div></div></div><div class="card-body"><div class="field-grid"><label class="field"><span class="label">角色名称</span><input id="characterName" type="text" maxlength="24" /></label><label class="field"><span class="label">种族</span><select id="raceSelect"></select></label><label class="field"><span class="label">背景</span><select id="backgroundSelect"></select></label><label class="field"><span class="label">护甲模拟</span><select id="armorSelect"><option value="unarmored">无甲：10 + 敏捷</option><option value="light">轻甲示例：12 + 敏捷</option><option value="medium">中甲示例：15 + 敏捷（上限 +2）</option><option value="heavy">重甲示例：18</option></select></label></div></div></section>
       <section class="card" id="abilitiesCard"><div class="card-header"><div class="card-title"><span class="step">2</span><div><h2>27 点购属性</h2><div class="subtle">基础属性 8–15；创建角色时独立分配 +2 与 +1</div></div></div><button class="btn small ghost" id="resetAbilitiesBtn">重置属性</button></div><div class="card-body"><div class="point-buy-top"><div class="point-meter"><div class="point-meter-row"><span>已使用点数</span><span><b class="point-number" id="pointsUsed">0</b> / 27</span></div><div class="meter"><span id="pointMeterFill"></span></div></div><div class="subtle" id="pointStatus"></div></div><div class="ability-grid" id="abilityGrid"></div><div class="bonus-grid"><label class="field"><span class="label">创建加值 +2</span><select id="bonus2"></select></label><label class="field"><span class="label">创建加值 +1</span><select id="bonus1"></select></label></div><div class="ability-impact-panel"><div class="ability-impact-head"><div><h3>属性会影响什么</h3><p>属性本身不会每加 1 点都产生变化；真正参与检定的是属性调整值。这里根据当前职业、等级、护甲和技能实时说明。</p></div><span class="ability-formula">调整值 = ⌊(属性 − 10) ÷ 2⌋</span></div><div class="ability-impact-grid" id="abilityImpactGrid"></div></div></div></section>
       <section class="card" id="levelsCard"><div class="card-header"><div class="card-title"><span class="step">3</span><div><h2>1–12 级职业路线</h2><div class="subtle">每一级可选择任意职业；多职业没有属性门槛</div></div></div><button class="btn small ghost" id="clearLevelsBtn">清空 2–12 级</button></div><div class="card-body"><div class="level-grid" id="levelGrid"></div><div class="class-summary" id="classSummary"></div><div class="subclass-grid" id="subclassGrid"></div><div class="subclass-compare"><div class="subclass-compare-head"><h3>子职业横向对比</h3><p>达到解锁等级后，会显示同一职业所有路线的定位、优势、代价与推荐属性。点击卡片即可切换。</p></div><div id="subclassComparison"></div></div><div class="class-choice-panel"><div class="class-choice-head"><h3>职业能力与战斗风格选择</h3><p>只显示当前职业等级已经解锁的关键选择，例如战斗风格、魔能祈唤、契约恩赐、超魔和战技。</p></div><div class="class-choice-groups" id="classChoiceGroups"></div></div><div class="progression-panel"><div class="progression-head"><div><h3>逐级职业能力解锁</h3><p>根据角色等级与职业等级实时生成。点击每项能力可查看核心效果、用途和解锁条件。</p></div></div><div class="progression-list" id="levelFeatureTimeline"></div></div></div></section>
@@ -378,21 +595,27 @@
     <aside class="side-stack" id="workspaceResultPanel">
 
       <div class="result-panel-shell" id="resultPanelShell" data-side-view="result">
-        <div class="result-panel-head">
-          <div>
-            <span class="result-panel-kicker">LIVE RESULT</span>
-            <strong id="resultPanelTitle">当前等级最终构筑结果</strong>
+        <div class="result-sheet-identity">
+          <div class="result-sheet-sigil" aria-hidden="true"><span id="resultSheetLevel">1</span></div>
+          <div class="result-sheet-copy">
+            <span class="result-panel-kicker">CURRENT CHARACTER SHEET</span>
+            <strong id="resultSheetName">未命名角色</strong>
+            <small id="resultSheetRoute">战士 1 · 人类</small>
           </div>
           <button class="result-drawer-close" id="resultDrawerClose" type="button" aria-label="关闭结果面板">×</button>
         </div>
+        <div class="build-completion">
+          <div><span>构筑完成度</span><b id="buildCompletionLabel">0%</b></div>
+          <div class="build-completion-track"><span id="buildCompletionFill"></span></div>
+        </div>
+        <div class="result-impact-note" id="resultImpactNote">当前正在设置角色基础。</div>
         <div class="result-tabs result-tabs-v9" role="tablist" aria-label="结果视图">
-          <button class="result-tab active" type="button" data-side-view="result">构筑结果</button>
+          <button class="result-tab active" type="button" data-side-view="result">角色纸</button>
           <button class="result-tab" type="button" data-side-view="check">待处理</button>
-          <button class="result-tab" type="button" data-side-view="tools">存档工具</button>
+          <button class="result-tab" type="button" data-side-view="tools">存档</button>
         </div>
       </div>
-
-<section class="card result-card side-panel side-panel-result" id="resultCard">
+      <section class="card result-card side-panel side-panel-result" id="resultCard">
   <div class="result-live-strip" aria-label="当前构筑关键结果">
     <div><span>等级</span><b data-live-copy="totalLevel">1</b></div>
     <div><span>生命</span><b data-live-copy="hpValue">—</b></div>
@@ -408,7 +631,7 @@
     </aside>
   </div>
 </main>
-<div class="mobile-summary-dock"><div class="dock-stat"><span>等级</span><b id="mobileLevel">1</b></div><div class="dock-stat"><span>生命</span><b id="mobileHP">10</b></div><div class="dock-stat"><span>护甲</span><b id="mobileAC">15</b></div><button class="dock-link" id="openResultDrawer" type="button">构筑结果</button></div>
+<div class="mobile-summary-dock"><div class="dock-stat"><span>等级</span><b id="mobileLevel">1</b></div><div class="dock-stat"><span>生命</span><b id="mobileHP">10</b></div><div class="dock-stat"><span>护甲</span><b id="mobileAC">15</b></div><button class="dock-link" id="openResultDrawer" type="button">打开角色纸</button></div>
 <div class="library-modal" id="libraryModal" aria-hidden="true"><div class="library-modal-dialog"><button class="library-modal-close" id="libraryModalClose" type="button" aria-label="关闭">×</button><div class="library-modal-content" id="libraryModalContent"></div></div></div>
 <div class="toast" id="toast"></div>
 <script>
@@ -792,11 +1015,48 @@ function unlockedFeatureRows(){const c={};state.levels.filter(Boolean).forEach(c
 function skillResultRows(){const f=finalScores(),total=state.levels.filter(Boolean).length||1,pb=2+Math.floor((total-1)/4),prof=proficientSet(),expert=expertiseSet(),jack=(classCounts().bard||0)>=2?Math.floor(pb/2):0;return skills.map(sk=>{const ex=expert.has(sk.key),pr=prof.has(sk.key),bonus=mod(f[sk.ability])+(ex?pb*2:pr?pb:jack);return{...sk,ex,pr,bonus,label:ex?'专精':pr?'熟练':jack?'万事通':'未熟练'}}).filter(x=>x.ex||x.pr||jack).sort((a,b)=>b.bonus-a.bonus)}
 function spellResultHTML(){const sources=spellSourceList();if(!sources.length)return'<div class="result-empty">当前等级和子职业没有可用的职业施法。</div>';const slot=spellSlotTable[combinedCasterLevel()]||[],pact=pactSlots();return `<div class="result-chip-list">${slot.map((n,i)=>`<span class="result-chip">${i+1}环位 ×${n}</span>`).join('')}${pact?`<span class="result-chip good">契约 ${pact.level}环 ×${pact.count}</span>`:''}</div><div class="result-list">${sources.map(src=>{const info=sourceSpellInfo(src.key,src.level),ch=choiceFor(src.key),selected=[...(ch.cantrips||[]),...(info.mode==='spellbook'&&ch.prepared?.length?ch.prepared:ch.spells||[])];return `<div class="result-row"><strong>${classes[src.key].name} ${src.level}级<br><span class="subtle">最高 ${info.maxLevel}环 · ${spellModeLabels[info.mode]}</span></strong><span>${selected.length?selected.map(spellName).join('、'):'尚未选择'}</span></div>`}).join('')}</div>`}
 function renderFinalBuildResult(){const f=finalScores(),chosen=state.levels.filter(Boolean),total=chosen.length||1,pb=2+Math.floor((total-1)/4),c=classCounts(),subs=Object.entries(c).filter(([k,l])=>l>=classes[k].subclassAt).map(([k])=>`${classes[k].name}：${state.subclasses[k]}`).join('；')||'尚未解锁子职业',features=unlockedFeatureRows(),choices=selectedClassChoiceRows(),skillsOut=skillResultRows(),incomplete=[];choices.forEach(x=>{if(!x.complete)incomplete.push(`${x.title}还需选择 ${x.limit-x.names.length} 项`)});spellSourceList().forEach(src=>{const info=sourceSpellInfo(src.key,src.level),ch=choiceFor(src.key);if(info.cantripLimit&&(ch.cantrips||[]).length<info.cantripLimit)incomplete.push(`${classes[src.key].name}戏法未选满`);if(['known','pact'].includes(info.mode)&&(ch.spells||[]).length<info.spellLimit)incomplete.push(`${classes[src.key].name}法术未选满`)});$('finalBuildResult').innerHTML=`<div class="result-hero"><h3>${state.name||'未命名角色'} · 当前角色 ${total}级</h3><p>${state.race} · ${backgrounds[state.background].name} · ${Object.entries(c).map(([k,l])=>`${classes[k].name}${l}`).join(' / ')}<br>${subs}</p></div><section class="result-section"><h3>战斗与检定核心数值</h3><div class="result-stat-grid"><div class="result-stat"><span>熟练加值</span><b>${fmt(pb)}</b></div><div class="result-stat"><span>预计生命值</span><b>${hp(f)}</b></div><div class="result-stat"><span>护甲等级</span><b>${ac(f)}</b></div><div class="result-stat"><span>先攻</span><b>${fmt(mod(f.dex)+(state.feats.some(x=>x.type==='alert')?5:0))}</b></div></div></section><section class="result-section"><h3>最终属性及实际影响</h3><div class="result-ability-grid">${abilities.map(a=>`<div class="result-ability"><div class="result-ability-top"><strong>${a.name}</strong><b>${f[a.key]} · ${fmt(mod(f[a.key]))}</b></div><p>${abilityImpactData[a.key].summary}</p></div>`).join('')}</div></section><section class="result-section"><h3>子职业与关键能力选择</h3><div class="result-list"><div class="result-row"><strong>子职业</strong><span>${subs}</span></div>${choices.map(x=>`<div class="result-row"><strong>${x.title}</strong><span>${x.names.length?x.names.join('、'):'尚未选择'} ${x.complete?'':'（未完成）'}</span></div>`).join('')||'<div class="result-empty">当前等级没有额外职业能力选择。</div>'}</div></section><section class="result-section"><h3>当前已解锁职业能力</h3><div class="result-chip-list">${features.map(x=>`<span class="result-chip" title="${x.desc.replace(/"/g,'&quot;')}">${classes[x.classKey].name}${x.level} · ${x.feature}</span>`).join('')||'<span class="result-chip">暂无</span>'}</div></section><section class="result-section"><h3>技能最终加值</h3><div class="result-list">${skillsOut.map(x=>`<div class="result-row"><strong>${x.name} · ${x.label}</strong><span>${abilityLabel(x.ability)} ${fmt(mod(f[x.ability]))} + 熟练贡献 = <b>${fmt(x.bonus)}</b><br>${skillDescriptions[x.key]}</span></div>`).join('')||'<div class="result-empty">尚未选择技能熟练。</div>'}</div></section><section class="result-section"><h3>戏法、法术与法术位</h3>${spellResultHTML()}</section><section class="result-section"><h3>专长</h3><div class="result-chip-list">${state.feats.map(x=>feats[x.type]?.name).filter(x=>x&&x!=='未选择').map(x=>`<span class="result-chip good">${x}</span>`).join('')||'<span class="result-chip">当前等级尚无已选专长</span>'}</div></section><section class="result-section"><h3>尚未完成的选择</h3>${incomplete.length?`<div class="result-chip-list">${incomplete.map(x=>`<span class="result-chip">${x}</span>`).join('')}</div>`:'<div class="result-empty">当前等级的主要职业、技能和法术选择已完成。</div>'}</section>`}
-function renderAll(){normalizeSkills();normalizeClassChoices();sync();renderLevels();renderSubclassComparison();renderClassChoices();renderLevelFeatureTimeline();renderFeats();renderAbilities();renderSkills();renderSpells();renderFinalBuildResult();renderLibrary();renderSummary();renderWarnings();syncResultLiveStrip();updateWorkspaceStatus()}
+function renderAll(){normalizeSkills();normalizeClassChoices();sync();renderLevels();renderSubclassComparison();renderClassChoices();renderLevelFeatureTimeline();renderFeats();renderAbilities();renderSkills();renderSpells();renderFinalBuildResult();renderLibrary();renderSummary();renderWarnings();syncResultLiveStrip();updateWorkspaceStatus();pulseResultCard()}
 function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>$('toast').classList.remove('show'),1800)}
 function summaryText(){const f=finalScores(),c=classCounts(),breakdown=Object.entries(c).map(([k,l])=>`${classes[k].name} ${l}`).join(' / ')||'无',subs=Object.entries(c).filter(([k,l])=>l>=classes[k].subclassAt).map(([k])=>`${classes[k].name}：${state.subclasses[k]}`).join('；')||'—',stats=abilities.map(a=>`${a.name}${f[a.key]}(${fmt(mod(f[a.key]))})`).join('，'),fs=state.feats.map(x=>feats[x.type]?.name).filter(x=>x&&x!=='未选择').join('、')||'无';return `【BG3 构筑】${state.name||'未命名角色'}\n种族：${state.race}\n背景：${backgrounds[state.background].name}\n职业：${breakdown}\n子职业：${subs}\n属性：${stats}\n技能熟练：${[...proficientSet()].map(skillLabel).join('、')||'无'}\n技能专精：${[...expertiseSet()].map(skillLabel).join('、')||'无'}\n职业能力选择：${selectedClassChoiceRows().map(x=>`${x.title}=${x.names.join('、')||'未选择'}`).join('；')||'无'}\n专长：${fs}\n预计生命值：${hp(f)}｜护甲等级：${ac(f)}`}
 function applyPreset(i){const p=presets[i];state=defaultState();Object.assign(state,{name:p.name,scores:{...p.scores},bonus2:p.bonus2,bonus1:p.bonus1,background:p.background,classSkills:[...p.classSkills],raceSkill:p.raceSkill,multiclassSkills:JSON.parse(JSON.stringify(p.multiclassSkills)),expertise:{...p.expertise},spellChoices:{},classChoices:{},levels:[...p.levels],subclasses:{...p.subclasses},feats:p.feats.map((type,j)=>({type,a1:p.asi?.[j]?.[0]||'str',a2:p.asi?.[j]?.[1]||'str'}))});renderAll();toast(`已载入：${p.name}`)}
 function sanitize(data){const f=defaultState();if(!data||typeof data!=='object')return f;f.name=typeof data.name==='string'?data.name.slice(0,24):f.name;f.race=races.includes(data.race)?data.race:f.race;f.background=backgrounds[data.background]?data.background:f.background;f.armor=['unarmored','light','medium','heavy'].includes(data.armor)?data.armor:f.armor;abilities.forEach(a=>{const v=Number(data.scores?.[a.key]);f.scores[a.key]=Number.isInteger(v)&&v>=8&&v<=15?v:8});f.bonus2=abilities.some(a=>a.key===data.bonus2)?data.bonus2:'str';f.bonus1=abilities.some(a=>a.key===data.bonus1)?data.bonus1:'con';f.levels=Array.from({length:12},(_,i)=>classes[data.levels?.[i]]?data.levels[i]:'');if(!f.levels[0])f.levels[0]='fighter';Object.keys(classes).forEach(k=>{if(classes[k].subclasses.includes(data.subclasses?.[k]))f.subclasses[k]=data.subclasses[k]});f.classSkills=uniqueValid(data.classSkills);f.raceSkill=allSkillKeys.includes(data.raceSkill)?data.raceSkill:'';f.multiclassSkills={};if(data.multiclassSkills&&typeof data.multiclassSkills==='object')Object.entries(data.multiclassSkills).forEach(([k,v])=>{if(classes[k])f.multiclassSkills[k]=uniqueValid(v)});f.expertise={};if(data.expertise&&typeof data.expertise==='object')Object.entries(data.expertise).forEach(([id,k])=>{if(allSkillKeys.includes(k))f.expertise[id]=k});f.spellChoices={};if(data.spellChoices&&typeof data.spellChoices==='object')Object.entries(data.spellChoices).forEach(([k,v])=>{if(classes[k]&&v&&typeof v==='object')f.spellChoices[k]={cantrips:Array.isArray(v.cantrips)?v.cantrips.filter(x=>spellData.some(s=>s.key===x)):[],spells:Array.isArray(v.spells)?v.spells.filter(x=>spellData.some(s=>s.key===x)):[],prepared:Array.isArray(v.prepared)?v.prepared.filter(x=>spellData.some(s=>s.key===x)):[]}});f.classChoices={};if(data.classChoices&&typeof data.classChoices==='object')Object.entries(data.classChoices).forEach(([k,v])=>{if(Array.isArray(v))f.classChoices[k]=v.filter(x=>typeof x==='string')});f.feats=Array.isArray(data.feats)?data.feats.map(x=>({type:feats[x?.type]?x.type:'none',a1:abilities.some(a=>a.key===x?.a1)?x.a1:'str',a2:abilities.some(a=>a.key===x?.a2)?x.a2:'str'})):[];return f}
+
+
+const STEP_EXPERIENCE={
+  basicCard:{overline:'STEP 01 · 角色基础',title:'确定角色起点',description:'设置种族、背景和护甲模拟。它们会决定固定技能来源、身份摘要与护甲计算方式。',affects:['技能来源','身份摘要','护甲等级'],impact:'正在调整种族、背景与护甲；右侧角色纸会同步更新身份和防御结果。'},
+  abilitiesCard:{overline:'STEP 02 · 属性加点',title:'分配真正有效的属性点',description:'围绕偶数属性断点安排 27 点购和 +2 / +1。重点观察调整值变化，而不是只追求表面数字。',affects:['攻击与伤害','技能检定','生命与先攻','施法 DC'],impact:'属性变化会立即影响生命、先攻、护甲、技能加值以及施法攻击与豁免 DC。'},
+  levelsCard:{overline:'STEP 03 · 职业路线',title:'规划 1–12 级成长路径',description:'逐级安排主职与兼职，比较子职业路线，并完成当前等级解锁的战斗风格、战技、超魔或祈唤。',affects:['生命成长','职业能力','子职业','法术环阶'],impact:'职业等级决定当前解锁能力、专长节点、子职业以及可学习的最高法术环阶。'},
+  skillsCard:{overline:'STEP 04 · 技能选择',title:'建立探索与对话能力',description:'整合背景、种族、起始职业和兼职来源，优先覆盖队伍需要的检定，再安排技能专精。',affects:['探索检定','对话检定','熟练加值','技能专精'],impact:'技能选择会更新角色纸中的最终检定加值，并标记熟练、专精与万事通来源。'},
+  spellsCard:{overline:'STEP 05 · 法术与戏法',title:'按职业等级构建法术配置',description:'先选择职业来源和环阶，再比较动作类型、距离、专注与实际用途。法术位和可学习环阶分开计算。',affects:['法术位','已知或准备','施法 DC','战斗资源'],impact:'法术选择会同步到角色纸；当前职业自身等级限制可学习环阶，综合施法等级决定法术位。'},
+  featsCard:{overline:'STEP 06 · 专长成长',title:'确认关键成长节点',description:'在属性提升和机制型专长之间取舍，观察它们对最终属性、生命、先攻与战斗定位的影响。',affects:['属性上限','生命值','先攻','战斗机制'],impact:'专长会直接改变最终属性或战斗规则；角色纸会显示已选专长和受影响的核心数值。'},
+  libraryCard:{overline:'STEP 07 · 资料与比较',title:'核对当前构筑可用资料',description:'资料库默认按当前职业与等级过滤，用于复查法术、技能、专长和职业能力，而不是重新平铺全部内容。',affects:['详细说明','路线比较','规则核对','收藏资料'],impact:'资料库不会改变构筑；它用于核对当前等级可用内容及不同选项之间的差异。'}
+};
+let resultPulseTimer;
+function setDensity(mode){
+  mode=mode==='compact'?'compact':'comfortable';
+  document.body.dataset.density=mode;
+  localStorage.setItem('bg3-workspace-density',mode);
+  document.querySelectorAll('[data-density-mode]').forEach(btn=>{const on=btn.dataset.densityMode===mode;btn.classList.toggle('active',on);btn.setAttribute('aria-pressed',String(on))});
+}
+function renderLevelPath(total){
+  const track=document.getElementById('headerLevelTrack');if(!track)return;
+  track.innerHTML=Array.from({length:12},(_,i)=>`<span class="level-node ${i<total?'complete':''} ${i===Math.max(0,total-1)?'current':''}" title="角色 ${i+1} 级"></span>`).join('');
+  const label=document.getElementById('headerLevelLabel');if(label)label.textContent=`${total} / 12`;
+}
+function updateDecisionContext(){
+  const meta=STEP_EXPERIENCE[activeWorkspaceStep]||STEP_EXPERIENCE.basicCard;
+  const index=Math.max(0,workspaceStepIndex(activeWorkspaceStep));
+  const complete=document.querySelector(`[data-workspace-step="${activeWorkspaceStep}"]`)?.classList.contains('is-complete');
+  const status=complete?'本步骤已完成':index===0?'准备设置':'仍有选择待确认';
+  const values={decisionOverline:meta.overline,decisionTitle:meta.title,decisionDescription:meta.description,decisionCompletion:status,resultImpactNote:meta.impact};
+  Object.entries(values).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.textContent=value});
+  const affects=document.getElementById('decisionAffects');if(affects)affects.innerHTML=meta.affects.map(x=>`<span>${x}</span>`).join('');
+  const fill=document.getElementById('decisionProgressFill');if(fill)fill.style.width=`${((index+1)/WORKSPACE_STEPS.length)*100}%`;
+}
+function pulseResultCard(){
+  const card=document.getElementById('resultCard');if(!card||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  card.classList.remove('result-refresh');void card.offsetWidth;card.classList.add('result-refresh');clearTimeout(resultPulseTimer);resultPulseTimer=setTimeout(()=>card.classList.remove('result-refresh'),420);
+}
 
 const WORKSPACE_STEPS=[
   {id:'basicCard',label:'角色基础'},
@@ -836,12 +1096,15 @@ function setWorkspaceStep(id,{scroll=true}={}){
   activeWorkspaceStep=id;
   localStorage.setItem('bg3-workspace-active-step',id);
   document.querySelectorAll('.workspace-panel').forEach(el=>el.classList.toggle('active-workspace-panel',el.id===id));
+
+
   document.querySelectorAll('[data-workspace-step]').forEach(btn=>{
     const active=btn.dataset.workspaceStep===id;
     btn.classList.toggle('active',active);
     btn.setAttribute('aria-current',active?'step':'false');
   });
   updateStepFooters();
+  updateDecisionContext();
   if(scroll){
     const card=$(id);
     if(card)window.scrollTo({top:Math.max(0,card.getBoundingClientRect().top+window.scrollY-84),behavior:'smooth'});
@@ -857,7 +1120,7 @@ function updateStepFooters(){
       <div class="step-footer-copy"><b>步骤 ${index+1} / ${WORKSPACE_STEPS.length}</b>${step.label}</div>
       <div class="step-footer-actions">
         ${previous?`<button class="btn ghost" type="button" data-go-step="${previous.id}">上一步</button>`:''}
-        ${next?`<button class="btn primary" type="button" data-go-step="${next.id}">下一步 · ${next.label}</button>`:`<button class="btn primary" type="button" data-open-result="result">查看完整结果</button>`}
+        ${next?`<button class="btn primary" type="button" data-go-step="${next.id}">下一步 · ${next.label}</button>`:`<button class="btn primary" type="button" data-open-result="result">查看角色纸</button>`}
       </div>`;
     card.appendChild(footer);
   });
@@ -866,6 +1129,7 @@ function initWorkspaceShell(){
   document.querySelectorAll('.main-stack>.card').forEach(card=>card.classList.add('workspace-panel'));
   const backdrop=document.createElement('div');backdrop.id='workspaceBackdrop';backdrop.className='workspace-backdrop';
   document.body.appendChild(backdrop);
+  setDensity(localStorage.getItem('bg3-workspace-density')||'comfortable');
   setWorkspaceStep(activeWorkspaceStep,{scroll:false});
   setSideView('result',false);
   document.body.classList.add('workspace-ready');
@@ -895,6 +1159,15 @@ function updateWorkspaceStatus(){
   $('stepStatusSkills').textContent=`${prof.size} 熟练 · ${expert.size} 专精`;
   $('stepStatusSpells').textContent=`${spellTotal.can} 戏法 · ${spellTotal.sp} 法术`;
   $('stepStatusFeats').textContent=slots.length?`${featSelected} / ${slots.length} 已选择`:'当前未解锁';
+  const characterName=state.name||'未命名角色';
+  const raceName=state.race||'—';
+  const headerName=document.getElementById('headerBuildName');if(headerName)headerName.textContent=characterName;
+  const headerRoute=document.getElementById('headerBuildRoute');if(headerRoute)headerRoute.textContent=breakdown;
+  const sheetName=document.getElementById('resultSheetName');if(sheetName)sheetName.textContent=characterName;
+  const sheetRoute=document.getElementById('resultSheetRoute');if(sheetRoute)sheetRoute.textContent=`${breakdown} · ${raceName}`;
+  const sheetLevel=document.getElementById('resultSheetLevel');if(sheetLevel)sheetLevel.textContent=total;
+  renderLevelPath(total);
+
   const states={
     basicCard:true,
     abilitiesCard:usedPoints()===27&&state.bonus1!==state.bonus2,
@@ -904,16 +1177,22 @@ function updateWorkspaceStatus(){
     featsCard:slots.length===0||featSelected===slots.length,
     libraryCard:true
   };
+  const applicable=[states.basicCard,states.abilitiesCard,states.levelsCard,states.skillsCard,states.spellsCard,states.featsCard];
+  const completion=Math.round(applicable.filter(Boolean).length/applicable.length*100);
+  const completionLabel=document.getElementById('buildCompletionLabel');if(completionLabel)completionLabel.textContent=`${completion}%`;
+  const completionFill=document.getElementById('buildCompletionFill');if(completionFill)completionFill.style.width=`${completion}%`;
   document.querySelectorAll('[data-workspace-step]').forEach(btn=>{
     const id=btn.dataset.workspaceStep;
     btn.classList.toggle('is-complete',Boolean(states[id]));
     btn.classList.toggle('has-warning',!states[id]&&id!==activeWorkspaceStep);
   });
+  updateDecisionContext();
 }
 
 init();initWorkspaceShell();renderAll();
 
 document.addEventListener('click',e=>{
+  const density=e.target.closest('[data-density-mode]');if(density){setDensity(density.dataset.densityMode);return}
   const step=e.target.closest('[data-workspace-step]');if(step){setWorkspaceStep(step.dataset.workspaceStep);return}
   const go=e.target.closest('[data-go-step]');if(go){setWorkspaceStep(go.dataset.goStep);return}
   const side=e.target.closest('[data-side-view],[data-side-view-trigger]');
