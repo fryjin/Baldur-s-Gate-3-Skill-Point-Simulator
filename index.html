@@ -590,6 +590,14 @@
     .spell-restriction-note{margin:10px 0;padding:10px 12px;border:1px solid rgba(229,180,99,.28);border-radius:11px;color:var(--muted);font-size:10px;line-height:1.55;background:rgba(229,180,99,.045)}
     @media(max-width:720px){.rule-diagnostics-grid{grid-template-columns:1fr}.rule-diagnostics-head{display:block}.rule-diagnostics-head>b{margin-top:10px;width:max-content}}
 
+  
+    /* V15: initial point buy is independent from target level */
+    .ability-stage-summary-initial{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .ability-point-split-initial{grid-template-columns:minmax(180px,320px)}
+    .ability-breakdown-initial{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:900px){.ability-stage-summary-initial{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.ability-stage-summary-initial{grid-template-columns:1fr 1fr}.ability-point-split-initial{grid-template-columns:1fr}}
+
   </style>
 </head>
 <body>
@@ -639,17 +647,17 @@
         <div><span>待处理</span><b id="railPending">0</b></div>
       </div>
       <nav class="workspace-step-list">
-        <button class="workspace-step-button active" type="button" data-workspace-step="targetLevelCard">
-          <span class="workspace-step-index">01</span><span class="workspace-step-copy"><strong>目标等级</strong><small id="stepStatusTarget">目标 1 级</small></span>
+        <button class="workspace-step-button active" type="button" data-workspace-step="abilitiesCard">
+          <span class="workspace-step-index">01</span><span class="workspace-step-copy"><strong>初始属性</strong><small id="stepStatusAbilities">0 / 27 点</small></span>
+        </button>
+        <button class="workspace-step-button" type="button" data-workspace-step="targetLevelCard">
+          <span class="workspace-step-index">02</span><span class="workspace-step-copy"><strong>目标等级</strong><small id="stepStatusTarget">目标 1 级</small></span>
         </button>
         <button class="workspace-step-button" type="button" data-workspace-step="routeCard">
-          <span class="workspace-step-index">02</span><span class="workspace-step-copy"><strong>逐级职业</strong><small id="stepStatusRoute">战士 1</small></span>
+          <span class="workspace-step-index">03</span><span class="workspace-step-copy"><strong>逐级职业</strong><small id="stepStatusRoute">战士 1</small></span>
         </button>
         <button class="workspace-step-button" type="button" data-workspace-step="progressionCard">
-          <span class="workspace-step-index">03</span><span class="workspace-step-copy"><strong>子职业与成长</strong><small id="stepStatusProgression">当前无节点</small></span>
-        </button>
-        <button class="workspace-step-button" type="button" data-workspace-step="abilitiesCard">
-          <span class="workspace-step-index">04</span><span class="workspace-step-copy"><strong>属性分配</strong><small id="stepStatusAbilities">0 / 27 点</small></span>
+          <span class="workspace-step-index">04</span><span class="workspace-step-copy"><strong>子职业与专长</strong><small id="stepStatusProgression">当前无节点</small></span>
         </button>
         <button class="workspace-step-button" type="button" data-workspace-step="skillsCard">
           <span class="workspace-step-index">05</span><span class="workspace-step-copy"><strong>技能与专精</strong><small id="stepStatusSkills">熟练与专精</small></span>
@@ -673,9 +681,9 @@
     <div class="main-stack">
       <section class="decision-context" id="decisionContext" aria-live="polite">
         <div class="decision-context-main">
-          <span class="decision-overline" id="decisionOverline">STEP 01 · 角色基础</span>
-          <h2 id="decisionTitle">确定角色起点</h2>
-          <p id="decisionDescription">设置种族、背景和护甲模拟。它们会决定固定技能来源与部分最终数值。</p>
+          <span class="decision-overline" id="decisionOverline">STEP 01 · 初始属性</span>
+          <h2 id="decisionTitle">先完成角色创建属性</h2>
+          <p id="decisionDescription">固定使用27点购并分配+2/+1；这一过程与目标等级和职业路线无关。</p>
         </div>
         <div class="decision-context-side">
           <div class="decision-progress-copy"><span>本步骤状态</span><b id="decisionCompletion">准备设置</b></div>
@@ -683,8 +691,16 @@
           <div class="decision-affects" id="decisionAffects"><span>技能来源</span><span>身份摘要</span><span>护甲等级</span></div>
         </div>
       </section>
-      <section class="card" id="targetLevelCard">
-        <div class="card-header"><div class="card-title"><span class="step">1</span><div><h2>目标等级与角色基础</h2><div class="subtle">先确定本次模拟的角色等级；后续所有选项都只按该等级生效</div></div></div></div>
+      <section class="card" id="abilitiesCard"><div class="card-header"><div class="card-title"><span class="step">1</span><div><h2>角色创建初始属性</h2><div class="subtle">创建角色时固定完成27点购与+2/+1；本步骤不依赖目标等级或职业路线</div></div></div><button class="btn small ghost" id="resetAbilitiesBtn">重置初始属性</button></div><div class="card-body"><div class="ability-stage-summary ability-stage-summary-initial" aria-live="polite">
+  <div class="ability-stage-item primary"><span>创建点购总额</span><b>27</b><small>必须在角色创建阶段全部使用</small></div>
+  <div class="ability-stage-item"><span>点购基础范围</span><b>8–15</b><small>点购不能把单项基础值提高到15以上</small></div>
+  <div class="ability-stage-item"><span>创建加值</span><b>+2 / +1</b><small>两项加值不能投入同一属性</small></div>
+  <div class="ability-stage-item"><span>单项初始最高</span><b>17</b><small>基础15 + 创建加值2</small></div>
+</div><div class="ability-point-split ability-point-split-initial"><div class="point-box"><span>创建点购剩余</span><b id="creationPointRemaining">27</b></div></div><div class="point-buy-top"><div class="point-meter"><div class="point-meter-row"><span>已使用点数</span><span><b class="point-number" id="pointsUsed">0</b> / 27</span></div><div class="meter"><span id="pointMeterFill"></span></div></div><div class="subtle" id="pointStatus"></div></div><div class="ability-grid" id="abilityGrid"></div><div class="bonus-grid"><label class="field"><span class="label">1级创建加值 +2</span><select id="bonus2"></select></label><label class="field"><span class="label">1级创建加值 +1</span><select id="bonus1"></select></label></div>
+<div class="ability-progression-note" id="abilityProgressionNote"><strong>本页始终只处理角色创建属性。</strong> 调整目标等级不会改变27点购。后续职业等级可能解锁专长槽；只有主动选择“属性提升”专长时，最终角色纸才会叠加该加值，但不会产生新的初始点购点数。</div>
+<div class="ability-impact-panel"><div class="ability-impact-head"><div><h3>属性会影响什么</h3><p>属性本身不会每加1点都产生变化；真正参与检定的是属性调整值。这里先展示创建完成时的初始属性效果。</p></div><span class="ability-formula">初始调整值 = ⌊(初始属性 − 10) ÷ 2⌋</span></div><div class="ability-impact-grid" id="abilityImpactGrid"></div></div></div></section>
+            <section class="card" id="targetLevelCard">
+        <div class="card-header"><div class="card-title"><span class="step">2</span><div><h2>目标等级与角色基础</h2><div class="subtle">初始属性已经完成；现在确定模拟等级、身份资料与后续规则边界</div></div></div></div>
         <div class="card-body">
           <div class="target-level-picker">
             <div class="target-level-copy"><span>目标角色等级</span><strong id="targetLevelValue">1</strong><small>可模拟 1–12 级</small></div>
@@ -698,7 +714,7 @@
           <div class="target-level-summary">
             <div><span>熟练加值</span><b id="targetProfBonus">+2</b><small>按角色总等级计算</small></div>
             <div><span>当前路线职业数</span><b id="targetClassCount">1</b><small>在下一步逐级选择</small></div>
-            <div><span>成长节点</span><b id="targetFeatCount">0</b><small>专长或属性提升</small></div>
+            <div><span>专长节点</span><b id="targetFeatCount">0</b><small>可选择普通专长或属性提升专长</small></div>
             <div><span>最高职业等级</span><b id="targetHighestClass">战士1</b><small>决定子职业和法术环阶</small></div>
           </div>
           <div class="section-divider"></div>
@@ -707,7 +723,7 @@
         </div>
       </section>
       <section class="card" id="routeCard">
-        <div class="card-header"><div class="card-title"><span class="step">2</span><div><h2>逐级职业路线</h2><div class="subtle">为目标等级内的每一级选择职业；各职业自身等级决定后续解锁</div></div></div><button class="btn small ghost" id="singleClassRouteBtn" type="button">全部沿用起始职业</button></div>
+        <div class="card-header"><div class="card-title"><span class="step">3</span><div><h2>逐级职业路线</h2><div class="subtle">为目标等级内的每一级选择职业；各职业自身等级决定后续解锁</div></div></div><button class="btn small ghost" id="singleClassRouteBtn" type="button">全部沿用起始职业</button></div>
         <div class="card-body">
           <div class="route-overview">
             <div><span>目标等级</span><b id="routeTargetLevel">1级</b></div>
@@ -722,26 +738,17 @@
         </div>
       </section>
       <section class="card" id="progressionCard">
-        <div class="card-header"><div class="card-title"><span class="step">3</span><div><h2>子职业与成长节点</h2><div class="subtle">先完成路线带来的子职业、专长或属性提升选择，再进入属性分配</div></div></div></div>
+        <div class="card-header"><div class="card-title"><span class="step">4</span><div><h2>子职业与专长节点</h2><div class="subtle">职业等级解锁子职业与专长；升级不会自动增加初始点购</div></div></div></div>
         <div class="card-body">
           <div class="progression-overview" id="progressionOverview"></div>
           <div class="subclass-grid" id="subclassGrid"></div>
           <div class="subclass-compare"><div class="subclass-compare-head"><h3>子职业横向对比</h3><p>比较定位、优势、代价、推荐属性与主要成型等级；点击卡片切换。</p></div><div id="subclassComparison"></div></div>
           <div class="section-divider"></div>
-          <div class="progression-feat-head"><div><h3>专长／属性提升节点</h3><p>节点由职业自身等级解锁。只有选择“属性提升”，第4步才会获得对应成长属性点。</p></div></div>
+          <div class="progression-feat-head"><div><h3>专长节点</h3><p>节点由职业自身等级解锁。你可以选择普通专长，也可以选择“属性提升”专长来修改最终属性；这不会改变第1步的27点购。</p></div></div>
           <div class="feat-list" id="featList"></div>
         </div>
       </section>
-      <section class="card" id="abilitiesCard"><div class="card-header"><div class="card-title"><span class="step">4</span><div><h2>初始属性与已解锁的属性提升</h2><div class="subtle">目标等级与逐级职业已确定；这里分配1级点购，并应用成长节点中选择的属性提升</div></div></div><button class="btn small ghost" id="resetAbilitiesBtn">重置初始属性</button></div><div class="card-body"><div class="ability-stage-summary" aria-live="polite">
-  <div class="ability-stage-item primary"><span>目标角色等级</span><b id="abilityCurrentLevel">1级</b><small>只计算目标等级内路线</small></div>
-  <div class="ability-stage-item"><span>1级单项常规最高</span><b>17</b><small>点购15 + 创建加值2</small></div>
-  <div class="ability-stage-item"><span>已解锁专长槽</span><b id="abilityFeatSlots">0</b><small>可选择专长或属性提升</small></div>
-  <div class="ability-stage-item"><span>已选择属性提升</span><b id="abilityAsiSlots">0</b><small id="abilityAsiPoints">成长属性点 +0</small></div>
-  <div class="ability-stage-item"><span>当前等级理论单项上限</span><b id="abilityTheoreticalCap">17</b><small>假设专长槽全部用于属性提升</small></div>
-</div><div class="ability-point-split"><div class="point-box"><span>创建点购剩余</span><b id="creationPointRemaining">27</b></div><div class="point-box"><span>等级成长属性点剩余</span><b id="growthPointRemaining">0</b></div></div><div class="point-buy-top"><div class="point-meter"><div class="point-meter-row"><span>已使用点数</span><span><b class="point-number" id="pointsUsed">0</b> / 27</span></div><div class="meter"><span id="pointMeterFill"></span></div></div><div class="subtle" id="pointStatus"></div></div><div class="ability-grid" id="abilityGrid"></div><div class="bonus-grid"><label class="field"><span class="label">1级创建加值 +2</span><select id="bonus2"></select></label><label class="field"><span class="label">1级创建加值 +1</span><select id="bonus1"></select></label></div>
-<div class="ability-progression-note" id="abilityProgressionNote"></div>
-<div class="ability-impact-panel"><div class="ability-impact-head"><div><h3>属性会影响什么</h3><p>属性本身不会每加 1 点都产生变化；真正参与检定的是属性调整值。这里根据当前职业、等级、护甲和技能实时说明。</p></div><span class="ability-formula">调整值 = ⌊(属性 − 10) ÷ 2⌋</span></div><div class="ability-impact-grid" id="abilityImpactGrid"></div></div></div></section>
-            <section class="card" id="skillsCard"><div class="card-header"><div class="card-title"><span class="step">5</span><div><h2>技能熟练与专精</h2><div class="subtle">按背景、种族、起始职业和多职业来源选择</div></div></div></div><div class="card-body"><div class="skill-source-grid" id="skillSources"></div><div class="section-divider"></div><div class="skill-overview-toolbar"><div><strong>当前构筑技能结果</strong><span>默认仅显示已熟练、已专精或由万事通生效的技能。</span></div><button class="btn small ghost" id="toggleAllSkillsBtn" type="button">查看全部 18 项</button></div><div class="skills-overview" id="skillsOverview"></div></div></section>
+      <section class="card" id="skillsCard"><div class="card-header"><div class="card-title"><span class="step">5</span><div><h2>技能熟练与专精</h2><div class="subtle">按背景、种族、起始职业和多职业来源选择</div></div></div></div><div class="card-body"><div class="skill-source-grid" id="skillSources"></div><div class="section-divider"></div><div class="skill-overview-toolbar"><div><strong>当前构筑技能结果</strong><span>默认仅显示已熟练、已专精或由万事通生效的技能。</span></div><button class="btn small ghost" id="toggleAllSkillsBtn" type="button">查看全部 18 项</button></div><div class="skills-overview" id="skillsOverview"></div></div></section>
       <section class="card" id="classFeaturesCard">
         <div class="card-header"><div class="card-title"><span class="step">6</span><div><h2>职业能力与战斗风格</h2><div class="subtle">只显示当前逐级职业路线已经解锁的战斗风格、战技、超魔、祈唤和其他职业选择</div></div></div></div>
         <div class="card-body">
@@ -854,8 +861,8 @@ function init(){
     <div class="ability-name">${a.name}</div><div class="ability-code">${a.code}</div>
     <div class="score-control"><button class="score-btn minus" aria-label="降低${a.name}的1级点购基础值">−</button><div class="score">8</div><button class="score-btn plus" aria-label="提高${a.name}的1级点购基础值">+</button></div>
     <div class="ability-cost">1级点购消耗 <span class="cost">0</span></div>
-    <div class="ability-final">当前最终 <b class="final">8</b> <span class="mod">−1</span></div>
-    <div class="ability-breakdown"><span>点购基础<b class="base-part">8</b></span><span>创建加值<b class="creation-part">+0</b></span><span>等级成长<b class="growth-part">+0</b></span></div>
+    <div class="ability-final">创建完成 <b class="final">8</b> <span class="mod">−1</span></div>
+    <div class="ability-breakdown ability-breakdown-initial"><span>点购基础<b class="base-part">8</b></span><span>创建加值<b class="creation-part">+0</b></span></div>
   </div>`).join('');
   $('presetGrid').innerHTML=presets.map((p,i)=>`<button class="preset" data-preset="${i}"><strong>${p.name}</strong><span>${p.desc}</span></button>`).join('')
 }
@@ -882,6 +889,13 @@ function normalizeSkills(){if(!backgrounds[state.background])state.background='s
 function proficientSet(exclude=''){const set=new Set();if(exclude!=='background')backgroundSkills().forEach(k=>set.add(k));if(exclude!=='race'){(racialFixedSkills[state.race]||[]).forEach(k=>set.add(k));if(state.race==='人类'&&state.raceSkill)set.add(state.raceSkill)}if(exclude!=='class')state.classSkills.forEach(k=>set.add(k));Object.entries(state.multiclassSkills||{}).forEach(([c,list])=>{if(exclude!==`multi-${c}`)list.forEach(k=>set.add(k))});return set}
 function expertiseSet(){return new Set(Object.values(state.expertise||{}).filter(Boolean))}
 function featSlots(){const c=classCounts(),out=[];Object.entries(c).forEach(([k,l])=>{[4,8,12].forEach(at=>{if(l>=at)out.push({classKey:k,at})});if(k==='fighter'&&l>=6)out.push({classKey:k,at:6});if(k==='rogue'&&l>=10)out.push({classKey:k,at:10})});return out.sort((a,b)=>a.at-b.at||classes[a.classKey].name.localeCompare(classes[b.classKey].name,'zh-CN'))}
+function initialAbilityBreakdown(key){
+  const base=state.scores[key]||8;
+  const creation=(state.bonus2===key?2:0)+(state.bonus1===key?1:0);
+  const raw=base+creation;
+  return{base,creation,raw,final:Math.min(17,raw)};
+}
+function initialScores(){return Object.fromEntries(abilities.map(a=>[a.key,initialAbilityBreakdown(a.key).final]))}
 function abilityBreakdown(key){
   const base=state.scores[key]||8;
   const creation=(state.bonus2===key?2:0)+(state.bonus1===key?1:0);
@@ -920,7 +934,7 @@ function nextFeatUnlock(){
 function activeCastingClassesForAbility(key){const c=classCounts(),out=[];Object.entries(c).forEach(([classKey,level])=>{let ability=classes[classKey].casting;if(classKey==='fighter'&&state.subclasses.fighter==='奥法骑士'&&level>=3)ability='int';if(classKey==='rogue'&&state.subclasses.rogue==='诡术师'&&level>=3)ability='int';if(ability===key)out.push(`${classes[classKey].name}${level}`)});return out}
 function abilityMetricRows(key,f,total){const pb=2+Math.floor((Math.max(1,total)-1)/4),m=mod(f[key]),prof=proficientSet(),expert=expertiseSet(),rows=[];if(key==='str'){const ath=m+(expert.has('athletics')?pb*2:prof.has('athletics')?pb:0);rows.push(['力量攻击 / 伤害',fmt(m)],['运动技能',fmt(ath)],['力量豁免（未计熟练）',fmt(m)])}if(key==='dex'){rows.push(['先攻',fmt(m+(state.feats.some(x=>x.type==='alert')?5:0))],['当前护甲等级',String(ac(f))],['远程 / 灵巧攻击',fmt(m)])}if(key==='con'){rows.push(['生命值属性贡献',fmt(m*total)],['专注检定基础',fmt(m)],['当前预计生命值',String(hp(f))])}if(['int','wis','cha'].includes(key)){const sources=activeCastingClassesForAbility(key);rows.push(['施法职业',sources.join('、')||'当前无'],['法术攻击基础',sources.length?fmt(pb+m):'—'],['法术豁免 DC',sources.length?String(8+pb+m):'—'])}return rows}
 function abilityIsPrimary(key){const c=classCounts();return Object.entries(c).some(([classKey,level])=>{if(['barbarian','fighter','paladin'].includes(classKey)&&key==='str')return true;if(['monk','ranger','rogue'].includes(classKey)&&key==='dex')return true;if(classes[classKey].casting===key)return true;if((classKey==='fighter'&&state.subclasses.fighter==='奥法骑士'||classKey==='rogue'&&state.subclasses.rogue==='诡术师')&&key==='int'&&level>=3)return true;return false})}
-function renderAbilityImpacts(){const f=finalScores(),total=activeLevels().length||1;$('abilityImpactGrid').innerHTML=abilities.map(a=>{const d=abilityImpactData[a.key],score=f[a.key],m=mod(score),next=Math.min(20,score+1),nextMod=mod(next),changed=nextMod!==m,skillNames=d.skills.map(skillLabel).join('、')||'无关联技能';return `<article class="ability-impact-card ${abilityIsPrimary(a.key)?'primary':''}"><div class="ability-impact-top"><div><div class="ability-impact-name">${a.name} · ${a.code}</div><div class="ability-impact-summary">${d.summary}</div></div><div class="ability-impact-score">${score} <span>${fmt(m)}</span></div></div><div class="ability-impact-metrics">${abilityMetricRows(a.key,f,total).map(([k,v])=>`<div class="ability-impact-metric"><span>${k}</span><b>${v}</b></div>`).join('')}<div class="ability-impact-metric"><span>关联技能</span><b>${skillNames}</b></div></div><div class="ability-impact-next ${changed?'changed':''}">${score>=20?'已达到常规上限 20':changed?`再提高 1 点：调整值 ${fmt(m)} → ${fmt(nextMod)}，相关检定和数值同步 +1`:`再提高 1 点：调整值仍为 ${fmt(m)}；提高到 ${score+2<=20?score+2:'下一偶数值'} 才会增加`}</div></article>`}).join('')}
+function renderAbilityImpacts(){const f=initialScores(),total=1;$('abilityImpactGrid').innerHTML=abilities.map(a=>{const d=abilityImpactData[a.key],score=f[a.key],m=mod(score),next=Math.min(20,score+1),nextMod=mod(next),changed=nextMod!==m,skillNames=d.skills.map(skillLabel).join('、')||'无关联技能';return `<article class="ability-impact-card ${abilityIsPrimary(a.key)?'primary':''}"><div class="ability-impact-top"><div><div class="ability-impact-name">${a.name} · ${a.code}</div><div class="ability-impact-summary">${d.summary}</div></div><div class="ability-impact-score">${score} <span>${fmt(m)}</span></div></div><div class="ability-impact-metrics">${abilityMetricRows(a.key,f,total).map(([k,v])=>`<div class="ability-impact-metric"><span>${k}</span><b>${v}</b></div>`).join('')}<div class="ability-impact-metric"><span>关联技能</span><b>${skillNames}</b></div></div><div class="ability-impact-next ${changed?'changed':''}">${score>=20?'已达到常规上限 20':changed?`再提高 1 点：调整值 ${fmt(m)} → ${fmt(nextMod)}，相关检定和数值同步 +1`:`再提高 1 点：调整值仍为 ${fmt(m)}；提高到 ${score+2<=20?score+2:'下一偶数值'} 才会增加`}</div></article>`}).join('')}
 function subclassProfile(name,classKey=''){return subclassProfiles[`${classKey}:${name}`]||subclassProfiles[name]||{role:'特色职业路线',stats:'参考母职业核心属性',strength:subclassDescriptions[name]||'强化母职业的特定玩法。',tradeoff:'需要根据队伍和装备评估其取舍。',milestones:'在子职业解锁等级及后续能力节点逐步成型。'}}
 function renderSubclassComparison(){const c=classCounts(),entries=Object.entries(c).filter(([k,l])=>l>=classes[k].subclassAt);$('subclassComparison').innerHTML=entries.length?entries.map(([k,l])=>{const cl=classes[k],cur=state.subclasses[k]||cl.subclasses[0];return `<section class="subclass-class-block"><div class="subclass-class-title"><strong>${cl.name} · 当前职业 ${l}级</strong><span class="subtle">${cl.subclassAt}级解锁</span></div><div class="subclass-cards">${cl.subclasses.map(name=>{const p=subclassProfile(name,k),selected=name===cur;return `<button class="subclass-card ${selected?'selected':''}" type="button" data-subclass-card="${name}" data-class="${k}"><span class="subclass-card-title"><strong>${name}</strong><span class="subclass-selected-mark">${selected?'✓ 当前选择':''}</span></span><span class="subclass-role">${p.role}</span><span class="subclass-desc">${subclassDescriptions[name]||p.strength}</span><span class="subclass-meta"><span class="subclass-meta-row"><span>推荐属性</span><b>${p.stats}</b></span><span class="subclass-meta-row"><span>主要优势</span><b>${p.strength}</b></span><span class="subclass-meta-row"><span>需要取舍</span><b>${p.tradeoff}</b></span><span class="subclass-meta-row"><span>成型节点</span><b>${p.milestones}</b></span></span></button>`}).join('')}</div></section>`}).join(''):'<div class="subtle">职业达到子职业解锁等级后，这里会出现同职业路线的横向对比。</div>'}
 function classChoiceLimit(group,level){if(group.limitByLevel){let limit=0;group.limitByLevel.forEach(([at,n])=>{if(level>=at)limit=n});return limit}return group.limit||1}
@@ -930,42 +944,25 @@ function renderClassFeatureSummary(){const groups=activeClassChoiceGroups(),sele
 function renderClassChoices(){normalizeClassChoices();const groups=activeClassChoiceGroups();$('classChoiceGroups').innerHTML=groups.length?groups.map(g=>{const selected=state.classChoices[g.id]||[];return `<section class="class-choice-group"><div class="class-choice-title"><div><strong>${classes[g.classKey].name} · ${g.title}</strong><div class="source-detail">职业 ${g.minLevel}级解锁；当前职业 ${g.classLevel}级</div></div><span>${selected.length} / ${g.limit}</span></div><div class="class-choice-options">${g.options.map(([key,name,desc])=>{const on=selected.includes(key),disabled=!on&&selected.length>=g.limit;return `<button type="button" class="class-choice-option ${on?'selected':''}" data-class-choice-group="${g.id}" data-class-choice="${key}" ${disabled?'disabled':''}><strong>${on?'✓ ':''}${name}</strong><span>${desc}</span></button>`}).join('')}</div></section>`}).join(''):'<div class="subtle">当前职业与等级尚未解锁额外的职业能力选择。子职业选择仍在上方完成。</div>'}
 function selectedClassChoiceRows(){return activeClassChoiceGroups().map(g=>{const selected=state.classChoices?.[g.id]||[];return{title:`${classes[g.classKey].name} · ${g.title}`,names:selected.map(key=>g.options.find(x=>x[0]===key)?.[1]||key),complete:selected.length===g.limit,limit:g.limit}})}
 function renderAbilities(){
-  const used=usedPoints(),remain=27-used,total=currentLevel(),slots=featSlots(),asiSlots=selectedAsiSlots();
+  const used=usedPoints(),remain=27-used,f=initialScores();
   $('pointsUsed').textContent=used;
   $('pointMeterFill').style.width=`${Math.min(100,used/27*100)}%`;
   $('pointStatus').textContent=remain===0?'创建点购已全部分配':remain>0?`创建点购剩余 ${remain} 点`:`创建点购超出 ${-remain} 点`;
   $('pointStatus').style.color=remain===0?'var(--good)':remain<0?'var(--bad)':'var(--muted)';
-  if($('creationPointRemaining')) $('creationPointRemaining').textContent=remain;
-  if($('growthPointRemaining')) $('growthPointRemaining').textContent=abilityGrowthPointsRemaining();
-  $('abilityCurrentLevel').textContent=`${total}级`;
-  $('abilityFeatSlots').textContent=slots.length;
-  $('abilityAsiSlots').textContent=asiSlots.length;
-  $('abilityAsiPoints').textContent=`成长属性点 +${selectedAsiPoints()}`;
-  $('abilityTheoreticalCap').textContent=theoreticalAbilityCap();
-  const f=finalScores();
+  if($('creationPointRemaining'))$('creationPointRemaining').textContent=remain;
   abilities.forEach(a=>{
-    const el=document.querySelector(`[data-ability="${a.key}"]`),score=state.scores[a.key],parts=abilityBreakdown(a.key);
+    const el=document.querySelector(`[data-ability="${a.key}"]`),score=state.scores[a.key],parts=initialAbilityBreakdown(a.key);
     el.querySelector('.score').textContent=score;
     el.querySelector('.cost').textContent=pointCosts[score];
     el.querySelector('.final').textContent=f[a.key];
     el.querySelector('.mod').textContent=fmt(mod(f[a.key]));
     el.querySelector('.base-part').textContent=parts.base;
     el.querySelector('.creation-part').textContent=fmt(parts.creation);
-    el.querySelector('.growth-part').textContent=fmt(parts.growth);
     el.querySelector('.minus').disabled=score<=8;
     const next=score<15?pointCosts[score+1]-pointCosts[score]:Infinity;
     el.querySelector('.plus').disabled=score>=15||used+next>27
   });
   $('bonus2').value=state.bonus2;$('bonus1').value=state.bonus1;
-  const nextUnlock=nextFeatUnlock();
-  const growthNodes=slots.map((slot,i)=>{
-    const choice=state.feats[i],isAsi=choice?.type==='asi';
-    const label=`${classes[slot.classKey].name}${slot.at}级`;
-    return `<span class="growth-node ${isAsi?'active':''}">${label} · ${isAsi?'属性提升 +2':choice?.type&&choice.type!=='none'?feats[choice.type]?.name:'尚未选择'}</span>`
-  }).join('');
-  $('abilityProgressionNote').innerHTML=slots.length
-    ? `<strong>等级成长已生效：</strong>当前 ${total} 级共解锁 ${slots.length} 个专长槽，其中 ${asiSlots.length} 个选择了属性提升；剩余可分配成长属性点 ${abilityGrowthPointsRemaining()}。选择其他专长不会增加六维属性。${growthNodes?`<div class="growth-track">${growthNodes}</div>`:''}`
-    : `<strong>当前 ${total} 级尚未解锁等级属性提升。</strong>此处只能设置1级点购和创建加值，因此单项常规最高为17。${nextUnlock?`继续将${classes[nextUnlock.classKey].name}提升到职业${nextUnlock.at}级后，才会首次出现专长/属性提升槽。`:''}`;
   renderAbilityImpacts()
 }
 function renderTargetLevel(){
@@ -977,7 +974,7 @@ function renderTargetLevel(){
 }
 function renderLevels(){
   normalizeLevelRoute();const total=currentLevel(),levels=activeLevels(),seen={};
-  $('levelGrid').innerHTML=levels.map((key,index)=>{seen[key]=(seen[key]||0)+1;const classLevel=seen[key],features=classFeatureProgression[key]?.[classLevel]||[],subUnlock=classLevel===classes[key].subclassAt,featUnlock=featThresholdsFor(key).includes(classLevel);return `<div class="route-level-row" data-level-row="${index}"><div class="level-number">${index+1}</div><select class="level-select" data-level="${index}" aria-label="角色${index+1}级职业">${classOptionsRequired(key)}</select><div class="route-level-meta"><span>${classes[key].name}职业 ${classLevel}级</span>${subUnlock?'<span class="unlock">解锁子职业</span>':''}${featUnlock?'<span class="unlock">解锁专长/属性提升</span>':''}${features.slice(0,3).map(x=>`<span>${x}</span>`).join('')}</div></div>`}).join('');
+  $('levelGrid').innerHTML=levels.map((key,index)=>{seen[key]=(seen[key]||0)+1;const classLevel=seen[key],features=classFeatureProgression[key]?.[classLevel]||[],subUnlock=classLevel===classes[key].subclassAt,featUnlock=featThresholdsFor(key).includes(classLevel);return `<div class="route-level-row" data-level-row="${index}"><div class="level-number">${index+1}</div><select class="level-select" data-level="${index}" aria-label="角色${index+1}级职业">${classOptionsRequired(key)}</select><div class="route-level-meta"><span>${classes[key].name}职业 ${classLevel}级</span>${subUnlock?'<span class="unlock">解锁子职业</span>':''}${featUnlock?'<span class="unlock">解锁专长节点</span>':''}${features.slice(0,3).map(x=>`<span>${x}</span>`).join('')}</div></div>`}).join('');
   const c=classCounts(),breakdown=Object.entries(c).map(([k,l])=>`${classes[k].name}${l}`).join(' / ');
   $('routeTargetLevel').textContent=`${total}级`;$('routeClassBreakdown').textContent=breakdown;$('routeSubclassCount').textContent=Object.entries(c).filter(([k,l])=>l>=classes[k].subclassAt).length;$('routeFeatSlots').textContent=featSlots().length;
   $('routeFillClassSelect').value=levels[0]||'fighter';
@@ -1130,7 +1127,7 @@ function hp(f){const chosen=activeLevels();if(!chosen.length)return 0;let n=clas
 function ac(f){const d=mod(f.dex);return state.armor==='light'?12+d:state.armor==='medium'?15+Math.min(2,d):state.armor==='heavy'?18:10+d}
 function casting(f,total){const castable=k=>k&&((classes[k].casting)||k==='fighter'&&state.subclasses.fighter==='奥法骑士'||k==='rogue'&&state.subclasses.rogue==='诡术师');const newest=[...state.levels].reverse().find(castable);if(!newest)return null;const ability=newest==='fighter'||newest==='rogue'?'int':classes[newest].casting,pb=2+Math.floor((Math.max(1,total)-1)/4);return{newest,ability,dc:8+pb+mod(f[ability]),attack:pb+mod(f[ability])}}
 function renderSummary(){const f=finalScores(),chosen=activeLevels(),total=chosen.length,pb=2+Math.floor((Math.max(1,total)-1)/4),c=classCounts(),breakdown=Object.entries(c).map(([k,l])=>`${classes[k].name} ${l}`).join(' / ')||'尚未规划',subs=Object.entries(c).filter(([k,l])=>l>=classes[k].subclassAt).map(([k])=>state.subclasses[k]).filter(Boolean).join('、'),prof=proficientSet(),expert=expertiseSet(),hpv=hp(f),acv=ac(f);$('summaryName').textContent=state.name||'未命名角色';$('summaryIdentity').textContent=`${state.race} · ${backgrounds[state.background].name} · ${breakdown}${subs?` · ${subs}`:''}`;$('totalLevel').textContent=total;$('profBonus').textContent=fmt(pb);$('hpValue').textContent=hpv;$('acValue').textContent=acv;$('initiativeValue').textContent=fmt(mod(f.dex)+(state.feats.some(x=>x.type==='alert')?5:0));$('featCount').textContent=featSlots().length;$('skillCount').textContent=prof.size;$('expertiseCount').textContent=expert.size;const spellTotals=spellCounts();$('cantripCount').textContent=spellTotals.can;$('spellCount').textContent=spellTotals.sp;$('classBreakdown').textContent=breakdown;$('mobileLevel').textContent=total;$('mobileHP').textContent=hpv;$('mobileAC').textContent=acv;$('finalAbilities').innerHTML=abilities.map(a=>`<div class="final-row"><span class="name">${a.name}</span><span class="final-bar"><span style="width:${Math.max(5,f[a.key]/20*100)}%"></span></span><span class="final-score">${f[a.key]}</span><span class="modifier">${fmt(mod(f[a.key]))}</span></div>`).join('');const cast=casting(f,total);if(cast){$('castingAbility').textContent=`${abilityLabel(cast.ability)}（最后获得：${classes[cast.newest].name}）`;$('spellDC').textContent=cast.dc;$('spellAttack').textContent=fmt(cast.attack)}else{$('castingAbility').textContent='—';$('spellDC').textContent='—';$('spellAttack').textContent='—'}const featsText=state.feats.map(x=>feats[x.type]?.name).filter(x=>x&&x!=='未选择');$('selectedClassChoices').textContent=selectedClassChoiceRows().map(x=>`${x.title}：${x.names.join('、')||'未选择'}`).join('；')||'—';$('selectedFeats').textContent=featsText.join('、')||'—';$('selectedSkills').textContent=[...prof].map(skillLabel).join('、')||'—';$('selectedExpertise').textContent=[...expert].map(skillLabel).join('、')||'—';$('selectedSpells').textContent=Object.entries(state.spellChoices||{}).map(([k,v])=>`${classes[k].name}：${[...(v.cantrips||[]),...(v.prepared?.length?v.prepared:v.spells||[]),...(v.arcanum||[])].map(spellName).join('、')||'未选择'}`).join('；')||'—'}
-function renderWarnings(){const n=[],used=usedPoints(),total=activeLevels().length,f=finalScores(),rule=classSkillRules[state.levels[0]];if(used<27)n.push(['warn',`点购还剩 ${27-used} 点。`]);if(used>27)n.push(['bad',`点购超出 ${used-27} 点。`]);if(state.bonus2===state.bonus1)n.push(['bad','创建角色的 +2 与 +1 不能分配给同一属性。']);if(currentLevel()<4&&Math.max(...Object.values(f))>17)n.push(['bad','当前等级尚未解锁属性提升，常规属性不应超过17。']);
+function renderWarnings(){const n=[],used=usedPoints(),total=activeLevels().length,f=finalScores(),rule=classSkillRules[state.levels[0]];if(used<27)n.push(['warn',`点购还剩 ${27-used} 点。`]);if(used>27)n.push(['bad',`点购超出 ${used-27} 点。`]);if(state.bonus2===state.bonus1)n.push(['bad','创建角色的 +2 与 +1 不能分配给同一属性。']);
 if(state.feats.some(x=>x.type==='none'))n.push(['warn','仍有专长槽未选择。']);if(rule&&state.classSkills.length<rule.count)n.push(['warn',`起始职业技能还需选择 ${rule.count-state.classSkills.length} 项。`]);if(state.race==='人类'&&!state.raceSkill)n.push(['warn','人类多才多艺的额外技能尚未选择。']);const overlap=backgroundSkills().filter(k=>(racialFixedSkills[state.race]||[]).includes(k));if(overlap.length)n.push(['warn',`背景与种族重复提供${overlap.map(skillLabel).join('、')}，熟练不会叠加。`]);multiclassSources().forEach(({key,count})=>{const have=state.multiclassSkills[key]?.length||0;if(have<count)n.push(['warn',`兼职${classes[key].name}还需选择 ${count-have} 项技能。`])});const slots=expertiseSlots();if(slots.some(s=>!state.expertise[s.id]))n.push(['warn','仍有技能专精槽未选择。']);Object.entries(f).forEach(([k,v])=>{if(v>20)n.push(['bad',`${abilityLabel(k)}超过常规 20 上限。`])});spellSourceList().forEach(({key,level})=>{const info=sourceSpellInfo(key,level),ch=choiceFor(key);if(info.cantripLimit&&ch.cantrips.length<info.cantripLimit)n.push(['warn',`${classes[key].name}还可选择 ${info.cantripLimit-ch.cantrips.length} 个戏法。`]);if(info.mode==='known'||info.mode==='pact'){if(ch.spells.length<info.spellLimit)n.push(['warn',`${classes[key].name}还可学习 ${info.spellLimit-ch.spells.length} 个法术。`])}if(info.mode==='spellbook'&&ch.spells.length<info.learnedBase)n.push(['warn',`法师法术书基础数量还差 ${info.learnedBase-ch.spells.length} 个；卷轴抄录可超过该数量。`]);if(key==='warlock'&&level>=11&&(ch.arcanum||[]).length<1)n.push(['warn','邪术师11级的秘法奥秘尚未选择。']);if(['fighter','rogue'].includes(key))n.push(['','奥法骑士/诡术师的学派限制与升级替换例外需结合实际升级顺序手动核对。'])});selectedClassChoiceRows().forEach(x=>{if(!x.complete)n.push(['warn',`${x.title}还需选择 ${x.limit-x.names.length} 项。`])});if(!n.length)n.push(['good','当前方案未发现基础规则冲突。']);n.push(['','提示：半专长 +1、装备、永久增益、部分子职业常驻法术、魔法秘密与装备法术未自动加入。']);$('warnings').innerHTML=n.map(([t,x])=>`<div class="notice ${t}">${x}</div>`).join('')}
 function sync(){ $('characterName').value=state.name;$('raceSelect').value=state.race;$('backgroundSelect').value=state.background;$('armorSelect').value=state.armor;$('bonus2').value=state.bonus2;$('bonus1').value=state.bonus1 }
 const skillDescriptions={
@@ -1323,7 +1320,7 @@ function libraryItemById(id){return buildLibraryItems().find(x=>libraryId(x)===i
 function unlockedFeatureRows(){const c={};activeLevels().forEach(classKey=>{c[classKey]=(c[classKey]||0)+1});const rows=[];Object.entries(c).forEach(([classKey,level])=>{Object.entries(classFeatureProgression[classKey]||{}).forEach(([at,features])=>{if(level>=Number(at))features.forEach(feature=>rows.push({classKey,level:Number(at),feature,desc:classFeatureDescription(classKey,feature,Number(at))}))})});return rows.sort((a,b)=>a.level-b.level)}
 function skillResultRows(){const f=finalScores(),total=activeLevels().length||1,pb=2+Math.floor((total-1)/4),prof=proficientSet(),expert=expertiseSet(),jack=(classCounts().bard||0)>=2?Math.floor(pb/2):0;return skills.map(sk=>{const ex=expert.has(sk.key),pr=prof.has(sk.key),bonus=mod(f[sk.ability])+(ex?pb*2:pr?pb:jack);return{...sk,ex,pr,bonus,label:ex?'专精':pr?'熟练':jack?'万事通':'未熟练'}}).filter(x=>x.ex||x.pr||jack).sort((a,b)=>b.bonus-a.bonus)}
 function spellResultHTML(){const sources=spellSourceList();if(!sources.length)return'<div class="result-empty">当前等级和子职业没有可用的职业施法。</div>';const slot=regularSpellSlots(),pact=pactSlots();return `<div class="result-chip-list">${slot.map((n,i)=>`<span class="result-chip">${i+1}环位 ×${n}</span>`).join('')}${pact?`<span class="result-chip good">契约 ${pact.level}环 ×${pact.count}</span>`:''}</div><div class="result-list">${sources.map(src=>{const info=sourceSpellInfo(src.key,src.level),ch=choiceFor(src.key),selected=[...(ch.cantrips||[]),...(info.mode==='spellbook'&&ch.prepared?.length?ch.prepared:ch.spells||[]),...(ch.arcanum||[])];return `<div class="result-row"><strong>${classes[src.key].name} ${src.level}级<br><span class="subtle">最高 ${info.maxLevel}环 · ${spellModeLabels[info.mode]}${ch.arcanum?.length?' · 秘法奥秘':''}</span></strong><span>${selected.length?selected.map(spellName).join('、'):'尚未选择'}</span></div>`}).join('')}</div>`}
-function renderFinalBuildResult(){const f=finalScores(),chosen=activeLevels(),total=chosen.length||1,pb=2+Math.floor((total-1)/4),c=classCounts(),subs=Object.entries(c).filter(([k,l])=>l>=classes[k].subclassAt).map(([k])=>`${classes[k].name}：${state.subclasses[k]}`).join('；')||'尚未解锁子职业',features=unlockedFeatureRows(),choices=selectedClassChoiceRows(),skillsOut=skillResultRows(),incomplete=[];choices.forEach(x=>{if(!x.complete)incomplete.push(`${x.title}还需选择 ${x.limit-x.names.length} 项`)});spellSourceList().forEach(src=>{const info=sourceSpellInfo(src.key,src.level),ch=choiceFor(src.key);if(info.cantripLimit&&(ch.cantrips||[]).length<info.cantripLimit)incomplete.push(`${classes[src.key].name}戏法未选满`);if(['known','pact'].includes(info.mode)&&(ch.spells||[]).length<info.spellLimit)incomplete.push(`${classes[src.key].name}法术未选满`);if(src.key==='warlock'&&src.level>=11&&(ch.arcanum||[]).length<1)incomplete.push('邪术师秘法奥秘未选择')});$('finalBuildResult').innerHTML=`<div class="result-hero"><h3>${state.name||'未命名角色'} · 当前角色 ${total}级</h3><p>${state.race} · ${backgrounds[state.background].name} · ${Object.entries(c).map(([k,l])=>`${classes[k].name}${l}`).join(' / ')}<br>${subs}</p></div><section class="result-section"><h3>战斗与检定核心数值</h3><div class="result-stat-grid"><div class="result-stat"><span>熟练加值</span><b>${fmt(pb)}</b></div><div class="result-stat"><span>预计生命值</span><b>${hp(f)}</b></div><div class="result-stat"><span>护甲等级</span><b>${ac(f)}</b></div><div class="result-stat"><span>先攻</span><b>${fmt(mod(f.dex)+(state.feats.some(x=>x.type==='alert')?5:0))}</b></div></div></section><section class="result-section"><h3>最终属性及实际影响</h3><div class="result-ability-grid">${abilities.map(a=>{const p=abilityBreakdown(a.key);return `<div class="result-ability"><div class="result-ability-top"><strong>${a.name}</strong><b>${f[a.key]} · ${fmt(mod(f[a.key]))}</b></div><p>点购 ${p.base} + 创建 ${fmt(p.creation)} + 等级成长 ${fmt(p.growth)} = ${p.final}</p><p>${abilityImpactData[a.key].summary}</p></div>`}).join('')}</div></section><section class="result-section"><h3>子职业与关键能力选择</h3><div class="result-list"><div class="result-row"><strong>子职业</strong><span>${subs}</span></div>${choices.map(x=>`<div class="result-row"><strong>${x.title}</strong><span>${x.names.length?x.names.join('、'):'尚未选择'} ${x.complete?'':'（未完成）'}</span></div>`).join('')||'<div class="result-empty">当前等级没有额外职业能力选择。</div>'}</div></section><section class="result-section"><h3>当前已解锁职业能力</h3><div class="result-chip-list">${features.map(x=>`<span class="result-chip" title="${x.desc.replace(/"/g,'&quot;')}">${classes[x.classKey].name}${x.level} · ${x.feature}</span>`).join('')||'<span class="result-chip">暂无</span>'}</div></section><section class="result-section"><h3>技能最终加值</h3><div class="result-list">${skillsOut.map(x=>`<div class="result-row"><strong>${x.name} · ${x.label}</strong><span>${abilityLabel(x.ability)} ${fmt(mod(f[x.ability]))} + 熟练贡献 = <b>${fmt(x.bonus)}</b><br>${skillDescriptions[x.key]}</span></div>`).join('')||'<div class="result-empty">尚未选择技能熟练。</div>'}</div></section><section class="result-section"><h3>戏法、法术与法术位</h3>${spellResultHTML()}</section><section class="result-section"><h3>专长</h3><div class="result-chip-list">${state.feats.map(x=>feats[x.type]?.name).filter(x=>x&&x!=='未选择').map(x=>`<span class="result-chip good">${x}</span>`).join('')||'<span class="result-chip">当前等级尚无已选专长</span>'}</div></section><section class="result-section"><h3>尚未完成的选择</h3>${incomplete.length?`<div class="result-chip-list">${incomplete.map(x=>`<span class="result-chip">${x}</span>`).join('')}</div>`:'<div class="result-empty">当前等级的主要职业、技能和法术选择已完成。</div>'}</section>`}
+function renderFinalBuildResult(){const f=finalScores(),chosen=activeLevels(),total=chosen.length||1,pb=2+Math.floor((total-1)/4),c=classCounts(),subs=Object.entries(c).filter(([k,l])=>l>=classes[k].subclassAt).map(([k])=>`${classes[k].name}：${state.subclasses[k]}`).join('；')||'尚未解锁子职业',features=unlockedFeatureRows(),choices=selectedClassChoiceRows(),skillsOut=skillResultRows(),incomplete=[];choices.forEach(x=>{if(!x.complete)incomplete.push(`${x.title}还需选择 ${x.limit-x.names.length} 项`)});spellSourceList().forEach(src=>{const info=sourceSpellInfo(src.key,src.level),ch=choiceFor(src.key);if(info.cantripLimit&&(ch.cantrips||[]).length<info.cantripLimit)incomplete.push(`${classes[src.key].name}戏法未选满`);if(['known','pact'].includes(info.mode)&&(ch.spells||[]).length<info.spellLimit)incomplete.push(`${classes[src.key].name}法术未选满`);if(src.key==='warlock'&&src.level>=11&&(ch.arcanum||[]).length<1)incomplete.push('邪术师秘法奥秘未选择')});$('finalBuildResult').innerHTML=`<div class="result-hero"><h3>${state.name||'未命名角色'} · 当前角色 ${total}级</h3><p>${state.race} · ${backgrounds[state.background].name} · ${Object.entries(c).map(([k,l])=>`${classes[k].name}${l}`).join(' / ')}<br>${subs}</p></div><section class="result-section"><h3>战斗与检定核心数值</h3><div class="result-stat-grid"><div class="result-stat"><span>熟练加值</span><b>${fmt(pb)}</b></div><div class="result-stat"><span>预计生命值</span><b>${hp(f)}</b></div><div class="result-stat"><span>护甲等级</span><b>${ac(f)}</b></div><div class="result-stat"><span>先攻</span><b>${fmt(mod(f.dex)+(state.feats.some(x=>x.type==='alert')?5:0))}</b></div></div></section><section class="result-section"><h3>最终属性及实际影响</h3><div class="result-ability-grid">${abilities.map(a=>{const p=abilityBreakdown(a.key);return `<div class="result-ability"><div class="result-ability-top"><strong>${a.name}</strong><b>${f[a.key]} · ${fmt(mod(f[a.key]))}</b></div><p>点购 ${p.base} + 创建 ${fmt(p.creation)} + 属性提升专长 ${fmt(p.growth)} = ${p.final}</p><p>${abilityImpactData[a.key].summary}</p></div>`}).join('')}</div></section><section class="result-section"><h3>子职业与关键能力选择</h3><div class="result-list"><div class="result-row"><strong>子职业</strong><span>${subs}</span></div>${choices.map(x=>`<div class="result-row"><strong>${x.title}</strong><span>${x.names.length?x.names.join('、'):'尚未选择'} ${x.complete?'':'（未完成）'}</span></div>`).join('')||'<div class="result-empty">当前等级没有额外职业能力选择。</div>'}</div></section><section class="result-section"><h3>当前已解锁职业能力</h3><div class="result-chip-list">${features.map(x=>`<span class="result-chip" title="${x.desc.replace(/"/g,'&quot;')}">${classes[x.classKey].name}${x.level} · ${x.feature}</span>`).join('')||'<span class="result-chip">暂无</span>'}</div></section><section class="result-section"><h3>技能最终加值</h3><div class="result-list">${skillsOut.map(x=>`<div class="result-row"><strong>${x.name} · ${x.label}</strong><span>${abilityLabel(x.ability)} ${fmt(mod(f[x.ability]))} + 熟练贡献 = <b>${fmt(x.bonus)}</b><br>${skillDescriptions[x.key]}</span></div>`).join('')||'<div class="result-empty">尚未选择技能熟练。</div>'}</div></section><section class="result-section"><h3>戏法、法术与法术位</h3>${spellResultHTML()}</section><section class="result-section"><h3>专长</h3><div class="result-chip-list">${state.feats.map(x=>feats[x.type]?.name).filter(x=>x&&x!=='未选择').map(x=>`<span class="result-chip good">${x}</span>`).join('')||'<span class="result-chip">当前等级尚无已选专长</span>'}</div></section><section class="result-section"><h3>尚未完成的选择</h3>${incomplete.length?`<div class="result-chip-list">${incomplete.map(x=>`<span class="result-chip">${x}</span>`).join('')}</div>`:'<div class="result-empty">当前等级的主要职业、技能和法术选择已完成。</div>'}</section>`}
 function progressionComplete(){const slots=featSlots();return slots.every((_,i)=>state.feats[i]?.type&&state.feats[i].type!=='none')}
 function abilitiesComplete(){return usedPoints()===27&&state.bonus1!==state.bonus2}
 function skillsComplete(){const rule=classSkillRules[state.levels[0]],classOk=!rule||state.classSkills.length===rule.count,raceOk=state.race!=='人类'||Boolean(state.raceSkill),multiOk=multiclassSources().every(({key,count})=>(state.multiclassSkills[key]?.length||0)===count),expertOk=expertiseSlots().every(s=>Boolean(state.expertise[s.id]));return classOk&&raceOk&&multiOk&&expertOk}
@@ -1332,7 +1329,7 @@ function spellsComplete(){return spellSourceList().every(({key,level})=>{const i
 function renderReviewMirror(){const source=$('finalBuildResult'),target=$('finalReviewMirror');if(source&&target)target.innerHTML=source.innerHTML}
 
 function expectedFeatSlotsFromCounts(){const c=classCounts();let n=0;Object.entries(c).forEach(([k,l])=>{n+=[4,8,12].filter(at=>l>=at).length;if(k==='fighter'&&l>=6)n++;if(k==='rogue'&&l>=10)n++});return n}
-function ruleDiagnosticResults(){const rows=[],total=currentLevel(),levels=activeLevels(),counts=classCounts(),sum=Object.values(counts).reduce((a,b)=>a+b,0),slots=featSlots(),sources=spellSourceList(),spellParts=spellcastingContributions(),regular=regularSpellSlots(),pact=pactSlots();const add=(status,title,detail)=>rows.push({status,title,detail});add(levels.length===total&&sum===total?'good':'bad','等级与职业路线',levels.length===total&&sum===total?`目标${total}级，职业等级合计${sum}级。`:`目标${total}级，但路线或职业等级合计为${sum}级。`);add(slots.length===expectedFeatSlotsFromCounts()?'good':'bad','专长与属性提升节点',`当前解锁${slots.length}个节点：${slots.map(x=>`${classes[x.classKey].name}${x.at}`).join('、')||'无'}。`);const futureSubclass=Object.keys(state.subclasses||{}).filter(k=>(counts[k]||0)<classes[k].subclassAt);add(!futureSubclass.length?'good':'bad','子职业解锁',futureSubclass.length?`存在未达等级的子职业：${futureSubclass.map(k=>classes[k].name).join('、')}`:`所有子职业均由对应职业自身等级解锁。`);const start=levels[0],multi=multiclassSources();add(Boolean(classSkillRules[start])?'good':'bad','技能来源',`起始职业：${classes[start]?.name||'—'}；兼职技能来源：${multi.map(x=>`${classes[x.key].name}+${x.count}`).join('、')||'无'}。`);const illegalSource=sources.find(x=>(x.key==='fighter'&&state.subclasses.fighter!=='奥法骑士')||(x.key==='rogue'&&state.subclasses.rogue!=='诡术师')||((x.key==='paladin'||x.key==='ranger')&&x.level<2));add(!illegalSource?'good':'bad','职业施法解锁',illegalSource?`${classes[illegalSource.key].name}在当前等级/子职业下不应进入法术池。`:`法术来源已按职业等级与子职业筛选：${sources.map(x=>`${classes[x.key].name}${x.level}`).join('、')||'无'}。`);const overTier=sources.flatMap(src=>{const max=maxSpellLevel(src.key,src.level),ch=choiceFor(src.key);return [...(ch.spells||[])].map(spellDataKey=>spellData.find(s=>s.key===spellDataKey)).filter(Boolean).filter(sp=>sp.level>max).map(sp=>`${classes[src.key].name}:${sp.name}`)});add(!overTier.length?'good':'bad','法术环阶',overTier.length?`存在超出职业可学环阶的法术：${overTier.join('、')}`:`所有已选法术均不高于职业自身等级允许环阶。`);add('good','综合施法者等级',spellParts.length?`${spellParts.map(x=>`${classes[x.key].name}${x.level}(${x.fraction})`).join(' + ')} → ESL ${combinedCasterLevel()}；法术位 ${regular.map((n,i)=>`${i+1}环×${n}`).join('、')||'无'}。`:'当前没有常规施法职业。');if((counts.warlock||0)>0)add(pact&&pact.count===(counts.warlock>=11?3:counts.warlock>=2?2:1)?'good':'bad','契约魔法',`邪术师${counts.warlock}级：${pact?.level||0}环×${pact?.count||0}；${counts.warlock>=11?'秘法奥秘独立于契约法术位。':'尚未解锁秘法奥秘。'}`);const dupFeats=state.feats.map(x=>x.type).filter(x=>!['none','asi'].includes(x)).filter((x,i,a)=>a.indexOf(x)!==i);add(!dupFeats.length?'good':'bad','专长唯一性',dupFeats.length?`发现重复专长：${[...new Set(dupFeats)].map(x=>feats[x]?.name||x).join('、')}`:'普通专长没有重复选择；属性提升可在多个节点重复选择。');const incompleteChoices=selectedClassChoiceRows().filter(x=>!x.complete);add(!incompleteChoices.length?'good':'warn','职业能力选择',incompleteChoices.length?`${incompleteChoices.map(x=>`${x.title}缺${x.limit-x.names.length}项`).join('；')}`:'所有当前等级要求的主动职业能力均已完成。');if(sources.some(x=>['fighter','rogue'].includes(x.key)))add('warn','学派与替换例外','奥法骑士和诡术师存在主学派限制、全学派例外与升级替换规则；本工具标注但不强制重演每次升级替换。');return rows}
+function ruleDiagnosticResults(){const rows=[],total=currentLevel(),levels=activeLevels(),counts=classCounts(),sum=Object.values(counts).reduce((a,b)=>a+b,0),slots=featSlots(),sources=spellSourceList(),spellParts=spellcastingContributions(),regular=regularSpellSlots(),pact=pactSlots();const add=(status,title,detail)=>rows.push({status,title,detail});add(levels.length===total&&sum===total?'good':'bad','等级与职业路线',levels.length===total&&sum===total?`目标${total}级，职业等级合计${sum}级。`:`目标${total}级，但路线或职业等级合计为${sum}级。`);add(slots.length===expectedFeatSlotsFromCounts()?'good':'bad','专长节点',`当前解锁${slots.length}个节点：${slots.map(x=>`${classes[x.classKey].name}${x.at}`).join('、')||'无'}。`);const futureSubclass=Object.keys(state.subclasses||{}).filter(k=>(counts[k]||0)<classes[k].subclassAt);add(!futureSubclass.length?'good':'bad','子职业解锁',futureSubclass.length?`存在未达等级的子职业：${futureSubclass.map(k=>classes[k].name).join('、')}`:`所有子职业均由对应职业自身等级解锁。`);const start=levels[0],multi=multiclassSources();add(Boolean(classSkillRules[start])?'good':'bad','技能来源',`起始职业：${classes[start]?.name||'—'}；兼职技能来源：${multi.map(x=>`${classes[x.key].name}+${x.count}`).join('、')||'无'}。`);const illegalSource=sources.find(x=>(x.key==='fighter'&&state.subclasses.fighter!=='奥法骑士')||(x.key==='rogue'&&state.subclasses.rogue!=='诡术师')||((x.key==='paladin'||x.key==='ranger')&&x.level<2));add(!illegalSource?'good':'bad','职业施法解锁',illegalSource?`${classes[illegalSource.key].name}在当前等级/子职业下不应进入法术池。`:`法术来源已按职业等级与子职业筛选：${sources.map(x=>`${classes[x.key].name}${x.level}`).join('、')||'无'}。`);const overTier=sources.flatMap(src=>{const max=maxSpellLevel(src.key,src.level),ch=choiceFor(src.key);return [...(ch.spells||[])].map(spellDataKey=>spellData.find(s=>s.key===spellDataKey)).filter(Boolean).filter(sp=>sp.level>max).map(sp=>`${classes[src.key].name}:${sp.name}`)});add(!overTier.length?'good':'bad','法术环阶',overTier.length?`存在超出职业可学环阶的法术：${overTier.join('、')}`:`所有已选法术均不高于职业自身等级允许环阶。`);add('good','综合施法者等级',spellParts.length?`${spellParts.map(x=>`${classes[x.key].name}${x.level}(${x.fraction})`).join(' + ')} → ESL ${combinedCasterLevel()}；法术位 ${regular.map((n,i)=>`${i+1}环×${n}`).join('、')||'无'}。`:'当前没有常规施法职业。');if((counts.warlock||0)>0)add(pact&&pact.count===(counts.warlock>=11?3:counts.warlock>=2?2:1)?'good':'bad','契约魔法',`邪术师${counts.warlock}级：${pact?.level||0}环×${pact?.count||0}；${counts.warlock>=11?'秘法奥秘独立于契约法术位。':'尚未解锁秘法奥秘。'}`);const dupFeats=state.feats.map(x=>x.type).filter(x=>!['none','asi'].includes(x)).filter((x,i,a)=>a.indexOf(x)!==i);add(!dupFeats.length?'good':'bad','专长唯一性',dupFeats.length?`发现重复专长：${[...new Set(dupFeats)].map(x=>feats[x]?.name||x).join('、')}`:'普通专长没有重复选择；属性提升可在多个节点重复选择。');const incompleteChoices=selectedClassChoiceRows().filter(x=>!x.complete);add(!incompleteChoices.length?'good':'warn','职业能力选择',incompleteChoices.length?`${incompleteChoices.map(x=>`${x.title}缺${x.limit-x.names.length}项`).join('；')}`:'所有当前等级要求的主动职业能力均已完成。');if(sources.some(x=>['fighter','rogue'].includes(x.key)))add('warn','学派与替换例外','奥法骑士和诡术师存在主学派限制、全学派例外与升级替换规则；本工具标注但不强制重演每次升级替换。');return rows}
 function renderRuleDiagnostics(){const rows=ruleDiagnosticResults(),good=rows.filter(x=>x.status==='good').length,bad=rows.filter(x=>x.status==='bad').length,score=$('ruleDiagnosticsScore');if(score)score.textContent=bad?`${bad}项错误`:`${good}/${rows.length}`;const box=$('ruleDiagnostics');if(box)box.innerHTML=rows.map(x=>`<div class="rule-diagnostic ${x.status}"><span class="rule-diagnostic-icon">${x.status==='good'?'✓':x.status==='bad'?'!':'△'}</span><div><strong>${x.title}</strong><p>${x.detail}</p></div></div>`).join('')}
 
 function renderAll(){normalizeLevelRoute();normalizeSubclasses();normalizeSkills();normalizeClassChoices();sync();renderTargetLevel();renderLevels();renderProgression();renderSubclassComparison();renderFeats();renderAbilities();renderSkills();renderClassChoices();renderClassFeatureSummary();renderLevelFeatureTimeline();renderSpells();renderFinalBuildResult();renderReviewMirror();renderLibrary();renderSummary();renderWarnings();renderRuleDiagnostics();syncResultLiveStrip();updateWorkspaceStatus();pulseResultCard()}
@@ -1343,14 +1340,14 @@ function sanitize(data){const f=defaultState();if(!data||typeof data!=='object')
 
 
 const STEP_EXPERIENCE={
-  targetLevelCard:{overline:'STEP 01 · 目标等级',title:'先确定本次模拟到几级',description:'目标等级是整套构筑的边界。后续只生成该等级内的职业路线、成长节点、技能、职业能力和法术。',affects:['角色总等级','熟练加值','路线长度','最终结果范围'],impact:'正在调整目标等级；降低等级会移除超出范围的成长、技能与法术选择。'},
-  routeCard:{overline:'STEP 02 · 逐级职业',title:'为每一级选择职业',description:'同样的角色总等级，因为逐级职业不同，会解锁完全不同的子职业、专长、职业能力和法术环阶。',affects:['职业自身等级','生命成长','子职业','成长节点'],impact:'逐级职业变化会重新计算各职业自身等级，并刷新后续全部可选内容。'},
-  progressionCard:{overline:'STEP 03 · 子职业与成长',title:'完成路线产生的成长节点',description:'选择已经解锁的子职业，并在每个专长节点中决定使用普通专长还是属性提升。',affects:['子职业差异','专长','属性成长点','后续法术池'],impact:'这里的属性提升会在下一步计入最终属性；其他专长则改变生命、先攻或战斗机制。'},
-  abilitiesCard:{overline:'STEP 04 · 属性分配',title:'分配初始点购与已获得成长点',description:'先完成27点购和+2/+1，再应用上一步选择的属性提升。所有攻击、技能、生命、护甲和法术数值随之更新。',affects:['攻击与伤害','技能检定','生命与护甲','法术 DC'],impact:'属性变化会立即更新右侧角色纸中的生命、先攻、护甲、技能加值和施法结果。'},
-  skillsCard:{overline:'STEP 05 · 技能与专精',title:'按路线分配技能来源',description:'技能池由背景、种族、起始职业、首次兼职和职业等级共同决定。',affects:['探索检定','对话检定','熟练加值','技能专精'],impact:'技能选择会更新当前等级下的最终检定加值。'},
-  classFeaturesCard:{overline:'STEP 06 · 职业能力',title:'完成当前路线解锁的职业选择',description:'选择战斗风格、战技、超魔、魔能祈唤、契约恩赐等，并查看逐级能力说明。',affects:['战斗循环','资源能力','主动选择','职业定位'],impact:'职业能力选择会同步到最终角色纸，并用于判断构筑是否完成。'},
-  spellsCard:{overline:'STEP 07 · 戏法与法术',title:'按职业自身等级选择法术',description:'职业自身等级决定可学环阶与数量；综合施法等级决定普通法术位，契约魔法单独计算。',affects:['戏法数量','可学环阶','准备或已知','法术位'],impact:'法术与戏法选择会直接进入最终构筑结果。'},
-  resultReviewCard:{overline:'STEP 08 · 最终构筑',title:'核对目标等级下的完整结果',description:'集中检查最终属性、职业构成、子职业、技能、职业能力、法术位、已选法术和未完成项。',affects:['完整角色纸','构筑检查','导出摘要','资料比较'],impact:'这里汇总此前所有选择；右侧角色纸始终与本页结果保持同步。'}
+  abilitiesCard:{overline:'STEP 01 · 初始属性',title:'先完成角色创建属性',description:'固定使用27点购并分配+2/+1。该点数池与目标等级、职业路线完全无关。',affects:['初始攻击属性','初始技能调整值','初始生命与护甲','后续构筑基础'],impact:'这里建立角色创建时的初始六维属性；后续等级不会增加这27点。'},
+  targetLevelCard:{overline:'STEP 02 · 目标等级',title:'确定本次模拟到几级',description:'初始属性已经固定。现在设置目标等级、种族、背景与护甲模拟。',affects:['角色总等级','熟练加值','路线长度','最终结果范围'],impact:'调整目标等级会改变后续解锁内容，但不会改变初始27点购。'},
+  routeCard:{overline:'STEP 03 · 职业路线',title:'为每一级选择职业',description:'逐级职业决定各职业自身等级，并驱动子职业、专长、能力与法术解锁。',affects:['职业等级','子职业门槛','专长节点','施法环阶'],impact:'路线变化会重新计算解锁内容，但不会重新发放初始属性点。'},
+  progressionCard:{overline:'STEP 04 · 子职业与专长',title:'处理路线解锁的关键选择',description:'选择子职业与专长。属性提升是一种可选专长，不是升级自动提供的属性点。',affects:['子职业差异','普通专长','属性提升专长','后续法术池'],impact:'选择属性提升专长会叠加到最终属性，但第1步的27点购始终保持不变。'},
+  skillsCard:{overline:'STEP 05 · 技能与专精',title:'选择当前路线允许的技能',description:'背景、种族、起始职业、兼职来源和专精共同决定技能选择。',affects:['技能熟练','技能专精','最终技能加值','对话与探索'],impact:'技能最终加值会读取初始属性以及后续可能选择的属性提升专长。'},
+  classFeaturesCard:{overline:'STEP 06 · 职业能力',title:'完成主动职业能力选择',description:'只显示当前路线已经解锁的战斗风格、战技、超魔、祈唤和其他能力。',affects:['战斗风格','职业资源','主动能力','战术定位'],impact:'完成这些选择后，右侧角色纸会形成当前等级的职业能力清单。'},
+  spellsCard:{overline:'STEP 07 · 戏法与法术',title:'选择当前职业等级允许的法术',description:'法术池按职业自身等级、子职业、施法方式与最高可学环阶生成。',affects:['戏法','已知或准备法术','法术位','施法属性'],impact:'法术攻击与豁免DC读取最终属性，但法术数量和环阶由职业路线决定。'},
+  resultReviewCard:{overline:'STEP 08 · 最终构筑',title:'核对完整角色结果',description:'集中检查初始属性、属性提升专长、职业路线、技能、能力、法术和未完成项。',affects:['最终角色纸','规则诊断','未完成选择','构筑导出'],impact:'这里展示当前目标等级下的最终构筑，不再产生新的选择资源。'}
 };
 let resultPulseTimer;
 function setDensity(mode){
@@ -1365,7 +1362,7 @@ function renderLevelPath(total){
   const label=document.getElementById('headerLevelLabel');if(label)label.textContent=`${total} / 12`;
 }
 function updateDecisionContext(){
-  const meta=STEP_EXPERIENCE[activeWorkspaceStep]||STEP_EXPERIENCE.targetLevelCard;
+  const meta=STEP_EXPERIENCE[activeWorkspaceStep]||STEP_EXPERIENCE.abilitiesCard;
   const index=Math.max(0,workspaceStepIndex(activeWorkspaceStep));
   const complete=document.querySelector(`[data-workspace-step="${activeWorkspaceStep}"]`)?.classList.contains('is-complete');
   const status=complete?'本步骤已完成':index===0?'准备设置':'仍有选择待确认';
@@ -1380,17 +1377,17 @@ function pulseResultCard(){
 }
 
 const WORKSPACE_STEPS=[
+  {id:'abilitiesCard',label:'初始属性'},
   {id:'targetLevelCard',label:'目标等级'},
   {id:'routeCard',label:'逐级职业'},
-  {id:'progressionCard',label:'子职业与成长'},
-  {id:'abilitiesCard',label:'属性分配'},
+  {id:'progressionCard',label:'子职业与专长'},
   {id:'skillsCard',label:'技能与专精'},
   {id:'classFeaturesCard',label:'职业能力'},
   {id:'spellsCard',label:'戏法与法术'},
   {id:'resultReviewCard',label:'最终构筑'}
 ];
-let activeWorkspaceStep=localStorage.getItem('bg3-workspace-active-step')||'targetLevelCard';
-if(!WORKSPACE_STEPS.some(x=>x.id===activeWorkspaceStep))activeWorkspaceStep='targetLevelCard';
+let activeWorkspaceStep=localStorage.getItem('bg3-workspace-active-step')||'abilitiesCard';
+if(!WORKSPACE_STEPS.some(x=>x.id===activeWorkspaceStep))activeWorkspaceStep='abilitiesCard';
 
 function setSideView(view,openDrawer=false){
   const panel=$('workspaceResultPanel');
@@ -1472,12 +1469,12 @@ function updateWorkspaceStatus(){
   $('stepStatusTarget').textContent=`目标 ${total}级 · ${state.race}`;
   $('stepStatusRoute').textContent=breakdown;
   $('stepStatusProgression').textContent=slots.length?`${featSelected}/${slots.length} 成长节点`:`${Object.keys(state.subclasses).length} 子职业`;
-  $('stepStatusAbilities').textContent=`${usedPoints()} / 27 点 · ASI ${selectedAsiSlots().length}`;
+  $('stepStatusAbilities').textContent=`${usedPoints()} / 27 点`;
   $('stepStatusSkills').textContent=`${prof.size} 熟练 · ${expert.size} 专精`;
   $('stepStatusFeatures').textContent=choiceRequired?`${choiceSelected}/${choiceRequired} 已选择`:`${unlockedFeatureRows().length} 项已解锁`;
   $('stepStatusSpells').textContent=`${spellTotal.can} 戏法 · ${spellTotal.sp} 法术`;
   const stateMap={targetLevelCard:true,routeCard:activeLevels().length===total,progressionCard:progressionComplete(),abilitiesCard:abilitiesComplete(),skillsCard:skillsComplete(),classFeaturesCard:classFeaturesComplete(),spellsCard:spellsComplete(),resultReviewCard:false};
-  const decisionKeys=['targetLevelCard','routeCard','progressionCard','abilitiesCard','skillsCard','classFeaturesCard','spellsCard'];
+  const decisionKeys=['abilitiesCard','targetLevelCard','routeCard','progressionCard','skillsCard','classFeaturesCard','spellsCard'];
   const completion=Math.round(decisionKeys.filter(k=>stateMap[k]).length/decisionKeys.length*100);stateMap.resultReviewCard=completion===100;
   $('stepStatusReview').textContent=`完成度 ${completion}%`;
   const characterName=state.name||'未命名角色',raceName=state.race||'—';
