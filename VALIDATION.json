@@ -1,12 +1,37 @@
 {
-  "home_title": "规划你的下一次冒险",
-  "created_name": "奥法前线",
-  "target_level": "5",
-  "route_breakdown": "5级 · 法师 5",
-  "spell_count": 82,
-  "desktop_detail": "酸液飞溅",
-  "desktop_close_in_fixed_detail": 0,
-  "mobile_sheet": "剑刃防护",
-  "horizontal_overflow": false,
-  "errors": []
+  "version": "7.1.0-m2",
+  "javascriptModuleImports": "passed",
+  "storeAndSelectors": "passed",
+  "jsonExportImport": "passed",
+  "browserSimulation": {
+    "errors": [],
+    "desktopHorizontalOverflow": false,
+    "desktopFixedDetailCloseButtons": 0,
+    "mobileHorizontalOverflow": false,
+    "mobileDetailDialogs": 1,
+    "mobileCloseButtons": 1
+  },
+  "views": {
+    "progression": "passed",
+    "abilities": "passed",
+    "skills": "passed",
+    "features": "passed",
+    "spells": "passed",
+    "review": "passed",
+    "character": "passed",
+    "library": "passed"
+  },
+  "spellImages": {
+    "testedRenderedCount": 82,
+    "firstRequestedSources": [
+      "./assets/images/spells/acidSplash.png",
+      "./assets/images/spells/bladeWard.png",
+      "./assets/images/spells/boneChill.png",
+      "./assets/images/spells/boomingBlade.png",
+      "./assets/images/spells/greenFlameBlade.png"
+    ],
+    "localPathPriority": "passed",
+    "extensionFallbackPngToWebp": "passed",
+    "existingFilesOverwritten": false
+  }
 }
