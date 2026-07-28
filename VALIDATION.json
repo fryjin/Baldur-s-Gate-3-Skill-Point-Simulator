@@ -1,0 +1,38 @@
+{
+  "version": "V6",
+  "validated_at": "2026-07-28",
+  "checks": {
+    "javascript_syntax": "passed",
+    "legacy_dom_compatibility": {
+      "status": "passed",
+      "detected_steps": 7,
+      "active_step": "basicCard"
+    },
+    "current_dom_mock_compatibility": {
+      "status": "passed",
+      "detected_steps": 8,
+      "active_step": "abilitiesCard"
+    },
+    "desktop_one_viewport_layout": "passed",
+    "body_vertical_scroll_disabled": "passed",
+    "skill_split_view": {
+      "status": "passed",
+      "list_internal_scroll": true,
+      "fixed_detail_panel": true,
+      "example_detail": "运动"
+    },
+    "spell_split_view": {
+      "status": "passed",
+      "available_cards_tested": 16,
+      "fixed_detail_panel": true,
+      "example_detail": "酸液飞溅"
+    },
+    "mobile_detail_drawer": {
+      "status": "passed",
+      "opens_without_page_navigation": true
+    },
+    "compact_character_summary": "passed",
+    "full_character_sheet_overlay": "passed",
+    "original_generated_background": "included"
+  }
+}

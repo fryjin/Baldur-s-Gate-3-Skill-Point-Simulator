@@ -1,0 +1,36 @@
+{
+  "package": "BG3_UI_V6_upload",
+  "version": "V6",
+  "files": [
+    {
+      "path": "README.md",
+      "size": 3130,
+      "sha256": "437f671a648bbe80ec349b96b598a540b90c4eed587d64159d9c3fdf0613dd48"
+    },
+    {
+      "path": "VALIDATION.json",
+      "size": 1038,
+      "sha256": "35b5ce4aab7ffcd8989fe76e275b7aa73d879bc72785a2674d934171108989b4"
+    },
+    {
+      "path": "assets/fantasy-forest-v6.webp",
+      "size": 285880,
+      "sha256": "67ed6d6566e9d06fc45b407711a95640fddf5bc7890660456e7f23b9c55e0dfb"
+    },
+    {
+      "path": "assets/ui-light-v6.css",
+      "size": 41858,
+      "sha256": "f571ef6fdd5e2f370f597b1f037e747aad64752b5d3f84ce6c43379a852e100c"
+    },
+    {
+      "path": "assets/ui-light-v6.js",
+      "size": 24875,
+      "sha256": "8c3cd7a0b9c7c4d1c757e5fdd7dd8b02bb8d052e0e1160e84a45317fd0b9aca0"
+    },
+    {
+      "path": "ui-game-v6.html",
+      "size": 3238,
+      "sha256": "482ce5687ab48585ff1a2dff4be0778c0f78e6e226d77b9982f72a70348335a2"
+    }
+  ]
+}
