@@ -1,23 +1,22 @@
 {
-  "version": "7-milestone-4",
+  "version": "V7 M5",
   "checks": {
-    "javascript_syntax": true,
-    "css_brace_balance": true,
-    "fighter_route_hides_spells": true,
-    "wizard_route_shows_spells": true,
-    "wizard_route_hides_empty_feature_step": true,
-    "review_step_removed": true,
-    "old_review_route_redirects": true,
-    "live_build_summary_present": true,
-    "custom_class_picker_present": true,
-    "native_route_select_removed": true,
-    "dark_select_options": true,
-    "existing_spell_image_path_preserved": true
+    "javascript_files_checked": 23,
+    "javascript_syntax_passed": true,
+    "legacy_spell_manifest_count": 56,
+    "legacy_spell_path": "assets/spells/<spellKey>.png",
+    "spell_scroll_memory": true,
+    "spell_grid_wide_screen_columns": 2,
+    "selected_skill_icons": true,
+    "selected_spell_icons_grouped_by_level": true,
+    "hover_focus_tooltip": true,
+    "auto_focus_first_incomplete_node": true,
+    "ability_impact_in_main_content": true,
+    "zip_integrity": true
   },
-  "allPassed": true,
-  "notes": [
-    "Dynamic-flow behavior was verified with Node using fighter 4 and wizard 4 build states.",
-    "All JavaScript files passed node --check and all CSS files passed brace-balance validation.",
-    "Chromium navigation to local HTTP and file URLs is blocked by administrator policy in this sandbox, so browser screenshots were not regenerated."
-  ]
+  "browser_validation": {
+    "status": "not_run",
+    "reason": "The sandbox Chromium policy blocks local HTTP and file URLs. Static module, syntax and package validation completed."
+  },
+  "failures": []
 }

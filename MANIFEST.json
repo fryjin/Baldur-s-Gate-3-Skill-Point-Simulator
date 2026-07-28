@@ -1,46 +1,45 @@
 {
-  "version": "7-milestone-4",
-  "fileCount": 37,
+  "version": "V7 M5",
   "files": [
     {
       "path": "README.md",
-      "size": 2413,
-      "sha256": "a7c7c0d6914001f2d6ffebd5cea0ad79b2a08fdb29efcffd2e2717d2851c4551"
+      "size": 531,
+      "sha256": "612c9369a9a63643d407c1b8d09047dd539492eac33e2bcd49bd4858e8871ace"
     },
     {
       "path": "STATUS.json",
-      "size": 320,
-      "sha256": "28b5bedf8ff970e57255cbe86f09371e6b2260e4bc000927e8f02c57adff1ee8"
+      "size": 271,
+      "sha256": "b9232258c042d9da415e1291a07ff469daab6a4eeabf0a43171024b9bc3adf59"
     },
     {
       "path": "V7_PRODUCT_SPEC.md",
-      "size": 34238,
-      "sha256": "530fe4abbcfb4639632e355ba878c7cd533a04266c7a69f216f7353dc63146cc"
+      "size": 33683,
+      "sha256": "e840fcdbc7f25aa9031fde20a8520231dbf12b2a56b1af95eb70f74b5b70dc1f"
     },
     {
       "path": "VALIDATION.json",
-      "size": 904,
-      "sha256": "54b3e676822e731dc5e8b0805cddfae5c66dd545aeb6503d0f52bc5fe1dbc3de"
+      "size": 729,
+      "sha256": "f06ab224e2ac33588504a5330306e8f9a0f2c65b62cafea3df5aabcb6a97c367"
     },
     {
       "path": "assets/css/base.css",
       "size": 3028,
-      "sha256": "1c8e3934bf3d97ebb3f3c6b751bac04b8402d7d8ba4591e0ebb01ef48b17b0fb"
+      "sha256": "f0d7c2cf5dde32ce79914993f282451679702e1d39484564e04238b04f977611"
     },
     {
       "path": "assets/css/components.css",
-      "size": 7572,
-      "sha256": "f9a04049d44c60b4db37987f187ae406274e787a6be36f7a07a51475b200847e"
+      "size": 7664,
+      "sha256": "aa4bc6b286bcd354a302b056c6dcc01a2dbd41f30b36017fb99c690724761883"
     },
     {
       "path": "assets/css/responsive.css",
-      "size": 7780,
-      "sha256": "3ce39d12331436196a42c93fb673a07f2a1a8be30c08fb54e91212b907d349b0"
+      "size": 8130,
+      "sha256": "08509cda763d0134437394a052df7ca40fcb283106b36595e30403c215ff6ce8"
     },
     {
       "path": "assets/css/shell.css",
       "size": 6288,
-      "sha256": "60b68a3a85841509f31a0432c15a65034ea033fd81d4723f48d5ff987e1621f0"
+      "sha256": "ed9e92dc724f1a98bc5008dd869fac56bf8bb50598ba567f4c3a158e3373df1d"
     },
     {
       "path": "assets/css/tokens.css",
@@ -49,8 +48,8 @@
     },
     {
       "path": "assets/css/views.css",
-      "size": 13334,
-      "sha256": "57488d7d57da3681fa71f87b1bf0427008b3492202b9433d6fb10d2ee0915ff0"
+      "size": 16139,
+      "sha256": "988450238ba71c156ede26d5ea27fc455f2130067debae8f12eaa5fb418baee4"
     },
     {
       "path": "assets/images/fantasy-forest.webp",
@@ -74,8 +73,8 @@
     },
     {
       "path": "assets/js/components/shell.js",
-      "size": 10080,
-      "sha256": "47cf4603e049cd48f97c8683661cf8f36e9587cbfe513b0f2f4d23331813f39d"
+      "size": 13736,
+      "sha256": "493c9527f626a5da32d8906e18c2e6235d92682b65b929720af314fdb4f05282"
     },
     {
       "path": "assets/js/components/ui.js",
@@ -94,8 +93,13 @@
     },
     {
       "path": "assets/js/data/spell-assets.js",
-      "size": 2615,
-      "sha256": "77e9162bff376d536cf4c44fbb3d02d3aaa3ba92202b961380daa14772f282fa"
+      "size": 2681,
+      "sha256": "2dfe3d46ea488286824cb423b2d11be449a295fa34b647785503feae7b37c581"
+    },
+    {
+      "path": "assets/js/data/spell-image-manifest.js",
+      "size": 2852,
+      "sha256": "0c68c8584ad3989621272385a15d899d27efafd66405fc20ab3fa35b27c3d103"
     },
     {
       "path": "assets/js/data/spells.js",
@@ -129,8 +133,8 @@
     },
     {
       "path": "assets/js/views/abilities-view.js",
-      "size": 4321,
-      "sha256": "e85ded6281eb935e43539f349857bf55eeece8a5a7136768b21239ebb2fc579e"
+      "size": 4901,
+      "sha256": "2fe63e3a0c2b68238694cfdeda980d7262f58d0969debdcca45f2628fc0f4332"
     },
     {
       "path": "assets/js/views/character-view.js",
@@ -139,8 +143,8 @@
     },
     {
       "path": "assets/js/views/features-view.js",
-      "size": 3445,
-      "sha256": "c38fa1334b432de594fdbbd89917f53d59937ca86cde479b663460132b7c8c4f"
+      "size": 3628,
+      "sha256": "3d84c3268d48646950634f5ce8ff033aae8028f780f5f75654e98bc85510bfd4"
     },
     {
       "path": "assets/js/views/home-view.js",
@@ -159,8 +163,8 @@
     },
     {
       "path": "assets/js/views/progression-view.js",
-      "size": 5565,
-      "sha256": "81be66feda71807b70441acaa742e40e9772d00a9faa96bd040592f11e751ba0"
+      "size": 5876,
+      "sha256": "f0ab03a59aba06b60a77dc89cbdeac4ea56eba7a93ffe8af99d60857708bdfd3"
     },
     {
       "path": "assets/js/views/route-view.js",
@@ -169,18 +173,28 @@
     },
     {
       "path": "assets/js/views/skills-view.js",
-      "size": 3673,
-      "sha256": "52dc7823392dc70b56f9124a140a02da15e1c882385c3dcfb45782c91cc9a390"
+      "size": 3803,
+      "sha256": "1f8de3156877dff743c3b1e356da6ffdc12594f7a7367407311c67165c7ceb6d"
     },
     {
       "path": "assets/js/views/spells-view.js",
-      "size": 6856,
-      "sha256": "80fed28d38c4224f5dfceab3eaa24bf330afc66823b998a8dac74d5f1ebc9123"
+      "size": 7460,
+      "sha256": "f5fcdc500d0734a8cd402b3af072597442bdc43194ad4242ce0783bffec4a5d0"
+    },
+    {
+      "path": "assets/spells/README.md",
+      "size": 251,
+      "sha256": "7b55b076bcd117730c6a82b91fe253b50243eb3dabdd0363a1650c793ac53cc7"
+    },
+    {
+      "path": "assets/spells/image-manifest.json",
+      "size": 2707,
+      "sha256": "9ee9c78183b7e064f652659794642ba0e44f4597a4722837e9d67080d0fb8d73"
     },
     {
       "path": "index.html",
       "size": 1055,
-      "sha256": "f84a898beb3459f05aace70bacdc7764cb79d7c2c717a61bda71f935e928c579"
+      "sha256": "3518947499135702bd1aeaad2a392be5133296bbdf9113235ed3fb3b03a22a5a"
     }
   ]
 }

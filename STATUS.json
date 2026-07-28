@@ -1,11 +1,12 @@
 {
-  "version": "7-milestone-4",
+  "version": "V7 M5",
+  "date": "2026-07-28",
   "changes": [
-    "dynamic-build-steps",
-    "remove-review-step",
-    "persistent-live-build-summary",
-    "custom-readable-class-picker",
-    "dark-native-select-options"
-  ],
-  "spellImagePolicy": "reuse existing assets/images/spells/<spellKey>.png without overwriting user images"
+    "preserve spell scroll",
+    "selected skill/spell icon summaries",
+    "legacy assets/spells image path",
+    "auto focus incomplete node",
+    "inline ability impact",
+    "two-column spell list"
+  ]
 }
