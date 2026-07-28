@@ -1,36 +1,146 @@
 {
-  "package": "BG3_UI_V6_upload",
-  "version": "V6",
+  "version": "7.0.0-m1",
+  "fileCount": 28,
   "files": [
     {
       "path": "README.md",
-      "size": 3130,
-      "sha256": "437f671a648bbe80ec349b96b598a540b90c4eed587d64159d9c3fdf0613dd48"
+      "bytes": 893,
+      "sha256": "01d8000b9f0ae84d33d2924743e496663b10cd132698643893af405bb9c1dcc6"
+    },
+    {
+      "path": "STATUS.json",
+      "bytes": 930,
+      "sha256": "1642fc0b9dd9a5e43c7db2809d06d0a70f18369e59ce7ff7cbe0141043a058ed"
+    },
+    {
+      "path": "V7_PRODUCT_SPEC.md",
+      "bytes": 33683,
+      "sha256": "e840fcdbc7f25aa9031fde20a8520231dbf12b2a56b1af95eb70f74b5b70dc1f"
     },
     {
       "path": "VALIDATION.json",
-      "size": 1038,
-      "sha256": "35b5ce4aab7ffcd8989fe76e275b7aa73d879bc72785a2674d934171108989b4"
+      "bytes": 324,
+      "sha256": "02689a50eafa84d554f08bc719f0dbaf4b1b9f42f3961f13fe21f9d3742a775e"
     },
     {
-      "path": "assets/fantasy-forest-v6.webp",
-      "size": 285880,
-      "sha256": "67ed6d6566e9d06fc45b407711a95640fddf5bc7890660456e7f23b9c55e0dfb"
+      "path": "assets/css/base.css",
+      "bytes": 2981,
+      "sha256": "4d4c033889732a420d33ade4dddbc3ce4c4115c009e16c4022e297f49c2723ad"
     },
     {
-      "path": "assets/ui-light-v6.css",
-      "size": 41858,
-      "sha256": "f571ef6fdd5e2f370f597b1f037e747aad64752b5d3f84ce6c43379a852e100c"
+      "path": "assets/css/components.css",
+      "bytes": 6342,
+      "sha256": "93d10fb72bffbed305e31594e773f4e25c428c87d0cdc334124a8094a1b900bd"
     },
     {
-      "path": "assets/ui-light-v6.js",
-      "size": 24875,
-      "sha256": "8c3cd7a0b9c7c4d1c757e5fdd7dd8b02bb8d052e0e1160e84a45317fd0b9aca0"
+      "path": "assets/css/responsive.css",
+      "bytes": 3700,
+      "sha256": "ce9eef925d1becce6049a15fd2453be5e9dd9e32a676ee4e083f773377c7d80f"
     },
     {
-      "path": "ui-game-v6.html",
-      "size": 3238,
-      "sha256": "482ce5687ab48585ff1a2dff4be0778c0f78e6e226d77b9982f72a70348335a2"
+      "path": "assets/css/shell.css",
+      "bytes": 4077,
+      "sha256": "04b686cc7fcce562a3633dc9110236bc13a4a5d9adb0a9662c6a3b80148f3f36"
+    },
+    {
+      "path": "assets/css/tokens.css",
+      "bytes": 901,
+      "sha256": "2522df21fbb4744765d4f6d6867a7a5c9c994b5a0774c40bc0984d6eafadf5c4"
+    },
+    {
+      "path": "assets/css/views.css",
+      "bytes": 602,
+      "sha256": "8005af16df1416ed64e2768b22c9a41c0430d801fd7fe9c477ce195f10b4cdee"
+    },
+    {
+      "path": "assets/images/fantasy-forest.webp",
+      "bytes": 296240,
+      "sha256": "76fa62607905e67933e686eaffa816964de9b6d032950d8300cc1a9b957996de"
+    },
+    {
+      "path": "assets/js/app.js",
+      "bytes": 1254,
+      "sha256": "add7d2935420b832548e726aae0c62581a95e6541d13280e010d4560a9148fc7"
+    },
+    {
+      "path": "assets/js/components/shell.js",
+      "bytes": 3947,
+      "sha256": "ffaa309042148f21a657d92d2bf49116c8fb627bdbe718aa9200681d0b4fb382"
+    },
+    {
+      "path": "assets/js/components/ui.js",
+      "bytes": 1774,
+      "sha256": "18413788fc0aa9b42065774fc011998797e6e5ab114114e01867accd47f10dba"
+    },
+    {
+      "path": "assets/js/data/core.js",
+      "bytes": 4492,
+      "sha256": "059bf486f736353099e7db49583b7d4203a2c8c0155fe0d0360edd5c7fb4ae2d"
+    },
+    {
+      "path": "assets/js/data/spells.js",
+      "bytes": 57656,
+      "sha256": "378eba4c8d52b6c2166c66844636e28cc8520beffe295258545dc96bd15e1c54"
+    },
+    {
+      "path": "assets/js/persistence.js",
+      "bytes": 377,
+      "sha256": "83c4f6ef314968be077f97458b35c6a767d82b2375309abb714b32fbd5bdbb07"
+    },
+    {
+      "path": "assets/js/router.js",
+      "bytes": 671,
+      "sha256": "4b4f2102b6728965facb6753cdc68ffa44cf139351609e462b8fa6bf430dc7da"
+    },
+    {
+      "path": "assets/js/selectors.js",
+      "bytes": 2801,
+      "sha256": "02fd64eb762170520da7dc63daa3937d06e50b86dd2fb4f2d662698096a57274"
+    },
+    {
+      "path": "assets/js/store.js",
+      "bytes": 2146,
+      "sha256": "a9b766f67873147e1934343cc58621ec878a50e919a953c9625fc78df9b7da87"
+    },
+    {
+      "path": "assets/js/validation.js",
+      "bytes": 414,
+      "sha256": "70595d0fe9d83873f73ce2e3c34b4f03346cbfc909745850e48ec767caf9cbb5"
+    },
+    {
+      "path": "assets/js/views/home-view.js",
+      "bytes": 2908,
+      "sha256": "c311fee36a69388ade0d30c20a0c63c5100720a4ab0ff832ff3c4986af3d4457"
+    },
+    {
+      "path": "assets/js/views/level-view.js",
+      "bytes": 2163,
+      "sha256": "6cb854ab48a9c50620d9329faa71d314ccd0f2473ef54572599cde1484f92eeb"
+    },
+    {
+      "path": "assets/js/views/placeholder-view.js",
+      "bytes": 1211,
+      "sha256": "3533ee75fe0e197da2b5b4cabb74f7f36464a15c544671909c0a83f201df8c1f"
+    },
+    {
+      "path": "assets/js/views/route-view.js",
+      "bytes": 2701,
+      "sha256": "5c69f6e72ac16eb7089ae37aef3473340c8377dab96d75c10e12f48a4d6fc85d"
+    },
+    {
+      "path": "assets/js/views/simple-view.js",
+      "bytes": 445,
+      "sha256": "4433f429bbcbf412b1fb51aaa6d9c790a9d5839d55e68e27e0a4a353cdf1dce8"
+    },
+    {
+      "path": "assets/js/views/spells-view.js",
+      "bytes": 5847,
+      "sha256": "a46adee13fab2c35ea379364f8b9c35514181e0d9228fc2a0791f1da2487239b"
+    },
+    {
+      "path": "index.html",
+      "bytes": 957,
+      "sha256": "4d64acaf20b8eab3957535c5980456a8cb4c0c82c28ac15070d5c0b04956bdb1"
     }
   ]
 }

@@ -1,0 +1,6 @@
+.home-version{display:inline-flex;margin-top:14px;color:var(--muted);font-size:12px}
+.route-summary{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
+.spell-source-select{min-height:42px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:rgba(0,0,0,.22)}
+.spell-source-note{margin-top:12px;color:var(--muted);font-size:13px}
+.detail-section{margin-top:28px}.detail-section:first-child{margin-top:0}.detail-section h3{margin-bottom:8px;color:var(--gold);font-size:14px;letter-spacing:.06em}.detail-section p{margin-bottom:0}
+.mobile-sheet{display:none}

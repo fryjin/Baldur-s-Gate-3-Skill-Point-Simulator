@@ -1,0 +1,2 @@
+import{navigate}from"../router.js";
+export function renderSimple(title,body){document.getElementById('app').innerHTML=`<main class="home-shell"><section class="home-panel"><span class="kicker">V7 MILESTONE 1</span><h1>${title}</h1><p>${body}</p><div class="home-actions"><button class="primary-button" data-home>返回首页</button></div></section></main>`;document.querySelector('[data-home]').addEventListener('click',()=>navigate('/home'))}
