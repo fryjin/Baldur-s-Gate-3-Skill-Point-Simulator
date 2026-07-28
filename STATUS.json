@@ -1,43 +1,10 @@
 {
-  "version": "7.1.0-m2",
-  "stage": "milestone-2",
-  "completed": [
-    "home",
-    "target-level",
-    "level-route",
-    "progression",
-    "abilities",
-    "skills",
-    "class-features",
-    "spells",
-    "review",
-    "character-sheet",
-    "library",
-    "local-save",
-    "json-import-export",
-    "responsive-layout",
-    "legacy-spell-image-paths"
+  "version": "7-milestone-3",
+  "fixes": [
+    "spell-count-overlap",
+    "fantasy-background-layer",
+    "local-image-lazy-loading",
+    "single-choice-immediate-apply"
   ],
-  "imagePolicy": {
-    "primary": "assets/images/spells/<spellKey>.png",
-    "compatibleExtensions": [
-      "png",
-      "webp",
-      "jpg",
-      "jpeg"
-    ],
-    "compatibleDirectories": [
-      "assets/images/spells",
-      "assets/spells",
-      "assets/icons/spells"
-    ],
-    "manifestEntries": 191,
-    "overwritesExistingImages": false
-  },
-  "remainingForLater": [
-    "deeper class progression data review",
-    "full spell icon asset completion",
-    "advanced rule regression suite",
-    "shareable URL encoding"
-  ]
+  "imagePolicy": "local PNG only; one request per icon; viewport lazy loading; session failure cache"
 }

@@ -1,9 +1,17 @@
 # 法术与戏法图片目录
 
-V7 优先读取本目录中与法术 key 同名的图片，例如：
+V7 里程碑 3 只请求一次项目本地 PNG，不再逐个尝试 WebP、JPG 和远程地址。
+
+标准路径：
+
+```text
+assets/images/spells/<spellKey>.png
+```
+
+例如：
 
 - `fireBolt.png`
 - `magicMissile.png`
 - `mistyStep.png`
 
-同时兼容 `.webp`、`.jpg`、`.jpeg`。若项目中已经存在这些图片，请保留本目录，不需要重新上传或改名。
+请保留仓库中已经上传的同名图片。缺失图片会直接显示本地中性占位图，不会反复发起网络请求。

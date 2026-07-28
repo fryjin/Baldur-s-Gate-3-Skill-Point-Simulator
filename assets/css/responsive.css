@@ -12,7 +12,7 @@
 }
 @media(max-width:767px){
   :root{--topbar-h:72px;--actionbar-h:64px;--step-w:0px}
-  body::after{background:linear-gradient(rgba(5,4,3,.74),rgba(5,4,3,.9))}
+  body{background-position:center top;background-attachment:scroll;background-image:linear-gradient(rgba(5,4,3,.72),rgba(5,4,3,.9)),url("../images/fantasy-forest.webp")}
   .topbar{grid-template-columns:minmax(0,1fr) auto;height:var(--topbar-h);padding:0 14px}
   .brand-mark{display:none}.brand-copy strong{font-size:16px}.brand-copy small{font-size:12px}
   .build-status{display:none}.top-actions .ghost-button{display:none}.top-actions{gap:3px}

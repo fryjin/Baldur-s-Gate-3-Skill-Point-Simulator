@@ -1,37 +1,21 @@
 {
-  "version": "7.1.0-m2",
-  "javascriptModuleImports": "passed",
-  "storeAndSelectors": "passed",
-  "jsonExportImport": "passed",
-  "browserSimulation": {
-    "errors": [],
-    "desktopHorizontalOverflow": false,
-    "desktopFixedDetailCloseButtons": 0,
-    "mobileHorizontalOverflow": false,
-    "mobileDetailDialogs": 1,
-    "mobileCloseButtons": 1
+  "version": "7-milestone-3",
+  "checks": {
+    "background_direct_on_body": true,
+    "spell_layout_three_rows": true,
+    "no_remote_spell_image_domain": true,
+    "single_local_png_path": true,
+    "intersection_observer": true,
+    "session_failure_cache": true,
+    "progression_no_second_confirm": true,
+    "status_wording": true,
+    "background_file_exists": true
   },
-  "views": {
-    "progression": "passed",
-    "abilities": "passed",
-    "skills": "passed",
-    "features": "passed",
-    "spells": "passed",
-    "review": "passed",
-    "character": "passed",
-    "library": "passed"
-  },
-  "spellImages": {
-    "testedRenderedCount": 82,
-    "firstRequestedSources": [
-      "./assets/images/spells/acidSplash.png",
-      "./assets/images/spells/bladeWard.png",
-      "./assets/images/spells/boneChill.png",
-      "./assets/images/spells/boomingBlade.png",
-      "./assets/images/spells/greenFlameBlade.png"
-    ],
-    "localPathPriority": "passed",
-    "extensionFallbackPngToWebp": "passed",
-    "existingFilesOverwritten": false
-  }
+  "allPassed": true,
+  "jsFiles": 23,
+  "cssFiles": 6,
+  "notes": [
+    "Static structure, JavaScript syntax, CSS brace, and ZIP integrity checks passed.",
+    "Browser rendering could not be re-run in this sandbox because Chromium local navigation is blocked by administrator policy."
+  ]
 }
