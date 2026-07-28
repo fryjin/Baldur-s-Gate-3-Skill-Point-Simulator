@@ -1,22 +1,21 @@
 {
-  "version": "V7 M5",
+  "version": "V7 M6",
   "checks": {
     "javascript_files_checked": 23,
     "javascript_syntax_passed": true,
-    "legacy_spell_manifest_count": 56,
-    "legacy_spell_path": "assets/spells/<spellKey>.png",
-    "spell_scroll_memory": true,
-    "spell_grid_wide_screen_columns": 2,
-    "selected_skill_icons": true,
-    "selected_spell_icons_grouped_by_level": true,
-    "hover_focus_tooltip": true,
-    "auto_focus_first_incomplete_node": true,
-    "ability_impact_in_main_content": true,
-    "zip_integrity": true
+    "relative_imports_resolved": true,
+    "css_files_checked": 6,
+    "css_brace_balance": true,
+    "compact_build_header": true,
+    "current_detail_above_full_summary": true,
+    "current_detail_independent_scroll": true,
+    "full_build_summary_collapsed_by_default": true,
+    "desktop_detail_close_button": false,
+    "legacy_spell_path_preserved": "assets/spells/<spellKey>.png"
   },
   "browser_validation": {
     "status": "not_run",
-    "reason": "The sandbox Chromium policy blocks local HTTP and file URLs. Static module, syntax and package validation completed."
+    "reason": "Sandbox Chromium administrator policy blocks local HTTP and file URLs. Static module, syntax, layout-structure and package validation completed."
   },
   "failures": []
 }

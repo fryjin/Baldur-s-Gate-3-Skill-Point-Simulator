@@ -1,12 +1,11 @@
 {
-  "version": "V7 M5",
+  "version": "V7 M6",
   "date": "2026-07-28",
   "changes": [
-    "preserve spell scroll",
-    "selected skill/spell icon summaries",
-    "legacy assets/spells image path",
-    "auto focus incomplete node",
-    "inline ability impact",
-    "two-column spell list"
+    "current option detail prioritized",
+    "compact build header",
+    "independent detail scrolling",
+    "collapsible full build summary",
+    "responsive detail hierarchy"
   ]
 }

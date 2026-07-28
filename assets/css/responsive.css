@@ -54,3 +54,18 @@
 
 @media(max-width:1180px){.spell-list{grid-template-columns:1fr}.ability-workspace{grid-template-columns:1fr}.ability-impact-inline{position:static;border-left:0;border-top:1px solid var(--line);padding:18px 4px}}
 @media(max-width:767px){.spell-list{grid-template-columns:1fr}.ability-impact-inline{display:block}.live-selection-group{display:none}}
+
+/* M6 tablet/mobile detail drawer */
+@media(max-width:1439px){
+  .responsive-detail .detail-pane-layout{height:auto;max-height:calc(100dvh - 48px)}
+  .responsive-detail .current-option-detail{max-height:56dvh}
+  .responsive-detail .full-build-content{max-height:42dvh}
+}
+@media(max-width:767px){
+  .compact-build-summary{padding:14px 16px 12px}
+  .compact-combat{grid-template-columns:repeat(4,minmax(58px,1fr));overflow-x:auto}
+  .current-option-detail{padding:18px 16px 24px}
+  .current-option-detail .detail-divider{top:-18px;margin:-18px -16px 16px;padding:16px 16px 10px}
+  .full-build-disclosure>summary{padding:0 16px}
+  .full-build-content{padding:16px}
+}
