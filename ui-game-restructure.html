@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>博德之门 3 构筑模拟器｜游戏式 UI 重构预览</title>
+  <style>
+    :root{color-scheme:dark}
+    *{box-sizing:border-box}
+    html,body{width:100%;height:100%;margin:0;background:#080706;overflow:hidden}
+    body{font-family:Inter,"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif}
+    #appFrame{display:block;width:100%;height:100%;border:0;background:#080706}
+    .preview-badge{position:fixed;z-index:10;right:16px;bottom:16px;display:flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid rgba(218,184,111,.42);border-radius:999px;color:#ead8b6;background:rgba(13,11,9,.84);box-shadow:0 12px 28px rgba(0,0,0,.35);backdrop-filter:blur(12px);font-size:11px;pointer-events:none}
+    .preview-badge:before{content:"";width:7px;height:7px;border-radius:50%;background:#9bc89f;box-shadow:0 0 12px rgba(155,200,159,.8)}
+    .loader{position:fixed;inset:0;z-index:20;display:grid;place-items:center;color:#e8d8b8;background:radial-gradient(circle at 50% 35%,rgba(107,43,34,.26),transparent 32%),#080706;transition:.3s ease}
+    .loader.hidden{opacity:0;visibility:hidden}
+    .loader-inner{text-align:center}
+    .loader-mark{width:58px;height:58px;margin:0 auto 18px;border:1px solid rgba(218,184,111,.75);transform:rotate(45deg);display:grid;place-items:center;box-shadow:0 0 32px rgba(218,184,111,.13)}
+    .loader-mark span{transform:rotate(-45deg);font:18px Georgia,serif}
+    .loader p{margin:0;color:#aa9c87;font-size:12px;letter-spacing:.08em}
+    .error{max-width:560px;padding:24px;border:1px solid rgba(211,104,96,.45);border-radius:16px;color:#ead8b6;background:#181311;line-height:1.8}
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader"><div class="loader-inner"><div class="loader-mark"><span>III</span></div><p>正在载入游戏式构筑界面</p></div></div>
+  <iframe id="appFrame" src="./index.html?ui=game-restructure" title="博德之门 3 构筑模拟器 UI 重构预览"></iframe>
+  <div class="preview-badge">UI 重构 V5 · 不影响现有页面</div>
+  <script>
+    (() => {
+      const frame = document.getElementById('appFrame');
+      const loader = document.getElementById('loader');
+      const fail = (message) => {
+        loader.innerHTML = `<div class="error"><strong>重构资源载入失败</strong><br>${message}<br>请确认本文件与 index.html、assets 文件夹位于同一级目录。</div>`;
+      };
+      frame.addEventListener('load', () => {
+        try {
+          const doc = frame.contentDocument;
+          if (!doc) throw new Error('无法访问预览页面文档');
+          if (!doc.querySelector('link[data-ui-game-restructure]')) {
+            const link = doc.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = './assets/ui-game-restructure.css?v=5';
+            link.dataset.uiGameRestructure = 'true';
+            doc.head.appendChild(link);
+          }
+          if (!doc.querySelector('script[data-ui-game-restructure]')) {
+            const script = doc.createElement('script');
+            script.src = './assets/ui-game-restructure.js?v=5';
+            script.defer = true;
+            script.dataset.uiGameRestructure = 'true';
+            script.addEventListener('load', () => setTimeout(() => loader.classList.add('hidden'), 260));
+            script.addEventListener('error', () => fail('JavaScript 增强文件未找到。'));
+            doc.body.appendChild(script);
+          } else {
+            loader.classList.add('hidden');
+          }
+        } catch (error) {
+          fail(error.message || String(error));
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
