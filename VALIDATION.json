@@ -1,21 +1,23 @@
 {
-  "version": "7-milestone-3",
+  "version": "7-milestone-4",
   "checks": {
-    "background_direct_on_body": true,
-    "spell_layout_three_rows": true,
-    "no_remote_spell_image_domain": true,
-    "single_local_png_path": true,
-    "intersection_observer": true,
-    "session_failure_cache": true,
-    "progression_no_second_confirm": true,
-    "status_wording": true,
-    "background_file_exists": true
+    "javascript_syntax": true,
+    "css_brace_balance": true,
+    "fighter_route_hides_spells": true,
+    "wizard_route_shows_spells": true,
+    "wizard_route_hides_empty_feature_step": true,
+    "review_step_removed": true,
+    "old_review_route_redirects": true,
+    "live_build_summary_present": true,
+    "custom_class_picker_present": true,
+    "native_route_select_removed": true,
+    "dark_select_options": true,
+    "existing_spell_image_path_preserved": true
   },
   "allPassed": true,
-  "jsFiles": 23,
-  "cssFiles": 6,
   "notes": [
-    "Static structure, JavaScript syntax, CSS brace, and ZIP integrity checks passed.",
-    "Browser rendering could not be re-run in this sandbox because Chromium local navigation is blocked by administrator policy."
+    "Dynamic-flow behavior was verified with Node using fighter 4 and wizard 4 build states.",
+    "All JavaScript files passed node --check and all CSS files passed brace-balance validation.",
+    "Chromium navigation to local HTTP and file URLs is blocked by administrator policy in this sandbox, so browser screenshots were not regenerated."
   ]
 }

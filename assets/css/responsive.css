@@ -48,3 +48,6 @@
   .library-shell{display:block;height:calc(100dvh - 64px)}.library-nav{display:flex;gap:5px;padding:8px 12px;border-right:0;border-bottom:1px solid var(--line);overflow-x:auto}.library-nav button{flex:0 0 auto;width:auto;white-space:nowrap}.library-list-pane{height:calc(100% - 62px);padding:14px 16px}.library-heading{display:grid}.library-heading .search-input{max-width:none}.library-list{height:calc(100% - 94px)}.library-item{min-height:70px}.tool-grid{grid-template-columns:1fr}
 }
 @media(max-width:390px){.skill-grid{grid-template-columns:1fr}.ability-row{grid-template-columns:82px 138px 58px}.combat-strip{grid-template-columns:repeat(2,1fr)}.character-combat{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px) and (min-width:768px){.class-picker-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.class-picker-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.class-picker-option{min-height:58px;padding:8px 28px 8px 10px}.class-picker-option strong{font-size:14px}.class-picker-option small{font-size:11px}}
+@media(max-width:390px){.class-picker-grid{grid-template-columns:1fr}}

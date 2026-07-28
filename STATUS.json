@@ -1,10 +1,11 @@
 {
-  "version": "7-milestone-3",
-  "fixes": [
-    "spell-count-overlap",
-    "fantasy-background-layer",
-    "local-image-lazy-loading",
-    "single-choice-immediate-apply"
+  "version": "7-milestone-4",
+  "changes": [
+    "dynamic-build-steps",
+    "remove-review-step",
+    "persistent-live-build-summary",
+    "custom-readable-class-picker",
+    "dark-native-select-options"
   ],
-  "imagePolicy": "local PNG only; one request per icon; viewport lazy loading; session failure cache"
+  "spellImagePolicy": "reuse existing assets/images/spells/<spellKey>.png without overwriting user images"
 }

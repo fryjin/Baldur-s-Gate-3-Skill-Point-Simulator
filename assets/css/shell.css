@@ -42,3 +42,16 @@
 .decision-pane::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 72% 0,rgba(223,189,114,.055),transparent 32%)}
 .decision-pane{position:relative}.decision-pane>*{position:relative;z-index:1}
 .view-heading{min-height:92px}.detail-pane{box-shadow:inset 1px 0 rgba(255,255,255,.018)}
+.live-build-summary{display:grid;gap:16px;padding-bottom:22px}
+.live-build-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start}
+.live-build-head h2{margin:2px 0 3px;font-size:22px}.live-build-head p{margin:0;color:var(--muted);font-size:13px}
+.live-level{display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--line-strong);border-radius:50%;color:var(--gold-light);font:25px Georgia,serif;background:rgba(223,189,114,.06)}
+.live-score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.live-score-grid div,.live-combat-grid div{padding:8px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.018)}
+.live-score-grid span,.live-combat-grid span{display:block;color:var(--muted);font-size:11px}.live-score-grid b,.live-combat-grid b{display:block;margin-top:2px;color:var(--gold-light);font-size:17px}
+.live-combat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.live-summary-block{padding-top:3px}.live-summary-block>span{display:block;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.06em}.live-summary-block p{margin:5px 0 0;font-size:13px;line-height:1.55}
+.live-issue-list{display:grid;gap:5px;margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:12px;line-height:1.45}
+.live-character-button{width:100%}
+.current-option-detail{padding-top:22px;border-top:1px solid var(--line)}
+.detail-divider{display:flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.1em}.detail-divider::after{content:"";flex:1;height:1px;background:var(--line)}

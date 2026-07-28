@@ -1,45 +1,46 @@
 {
-  "version": "7-milestone-3",
+  "version": "7-milestone-4",
+  "fileCount": 37,
   "files": [
     {
       "path": "README.md",
-      "size": 2776,
-      "sha256": "63c684121f50e43f956b5dd80259faba7754a239b91ada5fa7fd127a5564501c"
+      "size": 2413,
+      "sha256": "a7c7c0d6914001f2d6ffebd5cea0ad79b2a08fdb29efcffd2e2717d2851c4551"
     },
     {
       "path": "STATUS.json",
-      "size": 280,
-      "sha256": "09a8a99b55fe35f1abd20ea0ab0ec09afa1defab16b9788e28e1d37b060eef88"
+      "size": 320,
+      "sha256": "28b5bedf8ff970e57255cbe86f09371e6b2260e4bc000927e8f02c57adff1ee8"
     },
     {
       "path": "V7_PRODUCT_SPEC.md",
-      "size": 33683,
-      "sha256": "e840fcdbc7f25aa9031fde20a8520231dbf12b2a56b1af95eb70f74b5b70dc1f"
+      "size": 34238,
+      "sha256": "530fe4abbcfb4639632e355ba878c7cd533a04266c7a69f216f7353dc63146cc"
     },
     {
       "path": "VALIDATION.json",
-      "size": 671,
-      "sha256": "e95e5c00a90d59a6af6a29767f32558f79a5d0305a936fb92bafaa47c0214e38"
+      "size": 904,
+      "sha256": "54b3e676822e731dc5e8b0805cddfae5c66dd545aeb6503d0f52bc5fe1dbc3de"
     },
     {
       "path": "assets/css/base.css",
-      "size": 2911,
-      "sha256": "3a33a375faee9a6e8447bc33285c9c55a51e576073afe9740a7d296e41770f56"
+      "size": 3028,
+      "sha256": "1c8e3934bf3d97ebb3f3c6b751bac04b8402d7d8ba4591e0ebb01ef48b17b0fb"
     },
     {
       "path": "assets/css/components.css",
-      "size": 6942,
-      "sha256": "81a99c0f72e6aba2a422efa1270c09e64c90ce64d9db75b30a9dbd2d3216a34b"
+      "size": 7572,
+      "sha256": "f9a04049d44c60b4db37987f187ae406274e787a6be36f7a07a51475b200847e"
     },
     {
       "path": "assets/css/responsive.css",
-      "size": 7348,
-      "sha256": "3539cb975cd37ca0d9da287c498e6784c52f80e0ba7bcf2ecaa6ed6d6e192d55"
+      "size": 7780,
+      "sha256": "3ce39d12331436196a42c93fb673a07f2a1a8be30c08fb54e91212b907d349b0"
     },
     {
       "path": "assets/css/shell.css",
-      "size": 4642,
-      "sha256": "407f407fa406bcd6f6c457a1e37109433b453bb416e9f9aae5fd6de88d9af487"
+      "size": 6288,
+      "sha256": "60b68a3a85841509f31a0432c15a65034ea033fd81d4723f48d5ff987e1621f0"
     },
     {
       "path": "assets/css/tokens.css",
@@ -68,13 +69,13 @@
     },
     {
       "path": "assets/js/app.js",
-      "size": 1388,
-      "sha256": "185e63524dab61d8bb88f6797d7e6fbdeb54aec23e9c5c56e325e7cf5016e60e"
+      "size": 1612,
+      "sha256": "c653c2f06b9b70f0c5e6df6da12c79c61bed18e774fa6225ca7e4f3bcc154bd8"
     },
     {
       "path": "assets/js/components/shell.js",
-      "size": 7656,
-      "sha256": "b0fb74759f3cd11e6145307e1dc11e3422493a7e3a8d0817846fb5803c822cef"
+      "size": 10080,
+      "sha256": "47cf4603e049cd48f97c8683661cf8f36e9587cbfe513b0f2f4d23331813f39d"
     },
     {
       "path": "assets/js/components/ui.js",
@@ -133,8 +134,8 @@
     },
     {
       "path": "assets/js/views/character-view.js",
-      "size": 3233,
-      "sha256": "28eab3da82c65f7e4344cfd5d80cc360ddec5108ce9fbed55a77b801cfd44b66"
+      "size": 3321,
+      "sha256": "2936d12fc4c2e06abad7c0e29240c19c06094d980965cfca2a343f45d1f15725"
     },
     {
       "path": "assets/js/views/features-view.js",
@@ -144,7 +145,7 @@
     {
       "path": "assets/js/views/home-view.js",
       "size": 3960,
-      "sha256": "043b4f6983c2cfa44748bf7ecdc05c73fa3efce545635361790e55afce3a8f1b"
+      "sha256": "eb5d7c927efc2d8379833abe3e944b30fc2b5634d5934b3999b64c0a1ae2c757"
     },
     {
       "path": "assets/js/views/level-view.js",
@@ -162,14 +163,9 @@
       "sha256": "81be66feda71807b70441acaa742e40e9772d00a9faa96bd040592f11e751ba0"
     },
     {
-      "path": "assets/js/views/review-view.js",
-      "size": 4041,
-      "sha256": "f66e5ccdaa5fc16976fc7d8c688f51c97fc39efe299e4ed83f438b15337891d3"
-    },
-    {
       "path": "assets/js/views/route-view.js",
-      "size": 2701,
-      "sha256": "5c69f6e72ac16eb7089ae37aef3473340c8377dab96d75c10e12f48a4d6fc85d"
+      "size": 2954,
+      "sha256": "11730d7d832bea0bd8946672b6e67da6adcc5d5dd203441b7a33ea9aea0e5fe2"
     },
     {
       "path": "assets/js/views/skills-view.js",
