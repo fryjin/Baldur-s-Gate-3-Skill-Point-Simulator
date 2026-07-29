@@ -41,3 +41,15 @@
 .skill-summary-icon span{font-size:17px}.skill-summary-icon i{position:absolute;right:-3px;bottom:-3px;display:grid;place-items:center;width:14px;height:14px;border-radius:50%;background:var(--gold);color:#17120d;font-size:8px;font-style:normal}
 .summary-spell-image{width:32px;height:32px;border-radius:7px;object-fit:cover}.live-spell-groups{display:grid;gap:7px}.live-spell-group{display:grid;grid-template-columns:54px minmax(0,1fr);gap:6px;align-items:start}.live-spell-group>small{padding-top:8px;color:var(--muted);font-size:10px}
 .summary-floating-tooltip{position:fixed;z-index:160;padding:10px 12px;border:1px solid var(--line-strong);border-radius:9px;background:#17130f;color:var(--text);box-shadow:var(--shadow);font-size:13px;line-height:1.55;white-space:pre-line;pointer-events:none}.summary-floating-tooltip[hidden]{display:none}
+
+/* M8 prepared spell visibility and stable in-view selection */
+.prepared-strip{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 2px 10px;border-bottom:1px solid var(--line)}
+.prepared-strip>span{flex:0 0 auto;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.05em}
+.prepared-strip>small{color:var(--muted);font-size:12px}
+.prepared-icon-row{display:flex;align-items:center;gap:7px;min-width:0;overflow-x:auto;padding:2px 0;scrollbar-width:thin}
+.prepared-icon{position:relative;flex:0 0 auto;width:38px;height:38px;padding:0;border:1px solid var(--line);border-radius:9px;background:rgba(223,189,114,.035)}
+.prepared-icon:hover,.prepared-icon:focus-visible,.prepared-icon.active{border-color:var(--gold);background:rgba(223,189,114,.1)}
+.prepared-spell-image{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.spell-item.prepared{box-shadow:inset 3px 0 var(--gold)}
+.spell-summary-icon.prepared{border-color:rgba(223,189,114,.7);box-shadow:0 0 0 2px rgba(223,189,114,.08)}
+.prepared-selection-group{padding:10px 0 4px;border-top:1px solid var(--line)}

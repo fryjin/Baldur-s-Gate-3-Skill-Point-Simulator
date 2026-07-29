@@ -81,3 +81,9 @@
   .decision-stage.with-inspector{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr)}
   .decision-inspector{display:none}
 }
+
+/* M8 */
+@media(max-width:767px){
+  .prepared-strip{align-items:flex-start;flex-direction:column;gap:6px}
+  .prepared-icon-row{width:100%}
+}

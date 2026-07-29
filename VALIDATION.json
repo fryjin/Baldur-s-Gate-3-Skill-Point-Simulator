@@ -1,16 +1,21 @@
 {
-  "version": "V7 M7",
-  "validated_at": "2026-07-29",
+  "version": "V7 M8",
   "checks": {
-    "javascript_syntax": "passed (23 files)",
-    "css_braces": "passed",
-    "shell_render_test": "passed",
-    "left_column_role": "workflow only",
-    "middle_column_role": "decision list + current option detail + actions",
-    "right_column_role": "decision result + final build summary",
-    "selection_action_in_right_column": "absent",
-    "mobile_detail_mode": "bottom sheet retained",
-    "historic_spell_path": "assets/spells/*.png retained",
-    "browser_visual_test": "not run: local navigation blocked by sandbox administrator policy"
-  }
+    "javascript_syntax": "23 / 23 passed",
+    "monk_spell_sources": 0,
+    "monk_spell_step_hidden": true,
+    "wizard_spell_step_visible": true,
+    "eldritch_knight_spell_step_visible": true,
+    "prepared_spell_group_visible": true,
+    "skills_stage_scroll_memory": true,
+    "progression_stage_scroll_memory": true,
+    "features_stage_scroll_memory": true,
+    "spell_list_scroll_memory": true,
+    "remote_spell_images": false,
+    "css_structure": "passed",
+    "module_imports": "passed"
+  },
+  "notes": [
+    "Browser-level visual verification should be performed after deployment because the current sandbox does not expose the user repository runtime."
+  ]
 }

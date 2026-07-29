@@ -1,6 +1,13 @@
 {
-  "version": "V7 M7",
-  "milestone": 7,
-  "layout": "workflow / decision / result",
-  "entry": "index.html"
+  "version": "V7 M8",
+  "stage": "interaction and spellcasting corrections",
+  "completed": [
+    "prepared spell summary",
+    "prepared caster selection logic",
+    "monk spell step removal",
+    "eldritch knight and arcane trickster spell sources",
+    "horizontal stage scroll preservation",
+    "spell list scroll preservation"
+  ],
+  "deployment": "GitHub Pages static upload"
 }
