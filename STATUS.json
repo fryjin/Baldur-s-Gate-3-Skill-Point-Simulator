@@ -1,5 +1,10 @@
 {
-  "version": "V7 M12",
-  "milestone": "spell-layout-structural-fix",
-  "summary": "Replaced spell panel implicit grid rows with explicit flex stacking and stabilized card content rows."
+  "version": "V7 M13",
+  "milestone": "Independent mobile product layer",
+  "desktop": "M12 structure retained",
+  "mobile": "independent shell and seven independent build views",
+  "ready_for_upload": true,
+  "preserve_paths": [
+    "assets/spells/*.png"
+  ]
 }
