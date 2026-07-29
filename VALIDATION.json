@@ -1,42 +1,78 @@
 {
-  "version": "V7 M13",
-  "generated_at": "2026-07-29T15:18:00+08:00",
+  "version": "V7 M14",
   "checks": {
-    "javascript_syntax": "passed",
-    "module_imports": "passed",
-    "css_braces": "passed",
-    "mobile_independent_shell": "passed",
-    "mobile_independent_views": [
-      "level",
-      "route",
-      "progression",
-      "abilities",
-      "skills",
-      "features",
-      "spells"
-    ],
-    "desktop_shell_retained": "passed",
-    "dynamic_steps_retained": "passed",
-    "safe_area_css": "passed",
-    "dynamic_viewport": "passed",
-    "keyboard_handling": "passed",
-    "bottom_sheet": "passed",
-    "mobile_search_font_16px": "passed",
-    "spell_scroll_restore": "passed",
-    "spell_incremental_rendering": "36 items per batch",
-    "iphone_landscape_layout": "passed_static",
-    "render_smoke_test": "all seven mobile steps generated without runtime reference errors",
-    "browser_visual_test": "not completed: installed Chromium process does not terminate in the sandbox",
-    "horizontal_stage_position_restore": "passed",
-    "mobile_home_view": "passed",
-    "spell_dom_batch_limit": 36
-  },
-  "tested_viewports": [
-    "375x667",
-    "390x844",
-    "393x852",
-    "430x932",
-    "844x390",
-    "360x800"
-  ]
+    "javascript_syntax": "28 / 28 passed",
+    "module_references": "passed",
+    "html_asset_references": "passed",
+    "css_braces": {
+      "base.css": {
+        "open": 38,
+        "close": 38,
+        "balanced": true
+      },
+      "components.css": {
+        "open": 165,
+        "close": 165,
+        "balanced": true
+      },
+      "desktop.css": {
+        "open": 80,
+        "close": 80,
+        "balanced": true
+      },
+      "mobile.css": {
+        "open": 248,
+        "close": 248,
+        "balanced": true
+      },
+      "responsive.css": {
+        "open": 282,
+        "close": 282,
+        "balanced": true
+      },
+      "shell.css": {
+        "open": 136,
+        "close": 136,
+        "balanced": true
+      },
+      "tokens.css": {
+        "open": 2,
+        "close": 2,
+        "balanced": true
+      },
+      "views.css": {
+        "open": 195,
+        "close": 195,
+        "balanced": true
+      }
+    },
+    "dynamic_step_numbering": "passed static assertion",
+    "pc_page_overflow_lock": "implemented in desktop.css",
+    "spell_four_row_height_model": "implemented",
+    "prepared_strip_native_scrollbar_hidden": "implemented",
+    "spell_card_fixed_content_grid": "implemented",
+    "sticky_detail_actions": "implemented",
+    "desktop_width_strategies": "implemented",
+    "mobile_independent_layer": "retained and mobile.css now explicitly loaded",
+    "browser_visual_regression": "not executed: Chromium local/file navigation blocked by administrator policy",
+    "dynamic_steps_rule_test": {
+      "wizard8": [
+        "level",
+        "route",
+        "progression",
+        "abilities",
+        "skills",
+        "spells"
+      ],
+      "wizard_spells_step_number": "06 / 06",
+      "monk6": [
+        "level",
+        "route",
+        "progression",
+        "abilities",
+        "skills"
+      ],
+      "monk_spell_step_hidden": true
+    }
+  }
 }

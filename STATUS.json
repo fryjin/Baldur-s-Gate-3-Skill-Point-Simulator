@@ -1,10 +1,8 @@
 {
-  "version": "V7 M13",
-  "milestone": "Independent mobile product layer",
-  "desktop": "M12 structure retained",
-  "mobile": "independent shell and seven independent build views",
-  "ready_for_upload": true,
-  "preserve_paths": [
-    "assets/spells/*.png"
-  ]
+  "version": "V7 M14",
+  "phase": "PC structural closure",
+  "desktop": "M14 responsive shell and spell workspace",
+  "mobile": "M13 independent mobile product layer retained",
+  "new_features": false,
+  "browser_visual_validation": "blocked by administrator policy in sandbox"
 }
