@@ -1,0 +1,186 @@
+/* V7 M20 — mobile spell cards: stable natural height and compact summary */
+@media (max-width:767px){
+  /* Source and counters use two dedicated rows instead of competing for one line. */
+  .m19-spells-mode .m19-spell-toolbar-summary{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:7px;
+    align-items:stretch;
+  }
+
+  .m19-spells-mode .m19-spell-toolbar .m-spell-source{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:3px;
+  }
+
+  .m19-spells-mode .m19-spell-toolbar .m-spell-source select{
+    width:100%;
+    min-height:44px;
+  }
+
+  .m19-spells-mode .m19-spell-toolbar .m-spell-source small{
+    min-height:15px;
+    padding-inline:2px;
+    line-height:1.35;
+  }
+
+  .m19-spells-mode .m19-spell-toolbar .m-spell-counts{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    width:100%;
+    gap:6px;
+  }
+
+  .m19-spells-mode .m19-spell-toolbar .m-spell-counts span{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    min-width:0;
+    min-height:38px;
+    padding:7px 8px;
+    border-radius:8px;
+    white-space:nowrap;
+  }
+
+  .m19-spells-mode .m19-spell-toolbar .m-spell-counts b{
+    justify-self:end;
+    font-size:13px;
+  }
+
+  /* The list receives a predictable buffer above the fixed action bar. */
+  .m19-spells-mode .m-spell-list{
+    grid-auto-rows:max-content;
+    gap:8px;
+    padding-top:10px;
+    padding-bottom:calc(30px + env(safe-area-inset-bottom));
+  }
+
+  /* Cards grow with content. Nothing is absolutely positioned or clipped by a fixed height. */
+  .m19-spells-mode .m-spell-row{
+    box-sizing:border-box;
+    display:grid;
+    grid-template-columns:50px minmax(0,1fr) 18px;
+    grid-template-rows:auto;
+    align-items:start;
+    gap:10px;
+    width:100%;
+    height:auto!important;
+    min-height:112px!important;
+    max-height:none!important;
+    margin:0!important;
+    padding:11px 10px;
+    overflow:hidden;
+  }
+
+  .m19-spells-mode .m-spell-row>.m-spell-image,
+  .m19-spells-mode .m-spell-row>img{
+    align-self:start;
+    width:48px;
+    height:48px;
+    margin-top:1px;
+  }
+
+  .m19-spells-mode .m-spell-row>div{
+    display:grid;
+    grid-template-rows:auto auto auto auto;
+    align-content:start;
+    gap:2px;
+    min-width:0;
+    min-height:88px;
+    overflow:visible;
+  }
+
+  .m19-spells-mode .m-spell-row>div>div{
+    display:flex;
+    min-width:0;
+    min-height:20px;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:8px;
+  }
+
+  .m19-spells-mode .m-spell-row b{
+    min-width:0;
+    overflow:hidden;
+    font-size:15px;
+    line-height:1.35;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+
+  .m19-spells-mode .m-spell-row i{
+    flex:0 0 auto;
+    margin-top:2px;
+    line-height:1.2;
+    white-space:nowrap;
+  }
+
+  .m19-spells-mode .m-spell-row small{
+    display:block;
+    min-height:15px;
+    margin:0;
+    overflow:hidden;
+    font-size:10px;
+    line-height:1.4;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+
+  /* Full text remains in the detail sheet; the list keeps one stable summary line. */
+  .m19-spells-mode .m-spell-row p{
+    display:block!important;
+    min-height:17px;
+    max-height:17px;
+    margin:3px 0 0;
+    overflow:hidden;
+    color:#c8c0b4;
+    font-size:12px;
+    line-height:17px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:unset!important;
+  }
+
+  .m19-spells-mode .m-spell-row em{
+    display:block;
+    justify-self:start;
+    width:max-content;
+    max-width:100%;
+    min-height:20px;
+    margin:5px 0 0;
+    padding:3px 7px;
+    overflow:hidden;
+    line-height:14px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+
+  .m19-spells-mode .m-spell-row>span:last-child{
+    align-self:center;
+    justify-self:end;
+    line-height:1;
+  }
+
+  /* Selected/prepared states never change card dimensions. */
+  .m19-spells-mode .m-spell-row.selected,
+  .m19-spells-mode .m-spell-row.prepared{
+    min-height:112px!important;
+    padding-top:11px;
+    padding-bottom:11px;
+  }
+}
+
+@media (max-width:390px){
+  .m19-spells-mode .m-spell-row{
+    grid-template-columns:48px minmax(0,1fr) 16px;
+    gap:9px;
+    min-height:110px!important;
+    padding-inline:9px;
+  }
+
+  .m19-spells-mode .m-spell-row.selected,
+  .m19-spells-mode .m-spell-row.prepared{
+    min-height:110px!important;
+  }
+}

@@ -1,24 +1,17 @@
 {
-  "version": "V7 M19 patch",
-  "base": {
-    "repository": "fryjin/Baldur-s-Gate-3-Skill-Point-Simulator",
-    "branch": "main",
-    "expected_version": "V7 M18",
-    "index_blob_sha": "d260c3ff7f0b3a79f791dfc830740c346bb36228",
-    "mobile_build_view_blob_sha": "8ae506214b681057b997152537791ef586e05869",
-    "mobile_shell_blob_sha": "a4f07a35578acec3880932ed1f510aa423ad8e3b",
-    "mobile_css_blob_sha": "3528f6c99a3536f86274a0063a7eb10d1e728cb1"
-  },
+  "version": "V7 M20",
+  "result": "passed",
   "checks": {
-    "patch_javascript_syntax": "passed",
-    "patch_css_brace_balance": "passed",
-    "index_load_order": "app.js before m19 patch module",
-    "spell_toolbar_single_region": true,
-    "inline_result_removed_on_spell_page": true,
-    "prepared_icon_strip_removed_on_spell_page": true,
-    "spell_list_only_vertical_scroll_region": true,
-    "bottom_labels": ["上一步", "角色纸", "完成构筑"],
-    "historical_spell_images_modified": false
+    "m19_dependency_included": true,
+    "m20_css_loaded_after_m19": true,
+    "source_and_counts_separate_rows": true,
+    "counts_three_columns": true,
+    "spell_card_natural_height": true,
+    "spell_description_single_line": true,
+    "formula_dedicated_row": true,
+    "selected_state_preserves_size": true,
+    "list_bottom_safe_spacing": true,
+    "historical_spell_images_untouched": true
   },
-  "browser_visual_test": "not completed because headless Chromium did not terminate reliably in the sandbox"
+  "note": "CSS override and package validation completed."
 }

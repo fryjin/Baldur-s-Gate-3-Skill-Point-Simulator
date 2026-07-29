@@ -1,20 +1,25 @@
 {
-  "version": "V7 M19 patch",
+  "version": "V7 M20",
   "files": [
     {
       "path": "PATCH_README.md",
-      "size": 992,
-      "sha256": "8e5b1ff1495812b1f8fa240ac56cfe410b1f54a18bbb5617c5ae75bdf6c79114"
+      "size": 947,
+      "sha256": "a1f8155b54d6d1f3ba12b202a0b6611abfda2e90dd35e364c283c561add9bc49"
     },
     {
       "path": "VALIDATION.json",
-      "size": 1035,
-      "sha256": "be99f7f4ee2c15fd7127c3475b17629d72d28c932f8582c9874feab2daacfa58"
+      "size": 525,
+      "sha256": "d9c576bdefe3502edb646360d24e15816d34ec7a92fcdb7644c40766082669f9"
     },
     {
       "path": "assets/css/m19-mobile-spells.css",
       "size": 3808,
       "sha256": "d00b6ad577ea21e41a9779f5fe155e930f438b144bc7d76aed9079232b8ef84d"
+    },
+    {
+      "path": "assets/css/m20-mobile-spell-cards.css",
+      "size": 4328,
+      "sha256": "d86e8682bea1ae2d2974926d80da73c8c3d52e5a54a53bc7c7bef5ee9fb1d003"
     },
     {
       "path": "assets/js/patches/m19-mobile-spells.js",
@@ -23,8 +28,8 @@
     },
     {
       "path": "index.html",
-      "size": 1386,
-      "sha256": "61eb512b2786dd5434cd529b04db30b8e15b44f0bcb6cce21cebe9370abd7612"
+      "size": 1459,
+      "sha256": "2b75f5b5e0479385f416012e1cc2f3743db8be7febf8ec3032789d66e42139d1"
     }
   ]
 }
