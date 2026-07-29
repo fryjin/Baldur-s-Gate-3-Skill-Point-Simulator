@@ -1,7 +1,7 @@
 {
-  "version": "V7 M17",
-  "milestone": "移动端阶段条自动定位",
+  "version": "V7 M18",
+  "milestone": "移动端法术工具区重叠修复",
   "state": "ready-for-upload",
-  "base": "V7 M16",
-  "mobile_layer": "M13 independent mobile UI + M17 stage tracking"
+  "base": "V7 M17",
+  "mobile_layer": "M13 independent mobile UI + M17 stage tracking + M18 spell toolbar isolation"
 }

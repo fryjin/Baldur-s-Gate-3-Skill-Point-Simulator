@@ -1,17 +1,17 @@
 {
-  "version": "V7 M17",
+  "version": "V7 M18",
   "result": "passed",
   "checks": {
-    "javascript_syntax": "28 / 28 passed",
-    "module_references": "passed",
-    "css_structure": "passed",
-    "skills_stage_auto_reveal": "passed",
-    "features_stage_auto_reveal": "passed",
-    "progression_stage_auto_reveal": "passed",
-    "route_stage_auto_reveal": "passed",
-    "spell_filter_auto_reveal": "passed",
-    "reduced_motion_support": "passed",
-    "pc_layer": "M16 preserved"
+    "mobile_spell_controls_markup": true,
+    "old_sticky_markup_removed": true,
+    "controls_before_list": true,
+    "opaque_background": true,
+    "sticky_top_zero": true,
+    "fixed_min_height": true,
+    "ios_input_font": true,
+    "filter_pseudo_removed": true
   },
-  "note": "The active horizontal stage is only moved when it falls outside the visible area."
+  "javascript_files_checked": 28,
+  "css_files_checked": 9,
+  "note": "Static structure and package validation passed. Chromium screenshot process did not terminate reliably in the sandbox, so no screenshot artifact is included."
 }

@@ -89,3 +89,116 @@
     .m-filter-scroll{scroll-behavior:auto}
   }
 }
+
+
+/* V7 M18 — mobile spell toolbar isolation and overlap fix */
+@media (max-width:767px){
+  .m-spells-view{
+    min-height:0;
+    gap:9px;
+  }
+  .m-spell-controls{
+    position:sticky;
+    top:0;
+    z-index:12;
+    display:grid;
+    flex:0 0 auto;
+    gap:8px;
+    box-sizing:border-box;
+    min-height:100px;
+    margin:0 calc(-1 * var(--m-page-x));
+    padding:10px var(--m-page-x) 11px;
+    border-top:1px solid rgba(223,189,114,.10);
+    border-bottom:1px solid rgba(223,189,114,.22);
+    background:#0d0b09;
+    box-shadow:0 12px 20px rgba(0,0,0,.48);
+    isolation:isolate;
+    contain:paint;
+  }
+  .m-spell-controls::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(180deg,#12100d 0%,#0d0b09 100%);
+    pointer-events:none;
+  }
+  .m-spell-controls input{
+    display:block;
+    width:100%;
+    min-height:44px;
+    margin:0;
+    border:1px solid rgba(223,189,114,.28);
+    border-radius:10px;
+    background:#171411;
+    color:var(--text);
+    font-size:16px;
+    line-height:1.2;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+    -webkit-appearance:none;
+    appearance:none;
+  }
+  .m-spell-controls input::placeholder{color:#7f776d;opacity:1}
+  .m-spell-controls input:focus{
+    border-color:var(--gold);
+    outline:2px solid rgba(223,189,114,.16);
+    outline-offset:0;
+  }
+  .m-spell-controls .m-filter-scroll{
+    position:relative;
+    z-index:1;
+    display:flex;
+    min-height:40px;
+    gap:6px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    margin:0;
+    padding:0 0 1px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .m-spell-controls .m-filter-scroll::-webkit-scrollbar{display:none}
+  .m-spell-controls .m-filter-scroll button{
+    position:relative;
+    flex:0 0 auto;
+    min-height:38px;
+    margin:0;
+    padding:7px 12px;
+    border:1px solid rgba(223,189,114,.18);
+    border-radius:8px;
+    background:#14110e;
+    color:var(--muted);
+    line-height:1;
+    box-shadow:none;
+  }
+  .m-spell-controls .m-filter-scroll button::before,
+  .m-spell-controls .m-filter-scroll button::after{
+    content:none!important;
+    display:none!important;
+  }
+  .m-spell-controls .m-filter-scroll button.active{
+    border-color:var(--gold);
+    background:#2a2418;
+    color:#f7dd92;
+  }
+  .m-spell-list{
+    position:relative;
+    z-index:1;
+    padding-top:2px;
+    scroll-margin-top:108px;
+  }
+  .m-spell-row{
+    position:relative;
+    z-index:0;
+  }
+  .m-spell-controls + .m-spell-list{
+    margin-top:0;
+  }
+}
+
+@media (max-width:390px){
+  .m-spell-controls{
+    margin-inline:calc(-1 * var(--m-page-x));
+    padding-inline:var(--m-page-x);
+  }
+}

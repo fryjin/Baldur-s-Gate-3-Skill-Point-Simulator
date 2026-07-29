@@ -1,5 +1,5 @@
 {
-  "version": "V7 M17",
+  "version": "V7 M18",
   "generated": "2026-07-29",
   "files": [
     {
@@ -23,14 +23,19 @@
       "sha256": "d8a5d817fd8f76e73ffe55a1e35382798e5535501757918723b0729e2ad1d695"
     },
     {
+      "path": "M18_MOBILE_SPELL_TOOLBAR_SPEC.md",
+      "size": 991,
+      "sha256": "79b9577690cbca9fa3684fa9d93d50c650fac8f6b9197dc79811ae1dd8967662"
+    },
+    {
       "path": "README.md",
-      "size": 857,
-      "sha256": "9edcf3b6173261277c1c391e2b7e1361cbc599832a2251c3e33f1130ed4edd9d"
+      "size": 880,
+      "sha256": "1150dc0d32c5bf444069037a9fc3ff5770e6ca450612e80b7bae861f3587c33d"
     },
     {
       "path": "STATUS.json",
-      "size": 194,
-      "sha256": "902e71f150b625806f570ccb87f8cd4eddcd65430864f8d31b79aa9d8d693a99"
+      "size": 230,
+      "sha256": "6e832fe6450ba4955d628a05d88e0a718c9ededa6538de4ac7eb6644ab8f6f8a"
     },
     {
       "path": "V7_PRODUCT_SPEC.md",
@@ -39,8 +44,8 @@
     },
     {
       "path": "VALIDATION.json",
-      "size": 559,
-      "sha256": "fd813dcb167983b5ef6106fa8faddffcc5ff2e02ebff3dcc86e78fe07d7f3f43"
+      "size": 565,
+      "sha256": "7200e8c9146a3480543b01730517e8f77a2b0a07cdd409ebaac9c92a81173534"
     },
     {
       "path": "assets/css/base.css",
@@ -64,8 +69,8 @@
     },
     {
       "path": "assets/css/mobile.css",
-      "size": 23562,
-      "sha256": "aa7c4eb741eb76f09c3df664ec507a48b6e1e52d010948b373c39ce20aaa8778"
+      "size": 26222,
+      "sha256": "edbc3a179d2395b4094452743c4a188d80796e9fc9b6b2a31637257e468eb0dc"
     },
     {
       "path": "assets/css/responsive.css",
@@ -154,8 +159,8 @@
     },
     {
       "path": "assets/js/mobile/mobile-build-view.js",
-      "size": 30747,
-      "sha256": "eb82e5614647f5ca272c48a219b87ffb4cbe42d66278436def4dc9a981400d35"
+      "size": 30792,
+      "sha256": "5e82e5684157f8c39c393f1ae69bdf37eef9f6f01cb384012d2c22c337914f77"
     },
     {
       "path": "assets/js/mobile/mobile-shell.js",
@@ -255,7 +260,7 @@
     {
       "path": "index.html",
       "size": 1237,
-      "sha256": "6a3fac4c6e2d42c0e4ee6b0b7f098ef539c490dc5b8251c359579582a58fe520"
+      "sha256": "c9c4c768d399e425ccc66d738755f6a2fadb4f50699655154dd922092e7a0914"
     }
   ]
 }
