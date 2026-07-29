@@ -1,17 +1,5 @@
 {
-  "version": "V7 M11",
-  "stage": "unique-feat-selection-and-save-migration",
-  "completed": [
-    "non-repeatable feat uniqueness across all growth nodes",
-    "selected feats removed from later node option lists",
-    "store-level duplicate write protection",
-    "legacy duplicate feat migration",
-    "ability score improvement explicitly repeatable",
-    "growth-node completion recalculated after migration"
-  ],
-  "known_limitations": [
-    "Ability Score Improvement remains repeatable by design and final attributes are capped at 20",
-    "The current feat catalog contains no other repeatable feats",
-    "Exact weapon damage dice still require a future weapon/equipment selection system"
-  ]
+  "version": "V7 M12",
+  "milestone": "spell-layout-structural-fix",
+  "summary": "Replaced spell panel implicit grid rows with explicit flex stacking and stabilized card content rows."
 }

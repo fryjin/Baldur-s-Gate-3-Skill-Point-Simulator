@@ -1,24 +1,26 @@
 {
-  "version": "V7 M11",
+  "version": "V7 M12",
+  "passed": true,
   "checks": {
-    "javascript_syntax": "26 / 26 passed",
-    "css_structure": "passed",
-    "asi_marked_repeatable": true,
-    "progression_view_filters_selected_feats": true,
-    "store_rejects_duplicate_non_repeatable_feats": true,
-    "legacy_duplicate_feat_migration": true,
-    "duplicate_alert_expected_result": [
-      "alert",
-      "none",
-      "asi"
-    ],
-    "historical_spell_image_path_preserved": true,
-    "module_behavior_test": "passed: alert,alert,asi migrated to alert,none,asi",
-    "duplicate_write_guard": "passed",
-    "repeatable_asi": "passed"
+    "css_braces_base.css": true,
+    "css_braces_components.css": true,
+    "css_braces_responsive.css": true,
+    "css_braces_shell.css": true,
+    "css_braces_tokens.css": true,
+    "css_braces_views.css": true,
+    "spell_layout_uses_flex": true,
+    "spell_layout_no_implicit_three_row_grid": true,
+    "spell_list_fills_remaining_space": true,
+    "spell_list_stable_row_height": true,
+    "spell_card_stable_content_rows": true,
+    "prepared_strip_is_normal_flow": true,
+    "responsive_does_not_restore_grid_rows": true,
+    "static_playwright_stack_overlap_count": 0,
+    "static_playwright_internal_overlap_count": 0,
+    "static_playwright_layout_display": "flex",
+    "javascript_files_checked": 26,
+    "javascript_syntax_passed": true,
+    "full_application_browser_note": "Localhost navigation is blocked by the sandbox administrator; a Playwright set_content layout regression was executed against the production CSS and representative spell DOM."
   },
-  "browser_verification": {
-    "status": "static-and-module-validation",
-    "notes": "M11 focuses on feat uniqueness and legacy save normalization. Browser-level visual behavior follows the existing M10 layout."
-  }
+  "generated_at": "2026-07-29T06:39:48.712144+00:00"
 }

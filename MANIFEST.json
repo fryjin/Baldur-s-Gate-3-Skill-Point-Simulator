@@ -1,26 +1,26 @@
 {
-  "version": "V7 M11",
-  "generated_at": "2026-07-29T04:32:52.304013+00:00",
+  "version": "V7 M12",
+  "generated_at": "2026-07-29T06:39:48.714508+00:00",
   "files": [
     {
       "path": "README.md",
-      "size": 1391,
-      "sha256": "4a2c47a7f2058758d7fc08864d2b9225028af65528a2bfab6dd79dfb849e1c7c"
+      "size": 1996,
+      "sha256": "06cb5956b0c5c06f32193ee885e57d0d09b364960580716fe8752fbaa927ee78"
     },
     {
       "path": "STATUS.json",
-      "size": 707,
-      "sha256": "c2651480fe2db02e3a6ff7314a482db2cb6ed0707b573e861ed247415dedc6c2"
+      "size": 189,
+      "sha256": "09d11628dfb25b6beee1e69c3962bef87d388c273e2e831b54cdba686b927f62"
     },
     {
       "path": "V7_PRODUCT_SPEC.md",
-      "size": 35318,
-      "sha256": "4e2d0fa3a74c18ea20f2d01c9fbef4654207c8ddb816852832476cdf11f315f0"
+      "size": 35761,
+      "sha256": "783d9ff58122f353519e14f2501b3e736582efe66f20b767169c3e8b3f061ef8"
     },
     {
       "path": "VALIDATION.json",
-      "size": 821,
-      "sha256": "f39f3296b23f89c3b73031c47dcc0f7fee269c7affa393adbd43868de197c89d"
+      "size": 1080,
+      "sha256": "9bd5b8d6e5e2a9f0339edeec11e3bf1f987c29d4e162e34014c5677940da2735"
     },
     {
       "path": "assets/css/base.css",
@@ -29,13 +29,13 @@
     },
     {
       "path": "assets/css/components.css",
-      "size": 15957,
-      "sha256": "6121f8843ba965d131368bb63d401a64299747cfb885efe82a69d0d84f64468d"
+      "size": 16168,
+      "sha256": "fbef2b6841254fc44d2343b083959f50c9e5429e293dabf9b336798dd8947c2a"
     },
     {
       "path": "assets/css/responsive.css",
-      "size": 16013,
-      "sha256": "55acaad0c6ae3762984cc2fbcb1c1f9d5862c7f6d460a7e02d9d31f867c9cdb8"
+      "size": 16002,
+      "sha256": "36c342420a6bc485265c517574dd8c7648bcd414b977ea57d6d17ddc5bcbb433"
     },
     {
       "path": "assets/css/shell.css",
@@ -80,7 +80,7 @@
     {
       "path": "assets/js/components/shell.js",
       "size": 26163,
-      "sha256": "6d5f87ed9fe869cd1376d2dfc28e431b140eb88fb497bf204ffe4ef511dee32a"
+      "sha256": "3d67a34fb9dc85e0011ae8ef9a4ad919e89e1e9a7b811c1915d3c48e9366385f"
     },
     {
       "path": "assets/js/components/ui.js",
@@ -200,7 +200,7 @@
     {
       "path": "assets/spells/README.md",
       "size": 252,
-      "sha256": "c815094ff1fd3a9e698273662dfb9ebbd928010de620ebe075055d2279ff211f"
+      "sha256": "a9d86bb9eba79764bab392c3740f28d6a5ce1196f22e500bcbd43c0d0846e333"
     },
     {
       "path": "assets/spells/image-manifest.json",
@@ -210,7 +210,7 @@
     {
       "path": "index.html",
       "size": 1056,
-      "sha256": "c94f75a8902b5d57c1758ba21cb0ef6e1d51ae7334c538a4cfbe7a44884dd93c"
+      "sha256": "d926462d4a17b200cfadb6e3f639214890b5aeb967be6c5e30903b581b77986f"
     }
   ]
 }
