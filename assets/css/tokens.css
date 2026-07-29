@@ -37,8 +37,8 @@
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 
-/* M9 damage and mobile tokens */
+/* M10 damage and mobile tokens */
 :root{
-  --damage-acid:#a8c957;--damage-cold:#83c9ef;--damage-fire:#ed794e;--damage-lightning:#8c9cff;--damage-thunder:#62c5d7;--damage-poison:#74ad72;--damage-radiant:#f3d27a;--damage-necrotic:#9d74c8;--damage-psychic:#d986c5;--damage-force:#8eb6df;--damage-slashing:#c4c8cd;--damage-piercing:#aeb9c9;--damage-bludgeoning:#b9a58c;--damage-healing:#8fd0a0;--damage-temporary:#a3d7c4;--damage-elemental:#d2af75;
+  --damage-acid:#a8c957;--damage-cold:#83c9ef;--damage-fire:#ed794e;--damage-lightning:#8c9cff;--damage-thunder:#62c5d7;--damage-poison:#74ad72;--damage-radiant:#f3d27a;--damage-necrotic:#9d74c8;--damage-psychic:#d986c5;--damage-force:#8eb6df;--damage-weapon:#c0b49e;--damage-slashing:#c4c8cd;--damage-piercing:#aeb9c9;--damage-bludgeoning:#b9a58c;--damage-healing:#8fd0a0;--damage-temporary:#a3d7c4;--damage-elemental:#d2af75;
   --app-height:100dvh;--keyboard-inset:0px;
 }

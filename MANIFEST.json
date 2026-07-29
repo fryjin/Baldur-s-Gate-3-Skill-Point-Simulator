@@ -1,51 +1,51 @@
 {
-  "version": "V7 M9",
-  "file_count": 42,
+  "version": "V7 M10",
+  "generated_at": "2026-07-29T04:23:00.602111+00:00",
   "files": [
     {
       "path": "README.md",
-      "size": 2432,
-      "sha256": "7ded0828b99b8577b1f37e1f034ec60c599f7e2b4d121d31901a2ae4e55f68a3"
+      "size": 1785,
+      "sha256": "bd459c106236262a4a0a5da1cb0fead5c8bfd4bb5748c142d8cfb3b079fc0a59"
     },
     {
       "path": "STATUS.json",
-      "size": 690,
-      "sha256": "50a30491fb664c3fb5d2aaf7f7080c44958131876685227eb3554636da686d98"
+      "size": 780,
+      "sha256": "cd2eb81d9cf276ad0eebc938ca1270c4e400eae1c839e025731e9684c5a18b83"
     },
     {
       "path": "V7_PRODUCT_SPEC.md",
-      "size": 34771,
-      "sha256": "f6094a548d1a6a0f485089cba8d3992d35cc1c068956d7aeeb594324677536c7"
+      "size": 34772,
+      "sha256": "c4ea8353e4ba8a70136e8d518b8c4156a2481016223ab488ed173ce94dd345a0"
     },
     {
       "path": "VALIDATION.json",
-      "size": 1287,
-      "sha256": "0368e1479451300697a6bc2d3a250f5d6f36e8c82b7620b859227e86f38d852f"
+      "size": 976,
+      "sha256": "b74ed3919d7d4b4a4f166000b0fd825078574c3a53530e84a538a3699866388f"
     },
     {
       "path": "assets/css/base.css",
-      "size": 3137,
-      "sha256": "151d6f5e705e4565ca5808df1e38e685f635e35ccbd42d2c984e495f88d0f5fa"
+      "size": 3138,
+      "sha256": "47c4cb07555e4967f4f1143958c8ec9f9ebf764fce1241294ab8bef0af07cbc0"
     },
     {
       "path": "assets/css/components.css",
-      "size": 14092,
-      "sha256": "fb802904dd28b9e0fba012733f7c1813ac9b4b8edac598a8efa7d81ff72643d2"
+      "size": 15957,
+      "sha256": "6121f8843ba965d131368bb63d401a64299747cfb885efe82a69d0d84f64468d"
     },
     {
       "path": "assets/css/responsive.css",
-      "size": 16064,
-      "sha256": "21d3dea83c748e02724f16fbac5c76c7d38385339bb18adeefae705be7228be2"
+      "size": 16013,
+      "sha256": "55acaad0c6ae3762984cc2fbcb1c1f9d5862c7f6d460a7e02d9d31f867c9cdb8"
     },
     {
       "path": "assets/css/shell.css",
-      "size": 13006,
-      "sha256": "03835f8f33e56cc918c81ed68471bacab65f885b9051537e4fbdd5b5b79a1113"
+      "size": 13007,
+      "sha256": "c5d76761c9cb1c2a657dbc852a6e8e5e90062f2f0444e3f900fb089f2ddde48c"
     },
     {
       "path": "assets/css/tokens.css",
-      "size": 1393,
-      "sha256": "58762043e85dd59ac6552f301b2de50bd7c4c5f1b090524591b7e2a06c4b24e5"
+      "size": 1418,
+      "sha256": "3f3d486e634a8a8334b07f18b7007292ad836b81433020581ef710316e7cc2d1"
     },
     {
       "path": "assets/css/views.css",
@@ -79,8 +79,8 @@
     },
     {
       "path": "assets/js/components/shell.js",
-      "size": 25013,
-      "sha256": "99335887f3fec869848305472dc062f767f3267bf1d6c8256b888807c778843f"
+      "size": 26163,
+      "sha256": "5beb183285c849e44e3e67d938c7f65f9a65b037808bb80229bd33f63d9d8e54"
     },
     {
       "path": "assets/js/components/ui.js",
@@ -94,8 +94,8 @@
     },
     {
       "path": "assets/js/data/effects.js",
-      "size": 8877,
-      "sha256": "082523b407242fb0d822bb79226a42fce1ad8b994d68fd1c7a20e97f3404dc1d"
+      "size": 9232,
+      "sha256": "aa1d52ad3b52a375197c77d8a88ede264e76b2171a3a2021ee32a4929f67f80e"
     },
     {
       "path": "assets/js/data/progression.js",
@@ -129,8 +129,8 @@
     },
     {
       "path": "assets/js/rules/effects.js",
-      "size": 3967,
-      "sha256": "f77d1fb2cfffbc0352af2229e0fbf080d2a1078d2f429e7138a946bce2318e21"
+      "size": 4176,
+      "sha256": "472e70996b26a63f72517f97277ca3b0409ca18acb9fe91e564e5935a82eb49f"
     },
     {
       "path": "assets/js/selectors.js",
@@ -194,13 +194,13 @@
     },
     {
       "path": "assets/js/views/spells-view.js",
-      "size": 10457,
-      "sha256": "178cb305fdf7dee065932858a7e7772e2ec073c0e330f3cc49e457d10ae2c38a"
+      "size": 10562,
+      "sha256": "77a73cfef88595d9629ea49bce4c2cf0036bb12481f9da0f167d225c438e662e"
     },
     {
       "path": "assets/spells/README.md",
-      "size": 251,
-      "sha256": "c9bd1e612d6f2c9d44a34968dfc902b7a132a389fd2332c84d52fad1986a7c37"
+      "size": 252,
+      "sha256": "6065c0c882210cd6fe7b23abeec953c00cbc9e4b38daa9a55dacb45cc50548ff"
     },
     {
       "path": "assets/spells/image-manifest.json",
@@ -209,8 +209,8 @@
     },
     {
       "path": "index.html",
-      "size": 1055,
-      "sha256": "b4007b8eb076d9b90a784d09d8dddc0942b7d84ec08020058a9ee93a39c26d6b"
+      "size": 1056,
+      "sha256": "0d45c847420a315840e600f7bf492e0a0e924578162d380dfd9e9b583b7441e5"
     }
   ]
 }

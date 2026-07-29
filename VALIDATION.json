@@ -1,33 +1,22 @@
 {
-  "version": "V7 M9",
+  "version": "V7 M10",
   "checks": {
     "javascript_syntax": "26 / 26 passed",
-    "module_imports": "passed",
     "css_structure": "passed",
-    "effect_catalog_entries": 77,
-    "attribute_aware_formula": "2 × (1d10 + 3)",
-    "selected_class_feature_summary": true,
-    "combat_formula_summary": true,
-    "damage_type_tokens": 15,
-    "spell_upcast_preview": true,
-    "mobile_step_drawer": true,
-    "mobile_result_drawer": true,
-    "mobile_detail_bottom_sheet": true,
-    "iphone_safe_area": true,
-    "dynamic_visual_viewport": true,
-    "ios_input_font_minimum_16px": true,
-    "iphone_landscape_split_layout": true,
-    "monk_spell_step_hidden": true,
-    "wizard_spell_step_visible": true,
+    "spell_copy_uses_block_container": true,
+    "spell_card_has_dedicated_title_row": true,
+    "spell_card_has_dedicated_formula_footer": true,
+    "spell_card_invalid_paragraph_inside_span_removed": true,
+    "persistent_class_feature_strip": true,
+    "battle_master_selected_features_visible_on_spell_step": true,
+    "trip_attack_formula": "武器伤害（属性 +3） + 1d8",
+    "riposte_formula": "武器伤害（属性 +3） + 1d8",
+    "precision_attack_formula": "攻击检定 + 1d8",
+    "weapon_damage_visual_token": true,
     "historical_spell_image_path_preserved": true
   },
   "browser_verification": {
-    "status": "blocked",
-    "reason": "The sandbox Chromium organization policy blocks localhost and file URLs.",
-    "fallback": "Static module, syntax, selector, effect-engine and responsive-rule validation completed."
-  },
-  "notes": [
-    "Numeric formulas are shown only for curated structured effects; control and utility spells without reliable formula metadata remain descriptive.",
-    "Equipment bonuses, target resistances, hit chance and full DPR simulation are outside M9 scope."
-  ]
+    "status": "static-and-module-validation",
+    "notes": "Generated shell HTML was tested with a fighter 3 / wizard 3 Battle Master build. Selected maneuvers and computed formulas were present in the persistent CURRENT BUILD section."
+  }
 }

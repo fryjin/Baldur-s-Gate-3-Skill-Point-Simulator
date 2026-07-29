@@ -35,6 +35,6 @@ h1,h2,h3{font-family:Georgia,"Noto Serif SC","Songti SC",serif}
 @keyframes toastIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;transition-duration:.001ms!important}}
 
-/* M9 */
+/* M10 */
 body.dialog-open{overflow:hidden;touch-action:none}
 input,select,textarea{font-size:max(16px,1em)}

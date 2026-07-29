@@ -1,22 +1,19 @@
 {
-  "version": "V7 M9",
-  "stage": "effects-and-iphone-responsive",
+  "version": "V7 M10",
+  "stage": "spell-card-layout-and-persistent-class-features",
   "completed": [
-    "selected class-feature result summaries",
-    "structured spell and feature effects",
-    "attribute-aware formulas",
-    "damage type visual tokens",
-    "spell upcast preview",
-    "iPhone safe areas",
-    "dynamic visual viewport",
-    "mobile step drawer",
-    "mobile result drawer",
-    "mobile detail bottom sheet",
-    "iPhone landscape split layout"
+    "spell card semantic markup fix",
+    "spell title description formula layout separation",
+    "stable two-column spell card sizing",
+    "persistent selected class feature strip in current build",
+    "battle master maneuver formulas",
+    "weapon-neutral damage type token",
+    "current ability modifier shown without inventing weapon die",
+    "keyboard and hover tooltips for class features"
   ],
   "known_limitations": [
-    "Only spells with curated structured effect data show numeric formulas",
-    "Equipment bonuses and complex DPR are outside M9 scope",
-    "Local Chromium navigation is blocked by organization policy"
+    "Exact weapon damage dice require a future weapon/equipment selection system",
+    "Only curated spells and class features have structured numeric formulas",
+    "Target resistance, hit chance and full DPR remain outside V7 M10 scope"
   ]
 }
