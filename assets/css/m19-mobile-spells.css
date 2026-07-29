@@ -1,0 +1,166 @@
+/* V7 M19 — mobile spell page: one toolbar + one scroll region */
+@media (max-width:767px){
+  .m19-spells-mode .mobile-inline-result{display:none!important}
+  .m19-spells-mode .mobile-task-head>strong{display:none}
+
+  .m19-spells-mode .mobile-build-content.mobile-spells-content{
+    min-height:0;
+    overflow:hidden;
+    padding-top:10px;
+    padding-bottom:0;
+  }
+
+  .m19-spells-mode .m-spells-view{
+    display:grid;
+    grid-template-rows:auto minmax(0,1fr);
+    width:100%;
+    height:100%;
+    min-height:0;
+    gap:0;
+  }
+
+  .m19-spell-toolbar{
+    position:relative;
+    z-index:6;
+    display:grid;
+    gap:8px;
+    min-width:0;
+    padding:0 0 10px;
+    border-bottom:1px solid rgba(223,189,114,.22);
+    background:linear-gradient(180deg,#12100d 0%,#0d0b09 100%);
+    box-shadow:0 10px 18px rgba(0,0,0,.28);
+  }
+
+  .m19-spell-toolbar-summary{
+    display:grid;
+    grid-template-columns:minmax(118px,.92fr) minmax(0,1.08fr);
+    align-items:center;
+    gap:8px;
+    min-width:0;
+  }
+
+  .m19-spell-toolbar .m-spell-source{
+    display:grid;
+    min-width:0;
+    gap:2px;
+  }
+
+  .m19-spell-toolbar .m-spell-source select{
+    width:100%;
+    min-width:0;
+    min-height:42px;
+    padding-inline:10px 30px;
+    border:1px solid rgba(223,189,114,.28);
+    border-radius:9px;
+    background:#15120f;
+    color:var(--text);
+    font-size:16px;
+  }
+
+  .m19-spell-toolbar .m-spell-source small{
+    overflow:hidden;
+    color:var(--muted);
+    font-size:10px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+
+  .m19-spell-toolbar .m-spell-counts{
+    display:flex;
+    min-width:0;
+    justify-content:flex-end;
+    align-items:center;
+    gap:4px;
+    flex-wrap:wrap;
+  }
+
+  .m19-spell-toolbar .m-spell-counts span{
+    display:inline-flex;
+    align-items:baseline;
+    gap:3px;
+    min-height:28px;
+    padding:5px 7px;
+    border:1px solid rgba(223,189,114,.13);
+    border-radius:7px;
+    background:rgba(223,189,114,.045);
+    color:var(--muted);
+    font-size:10px;
+    white-space:nowrap;
+  }
+
+  .m19-spell-toolbar .m-spell-counts b{
+    color:var(--text);
+    font-size:12px;
+  }
+
+  .m19-spell-toolbar .m-spell-controls{
+    position:relative;
+    top:auto;
+    z-index:auto;
+    display:grid;
+    gap:7px;
+    min-height:0;
+    margin:0;
+    padding:0;
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    isolation:auto;
+    contain:none;
+  }
+
+  .m19-spell-toolbar .m-spell-controls::before{display:none!important}
+
+  .m19-spell-toolbar .m-spell-controls input{
+    width:100%;
+    min-height:44px;
+    margin:0;
+    border:1px solid rgba(223,189,114,.28);
+    border-radius:10px;
+    background:#171411;
+    color:var(--text);
+    font-size:16px;
+  }
+
+  .m19-spell-toolbar .m-filter-scroll{
+    display:flex;
+    gap:6px;
+    min-height:40px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    margin:0;
+    padding:0 0 1px;
+    scroll-padding-inline:0;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .m19-spell-toolbar .m-filter-scroll::-webkit-scrollbar{display:none}
+  .m19-spell-toolbar .m-filter-scroll button{flex:0 0 auto}
+
+  .m19-spells-mode .m-prepared-row{display:none!important}
+
+  .m19-spells-mode .m-spell-list{
+    position:relative;
+    z-index:1;
+    display:grid;
+    align-content:start;
+    min-height:0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    gap:7px;
+    margin:0;
+    padding:10px 0 calc(16px + env(safe-area-inset-bottom));
+    scroll-margin-top:0;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .m19-spells-mode .m-spell-row:first-child{margin-top:0}
+}
+
+@media (max-width:390px){
+  .m19-spell-toolbar-summary{grid-template-columns:1fr}
+  .m19-spell-toolbar .m-spell-counts{justify-content:flex-start}
+  .m19-spell-toolbar .m-spell-counts span{flex:1 1 auto;justify-content:center}
+}
