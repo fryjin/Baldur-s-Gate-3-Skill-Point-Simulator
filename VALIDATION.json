@@ -1,21 +1,16 @@
 {
-  "version": "V7 M6",
+  "version": "V7 M7",
+  "validated_at": "2026-07-29",
   "checks": {
-    "javascript_files_checked": 23,
-    "javascript_syntax_passed": true,
-    "relative_imports_resolved": true,
-    "css_files_checked": 6,
-    "css_brace_balance": true,
-    "compact_build_header": true,
-    "current_detail_above_full_summary": true,
-    "current_detail_independent_scroll": true,
-    "full_build_summary_collapsed_by_default": true,
-    "desktop_detail_close_button": false,
-    "legacy_spell_path_preserved": "assets/spells/<spellKey>.png"
-  },
-  "browser_validation": {
-    "status": "not_run",
-    "reason": "Sandbox Chromium administrator policy blocks local HTTP and file URLs. Static module, syntax, layout-structure and package validation completed."
-  },
-  "failures": []
+    "javascript_syntax": "passed (23 files)",
+    "css_braces": "passed",
+    "shell_render_test": "passed",
+    "left_column_role": "workflow only",
+    "middle_column_role": "decision list + current option detail + actions",
+    "right_column_role": "decision result + final build summary",
+    "selection_action_in_right_column": "absent",
+    "mobile_detail_mode": "bottom sheet retained",
+    "historic_spell_path": "assets/spells/*.png retained",
+    "browser_visual_test": "not run: local navigation blocked by sandbox administrator policy"
+  }
 }

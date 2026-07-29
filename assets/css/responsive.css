@@ -69,3 +69,15 @@
   .full-build-disclosure>summary{padding:0 16px}
   .full-build-content{padding:16px}
 }
+
+
+/* M7 responsive decision inspector */
+@media(max-width:1100px) and (min-width:768px){
+  .decision-pane{padding:20px 18px 16px}
+  .decision-stage.with-inspector{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(220px,36dvh);gap:12px}
+  .decision-inspector{border-left:1px solid var(--line);box-shadow:inset 0 3px rgba(223,189,114,.10)}
+}
+@media(max-width:767px){
+  .decision-stage.with-inspector{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr)}
+  .decision-inspector{display:none}
+}

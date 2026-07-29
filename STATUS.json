@@ -1,11 +1,6 @@
 {
-  "version": "V7 M6",
-  "date": "2026-07-28",
-  "changes": [
-    "current option detail prioritized",
-    "compact build header",
-    "independent detail scrolling",
-    "collapsible full build summary",
-    "responsive detail hierarchy"
-  ]
+  "version": "V7 M7",
+  "milestone": 7,
+  "layout": "workflow / decision / result",
+  "entry": "index.html"
 }
