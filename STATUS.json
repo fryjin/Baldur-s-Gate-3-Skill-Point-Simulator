@@ -1,8 +1,8 @@
 {
-  "version": "V7 M14",
-  "phase": "PC structural closure",
-  "desktop": "M14 responsive shell and spell workspace",
+  "version": "V7 M15",
+  "phase": "PC no-horizontal-interaction closure",
+  "desktop": "wrapping grids and vertical wheel scrolling",
   "mobile": "M13 independent mobile product layer retained",
   "new_features": false,
-  "browser_visual_validation": "blocked by administrator policy in sandbox"
+  "browser_visual_validation": "attempted but Chromium did not terminate in sandbox; static and syntax validation completed"
 }

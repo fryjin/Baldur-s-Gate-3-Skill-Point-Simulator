@@ -1,5 +1,5 @@
 
-/* V7 M14 — PC structural closure. Mobile M13 remains isolated below 768px. */
+/* V7 M15 — PC structural closure. Mobile M13 remains isolated below 768px. */
 @media (min-width:768px){
   :root{--pc-header:64px;--pc-footer:64px;--step-w:164px;--detail-w:312px}
   html,body,#app{width:100%;height:100%;min-height:0;overflow:hidden}
@@ -91,4 +91,110 @@
   .spell-toolbar{grid-template-columns:1fr;gap:7px}
   .spell-list{grid-template-columns:1fr;grid-auto-rows:minmax(112px,auto)}
   .spell-item{min-height:112px}
+}
+
+/* V7 M15 — PC uses vertical/wrapping interactions only. */
+@media (min-width:768px){
+  /* Horizontal tab rows become wrapped grids. */
+  .node-stage-tabs,
+  .node-stage-tabs.compact-stages{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(176px,1fr));
+    gap:8px;
+    max-height:138px;
+    margin-bottom:14px;
+    padding:0 4px 4px 0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    scrollbar-gutter:stable;
+    overscroll-behavior:contain;
+  }
+  .node-stage,
+  .compact-stages .node-stage{
+    width:auto;
+    min-width:0;
+    max-width:none;
+    flex:none;
+  }
+
+  /* Route and target-level tracks wrap instead of scrolling sideways. */
+  .route-track{
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    overflow:visible;
+    padding-bottom:0;
+  }
+  .level-track{
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    overflow:visible;
+    justify-content:stretch;
+  }
+
+  /* Filters never require shift-wheel or drag. */
+  .filter-tabs{
+    flex-wrap:wrap;
+    overflow:visible;
+  }
+
+  /* Prepared spells use wrapping icons with optional vertical wheel scrolling. */
+  .prepared-strip{
+    grid-template-columns:auto minmax(0,1fr);
+    align-items:start;
+    min-height:56px;
+    max-height:112px;
+    padding:8px 0;
+    overflow:hidden;
+  }
+  .prepared-strip::after{display:none}
+  .prepared-icon-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,40px);
+    align-content:start;
+    justify-content:start;
+    gap:7px;
+    width:100%;
+    min-width:0;
+    max-height:88px;
+    padding:0 4px 2px 0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-gutter:stable;
+    overscroll-behavior:contain;
+  }
+  .prepared-icon-row::-webkit-scrollbar{display:block;width:7px}
+
+  /* Current build abilities are a wrapping grid, never a horizontal carousel. */
+  .compact-feature-row{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:6px;
+    max-height:150px;
+    padding:0 4px 2px 0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-gutter:stable;
+    overscroll-behavior:contain;
+  }
+  .compact-feature-chip{
+    width:100%;
+    min-width:0;
+    max-width:none;
+  }
+
+  .compact-combat{overflow:visible}
+
+  /* Tablet/compact PC library navigation wraps into rows. */
+  .library-nav{
+    overflow-x:hidden;
+  }
+}
+
+@media (min-width:768px) and (max-width:1279px){
+  .route-track,
+  .level-track{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .node-stage-tabs,
+  .node-stage-tabs.compact-stages{grid-template-columns:repeat(2,minmax(0,1fr));max-height:154px}
+  .compact-feature-row{grid-template-columns:1fr;max-height:160px}
+  .library-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:5px}
 }
