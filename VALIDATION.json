@@ -1,21 +1,33 @@
 {
-  "version": "V7 M8",
+  "version": "V7 M9",
   "checks": {
-    "javascript_syntax": "23 / 23 passed",
-    "monk_spell_sources": 0,
+    "javascript_syntax": "26 / 26 passed",
+    "module_imports": "passed",
+    "css_structure": "passed",
+    "effect_catalog_entries": 77,
+    "attribute_aware_formula": "2 × (1d10 + 3)",
+    "selected_class_feature_summary": true,
+    "combat_formula_summary": true,
+    "damage_type_tokens": 15,
+    "spell_upcast_preview": true,
+    "mobile_step_drawer": true,
+    "mobile_result_drawer": true,
+    "mobile_detail_bottom_sheet": true,
+    "iphone_safe_area": true,
+    "dynamic_visual_viewport": true,
+    "ios_input_font_minimum_16px": true,
+    "iphone_landscape_split_layout": true,
     "monk_spell_step_hidden": true,
     "wizard_spell_step_visible": true,
-    "eldritch_knight_spell_step_visible": true,
-    "prepared_spell_group_visible": true,
-    "skills_stage_scroll_memory": true,
-    "progression_stage_scroll_memory": true,
-    "features_stage_scroll_memory": true,
-    "spell_list_scroll_memory": true,
-    "remote_spell_images": false,
-    "css_structure": "passed",
-    "module_imports": "passed"
+    "historical_spell_image_path_preserved": true
+  },
+  "browser_verification": {
+    "status": "blocked",
+    "reason": "The sandbox Chromium organization policy blocks localhost and file URLs.",
+    "fallback": "Static module, syntax, selector, effect-engine and responsive-rule validation completed."
   },
   "notes": [
-    "Browser-level visual verification should be performed after deployment because the current sandbox does not expose the user repository runtime."
+    "Numeric formulas are shown only for curated structured effects; control and utility spells without reliable formula metadata remain descriptive.",
+    "Equipment bonuses, target resistances, hit chance and full DPR simulation are outside M9 scope."
   ]
 }

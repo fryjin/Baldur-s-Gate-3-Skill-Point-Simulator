@@ -1,13 +1,22 @@
 {
-  "version": "V7 M8",
-  "stage": "interaction and spellcasting corrections",
+  "version": "V7 M9",
+  "stage": "effects-and-iphone-responsive",
   "completed": [
-    "prepared spell summary",
-    "prepared caster selection logic",
-    "monk spell step removal",
-    "eldritch knight and arcane trickster spell sources",
-    "horizontal stage scroll preservation",
-    "spell list scroll preservation"
+    "selected class-feature result summaries",
+    "structured spell and feature effects",
+    "attribute-aware formulas",
+    "damage type visual tokens",
+    "spell upcast preview",
+    "iPhone safe areas",
+    "dynamic visual viewport",
+    "mobile step drawer",
+    "mobile result drawer",
+    "mobile detail bottom sheet",
+    "iPhone landscape split layout"
   ],
-  "deployment": "GitHub Pages static upload"
+  "known_limitations": [
+    "Only spells with curated structured effect data show numeric formulas",
+    "Equipment bonuses and complex DPR are outside M9 scope",
+    "Local Chromium navigation is blocked by organization policy"
+  ]
 }
