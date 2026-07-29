@@ -22,6 +22,9 @@ syncViewport();window.visualViewport?.addEventListener("resize",syncViewport,{pa
 function render(){
   route=parseRoute();
   document.body.dataset.viewport=isMobile()?"mobile":"desktop";
+  const characterRoute=route.view==="character";
+  document.documentElement.classList.toggle("character-route-active",characterRoute);
+  document.body.classList.toggle("character-route-active",characterRoute);
   if(route.view==="home")return renderHome();
   if(route.view==="library")return renderLibrary(route.section);
   if(route.view==="character"){const build=getBuild(route.id);return build?renderCharacter(build):navigate("/home")}

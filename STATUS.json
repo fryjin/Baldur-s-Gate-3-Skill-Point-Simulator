@@ -1,8 +1,7 @@
 {
-  "version": "V7 M15",
-  "phase": "PC no-horizontal-interaction closure",
-  "desktop": "wrapping grids and vertical wheel scrolling",
-  "mobile": "M13 independent mobile product layer retained",
-  "new_features": false,
-  "browser_visual_validation": "attempted but Chromium did not terminate in sandbox; static and syntax validation completed"
+  "version": "V7 M17",
+  "milestone": "移动端阶段条自动定位",
+  "state": "ready-for-upload",
+  "base": "V7 M16",
+  "mobile_layer": "M13 independent mobile UI + M17 stage tracking"
 }

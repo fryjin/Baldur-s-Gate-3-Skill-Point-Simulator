@@ -65,3 +65,27 @@
 @media(max-width:767px){
   .m-home-shell{position:relative;display:grid;width:100%;height:var(--app-height,100dvh);min-height:100dvh;place-items:end stretch;overflow:hidden;background:#0b0a08}.m-home-bg{position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(7,6,5,.28),rgba(7,6,5,.82) 54%,#080705 88%),url("../images/fantasy-forest.webp");background-position:58% center;background-size:cover}.m-home-content{position:relative;display:grid;gap:10px;padding:calc(32px + env(safe-area-inset-top)) 20px calc(26px + env(safe-area-inset-bottom));z-index:1}.m-home-mark{display:grid;width:50px;height:50px;place-items:center;margin-bottom:8px;border:1px solid rgba(223,189,114,.48);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);color:var(--gold);font-family:Georgia,serif}.m-home-content h1{max-width:330px;margin:2px 0;font-family:Georgia,"Noto Serif SC",serif;font-size:38px;line-height:1.08}.m-home-content>p{max-width:320px;margin:0 0 8px;color:var(--text-soft);font-size:14px;line-height:1.55}.m-resume-card{display:grid;gap:3px;padding:14px;border:1px solid rgba(223,189,114,.28);border-radius:12px;background:rgba(10,8,6,.72);text-align:left;backdrop-filter:blur(6px)}.m-resume-card span{color:var(--gold);font-size:10px;font-weight:800}.m-resume-card b{font-size:18px}.m-resume-card small{color:var(--muted);font-size:12px}.m-resume-card i{justify-self:end;color:var(--gold);font-size:11px;font-style:normal}.m-home-actions{display:grid;gap:8px;margin-top:4px}.m-home-actions button{min-height:48px;border-radius:10px;font-weight:800}.m-home-version{margin-top:4px;color:var(--muted);font-size:10px;text-align:center}
 }
+
+/* M17: keep the active mobile stage visible after step changes. */
+@media (max-width:767px){
+  .m-stage-tabs,
+  .m-node-switcher,
+  .m-route-dots,
+  .m-filter-scroll{
+    scroll-behavior:smooth;
+    scroll-padding-inline:12px;
+    overscroll-behavior-inline:contain;
+  }
+  .m-stage-tabs button.active,
+  .m-node-switcher button.active,
+  .m-route-dots button.active,
+  .m-filter-scroll button.active{
+    scroll-margin-inline:12px;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .m-stage-tabs,
+    .m-node-switcher,
+    .m-route-dots,
+    .m-filter-scroll{scroll-behavior:auto}
+  }
+}

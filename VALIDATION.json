@@ -1,56 +1,17 @@
 {
-  "version": "V7 M15",
+  "version": "V7 M17",
+  "result": "passed",
   "checks": {
     "javascript_syntax": "28 / 28 passed",
-    "css_braces": {
-      "base.css": {
-        "open": 38,
-        "close": 38,
-        "balanced": true
-      },
-      "components.css": {
-        "open": 165,
-        "close": 165,
-        "balanced": true
-      },
-      "desktop.css": {
-        "open": 99,
-        "close": 99,
-        "balanced": true
-      },
-      "mobile.css": {
-        "open": 248,
-        "close": 248,
-        "balanced": true
-      },
-      "responsive.css": {
-        "open": 282,
-        "close": 282,
-        "balanced": true
-      },
-      "shell.css": {
-        "open": 136,
-        "close": 136,
-        "balanced": true
-      },
-      "tokens.css": {
-        "open": 2,
-        "close": 2,
-        "balanced": true
-      },
-      "views.css": {
-        "open": 195,
-        "close": 195,
-        "balanced": true
-      }
-    },
-    "pc_prepared_spells_wrap_grid": true,
-    "pc_selected_features_wrap_grid": true,
-    "pc_stage_tabs_wrap_grid": true,
-    "pc_route_track_no_horizontal_scroll": true,
-    "pc_filter_tabs_wrap": true,
-    "compact_pc_two_row_tracks": true,
-    "mobile_independent_layer_retained": true,
-    "browser_visual_regression": "attempted; Chromium process timed out in sandbox, so no screenshot assertion included"
-  }
+    "module_references": "passed",
+    "css_structure": "passed",
+    "skills_stage_auto_reveal": "passed",
+    "features_stage_auto_reveal": "passed",
+    "progression_stage_auto_reveal": "passed",
+    "route_stage_auto_reveal": "passed",
+    "spell_filter_auto_reveal": "passed",
+    "reduced_motion_support": "passed",
+    "pc_layer": "M16 preserved"
+  },
+  "note": "The active horizontal stage is only moved when it falls outside the visible area."
 }

@@ -21,6 +21,21 @@ function remember(key,selector='.mobile-build-content'){const el=document.queryS
 function restore(key,selector='.mobile-build-content'){const pos=state.scrolls.get(key);if(!pos)return;requestAnimationFrame(()=>{const el=document.querySelector(selector);if(el){el.scrollTop=pos.top;el.scrollLeft=pos.left}})}
 function rememberElement(key,selector){const el=document.querySelector(selector);if(el)state.scrolls.set(key,{top:el.scrollTop,left:el.scrollLeft})}
 function restoreElement(key,selector){restore(key,selector)}
+function revealActiveItem(containerSelector,activeSelector,{behavior='smooth',padding=12}={}){
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const container=document.querySelector(containerSelector),active=container?.querySelector(activeSelector);
+    if(!container||!active)return;
+    const c=container.getBoundingClientRect(),a=active.getBoundingClientRect();
+    const hiddenLeft=a.left<c.left+padding,hiddenRight=a.right>c.right-padding;
+    if(!hiddenLeft&&!hiddenRight)return;
+    const left=Math.max(0,container.scrollLeft+(a.left-c.left)-(container.clientWidth-a.width)/2);
+    container.scrollTo({left,behavior});
+  }));
+}
+function restoreAndReveal(key,containerSelector,activeSelector){
+  restoreElement(key,containerSelector);
+  revealActiveItem(containerSelector,activeSelector);
+}
 function openInfo(html,onReady){const close=openResponsiveDetail(html);setTimeout(()=>{bindImageFallbacks();onReady?.(document.getElementById('overlay-root'),close)});return close}
 
 export function renderMobileBuild(build,step){
@@ -64,7 +79,7 @@ function renderRoute(build){
   document.querySelector('[data-change-class]')?.addEventListener('click',()=>{rememberElement('route-dots','.m-route-dots');
     const close=openInfo(`<div class="m-sheet-title"><span class="kicker">角色第 ${index+1} 级</span><h2>选择职业</h2><p>本次选择会影响后续升级和解锁。</p></div><div class="m-class-sheet-grid">${Object.entries(classes).map(([k,item])=>`<button class="m-class-sheet-option ${k===key?'selected':''}" data-sheet-class="${k}"><b>${item.name}</b><small>${esc(classMeta[k]?.role||'')}</small>${k===key?'<i>✓</i>':''}</button>`).join('')}</div>`,(root,closeSheet)=>root.querySelectorAll('[data-sheet-class]').forEach(btn=>btn.addEventListener('click',()=>{closeSheet();setLevelClass(build.id,index,btn.dataset.sheetClass)})));
   });
-  restoreElement('route-dots','.m-route-dots');
+  restoreAndReveal('route-dots','.m-route-dots','button.active');
 }
 
 function progressionOptionDetail(node,key,build){
@@ -88,7 +103,7 @@ function renderProgression(build){
   document.querySelectorAll('[data-progression-choice]').forEach(btn=>btn.addEventListener('click',()=>{remember('progression');rememberElement('progression-tabs','.m-node-switcher');const key=btn.dataset.progressionChoice;if(node.type==='subclass')setSubclass(build.id,node.classKey,key);else setFeatChoice(build.id,node.index,key)}));
   document.querySelectorAll('[data-progression-info]').forEach(btn=>btn.addEventListener('click',()=>openInfo(progressionOptionDetail(node,btn.dataset.progressionInfo,build))));
   document.querySelectorAll('[data-asi]').forEach(select=>select.addEventListener('change',()=>setFeatAsi(build.id,node.index,select.dataset.asi,select.value)));
-  restore('progression');restoreElement('progression-tabs','.m-node-switcher');
+  restore('progression');restoreAndReveal('progression-tabs','.m-node-switcher','button.active');
 }
 
 function abilityImpact(build,key){
@@ -125,7 +140,7 @@ function renderSkills(build){
   document.querySelectorAll('[data-skill-stage]').forEach(btn=>btn.addEventListener('click',()=>{state.skillStageId=btn.dataset.skillStage;renderSkills(build)}));
   document.querySelectorAll('[data-skill]').forEach(btn=>btn.addEventListener('click',()=>{if(stage.kind==='fixed')return;remember('skills');rememberElement('skills-tabs','.m-stage-tabs');const key=btn.dataset.skill;if(stage.kind==='expertise')setExpertise(build.id,stage.slot,stage.selected[0]===key?'':key);else toggleSkill(build.id,stage.id,key,stage.limit)}));
   document.querySelectorAll('[data-skill-info]').forEach(btn=>btn.addEventListener('click',()=>openInfo(skillInfo(build,btn.dataset.skillInfo,stage.selected.includes(btn.dataset.skillInfo),expertSet.has(btn.dataset.skillInfo)))));
-  restore('skills');restoreElement('skills-tabs','.m-stage-tabs');
+  restore('skills');restoreAndReveal('skills-tabs','.m-stage-tabs','button.active');
 }
 
 function renderFeatures(build){
@@ -141,7 +156,7 @@ function renderFeatures(build){
   document.querySelectorAll('[data-feature-stage]').forEach(btn=>btn.addEventListener('click',()=>{state.featureGroupId=btn.dataset.featureStage;renderFeatures(build)}));
   document.querySelectorAll('[data-feature]').forEach(btn=>btn.addEventListener('click',()=>{remember('features');rememberElement('features-tabs','.m-stage-tabs');toggleClassChoice(build.id,group.id,btn.dataset.feature,group.limit)}));
   document.querySelectorAll('[data-feature-info]').forEach(btn=>btn.addEventListener('click',()=>{const key=btn.dataset.featureInfo,option=group.options.find(x=>x[0]===key),effect=featureEffectSummary(build,group,key);openInfo(`<div class="m-sheet-title"><span class="kicker">${esc(classes[group.classKey].name)} · ${esc(group.title)}</span><h2>${esc(option?.[1]||key)}</h2></div><p>${esc(option?.[2]||'')}</p>${effectFormulaHtml(effect)}`)}));
-  restore('features');restoreElement('features-tabs','.m-stage-tabs');
+  restore('features');restoreAndReveal('features-tabs','.m-stage-tabs','button.active');
 }
 
 function isSpellSelected(choice,sp,source){if(sp.level===0)return choice.cantrips.includes(sp.key);if(source.mode==='prepared')return choice.prepared.includes(sp.key);return choice.spells.includes(sp.key)}
@@ -175,5 +190,5 @@ function renderSpells(build){
   document.querySelectorAll('[data-m-filter]').forEach(btn=>btn.addEventListener('click',()=>{state.spellFilter=btn.dataset.mFilter;state.spellLimit=36;state.scrolls.delete('spells');renderSpells(build)}));
   document.querySelectorAll('[data-mobile-spell]').forEach(btn=>btn.addEventListener('click',()=>{remember('spells');rememberElement('spell-filters','.m-filter-scroll');const sp=spellData.find(x=>x.key===btn.dataset.mobileSpell);if(!sp)return;const close=openInfo(spellDetail(build,source,sp),(root,closeSheet)=>{root.querySelector('[data-mobile-spell-action]')?.addEventListener('click',()=>{closeSheet();applySpell(build,source,sp,limits)});root.querySelector('[data-mobile-prepare]')?.addEventListener('click',()=>{closeSheet();togglePreparedSpell(build.id,source.key,sp.key,limits.prepared)});root.querySelector('[data-mobile-cast]')?.addEventListener('change',e=>{state.castLevels.set(`${source.key}:${sp.key}`,Number(e.target.value));closeSheet();setTimeout(()=>{const next=openInfo(spellDetail(getBuild(build.id),source,sp),(r,c)=>{r.querySelector('[data-mobile-spell-action]')?.addEventListener('click',()=>{c();applySpell(getBuild(build.id),source,sp,limits)});r.querySelector('[data-mobile-prepare]')?.addEventListener('click',()=>{c();togglePreparedSpell(build.id,source.key,sp.key,limits.prepared)})})})})})}));
   document.querySelector('[data-load-more]')?.addEventListener('click',()=>{remember('spells');rememberElement('spell-filters','.m-filter-scroll');state.spellLimit+=36;renderSpells(build)});
-  restore('spells');restoreElement('spell-filters','.m-filter-scroll');
+  restore('spells');restoreAndReveal('spell-filters','.m-filter-scroll','button.active');
 }

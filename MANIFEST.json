@@ -1,5 +1,6 @@
 {
-  "version": "V7 M15",
+  "version": "V7 M17",
+  "generated": "2026-07-29",
   "files": [
     {
       "path": "M13_MOBILE_SPEC.md",
@@ -12,14 +13,24 @@
       "sha256": "c4e8389e53f8496df5e01ec42760f6b3d2e3e0167e8c5121d61bae55eadfded4"
     },
     {
+      "path": "M16_CHARACTER_SHEET_SPEC.md",
+      "size": 615,
+      "sha256": "d4851b8d4572c4c6995727c1c5387746bb58bd4fa805b9f63acf34658e9d214f"
+    },
+    {
+      "path": "M17_MOBILE_STAGE_SPEC.md",
+      "size": 1328,
+      "sha256": "d8a5d817fd8f76e73ffe55a1e35382798e5535501757918723b0729e2ad1d695"
+    },
+    {
       "path": "README.md",
-      "size": 884,
-      "sha256": "0bce4d47f0ffbc25b4952afee1c976627d5f58da45d09706c3ccd9dbfb80aa5f"
+      "size": 857,
+      "sha256": "9edcf3b6173261277c1c391e2b7e1361cbc599832a2251c3e33f1130ed4edd9d"
     },
     {
       "path": "STATUS.json",
-      "size": 349,
-      "sha256": "471c13c8621ded915484aeaf74beae190fd6fa671eac78b301b93cd661c42b1f"
+      "size": 194,
+      "sha256": "902e71f150b625806f570ccb87f8cd4eddcd65430864f8d31b79aa9d8d693a99"
     },
     {
       "path": "V7_PRODUCT_SPEC.md",
@@ -28,13 +39,18 @@
     },
     {
       "path": "VALIDATION.json",
-      "size": 1315,
-      "sha256": "c03e0582dc954201447b0bffd81aaf27ec12e9521944d7f92d811fce2a3e7b08"
+      "size": 559,
+      "sha256": "fd813dcb167983b5ef6106fa8faddffcc5ff2e02ebff3dcc86e78fe07d7f3f43"
     },
     {
       "path": "assets/css/base.css",
       "size": 3138,
       "sha256": "47c4cb07555e4967f4f1143958c8ec9f9ebf764fce1241294ab8bef0af07cbc0"
+    },
+    {
+      "path": "assets/css/character-sheet.css",
+      "size": 9523,
+      "sha256": "62be51c075207b06248461d1f959fafa1995620b873689aeba919ef30a7b47b6"
     },
     {
       "path": "assets/css/components.css",
@@ -48,8 +64,8 @@
     },
     {
       "path": "assets/css/mobile.css",
-      "size": 22973,
-      "sha256": "af3ecfbb95c480a51f2fafe948da598d2c2873a692b492ec699d783a873a4e78"
+      "size": 23562,
+      "sha256": "aa7c4eb741eb76f09c3df664ec507a48b6e1e52d010948b373c39ce20aaa8778"
     },
     {
       "path": "assets/css/responsive.css",
@@ -88,8 +104,8 @@
     },
     {
       "path": "assets/js/app.js",
-      "size": 2679,
-      "sha256": "4d77b8d45d1649754ae41e1f2576eef60c160b5c17655d2b68287414dfe6e69c"
+      "size": 2889,
+      "sha256": "b58eb25cff95a043174184b3e3e25e9c0a72baef08f5586b41406bd1c4336881"
     },
     {
       "path": "assets/js/components/effects-ui.js",
@@ -99,7 +115,7 @@
     {
       "path": "assets/js/components/shell.js",
       "size": 26481,
-      "sha256": "6c7cc1a2ff0f47c3654f0d91e7edb197c32144bec7144418aafda90862b53739"
+      "sha256": "5175357b10bf81bb18c5a8dc0cd5c69575177514d9865cc506500a9f547885a7"
     },
     {
       "path": "assets/js/components/ui.js",
@@ -138,8 +154,8 @@
     },
     {
       "path": "assets/js/mobile/mobile-build-view.js",
-      "size": 29848,
-      "sha256": "3958f842ff6770dbce5d6e8666ec9b266d8e2b23ab6818311c12c07ec672155e"
+      "size": 30747,
+      "sha256": "eb82e5614647f5ca272c48a219b87ffb4cbe42d66278436def4dc9a981400d35"
     },
     {
       "path": "assets/js/mobile/mobile-shell.js",
@@ -183,8 +199,8 @@
     },
     {
       "path": "assets/js/views/character-view.js",
-      "size": 4473,
-      "sha256": "cf37ea41db07fafc12dd44a28fca333b41cd8126441734d826deb91b1a041f63"
+      "size": 9465,
+      "sha256": "724fb5f78056a184586591dfe0182eb3dda98ae3b78a936d7d0fe73d801d2817"
     },
     {
       "path": "assets/js/views/features-view.js",
@@ -194,7 +210,7 @@
     {
       "path": "assets/js/views/home-view.js",
       "size": 5425,
-      "sha256": "82c9726eff9a892b66e4941b94c0a67c73423fea91246180fbd2b0d759d990d0"
+      "sha256": "e37a33031164a01778135baa4aed21a7cea65118f359544fd907a048dcaa3946"
     },
     {
       "path": "assets/js/views/level-view.js",
@@ -229,7 +245,7 @@
     {
       "path": "assets/spells/README.md",
       "size": 252,
-      "sha256": "840ed2db6c5c1a184027fe941801ba8120ba849cb09abd9c868f9490c97eadd4"
+      "sha256": "3a176ab1659d89f82f404259781cfd0c3302b620c5a43ff6349161dfc55151f4"
     },
     {
       "path": "assets/spells/image-manifest.json",
@@ -238,8 +254,8 @@
     },
     {
       "path": "index.html",
-      "size": 1171,
-      "sha256": "2282865e8624047cd3e98c0c42df130d89f5f854377cb61116b5eb92b9a813d6"
+      "size": 1237,
+      "sha256": "6a3fac4c6e2d42c0e4ee6b0b7f098ef539c490dc5b8251c359579582a58fe520"
     }
   ]
 }
