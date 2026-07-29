@@ -1,19 +1,17 @@
 {
-  "version": "V7 M10",
-  "stage": "spell-card-layout-and-persistent-class-features",
+  "version": "V7 M11",
+  "stage": "unique-feat-selection-and-save-migration",
   "completed": [
-    "spell card semantic markup fix",
-    "spell title description formula layout separation",
-    "stable two-column spell card sizing",
-    "persistent selected class feature strip in current build",
-    "battle master maneuver formulas",
-    "weapon-neutral damage type token",
-    "current ability modifier shown without inventing weapon die",
-    "keyboard and hover tooltips for class features"
+    "non-repeatable feat uniqueness across all growth nodes",
+    "selected feats removed from later node option lists",
+    "store-level duplicate write protection",
+    "legacy duplicate feat migration",
+    "ability score improvement explicitly repeatable",
+    "growth-node completion recalculated after migration"
   ],
   "known_limitations": [
-    "Exact weapon damage dice require a future weapon/equipment selection system",
-    "Only curated spells and class features have structured numeric formulas",
-    "Target resistance, hit chance and full DPR remain outside V7 M10 scope"
+    "Ability Score Improvement remains repeatable by design and final attributes are capped at 20",
+    "The current feat catalog contains no other repeatable feats",
+    "Exact weapon damage dice still require a future weapon/equipment selection system"
   ]
 }

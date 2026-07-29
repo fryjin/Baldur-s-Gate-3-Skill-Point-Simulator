@@ -1,22 +1,24 @@
 {
-  "version": "V7 M10",
+  "version": "V7 M11",
   "checks": {
     "javascript_syntax": "26 / 26 passed",
     "css_structure": "passed",
-    "spell_copy_uses_block_container": true,
-    "spell_card_has_dedicated_title_row": true,
-    "spell_card_has_dedicated_formula_footer": true,
-    "spell_card_invalid_paragraph_inside_span_removed": true,
-    "persistent_class_feature_strip": true,
-    "battle_master_selected_features_visible_on_spell_step": true,
-    "trip_attack_formula": "武器伤害（属性 +3） + 1d8",
-    "riposte_formula": "武器伤害（属性 +3） + 1d8",
-    "precision_attack_formula": "攻击检定 + 1d8",
-    "weapon_damage_visual_token": true,
-    "historical_spell_image_path_preserved": true
+    "asi_marked_repeatable": true,
+    "progression_view_filters_selected_feats": true,
+    "store_rejects_duplicate_non_repeatable_feats": true,
+    "legacy_duplicate_feat_migration": true,
+    "duplicate_alert_expected_result": [
+      "alert",
+      "none",
+      "asi"
+    ],
+    "historical_spell_image_path_preserved": true,
+    "module_behavior_test": "passed: alert,alert,asi migrated to alert,none,asi",
+    "duplicate_write_guard": "passed",
+    "repeatable_asi": "passed"
   },
   "browser_verification": {
     "status": "static-and-module-validation",
-    "notes": "Generated shell HTML was tested with a fighter 3 / wizard 3 Battle Master build. Selected maneuvers and computed formulas were present in the persistent CURRENT BUILD section."
+    "notes": "M11 focuses on feat uniqueness and legacy save normalization. Browser-level visual behavior follows the existing M10 layout."
   }
 }

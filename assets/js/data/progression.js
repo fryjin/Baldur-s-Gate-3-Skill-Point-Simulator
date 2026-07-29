@@ -14,7 +14,7 @@ export const classSkillRules={
 };
 export const racialFixedSkills={"精灵":["perception"],"卓尔":["perception"],"半兽人":["intimidation"]};
 export const feats={
-  asi:{name:"属性提升",category:"属性成长",note:"分配 2 点属性，可投入同一属性或拆分。"},
+  asi:{name:"属性提升",category:"属性成长",note:"分配 2 点属性，可投入同一属性或拆分。",repeatable:true},
   alert:{name:"警觉",category:"战术",note:"先攻 +5，并降低遭到突袭的风险。"},
   athlete:{name:"运动健将",category:"机动",note:"提高机动、跳跃和起身效率。"},
   dual:{name:"双持客",category:"武器",note:"强化双持路线并允许使用更重的单手武器。"},

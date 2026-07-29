@@ -10,6 +10,7 @@ function counts(levels=[]){return levels.reduce((out,key)=>(out[key]=(out[key]||
 function featThresholds(key){return[4,8,12,...(key==="fighter"?[6]:[]),...(key==="rogue"?[10]:[])].sort((a,b)=>a-b)}
 function allowedFeatCount(build){return Object.entries(counts(build.levels.slice(0,build.targetLevel))).reduce((sum,[key,level])=>sum+featThresholds(key).filter(x=>level>=x).length,0)}
 function uniqueAllowed(list,allowed){return[...new Set(Array.isArray(list)?list:[])].filter(x=>allowed.has(x))}
+function sanitizeFeatChoices(list=[],limit=Infinity){const seen=new Set();return(Array.isArray(list)?list:[]).slice(0,limit).map(item=>{const choice={type:"none",a1:"str",a2:"str",...(item||{})},type=choice.type;if(!type||type==="none"||feats[type]?.repeatable)return choice;if(seen.has(type))return{...choice,type:"none"};seen.add(type);return choice})}
 
 function defaultBuild(input={}){
   const id=createId();
@@ -45,7 +46,7 @@ function normalizeBuild(raw={}){
   abilities.forEach(a=>{const value=Number(raw.abilities?.scores?.[a.key]??raw.scores?.[a.key]??8);out.abilities.scores[a.key]=Number.isInteger(value)&&value>=8&&value<=15?value:8});
   if(!abilities.some(a=>a.key===out.abilities.bonus2))out.abilities.bonus2="str";
   if(!abilities.some(a=>a.key===out.abilities.bonus1))out.abilities.bonus1="dex";
-  out.feats=Array.isArray(raw.feats)?raw.feats.map(item=>typeof item==="string"?{type:feats[item]?item:"none",a1:"str",a2:"str"}:{type:feats[item?.type]?item.type:"none",a1:abilities.some(a=>a.key===item?.a1)?item.a1:"str",a2:abilities.some(a=>a.key===item?.a2)?item.a2:"str"}).slice(0,allowedFeatCount(out)):[];
+  out.feats=sanitizeFeatChoices(Array.isArray(raw.feats)?raw.feats.map(item=>typeof item==="string"?{type:feats[item]?item:"none",a1:"str",a2:"str"}:{type:feats[item?.type]?item.type:"none",a1:abilities.some(a=>a.key===item?.a1)?item.a1:"str",a2:abilities.some(a=>a.key===item?.a2)?item.a2:"str"}):[],allowedFeatCount(out));
   const allSkills=new Set(skills.map(x=>x.key));
   out.skills={class:uniqueAllowed(raw.skills?.class||raw.classSkills,allSkills),race:allSkills.has(raw.skills?.race||raw.raceSkill)?raw.skills?.race||raw.raceSkill:"",multiclass:{}};
   Object.entries(raw.skills?.multiclass||raw.multiclassSkills||{}).forEach(([key,list])=>{if(classes[key])out.skills.multiclass[key]=uniqueAllowed(list,allSkills)});
@@ -63,7 +64,7 @@ function pruneBuild(build){
   build.levels=build.levels.slice(0,build.targetLevel);while(build.levels.length<build.targetLevel)build.levels.push(build.levels.at(-1)||"fighter");
   const c=counts(build.levels);
   Object.keys(build.subclasses).forEach(key=>{if((c[key]||0)<(classes[key]?.subclassAt||99))delete build.subclasses[key]});
-  build.feats=build.feats.slice(0,allowedFeatCount(build));
+  build.feats=sanitizeFeatChoices(build.feats,allowedFeatCount(build));
   Object.keys(build.spellChoices).forEach(key=>{if(!c[key])delete build.spellChoices[key]});
 }
 function normalizeDatabase(raw){const result={builds:{},lastBuildId:null};Object.values(raw?.builds||{}).forEach(item=>{const build=normalizeBuild(item);result.builds[build.id]=build});result.lastBuildId=result.builds[raw?.lastBuildId]?raw.lastBuildId:Object.keys(result.builds)[0]||null;return result}
@@ -81,7 +82,7 @@ export function setLevelClass(id,index,classKey){if(!classes[classKey])return;re
 export function setSubclass(id,classKey,name){if(!classes[classKey]?.subclasses.includes(name))return;return updateBuild(id,b=>{b.subclasses[classKey]=name})}
 export function setAbilityScore(id,key,value){if(!abilities.some(a=>a.key===key))return;return updateBuild(id,b=>{b.abilities.scores[key]=Math.max(8,Math.min(15,Number(value)||8))})}
 export function setAbilityBonus(id,slot,key){if(!abilities.some(a=>a.key===key))return;return updateBuild(id,b=>{b.abilities[slot]=key})}
-export function setFeatChoice(id,index,type){return updateBuild(id,b=>{while(b.feats.length<=index)b.feats.push({type:"none",a1:"str",a2:"str"});b.feats[index]={...b.feats[index],type:feats[type]?type:"none"}})}
+export function setFeatChoice(id,index,type){return updateBuild(id,b=>{const next=feats[type]?type:"none";if(next!=="none"&&!feats[next]?.repeatable&&b.feats.some((item,i)=>i!==index&&item?.type===next))return;while(b.feats.length<=index)b.feats.push({type:"none",a1:"str",a2:"str"});b.feats[index]={...b.feats[index],type:next}})}
 export function setFeatAsi(id,index,slot,key){if(!abilities.some(a=>a.key===key))return;return updateBuild(id,b=>{while(b.feats.length<=index)b.feats.push({type:"none",a1:"str",a2:"str"});b.feats[index]={...b.feats[index],type:"asi",[slot]:key}})}
 export function toggleSkill(id,source,key,limit){return updateBuild(id,b=>{let list;if(source==="class")list=b.skills.class;else if(source==="race"){b.skills.race=b.skills.race===key?"":key;return}else{const classKey=source.replace("multi-","");list=b.skills.multiclass[classKey]||(b.skills.multiclass[classKey]=[])}const at=list.indexOf(key);if(at>=0)list.splice(at,1);else if(list.length<limit)list.push(key)})}
 export function setExpertise(id,slot,key){return updateBuild(id,b=>{if(key)b.expertise[slot]=key;else delete b.expertise[slot]})}
