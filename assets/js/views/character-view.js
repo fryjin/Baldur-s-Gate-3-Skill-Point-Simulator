@@ -25,6 +25,36 @@ function featLabel(item){
   return{title:feats[item.type]?.name||item.type,note:featDetails[item.type]||feats[item.type]?.note||""}
 }
 
+const sectionButtons=issues=>[
+  ["sheet-overview","◫","总览"],
+  ["sheet-skills","✦","技能"],
+  ["sheet-growth","⬆","成长"],
+  ["sheet-features","⚔","职业能力"],
+  ["sheet-spells","✶","法术"],
+  ...(issues.length?[["sheet-issues","!","待处理"]]:[])
+];
+
+function bindSectionNavigation(){
+  const buttons=[...document.querySelectorAll("[data-sheet-target]")];
+  const sections=buttons.map(button=>document.getElementById(button.dataset.sheetTarget)).filter(Boolean);
+  const setActive=id=>buttons.forEach(button=>button.classList.toggle("active",button.dataset.sheetTarget===id));
+  buttons.forEach(button=>button.addEventListener("click",event=>{
+    event.preventDefault();
+    event.stopPropagation();
+    const target=document.getElementById(button.dataset.sheetTarget);
+    if(!target)return;
+    setActive(target.id);
+    target.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  }));
+  if(!("IntersectionObserver"in window)){setActive(sections[0]?.id||"");return}
+  const observer=new IntersectionObserver(entries=>{
+    const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+    if(visible)setActive(visible.target.id);
+  },{root:null,rootMargin:"-22% 0px -62% 0px",threshold:[0,.15,.35,.6]});
+  sections.forEach(section=>observer.observe(section));
+  setActive(sections[0]?.id||"");
+}
+
 export function renderCharacter(build){
   const s=characterSummary(build),pb=proficiencyBonus(build),issues=validationIssues(build);
   const featureGroups=activeFeatureGroups(build).filter(group=>group.selected.length);
@@ -48,7 +78,7 @@ export function renderCharacter(build){
     ["法术攻击",s.casting?fmt(s.casting.attack):"—"],["法术 DC",s.casting?.dc||"—"]
   ];
   document.getElementById("app").innerHTML=`<main class="character-page">
-    <header class="character-topbar"><button class="ghost-button" data-back-build>返回构筑</button><div><span class="kicker">CHARACTER SHEET</span><strong>${esc(build.name)}</strong></div><button class="secondary-button" data-edit-build>修改构筑</button></header>
+    <header class="character-topbar"><button type="button" class="ghost-button" data-back-build>返回构筑</button><div><span class="kicker">CHARACTER SHEET</span><strong>${esc(build.name)}</strong></div><button type="button" class="secondary-button" data-edit-build>修改构筑</button></header>
     <div class="character-content">
       <section class="character-identity">
         <div class="character-level-block"><span class="character-level">${build.targetLevel}</span><span>等级</span></div>
@@ -56,7 +86,7 @@ export function renderCharacter(build){
         <div class="character-combat">${combat.map(([label,value])=>`<div><span>${label}</span><b>${value}</b></div>`).join("")}</div>
       </section>
       <nav class="character-section-nav" aria-label="角色纸章节">
-        <a href="#sheet-overview">总览</a><a href="#sheet-skills">技能</a><a href="#sheet-growth">成长</a><a href="#sheet-features">职业能力</a><a href="#sheet-spells">法术</a>${issues.length?'<a href="#sheet-issues">待处理</a>':''}
+        ${sectionButtons(issues).map(([target,icon,label],index)=>`<button type="button" class="${index===0?"active":""}" data-sheet-target="${target}"><span aria-hidden="true">${icon}</span><b>${label}</b></button>`).join("")}
       </nav>
       <div class="character-dashboard">
         <section class="sheet-card" id="sheet-overview"><div class="sheet-card-head"><h2>角色总览</h2><span>${esc(s.route)}</span></div>
@@ -80,11 +110,12 @@ export function renderCharacter(build){
             ${known.length?`<div class="spell-source-section"><h4>${src.mode==="spellbook"?"法术书其余法术":"已知法术"} <span>${known.length}</span></h4><div class="character-spell-cards">${spellCards(known,preparedSet,build,src)}</div></div>`:""}
           </article>`).join("")||'<p class="muted">当前没有施法职业。</p>'}</div>
         </section>
-        ${issues.length?`<section class="sheet-card sheet-card-wide sheet-issues" id="sheet-issues"><div class="sheet-card-head"><h2>待处理项目</h2><span>${issues.length} 项</span></div><div class="character-issue-list">${issues.map(issue=>`<button data-issue-step="${issue.step}"><span>${esc(issue.message)}</span><b>前往处理 ›</b></button>`).join("")}</div></section>`:""}
+        ${issues.length?`<section class="sheet-card sheet-card-wide sheet-issues" id="sheet-issues"><div class="sheet-card-head"><h2>待处理项目</h2><span>${issues.length} 项</span></div><div class="character-issue-list">${issues.map(issue=>`<button type="button" data-issue-step="${issue.step}"><span>${esc(issue.message)}</span><b>前往处理 ›</b></button>`).join("")}</div></section>`:""}
       </div>
     </div>
   </main>`;
   bindImageFallbacks();
+  bindSectionNavigation();
   document.querySelector("[data-back-build]").addEventListener("click",()=>history.length>1?history.back():navigate(`/build/${build.id}/${lastActiveStep(build)}`));
   document.querySelector("[data-edit-build]").addEventListener("click",()=>navigate(`/build/${build.id}/${lastActiveStep(build)}`));
   document.querySelectorAll("[data-issue-step]").forEach(button=>button.addEventListener("click",()=>navigate(`/build/${build.id}/${button.dataset.issueStep}`)));

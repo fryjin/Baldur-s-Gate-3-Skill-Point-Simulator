@@ -1,17 +1,12 @@
 {
-  "version": "V7 M20",
+  "version": "V7 M21",
   "result": "passed",
   "checks": {
-    "m19_dependency_included": true,
-    "m20_css_loaded_after_m19": true,
-    "source_and_counts_separate_rows": true,
-    "counts_three_columns": true,
-    "spell_card_natural_height": true,
-    "spell_description_single_line": true,
-    "formula_dedicated_row": true,
-    "selected_state_preserves_size": true,
-    "list_bottom_safe_spacing": true,
-    "historical_spell_images_untouched": true
-  },
-  "note": "CSS override and package validation completed."
+    "character_nav_uses_buttons": true,
+    "anchor_navigation_removed": true,
+    "scroll_into_view": true,
+    "active_section_tracking": true,
+    "effect_badges": true,
+    "index_loads_m21": true
+  }
 }

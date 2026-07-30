@@ -1,0 +1,62 @@
+/* V7 M21 — effect badges and character-sheet in-page navigation */
+.damage-type-icon{
+  position:relative;
+  display:grid!important;
+  flex:0 0 34px;
+  width:34px!important;
+  height:34px!important;
+  place-items:center;
+  overflow:hidden;
+  border:1px solid currentColor;
+  border-radius:10px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(0,0,0,.26));
+  color:inherit;
+  font-family:Georgia,"Noto Serif SC",serif;
+  font-size:0!important;
+  font-weight:800;
+  line-height:1;
+  text-shadow:0 0 10px currentColor;
+  box-shadow:inset 0 1px rgba(255,255,255,.12),0 5px 14px rgba(0,0,0,.24);
+}
+.damage-type-icon::before{font-size:18px;line-height:1}
+.damage-fire .damage-type-icon::before{content:"火"}.damage-cold .damage-type-icon::before{content:"冰"}.damage-lightning .damage-type-icon::before{content:"雷"}.damage-thunder .damage-type-icon::before{content:"震"}.damage-acid .damage-type-icon::before{content:"酸"}.damage-poison .damage-type-icon::before{content:"毒"}.damage-radiant .damage-type-icon::before{content:"光"}.damage-necrotic .damage-type-icon::before{content:"蚀"}.damage-psychic .damage-type-icon::before{content:"念"}.damage-force .damage-type-icon::before{content:"力"}.damage-slashing .damage-type-icon::before{content:"斩"}.damage-piercing .damage-type-icon::before{content:"穿"}.damage-bludgeoning .damage-type-icon::before{content:"钝"}.damage-healing .damage-type-icon::before{content:"疗"}.damage-temporary .damage-type-icon::before{content:"护"}.damage-weapon .damage-type-icon::before{content:"武"}
+.effect-part,.feature-computed{align-items:center!important}.effect-part>div,.feature-computed>div{min-width:0}
+
+.character-section-nav{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:6px;
+  padding:8px!important;
+  border:1px solid rgba(223,189,114,.16);
+  border-radius:12px;
+  background:rgba(10,8,6,.88)!important;
+}
+.character-section-nav button{
+  display:grid;
+  grid-template-columns:auto auto;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-width:0;
+  min-height:42px;
+  padding:8px 10px;
+  border:1px solid transparent;
+  border-radius:9px;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+}
+.character-section-nav button span{display:grid;width:24px;height:24px;place-items:center;border-radius:7px;background:rgba(223,189,114,.07);color:var(--gold);font-size:12px}
+.character-section-nav button b{overflow:hidden;font-size:12px;white-space:nowrap;text-overflow:ellipsis}
+.character-section-nav button:hover,.character-section-nav button:focus-visible{border-color:rgba(223,189,114,.26);background:rgba(223,189,114,.06);color:var(--text)}
+.character-section-nav button.active{border-color:rgba(223,189,114,.48);background:rgba(223,189,114,.14);color:#f7dd92;box-shadow:inset 0 0 0 1px rgba(223,189,114,.08)}
+.character-dashboard>.sheet-card{scroll-margin-top:88px}
+
+@media(max-width:767px){
+  .damage-type-icon{flex-basis:32px;width:32px!important;height:32px!important;border-radius:9px!important}.damage-type-icon::before{font-size:16px}
+  .character-section-nav{position:sticky;top:var(--m-header-h,64px);z-index:12;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;margin-inline:0;padding:5px!important;border-radius:0;background:#0b0a08!important}
+  .character-section-nav button{grid-template-columns:1fr;gap:2px;min-height:48px;padding:5px 2px}
+  .character-section-nav button span{justify-self:center;width:22px;height:22px;font-size:11px}
+  .character-section-nav button b{max-width:100%;font-size:10px}
+  .character-dashboard>.sheet-card{scroll-margin-top:128px}
+}
