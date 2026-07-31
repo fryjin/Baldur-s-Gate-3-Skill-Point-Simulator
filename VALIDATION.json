@@ -1,21 +1,25 @@
 {
-  "version": "V7 M23",
+  "version": "V7 M24",
   "result": "passed",
   "checks": {
-    "wizard_level5_nodes": "[[1,6,1],[2,2,1],[3,2,2],[4,2,2],[5,2,3]] tested",
-    "sorcerer_level5_nodes": "[[1,2,1],[2,1,1],[3,1,2],[4,1,2],[5,1,3]] tested",
-    "prepared_casters_have_no_learning_nodes": true,
-    "known_caster_replacement_nodes": true,
-    "legacy_flat_spell_migration": true,
-    "invalid_ring_distribution_flagged": true,
-    "spellbook_and_prepared_separate": true,
-    "m22_runtime_replaced": true,
-    "character_sheet_learning_history": true,
-    "mobile_collapsible_learning_panel": true,
-    "desktop_wrapping_node_grid": true,
-    "historical_spell_images_untouched": true,
-    "javascript_syntax": "passed",
-    "css_brace_balance": "passed"
+    "m23_runtime_removed": true,
+    "m24_runtime_loaded": true,
+    "m24_css_loaded": true,
+    "large_m22_panel_removed": true,
+    "legacy_m23_panel_removed": true,
+    "compact_node_grid": true,
+    "mobile_node_select": true,
+    "right_result_summary": true,
+    "replacement_sheet": true,
+    "no_pc_horizontal_node_scroll": true,
+    "spell_list_restored": true,
+    "version_label": true
   },
-  "rule_test_output": "m23_rule_test_output.json generated during build"
+  "javascript_files_checked": 4,
+  "css_files_checked": 4,
+  "rule_regression": {
+    "wizard_5_nodes": "6/2/2/2/2 with max rings 1/1/2/2/3",
+    "sorcerer_5_nodes": "2/1/1/1/1 with max rings 1/1/2/2/3"
+  },
+  "browser_visual_test": "not completed: sandbox Chromium process did not terminate reliably"
 }
