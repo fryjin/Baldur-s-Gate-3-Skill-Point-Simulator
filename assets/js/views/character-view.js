@@ -1,6 +1,7 @@
 import{abilities,classes,skills,backgrounds}from"../data/core.js";
 import{feats,featDetails,skillDescriptions,skillGlyphs}from"../data/progression.js";
 import{spellData}from"../data/spells.js";
+import{learningMode,learningPlan,migrateLearningState,learningSummary,nodeProgress,spellName}from"../data/spell-learning.js";
 import{characterSummary,fmt,spellSources,spellChoice,skillBonus,activeFeatureGroups,mod,proficiencyBonus,validationIssues}from"../selectors.js";
 import{spellEffectSummary,featureEffectSummary}from"../rules/effects.js";
 import{effectFormulaHtml,featureEffectHtml}from"../components/effects-ui.js";
@@ -62,8 +63,8 @@ export function renderCharacter(build){
   const selectedFeats=build.feats.filter(item=>item?.type&&item.type!=="none");
   const spellGroups=spellSources(build).map(src=>{
     const choice=spellChoice(build,src.key),preparedSet=new Set(choice.prepared),castMod=mod(s.scores[src.ability]);
-    const known=choice.spells.filter(key=>!preparedSet.has(key));
-    return{src,choice,preparedSet,known,dc:8+pb+castMod,attack:pb+castMod}
+    const known=choice.spells.filter(key=>!preparedSet.has(key)),learning=learningMode(src)==="prepared"?null:migrateLearningState(build.spellLearning?.[src.key],src,choice);
+    return{src,choice,preparedSet,known,learning,learningSummary:learning?learningSummary(src,learning):null,dc:8+pb+castMod,attack:pb+castMod}
   });
   const identityFacts=[
     ["种族",build.identity.race],
@@ -104,7 +105,8 @@ export function renderCharacter(build){
           <div class="character-feature-groups">${featureGroups.map(group=>`<article><h3>${esc(classes[group.classKey]?.name||group.classKey)} · ${esc(group.title)}</h3>${group.selected.map(key=>{const option=group.options.find(x=>x[0]===key),effect=featureEffectSummary(build,group,key);return`<div class="character-feature-row"><span class="option-glyph">✦</span><div><b>${esc(option?.[1]||key)}</b><p>${esc(option?.[2]||"")}</p>${featureEffectHtml(effect)}</div></div>`}).join("")}</article>`).join("")||'<p class="muted">尚未选择主动职业能力。</p>'}</div>
         </section>
         <section class="sheet-card sheet-card-wide" id="sheet-spells"><div class="sheet-card-head"><h2>戏法与法术</h2><span>${spellGroups.length?`${spellGroups.length} 个施法来源`:"无施法职业"}</span></div>
-          <div class="spell-sheet-groups">${spellGroups.map(({src,choice,preparedSet,known,dc,attack})=>`<article class="spell-source-card"><header><div><h3>${esc(src.name)} ${src.level}级</h3><p>${abilityName(src.ability)}施法 · 最高${src.maxLevel}环 · 法术攻击 ${fmt(attack)} · DC ${dc}</p></div><span>${src.mode==="spellbook"?"法术书":src.mode==="prepared"?"准备施法":src.mode==="pact"?"契约魔法":"已知法术"}</span></header>
+          <div class="spell-sheet-groups">${spellGroups.map(({src,choice,preparedSet,known,learning,learningSummary,dc,attack})=>`<article class="spell-source-card"><header><div><h3>${esc(src.name)} ${src.level}级</h3><p>${abilityName(src.ability)}施法 · 最高${src.maxLevel}环 · 法术攻击 ${fmt(attack)} · DC ${dc}</p></div><span>${src.mode==="spellbook"?"法术书":src.mode==="prepared"?"准备施法":src.mode==="pact"?"契约魔法":"已知法术"}</span></header>
+            ${learning?`<div class="character-learning-history"><div class="character-learning-summary"><span>升级学习</span><b>${learningSummary.total}/${learningSummary.limit}</b><small>${esc(learningSummary.text)}</small></div><div class="character-learning-nodes">${learningPlan(src).map(node=>{const progress=nodeProgress(learning,node),names=learning.slots.filter(slot=>slot.nodeId===node.id&&slot.spellKey).map(slot=>spellName(slot.spellKey));return`<div class="character-learning-node ${progress.complete?"complete":""}"><span>${node.classLevel}级</span><b>${progress.selected}/${progress.total} · 最高${node.maxSpellLevel}环</b><small>${esc(names.join("、")||"尚未完成")}</small></div>`}).join("")}</div></div>`:""}
             <div class="spell-source-section"><h4>戏法 <span>${choice.cantrips.length}</span></h4><div class="character-spell-cards">${spellCards(choice.cantrips,new Set(),build,src)||'<span class="muted">尚未选择</span>'}</div></div>
             ${choice.prepared.length?`<div class="spell-source-section"><h4>已准备 <span>${choice.prepared.length}</span></h4><div class="character-spell-cards">${spellCards(choice.prepared,preparedSet,build,src)}</div></div>`:""}
             ${known.length?`<div class="spell-source-section"><h4>${src.mode==="spellbook"?"法术书其余法术":"已知法术"} <span>${known.length}</span></h4><div class="character-spell-cards">${spellCards(known,preparedSet,build,src)}</div></div>`:""}

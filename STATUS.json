@@ -1,7 +1,7 @@
 {
-  "version": "V7 M18",
-  "milestone": "移动端法术工具区重叠修复",
+  "version": "V7 M23",
+  "milestone": "逐级法术学习节点重构",
   "state": "ready-for-upload",
-  "base": "V7 M17",
-  "mobile_layer": "M13 independent mobile UI + M17 stage tracking + M18 spell toolbar isolation"
+  "base": "V7 M20 cumulative upgrade",
+  "replaces_runtime_patch": "assets/js/patches/m22-spell-progression.js"
 }

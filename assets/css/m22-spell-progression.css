@@ -1,0 +1,15 @@
+/* V7 M22 — spell slots, known/learned limits and prepared capacity are separate concepts */
+.m22-spell-rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:8px 0 10px;padding:9px;border:1px solid rgba(223,189,114,.18);border-radius:10px;background:rgba(223,189,114,.035)}
+.m22-spell-rules>div{display:grid;gap:3px;min-width:0;padding:7px 8px;border-radius:8px;background:rgba(0,0,0,.18)}
+.m22-spell-rules span{color:var(--gold);font-size:10px;font-weight:800}.m22-spell-rules b{overflow:hidden;color:var(--text);font-size:12px;line-height:1.4;text-overflow:ellipsis}.m22-spell-rules p{grid-column:1/-1;margin:1px 2px 0;color:var(--muted);font-size:11px;line-height:1.45}
+.m22-limit-warning{margin:0 0 10px;padding:9px 11px;border-left:2px solid #d96d5d;background:rgba(164,54,43,.13);color:#f0a091;font-size:12px;line-height:1.45}
+.spell-counts .m22-over-limit,.m-spell-counts .m22-over-limit{border-color:#d96d5d!important;background:rgba(164,54,43,.15)!important;color:#f0a091!important}.m22-over-limit b{color:#ffb0a3!important}
+.m22-limit-disabled{cursor:not-allowed!important;opacity:.48!important;filter:saturate(.55)}
+@media(min-width:768px){.spell-layout>.m22-spell-rules{margin-inline:0}.spell-counts+.m22-spell-rules{margin-top:6px}.spell-decision-content .m22-spell-rules{flex:0 0 auto}}
+@media(max-width:767px){
+  .m19-spells-mode .m-spell-counts{grid-template-columns:repeat(auto-fit,minmax(94px,1fr))!important}
+  .m19-spells-mode .m22-spell-rules{grid-template-columns:1fr;margin:0;padding:7px;background:rgba(223,189,114,.025)}
+  .m19-spells-mode .m22-spell-rules p{grid-column:1;font-size:10px}
+  .m19-spells-mode .m22-limit-warning{margin:0;padding:8px 9px;font-size:11px}
+  .m19-spells-mode .m19-spell-toolbar{max-height:min(44dvh,360px);overflow-y:auto;overscroll-behavior:contain}
+}

@@ -1,15 +1,21 @@
 {
-  "version": "V7 M21",
+  "version": "V7 M23",
+  "generated_at": "2026-07-31T10:39:00+08:00",
   "files": [
     {
       "path": "PATCH_README.md",
-      "size": 595,
-      "sha256": "b658943a79d15524664882aad8b434cfe64bc4c08da699c0fc0997ac3ac24f99"
+      "size": 2036,
+      "sha256": "e5e333d375def25c0a6b0ff6e02e91a8777495b33bfbf6bdc6b23023cd018594"
+    },
+    {
+      "path": "STATUS.json",
+      "size": 219,
+      "sha256": "6fd335b7343129a21f558311efbf2fba441aea7acacfefa1a3a413a3f9205cd5"
     },
     {
       "path": "VALIDATION.json",
-      "size": 268,
-      "sha256": "b21c359df84d22bea9ea3f59fffb50dd4ca6d1655edf78e849f582db99a7c10d"
+      "size": 814,
+      "sha256": "9dfb4c78a906f36ca8c556769756ef08b40f10b91ed9e99b1eb743f3f8d5682c"
     },
     {
       "path": "assets/css/m21-icons-and-sheet.css",
@@ -17,14 +23,39 @@
       "sha256": "19e462aa8178c9a26c07459d4875bf8978a588fc3f21e2332978f624efd39bd1"
     },
     {
+      "path": "assets/css/m22-spell-progression.css",
+      "size": 1834,
+      "sha256": "2ce39aaa9bd30301472d8111dfa13be7e2d24bc848a1cafc99b0277a243f4a1e"
+    },
+    {
+      "path": "assets/css/m23-spell-learning.css",
+      "size": 6294,
+      "sha256": "d7014b0fc79180430e7d052984a249196f862af8ebe0982986e198a8a6acc3dc"
+    },
+    {
+      "path": "assets/js/data/spell-learning.js",
+      "size": 9687,
+      "sha256": "a9af5da3d03998173a37a707f0aae0c7f8a17376ea83030841a75e8f1097a572"
+    },
+    {
+      "path": "assets/js/data/spell-progression.js",
+      "size": 4011,
+      "sha256": "0de341b87beae24bb808b5f1155eb17d39894c47769bd146b2c988b0256c2412"
+    },
+    {
+      "path": "assets/js/patches/m23-spell-learning.js",
+      "size": 17722,
+      "sha256": "329b07c069d99fdf9409b9c3fe88cd7bbdc974acc5b7f8c9dcbd2cc0e245303a"
+    },
+    {
       "path": "assets/js/views/character-view.js",
-      "size": 10957,
-      "sha256": "b97d476913dbc98ade1fb5f1217c8fa24fcd7858c2549b721d87c2b668444512"
+      "size": 12025,
+      "sha256": "467e9d41dfb89d8fddf1661b35cfdd777c0596830b0ef6d7c258f96536026d88"
     },
     {
       "path": "index.html",
-      "size": 1529,
-      "sha256": "2f6bddca13a515d4fe12565484a512ede05ca6602f9ebe17f170fb27ce946b37"
+      "size": 1752,
+      "sha256": "e22f4e4a3a9d02887b7bb23cb2ba606ba2661fd660e3129dfd54a2a32ba8f6dc"
     }
   ]
 }

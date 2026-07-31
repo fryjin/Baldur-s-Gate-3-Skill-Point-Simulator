@@ -1,12 +1,21 @@
 {
-  "version": "V7 M21",
+  "version": "V7 M23",
   "result": "passed",
   "checks": {
-    "character_nav_uses_buttons": true,
-    "anchor_navigation_removed": true,
-    "scroll_into_view": true,
-    "active_section_tracking": true,
-    "effect_badges": true,
-    "index_loads_m21": true
-  }
+    "wizard_level5_nodes": "[[1,6,1],[2,2,1],[3,2,2],[4,2,2],[5,2,3]] tested",
+    "sorcerer_level5_nodes": "[[1,2,1],[2,1,1],[3,1,2],[4,1,2],[5,1,3]] tested",
+    "prepared_casters_have_no_learning_nodes": true,
+    "known_caster_replacement_nodes": true,
+    "legacy_flat_spell_migration": true,
+    "invalid_ring_distribution_flagged": true,
+    "spellbook_and_prepared_separate": true,
+    "m22_runtime_replaced": true,
+    "character_sheet_learning_history": true,
+    "mobile_collapsible_learning_panel": true,
+    "desktop_wrapping_node_grid": true,
+    "historical_spell_images_untouched": true,
+    "javascript_syntax": "passed",
+    "css_brace_balance": "passed"
+  },
+  "rule_test_output": "m23_rule_test_output.json generated during build"
 }
