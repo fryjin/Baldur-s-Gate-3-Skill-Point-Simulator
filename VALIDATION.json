@@ -1,15 +1,18 @@
 {
-  "version": "V7 M28",
+  "version": "V8.1",
   "result": "passed",
   "checks": {
-    "m28_css_loaded": true,
-    "m28_js_loaded": true,
-    "m27_preserved": true,
-    "m26_preserved": true,
-    "mobile_patch_preserved": true,
-    "active_node_main_card": true,
-    "other_nodes_compact": true,
-    "equal_height_spell_cards": true,
-    "right_details_folded": true
-  }
+    "imports_v7_store": true,
+    "imports_v7_selectors": true,
+    "imports_resource_model": true,
+    "v7_character_summary": true,
+    "v7_final_scores": true,
+    "v7_validation": true,
+    "chapter_equipment_store": true,
+    "v8_export": true,
+    "v7_index_not_overwritten": true,
+    "deploy_entry_exists": true,
+    "offline_preview_exists": true
+  },
+  "note": "Static integration validation. v8.html expects to be merged into the existing V7 repository so its imported V7 modules are present."
 }

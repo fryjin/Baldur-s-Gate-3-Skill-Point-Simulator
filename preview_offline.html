@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0a08">
+  <title>博德之门 3 · 构筑规划器 V8 Preview Local</title>
+  <style>
+:root{
+  --bg:#0a0907;--panel:#100f0c;--panel2:#15130f;--panel3:#1b1812;--line:#3b3120;--line2:#5a482a;
+  --text:#f0eadc;--muted:#a89f8c;--gold:#d2ad5b;--gold2:#f0d58b;--red:#b94b42;--green:#82b887;
+  --shadow:0 18px 50px rgba(0,0,0,.34);--radius:12px;--stage:184px;--top:58px;
+}
+*{box-sizing:border-box}html,body,#app{margin:0;min-height:100%;background:var(--bg);color:var(--text)}body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:radial-gradient(circle at 52% -15%,rgba(109,93,61,.16),transparent 33%),linear-gradient(180deg,#0c0b09,#080705 70%)}button,input{font:inherit}button{cursor:pointer}.v8-shell{min-height:100vh;display:grid;grid-template-columns:var(--stage) minmax(0,1fr)}
+.v8-stage-nav{position:sticky;top:0;height:100vh;padding:14px 12px;border-right:1px solid var(--line);background:rgba(8,7,5,.92);backdrop-filter:blur(18px);display:flex;flex-direction:column;gap:18px;z-index:20}.v8-brand{display:flex;align-items:center;gap:10px}.v8-brand>span{display:grid;width:42px;height:42px;place-items:center;border:1px solid var(--line2);transform:rotate(45deg);color:var(--gold2);font-family:Georgia,serif}.v8-brand>span::first-letter{transform:rotate(-45deg)}.v8-brand div{display:grid;gap:2px}.v8-brand b{font-family:Georgia,"Songti SC",serif;font-size:16px}.v8-brand small{font-size:10px;color:var(--muted)}
+.v8-stage-nav nav{display:grid;gap:8px}.v8-nav-group{display:grid;grid-template-columns:28px 1fr;gap:9px;padding:10px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--muted);text-align:left}.v8-nav-group i{grid-row:1/3;display:grid;width:26px;height:26px;place-items:center;border:1px solid var(--line);border-radius:50%;font-family:Georgia,serif;color:var(--gold);font-style:normal}.v8-nav-group div{display:grid;gap:3px}.v8-nav-group b{font-size:13px;color:var(--text)}.v8-nav-group small{font-size:9px;line-height:1.4}.v8-nav-group>span{grid-column:2;font-size:9px;color:#756e61}.v8-nav-group:hover,.v8-nav-group.active{border-color:rgba(210,173,91,.28);background:rgba(210,173,91,.07)}.v8-nav-group.active>span{color:var(--gold)}.v8-stage-help{margin-top:auto;padding:10px;border-top:1px solid var(--line);color:var(--muted)}.v8-stage-help span{color:var(--gold);font-size:10px;font-weight:700}.v8-stage-help p{margin:6px 0 0;font-size:9px;line-height:1.6}
+.v8-content{min-width:0}.v8-topbar{position:sticky;top:0;height:var(--top);display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--line);background:rgba(10,9,7,.82);backdrop-filter:blur(16px);z-index:15}.v8-build-mini{display:flex;align-items:baseline;gap:10px}.v8-build-mini b{font-size:14px}.v8-build-mini span{font-size:11px;color:var(--gold)}.v8-top-actions{display:flex;gap:8px}.v8-top-actions button,.v8-final-actions button{min-height:36px;padding:0 13px;border:1px solid var(--line2);border-radius:8px;background:rgba(255,255,255,.02);color:var(--text)}
+.v8-main{max-width:1540px;margin:0 auto;padding:24px}.v8-page-head{max-width:760px;margin-bottom:18px}.v8-page-head.compact{margin-bottom:12px}.v8-page-head>span,.kicker{font-size:10px;letter-spacing:.16em;color:var(--gold);font-weight:800}.v8-page-head h1{margin:4px 0 5px;font-family:Georgia,"Songti SC",serif;font-size:31px;line-height:1.05}.v8-page-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+.v8-character-hero,.v8-final-hero{display:grid;grid-template-columns:auto minmax(220px,1fr) minmax(500px,1.4fr);align-items:center;gap:18px;padding:18px 20px;border-top:1px solid var(--line2);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(210,173,91,.05),transparent)}.v8-level{font-family:Georgia,serif;font-size:64px;color:var(--gold2);line-height:1}.v8-character-hero>div:first-child{display:grid;text-align:center}.v8-character-hero small,.v8-final-hero small{color:var(--muted)}.v8-character-hero h2,.v8-final-hero h2{margin:0 0 5px;font-size:25px;font-family:Georgia,"Songti SC",serif}.v8-character-hero p,.v8-final-hero p{margin:0 0 4px;color:var(--muted)}.v8-stat-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line)}.v8-stat-row.large{grid-template-columns:repeat(6,minmax(0,1fr))}.v8-stat-row>div{display:grid;gap:4px;padding:10px 12px;background:#0f0e0b}.v8-stat-row span{font-size:9px;color:var(--muted)}.v8-stat-row b{font-family:Georgia,serif;font-size:21px;color:var(--gold2)}.v8-character-grid,.v8-final-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}.v8-summary-card{min-width:0;padding:16px;border-top:1px solid var(--line);background:rgba(255,255,255,.014)}.v8-summary-card.wide{grid-column:1/-1}.v8-summary-card>span{font-size:10px;color:var(--gold);font-weight:800}.v8-summary-card h3{margin:8px 0;font-size:18px}.v8-summary-card p{color:var(--muted);font-size:11px;line-height:1.6}.v8-tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.v8-tag-list b,.v8-tag-list span{padding:5px 8px;border-radius:7px;background:rgba(210,173,91,.07);color:#d7cab1;font-size:10px;font-weight:600}.v8-character-cta{background:linear-gradient(135deg,rgba(122,79,39,.12),rgba(255,255,255,.01))}
+.primary,.secondary{min-height:38px;padding:0 14px;border-radius:8px;font-weight:800}.primary{border:1px solid #d27667;background:linear-gradient(#bd554b,#9d3731);color:white;box-shadow:inset 0 1px rgba(255,255,255,.14)}.secondary{border:1px solid var(--line2);background:rgba(210,173,91,.06);color:var(--text)}.wide{width:100%}
+.v8-act-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}.v8-act-tabs button{display:grid;gap:3px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.015);color:var(--muted);text-align:left}.v8-act-tabs button>span{font-size:9px;color:#7e725b}.v8-act-tabs button>b{font-size:14px;color:var(--text)}.v8-act-tabs button small{font-size:9px}.v8-act-tabs button.active{border-color:var(--gold);background:rgba(210,173,91,.09)}.v8-act-tabs button.active>span,.v8-act-tabs button.active small{color:var(--gold)}
+.v8-loadout-bar{padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.v8-section-label{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.v8-section-label span{color:var(--gold);font-size:10px;font-weight:800}.v8-section-label b{font-size:10px;color:var(--muted)}.v8-slot-grid{display:grid;grid-template-columns:repeat(11,minmax(72px,1fr));gap:6px}.v8-slot{min-width:0;display:grid;grid-template-columns:30px minmax(0,1fr);gap:7px;align-items:center;padding:7px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.012);color:var(--text);text-align:left}.v8-slot>span{display:grid;width:29px;height:29px;place-items:center;border-radius:7px;background:rgba(210,173,91,.07);color:var(--gold);font-size:11px}.v8-slot div{min-width:0}.v8-slot b,.v8-slot small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.v8-slot b{font-size:9px}.v8-slot small{margin-top:2px;font-size:8px;color:var(--muted)}.v8-slot.active{border-color:var(--gold);background:rgba(210,173,91,.08)}.v8-slot.filled>span{background:rgba(130,184,135,.1);color:#a6d7aa}
+.v8-gear-workspace{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;margin-top:12px;align-items:start}.v8-gear-list-pane{min-width:0}.v8-gear-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 10px}.v8-gear-toolbar>div{display:grid;grid-template-columns:auto auto;gap:2px 8px;align-items:baseline}.v8-gear-toolbar span{font-size:9px;color:var(--muted)}.v8-gear-toolbar b{font-size:14px}.v8-gear-toolbar small{grid-column:1/-1;color:var(--gold);font-size:9px}.v8-gear-toolbar input{width:min(340px,45%);height:38px;border:1px solid var(--line2);border-radius:8px;background:#0f0e0c;color:var(--text);padding:0 12px;outline:none}.v8-gear-toolbar input:focus{border-color:var(--gold)}.v8-candidate-list{display:grid;gap:8px}.v8-gear-card{display:grid;grid-template-columns:minmax(0,1fr) 120px;min-height:110px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.014);overflow:hidden}.v8-gear-card:hover{border-color:rgba(210,173,91,.42)}.v8-gear-card.equipped{border-color:var(--gold);background:linear-gradient(90deg,rgba(210,173,91,.09),rgba(210,173,91,.02))}.v8-gear-main{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;align-items:start;padding:11px;border:0;background:transparent;color:var(--text);text-align:left}.v8-item-icon{display:grid;width:54px;height:54px;place-items:center;border:1px solid #6d5732;border-radius:10px;background:radial-gradient(circle at 40% 35%,#4e3f22,#15120d 70%);color:#f2d88c;font-family:Georgia,serif;font-size:18px;box-shadow:inset 0 0 16px rgba(210,173,91,.08)}.v8-item-icon.rarity-legend{border-color:#d69b38;box-shadow:inset 0 0 18px rgba(222,151,34,.18)}.v8-item-icon.large{width:70px;height:70px;font-size:24px}.v8-gear-main>div{min-width:0}.v8-gear-title{display:flex;justify-content:space-between;gap:8px}.v8-gear-title b{font-size:13px}.v8-gear-title i{font-style:normal;font-size:9px;color:var(--gold)}.v8-gear-main small{display:block;margin-top:2px;color:#8e8474;font-size:9px}.v8-gear-main p{margin:7px 0 0;color:#c7bfaf;font-size:10px;line-height:1.45}.v8-tag-list.mini{margin-top:7px}.v8-tag-list.mini span{padding:3px 6px;font-size:8px}.v8-gear-side{display:flex;flex-direction:column;align-items:stretch;gap:6px;padding:10px;border-left:1px solid var(--line);background:rgba(0,0,0,.14)}.v8-score{font-size:9px;color:var(--gold);font-weight:800}.v8-delta{min-height:30px;color:#bcb19d;font-size:9px;line-height:1.45}.v8-gear-side button{margin-top:auto}
+.v8-compare-pane{position:relative}.v8-compare-sticky{position:sticky;top:calc(var(--top) + 14px);display:grid;gap:10px;padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(14,13,10,.88);box-shadow:var(--shadow);backdrop-filter:blur(12px)}.v8-current-slot{display:grid;gap:4px;padding-bottom:10px;border-bottom:1px solid var(--line)}.v8-current-slot span{font-size:9px;color:var(--gold)}.v8-current-slot b{font-size:16px}.v8-current-slot small{color:var(--muted);font-size:9px;line-height:1.5}.v8-stat-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.v8-stat-compare>div{display:grid;gap:3px;padding:8px;background:rgba(255,255,255,.02)}.v8-stat-compare span{font-size:8px;color:var(--muted)}.v8-stat-compare b{font-family:Georgia,serif;color:var(--gold2);font-size:18px}.v8-stat-compare small{font-size:8px;color:#817968}.v8-stat-compare small.up{color:#8fc89a}.v8-stat-compare small.down{color:#d98479}.v8-route-progress{display:grid;gap:5px;padding-top:2px;border-top:1px solid var(--line)}.v8-route-progress>span{margin:6px 0 2px;color:var(--gold);font-size:9px;font-weight:800}.v8-route-progress>div{display:flex;justify-content:space-between;gap:8px;font-size:9px}.v8-route-progress small{color:var(--muted)}
+.v8-empty{padding:38px;text-align:center;border:1px dashed var(--line);color:var(--muted)}.v8-empty p{font-size:10px}
+.v8-final-identity{display:flex;align-items:center;gap:14px}.v8-final-loadout{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.v8-final-loadout>div{display:grid;grid-template-columns:38px minmax(0,1fr);gap:8px;align-items:center;padding:8px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.015)}.v8-final-loadout>div>span{display:grid;width:36px;height:36px;place-items:center;border-radius:8px;background:rgba(210,173,91,.06);color:var(--gold)}.v8-final-loadout small,.v8-final-loadout b,.v8-final-loadout em{display:block}.v8-final-loadout small{font-size:8px;color:var(--muted)}.v8-final-loadout b{font-size:10px}.v8-final-loadout em{font-style:normal;font-size:8px;color:var(--gold)}.v8-final-loadout>div.filled{border-color:rgba(210,173,91,.28)}.v8-act-route{display:grid;gap:8px;margin-top:10px}.v8-act-route>div{padding:8px;border-left:2px solid var(--line2);background:rgba(255,255,255,.015)}.v8-act-route b{font-size:10px}.v8-act-route p{margin:4px 0 0}.v8-final-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.v8-sheet-backdrop{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.66);backdrop-filter:blur(8px)}.v8-sheet{position:relative;width:min(560px,100%);display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;padding:18px;border:1px solid var(--line2);border-radius:14px;background:#11100d;box-shadow:var(--shadow)}.v8-sheet-close{position:absolute;right:10px;top:8px;border:0;background:transparent;color:var(--muted);font-size:24px}.v8-sheet h2{margin:5px 0 2px;font-family:Georgia,"Songti SC",serif;font-size:25px}.v8-sheet small{color:var(--muted)}.v8-sheet p{margin:12px 0;color:#cec4b2;line-height:1.7;font-size:12px}.v8-sheet dl{display:grid;gap:1px;margin:0 0 12px;background:var(--line)}.v8-sheet dl>div{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:8px;background:#11100d}.v8-sheet dt{font-size:9px;color:var(--muted)}.v8-sheet dd{margin:0;font-size:10px}
+@media(max-width:1200px){:root{--stage:164px}.v8-slot-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.v8-gear-workspace{grid-template-columns:minmax(0,1fr) 260px}.v8-character-hero,.v8-final-hero{grid-template-columns:auto 1fr}.v8-stat-row{grid-column:1/-1}.v8-stat-row.large{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:767px){:root{--top:52px}.v8-shell{display:block}.v8-stage-nav{position:static;width:auto;height:auto;padding:0;border:0;background:#0b0a08}.v8-brand,.v8-stage-help{display:none}.v8-stage-nav nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid var(--line)}.v8-nav-group{display:flex;align-items:center;justify-content:center;min-height:52px;padding:6px;border:0;border-radius:0}.v8-nav-group i,.v8-nav-group small,.v8-nav-group>span{display:none}.v8-nav-group b{font-size:11px}.v8-nav-group.active{box-shadow:inset 0 -2px var(--gold);background:rgba(210,173,91,.05)}.v8-topbar{top:0;padding:0 12px}.v8-build-mini span{display:none}.v8-top-actions button:last-child{display:none}.v8-main{padding:14px 12px 86px}.v8-page-head h1{font-size:26px}.v8-page-head p{font-size:11px}.v8-character-hero,.v8-final-hero{grid-template-columns:auto 1fr;padding:14px 0;background:transparent}.v8-level{font-size:52px}.v8-stat-row,.v8-stat-row.large{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}.v8-character-grid,.v8-final-grid{grid-template-columns:1fr}.v8-act-tabs{position:sticky;top:var(--top);z-index:8;background:#0b0a08;padding:6px 0}.v8-act-tabs button{padding:8px}.v8-slot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.v8-slot{grid-template-columns:28px minmax(0,1fr)}.v8-gear-workspace{display:block}.v8-compare-pane{display:none}.v8-gear-toolbar{align-items:flex-end}.v8-gear-toolbar input{width:56%;font-size:16px}.v8-gear-card{grid-template-columns:minmax(0,1fr) 86px}.v8-gear-main{grid-template-columns:48px minmax(0,1fr);padding:10px}.v8-item-icon{width:44px;height:44px}.v8-gear-main p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.v8-gear-side{padding:8px}.v8-score,.v8-delta{font-size:8px}.v8-final-loadout{grid-template-columns:repeat(2,minmax(0,1fr))}.v8-sheet-backdrop{place-items:end center;padding:0}.v8-sheet{width:100%;max-height:82dvh;overflow:auto;border-radius:16px 16px 0 0;border-bottom:0;grid-template-columns:62px 1fr;padding:18px 14px calc(18px + env(safe-area-inset-bottom))}.v8-final-actions{position:fixed;left:0;right:0;bottom:0;z-index:12;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(10,9,7,.92);border-top:1px solid var(--line)} }
+
+</style>
+</head>
+<body>
+  <div id="app"><div style="padding:32px;color:#d2ad5b;font-family:system-ui">正在加载 V8 Preview…</div></div>
+  <div id="sheet-root"></div>
+  <script>
+const slotMeta={
+  head:['头部','冠'],cloak:['披风','披'],armor:['护甲','甲'],gloves:['手套','手'],boots:['鞋子','靴'],amulet:['项链','链'],ring1:['戒指 1','戒'],ring2:['戒指 2','戒'],main:['主手','主'],off:['副手','副'],ranged:['远程','远']
+};
+
+const items=[
+  {id:'graceful-cloth',act:1,slot:'armor',name:'优雅布衣',en:'The Graceful Cloth',rarity:'稀有',source:'山隘 · 商人',icon:'衣',summary:'敏捷 +2，并强化敏捷检定。',effects:{ac:1,dex:2},tags:['敏捷','轻装','先攻'],score:86},
+  {id:'gloves-dexterity',act:1,slot:'gloves',name:'敏捷手套',en:'Gloves of Dexterity',rarity:'非常稀有',source:'养育间 · 商人',icon:'手',summary:'将敏捷提高到 18，适合低敏施法者。',effects:{dexFloor:18,initiative:2,ac:2},tags:['敏捷','先攻','护甲'],score:95},
+  {id:'undermountain-king',act:1,slot:'main',name:'山丘巨王短刀',en:'Knife of the Undermountain King',rarity:'非常稀有',source:'养育间 · 商人',icon:'刃',summary:'降低重击阈值，并强化优势攻击。',effects:{crit:1,attack:1},tags:['重击','武器','爆发'],score:91},
+  {id:'strange-conduit',act:1,slot:'ring1',name:'奇异导管戒指',en:'Strange Conduit Ring',rarity:'稀有',source:'养育间',icon:'环',summary:'保持专注时，武器攻击附加心灵伤害。',effects:{damage:2.5},tags:['专注','心灵','附伤'],score:78},
+  {id:'caustic-band',act:1,slot:'ring2',name:'腐蚀戒指',en:'Caustic Band',rarity:'稀有',source:'幽暗地域 · 商人',icon:'酸',summary:'武器攻击稳定附加酸蚀伤害。',effects:{damage:2},tags:['酸蚀','附伤','稳定'],score:82},
+  {id:'phalar-aluve',act:1,slot:'main',name:'法拉·阿鲁维',en:'Phalar Aluve',rarity:'稀有',source:'幽暗地域',icon:'剑',summary:'团队型武器，可通过旋律增强命中或额外伤害。',effects:{party:2,attack:1},tags:['团队','辅助','武器'],score:88},
+  {id:'adamantine-shield',act:1,slot:'off',name:'精金盾牌',en:'Adamantine Shield',rarity:'非常稀有',source:'精金熔炉',icon:'盾',summary:'提高护甲并降低敌方暴击威胁。',effects:{ac:2,defense:2},tags:['护甲','生存','盾牌'],score:84},
+
+  {id:'potent-robe',act:2,slot:'armor',name:'强能长袍',en:'Potent Robe',rarity:'非常稀有',source:'第二章任务奖励',icon:'袍',summary:'魅力施法者的核心长袍，强化戏法伤害与生存。',effects:{spellDamage:4,ac:1},tags:['魅力','戏法','核心'],score:99},
+  {id:'risky-ring',act:2,slot:'ring1',name:'风险戒指',en:'Risky Ring',rarity:'非常稀有',source:'月出之塔 · 商人',icon:'险',summary:'攻击更容易取得优势，但豁免承受风险。',effects:{attack:3,crit:1,save:-1},tags:['优势','爆发','风险'],score:97},
+  {id:'callous-glow',act:2,slot:'ring2',name:'无情光芒之戒',en:'Callous Glow Ring',rarity:'非常稀有',source:'莎尔试炼场',icon:'光',summary:'对被照亮目标追加光耀伤害。',effects:{damage:2},tags:['光耀','附伤','输出'],score:89},
+  {id:'cloak-protection',act:2,slot:'cloak',name:'防护斗篷',en:'Cloak of Protection',rarity:'稀有',source:'终焉光芒旅店 · 商人',icon:'披',summary:'护甲等级与豁免检定各 +1。',effects:{ac:1,save:1},tags:['护甲','豁免','泛用'],score:92},
+  {id:'arcane-acuity-helm',act:2,slot:'head',name:'奥术敏锐头盔',en:'Helmet of Arcane Acuity',rarity:'非常稀有',source:'第二章探索',icon:'慧',summary:'武器命中后叠加奥术敏锐，提升法术攻击与 DC。',effects:{spellDC:2,spellAttack:2},tags:['法术DC','控制','核心'],score:98},
+  {id:'yuan-ti',act:2,slot:'armor',name:'元提鳞甲',en:'Yuan-Ti Scale Mail',rarity:'非常稀有',source:'终焉光芒旅店 · 商人',icon:'鳞',summary:'允许完整敏捷加值的中甲，兼顾防御与先攻。',effects:{ac:3,initiative:1},tags:['护甲','敏捷','中甲'],score:94},
+
+  {id:'birthright',act:3,slot:'head',name:'天赋权利',en:'Birthright',rarity:'非常稀有',source:'博德之门 · 商人',icon:'冠',summary:'魅力 +2，纯魅力施法构筑的直接提升。',effects:{cha:2,spellDC:1,spellAttack:1},tags:['魅力','法术DC','核心'],score:96},
+  {id:'markoheshkir',act:3,slot:'main',name:'玛科赫什基',en:'Markoheshkir',rarity:'传奇',source:'拉玛吉斯高塔',icon:'杖',summary:'毕业级施法法杖，强化法术并提供元素向能力。',effects:{spellDC:1,spellAttack:1,spellDamage:3},tags:['施法','法术DC','毕业'],score:100},
+  {id:'rhapsody',act:3,slot:'off',name:'狂想曲',en:'Rhapsody',rarity:'非常稀有',source:'第三章首领战利品',icon:'匕',summary:'通过击杀累积强化命中、伤害与法术效果。',effects:{spellDC:1,spellAttack:1,damage:3},tags:['叠层','法术','爆发'],score:96},
+  {id:'armour-agility',act:3,slot:'armor',name:'敏捷护甲',en:'Armour of Agility',rarity:'非常稀有',source:'博德之门 · 商人',icon:'甲',summary:'极高防御中甲，完整吃敏捷加值。',effects:{ac:4,save:2},tags:['护甲','敏捷','毕业'],score:98},
+  {id:'dead-shot',act:3,slot:'ranged',name:'致命一击',en:'The Dead Shot',rarity:'非常稀有',source:'博德之门 · 商人',icon:'弓',summary:'提升远程命中并进一步压低重击阈值。',effects:{crit:1,attack:2},tags:['重击','远程','命中'],score:95},
+  {id:'legacy-masters',act:3,slot:'gloves',name:'大师遗产',en:'Legacy of the Masters',rarity:'非常稀有',source:'第三章商人',icon:'掌',summary:'稳定提高武器攻击与伤害。',effects:{attack:2,damage:2},tags:['武器','命中','伤害'],score:93},
+  {id:'helldusk-boots',act:3,slot:'boots',name:'狱火暮光长靴',en:'Helldusk Boots',rarity:'非常稀有',source:'第三章任务',icon:'靴',summary:'强化机动与生存，适合终局高压战斗。',effects:{defense:2,initiative:1},tags:['机动','生存','终局'],score:91},
+  {id:'amulet-health',act:3,slot:'amulet',name:'强健护符',en:'Amulet of Greater Health',rarity:'非常稀有',source:'希望宅邸',icon:'心',summary:'将体质提升到极高水平，显著提高生命与专注稳定性。',effects:{conFloor:23,hp:24,save:2},tags:['体质','生命','专注'],score:100}
+];
+
+const state={
+  stage:'equipment',act:1,slot:'armor',query:'',detail:null,
+  build:{
+    name:'123',level:9,route:'术士 7 / 牧师 2',race:'人类',background:'侍僧',
+    stats:{hp:40,ac:13,initiative:6,spellDC:15,spellAttack:7,damage:0,crit:20},
+    resources:['法术位 1环4 · 2环3 · 3环3 · 4环1 · 5环1','术法点 7','神力引导 1'],
+    feats:['警觉'],skills:['奥秘','游说','洞悉','宗教'],spells:['酸液飞溅','灼热射线','火球术','法术反制','加速术'],
+  },
+  loadout:{head:null,cloak:null,armor:null,gloves:null,boots:null,amulet:null,ring1:null,ring2:null,main:null,off:null,ranged:null},
+  history:{1:{},2:{},3:{}}
+};
+
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const byId=id=>items.find(x=>x.id===id);
+const slots=Object.keys(slotMeta);
+
+function effectiveStats(){
+  const base={...state.build.stats};
+  const equipped=Object.values(state.loadout).map(byId).filter(Boolean);
+  const out={...base};
+  let dexFloor=0,conFloor=0,cha=0;
+  for(const it of equipped){const e=it.effects||{};out.ac+=(e.ac||0);out.initiative+=(e.initiative||0);out.spellDC+=(e.spellDC||0);out.spellAttack+=(e.spellAttack||0);out.damage+=(e.damage||0)+(e.spellDamage||0);out.crit-=e.crit||0;out.hp+=(e.hp||0);dexFloor=Math.max(dexFloor,e.dexFloor||0);conFloor=Math.max(conFloor,e.conFloor||0);cha+=e.cha||0}
+  return{...out,dexFloor,conFloor,cha};
+}
+
+function stageNav(){
+  return `<aside class="v8-stage-nav">
+    <div class="v8-brand"><span>VIII</span><div><b>博德之门 3</b><small>构筑规划器 · V8 Preview</small></div></div>
+    <nav>
+      ${navGroup('character','人物构筑','等级 · 职业 · 属性 · 技能 · 法术','已完成')}
+      ${navGroup('equipment','装备构筑','第一章 · 第二章 · 第三章',state.stage==='equipment'?'进行中':'已完成')}
+      ${navGroup('final','最终构筑','角色 · 装备 · 战斗结果',state.stage==='final'?'当前':'待完成')}
+    </nav>
+    <div class="v8-stage-help"><span>当前体验版</span><p>装备数据为 V8 信息架构与交互演示，后续可接真实完整装备库与图片。</p></div>
+  </aside>`;
+}
+function navGroup(key,title,desc,status){const active=state.stage===key;return `<button class="v8-nav-group ${active?'active':''}" data-stage="${key}"><i>${key==='character'?'Ⅰ':key==='equipment'?'Ⅱ':'Ⅲ'}</i><div><b>${title}</b><small>${desc}</small></div><span>${status}</span></button>`}
+
+function topbar(){return `<header class="v8-topbar"><div class="v8-build-mini"><b>${esc(state.build.name)}</b><span>${state.build.level}级 · ${esc(state.build.route)}</span></div><div class="v8-top-actions"><button data-action="character-sheet">角色纸</button><button data-action="reset">重置预览</button></div></header>`}
+
+function characterStage(){
+  const s=state.build.stats;
+  return `<main class="v8-main character-overview-stage">
+    <section class="v8-page-head"><span>PHASE I · CHARACTER</span><h1>人物构筑</h1><p>保留现有 V7 的职业、属性、技能、职业能力和法术规则；V8 只重新组织信息层级。</p></section>
+    <section class="v8-character-hero"><div><span class="v8-level">${state.build.level}</span><small>等级</small></div><div><h2>${esc(state.build.name)}</h2><p>${esc(state.build.race)} · ${esc(state.build.route)}</p><span>${esc(state.build.background)}</span></div><div class="v8-stat-row">${stat('生命',s.hp)}${stat('护甲',s.ac)}${stat('先攻','+'+s.initiative)}${stat('法术 DC',s.spellDC)}</div></section>
+    <div class="v8-character-grid">
+      ${summaryCard('关键资源',state.build.resources)}
+      ${summaryCard('专长与技能',[...state.build.feats,...state.build.skills])}
+      ${summaryCard('核心法术',state.build.spells)}
+      <section class="v8-summary-card v8-character-cta"><span>人物构筑已完成</span><h3>进入章节装备路线</h3><p>装备选择会实时影响最终护甲、先攻、法术 DC、命中和伤害摘要。</p><button class="primary" data-stage="equipment">开始配装</button></section>
+    </div>
+  </main>`
+}
+function stat(label,value){return `<div><span>${label}</span><b>${value}</b></div>`}
+function summaryCard(title,items){return `<section class="v8-summary-card"><span>${title}</span><div class="v8-tag-list">${items.map(x=>`<b>${esc(x)}</b>`).join('')}</div></section>`}
+
+function equipmentStage(){
+  const filtered=items.filter(it=>it.act===state.act&&it.slot===state.slot&&(!state.query||`${it.name} ${it.en} ${it.tags.join(' ')}`.toLowerCase().includes(state.query.toLowerCase()))).sort((a,b)=>b.score-a.score);
+  const current=byId(state.loadout[state.slot]);
+  return `<main class="v8-main v8-equipment-stage">
+    <section class="v8-page-head compact"><span>PHASE II · EQUIPMENT</span><h1>章节装备路线</h1><p>每一章都从当前配装继续升级，不需要重新从零选择。</p></section>
+    <div class="v8-act-tabs">${[1,2,3].map(a=>`<button class="${state.act===a?'active':''}" data-act="${a}"><span>ACT ${a}</span><b>第${['一','二','三'][a-1]}章</b><small>${Object.keys(state.history[a]).length} 件记录</small></button>`).join('')}</div>
+    <section class="v8-loadout-bar">
+      <div class="v8-section-label"><span>当前装备</span><b>${Object.values(state.loadout).filter(Boolean).length}/${slots.length}</b></div>
+      <div class="v8-slot-grid">${slots.map(slot=>slotButton(slot)).join('')}</div>
+    </section>
+    <section class="v8-gear-workspace">
+      <div class="v8-gear-list-pane">
+        <div class="v8-gear-toolbar"><div><span>当前槽位</span><b>${slotMeta[state.slot][0]}</b>${current?`<small>当前：${esc(current.name)}</small>`:'<small>尚未装备</small>'}</div><input type="search" placeholder="搜索本章装备" value="${esc(state.query)}" data-search></div>
+        <div class="v8-candidate-list">${filtered.length?filtered.map(it=>gearCard(it,current)).join(''):`<div class="v8-empty"><b>本章暂无该槽位候选</b><p>可以切换其他槽位，或进入下一章。</p></div>`}</div>
+      </div>
+      <aside class="v8-compare-pane">${comparePanel(current)}</aside>
+    </section>
+  </main>`
+}
+function slotButton(slot){const item=byId(state.loadout[slot]),active=state.slot===slot;return `<button class="v8-slot ${active?'active':''} ${item?'filled':''}" data-slot="${slot}"><span>${item?item.icon:slotMeta[slot][1]}</span><div><b>${slotMeta[slot][0]}</b><small>${item?esc(item.name):'未装备'}</small></div></button>`}
+function gearCard(it,current){const equipped=state.loadout[state.slot]===it.id;const delta=compareDelta(current,it);return `<article class="v8-gear-card ${equipped?'equipped':''}">
+  <button class="v8-gear-main" data-detail="${it.id}"><span class="v8-item-icon rarity-${it.rarity==='传奇'?'legend':'rare'}">${it.icon}</span><div><div class="v8-gear-title"><b>${esc(it.name)}</b>${equipped?'<i>已装备</i>':''}</div><small>${esc(it.en)} · ${esc(it.rarity)}</small><p>${esc(it.summary)}</p><div class="v8-tag-list mini">${it.tags.slice(0,3).map(t=>`<span>${esc(t)}</span>`).join('')}</div></div></button>
+  <div class="v8-gear-side"><span class="v8-score">推荐 ${it.score}</span><div class="v8-delta">${delta||'定位不同'}</div><button class="${equipped?'secondary':'primary'}" data-equip="${it.id}">${equipped?'移除':'装备'}</button></div>
+</article>`}
+function compareDelta(current,next){if(!next)return'';const a=current?.effects||{},b=next.effects||{};const parts=[];for(const [k,label] of [['ac','AC'],['initiative','先攻'],['spellDC','DC'],['spellAttack','法攻'],['damage','伤害'],['spellDamage','法伤'],['crit','重击']]){const d=(b[k]||0)-(a[k]||0);if(d)parts.push(`${label} ${d>0?'+':''}${d}`)}return parts.slice(0,2).join(' · ')}
+function comparePanel(current){const st=effectiveStats();const selected=byId(state.loadout[state.slot]);return `<div class="v8-compare-sticky">
+  <div class="v8-section-label"><span>决策最终效果</span><b>实时</b></div>
+  <div class="v8-current-slot"><span>${slotMeta[state.slot][0]}</span><b>${selected?esc(selected.name):'未装备'}</b><small>${selected?esc(selected.summary):'从左侧选择本章装备。'}</small></div>
+  <div class="v8-stat-compare">${metric('护甲',st.ac,state.build.stats.ac)}${metric('先攻','+'+st.initiative,state.build.stats.initiative,'+')}${metric('法术 DC',st.spellDC,state.build.stats.spellDC)}${metric('法术攻击','+'+st.spellAttack,state.build.stats.spellAttack,'+')}${metric('附加输出',st.damage.toFixed(1),0)}${metric('重击阈值',st.crit,20,'',true)}</div>
+  <div class="v8-route-progress"><span>章节路线</span>${[1,2,3].map(a=>`<div><b>第${['一','二','三'][a-1]}章</b><small>${Object.keys(state.history[a]).length} 件装备记录</small></div>`).join('')}</div>
+  <button class="primary wide" data-stage="final">查看最终构筑</button>
+</div>`}
+function metric(label,value,base,prefix='',lower=false){const num=parseFloat(String(value).replace('+',''));const delta=Number.isFinite(num)?num-base:0;const good=lower?delta<0:delta>0;return `<div><span>${label}</span><b>${value}</b><small class="${good?'up':delta?'down':''}">${delta?`${delta>0?'+':''}${delta} vs 人物基础`:'人物基础'}</small></div>`}
+
+function finalStage(){const st=effectiveStats();const equipped=slots.map(s=>[s,byId(state.loadout[s])]).filter(([,it])=>it);return `<main class="v8-main v8-final-stage">
+  <section class="v8-page-head"><span>PHASE III · FINAL BUILD</span><h1>最终构筑</h1><p>把人物成长、职业资源、法术与章节装备汇总在同一张构筑纸中。</p></section>
+  <section class="v8-final-hero"><div class="v8-final-identity"><span class="v8-level">${state.build.level}</span><div><h2>${esc(state.build.name)}</h2><p>${esc(state.build.race)} · ${esc(state.build.route)}</p><small>人物 + 装备一体化构筑</small></div></div><div class="v8-stat-row large">${stat('生命',st.hp)}${stat('护甲',st.ac)}${stat('先攻','+'+st.initiative)}${stat('法术 DC',st.spellDC)}${stat('法术攻击','+'+st.spellAttack)}${stat('重击',st.crit)}</div></section>
+  <div class="v8-final-grid">
+    <section class="v8-summary-card wide"><div class="v8-section-label"><span>最终装备</span><b>${equipped.length}/${slots.length}</b></div><div class="v8-final-loadout">${slots.map(s=>{const it=byId(state.loadout[s]);return `<div class="${it?'filled':''}"><span>${it?it.icon:slotMeta[s][1]}</span><div><small>${slotMeta[s][0]}</small><b>${it?esc(it.name):'未装备'}</b>${it?`<em>第 ${it.act} 章</em>`:''}</div></div>`}).join('')}</div></section>
+    ${summaryCard('职业与施法资源',state.build.resources)}
+    ${summaryCard('核心法术',state.build.spells)}
+    <section class="v8-summary-card"><span>装备路线</span><div class="v8-act-route">${[1,2,3].map(a=>`<div><b>第${['一','二','三'][a-1]}章</b><p>${Object.entries(state.history[a]).map(([slot,id])=>byId(id)?.name).filter(Boolean).join('、')||'尚未记录'}</p></div>`).join('')}</div></section>
+    <section class="v8-summary-card"><span>构筑点评</span><h3>高先攻 · 高施法 DC · 章节渐进式升级</h3><p>当前原型将装备影响聚合为可读结果；下一阶段可以接真实伤害公式、套装协同、条件触发与装备冲突规则。</p></section>
+  </div>
+  <div class="v8-final-actions"><button data-stage="equipment">返回调整装备</button><button class="primary">保存此构筑</button></div>
+</main>`}
+
+function render(){
+  document.getElementById('app').innerHTML=`<div class="v8-shell">${stageNav()}<div class="v8-content">${topbar()}${state.stage==='character'?characterStage():state.stage==='equipment'?equipmentStage():finalStage()}</div></div>`;
+  bind();
+}
+function bind(){
+  document.querySelectorAll('[data-stage]').forEach(b=>b.onclick=()=>{state.stage=b.dataset.stage;render()});
+  document.querySelectorAll('[data-act]').forEach(b=>b.onclick=()=>{state.act=Number(b.dataset.act);render()});
+  document.querySelectorAll('[data-slot]').forEach(b=>b.onclick=()=>{state.slot=b.dataset.slot;render()});
+  document.querySelectorAll('[data-equip]').forEach(b=>b.onclick=e=>{e.stopPropagation();const id=b.dataset.equip,it=byId(id);if(state.loadout[it.slot]===id){state.loadout[it.slot]=null}else{state.loadout[it.slot]=id;state.history[it.act][it.slot]=id}render()});
+  document.querySelectorAll('[data-detail]').forEach(b=>b.onclick=()=>openSheet(byId(b.dataset.detail)));
+  const search=document.querySelector('[data-search]');if(search)search.oninput=()=>{state.query=search.value;render()};
+  document.querySelector('[data-action="reset"]')?.addEventListener('click',()=>{Object.keys(state.loadout).forEach(k=>state.loadout[k]=null);state.history={1:{},2:{},3:{}};state.stage='equipment';state.act=1;state.slot='armor';render()});
+  document.querySelector('[data-action="character-sheet"]')?.addEventListener('click',()=>{state.stage='final';render()});
+}
+function openSheet(it){const current=byId(state.loadout[it.slot]);document.getElementById('sheet-root').innerHTML=`<div class="v8-sheet-backdrop" data-close><section class="v8-sheet"><button class="v8-sheet-close" data-close>×</button><span class="v8-item-icon large">${it.icon}</span><div><span class="kicker">ACT ${it.act} · ${slotMeta[it.slot][0]}</span><h2>${esc(it.name)}</h2><small>${esc(it.en)} · ${esc(it.rarity)}</small><p>${esc(it.summary)}</p><dl><div><dt>获取</dt><dd>${esc(it.source)}</dd></div><div><dt>推荐定位</dt><dd>${it.tags.map(esc).join(' · ')}</dd></div><div><dt>与当前装备比较</dt><dd>${compareDelta(current,it)||'不同构筑定位，建议结合完整属性判断'}</dd></div></dl><button class="primary wide" data-sheet-equip="${it.id}">${state.loadout[it.slot]===it.id?'移除此装备':'装备并记录到第'+it.act+'章'}</button></div></section></div>`;document.querySelectorAll('[data-close]').forEach(x=>x.onclick=e=>{if(e.target===x)document.getElementById('sheet-root').innerHTML=''});document.querySelector('[data-sheet-equip]')?.addEventListener('click',()=>{if(state.loadout[it.slot]===it.id)state.loadout[it.slot]=null;else{state.loadout[it.slot]=it.id;state.history[it.act][it.slot]=it.id}document.getElementById('sheet-root').innerHTML='';render()})}
+
+render();
+
+</script>
+</body>
+</html>

@@ -1,10 +1,8 @@
 {
-  "version": "V7 M24",
-  "milestone": "逐级法术学习展示收口",
+  "version": "V8.1",
+  "milestone": "V7 character data/rules bridge + chapter equipment persistence",
   "state": "ready-for-upload",
-  "base": "V7 M23 rule model",
-  "rules_changed": false,
-  "presentation_changed": true,
-  "mobile": "compact node selector retained",
-  "desktop": "wrapping learning-node grid and right-side learning summary"
+  "entry": "v8.html",
+  "v7_index_replaced": false,
+  "equipment_rules": "beta"
 }

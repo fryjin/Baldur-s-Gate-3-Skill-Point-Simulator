@@ -1,35 +1,65 @@
 {
-  "version": "V7 M26",
+  "version": "V8.1",
   "files": [
     {
-      "path": "PATCH_README.md",
-      "size": 1659,
-      "sha256": "84466a22613a17ba75264120d5434ed08a7e9655ceacadeff3750b8fbb91ee48"
+      "path": "DESIGN_SYSTEM.md",
+      "size": 1602,
+      "sha256": "66b3ded12709b5d9ca6dfeb889e894483581e4971205aec6d3d13ce73d65c5cf"
+    },
+    {
+      "path": "README.md",
+      "size": 2104,
+      "sha256": "0c14d869067d673b720d6af3f1dbd99b20a95ba429b7a7a0a7a2f9203fa5cc0c"
+    },
+    {
+      "path": "STATUS.json",
+      "size": 217,
+      "sha256": "487268f6d1c96cb4e41388595bf852763e52784ff85070551f4bb203f4c030a8"
+    },
+    {
+      "path": "V8_1_DATA_BRIDGE_SPEC.md",
+      "size": 2667,
+      "sha256": "073ccdcf932b28175060057358be36397602ac43148ef14e5551e9943f78c8be"
     },
     {
       "path": "VALIDATION.json",
-      "size": 455,
-      "sha256": "7caf2b5a2a9ca4f3166961b98bab795553df9cd406aa0bf3fdc55324c85c8cb9"
+      "size": 566,
+      "sha256": "5edbf90cbe4b6de4de3d4fcc47f3a149fa3cebf208729c736daf618fed86525b"
     },
     {
-      "path": "assets/css/m26-resource-model.css",
-      "size": 4722,
-      "sha256": "01e8b7c991590420c63f5468e5b4912ddee1de75c05b623a25b483ac8fbf3984"
+      "path": "assets/v8/equipment-data.js",
+      "size": 6301,
+      "sha256": "319b83ed8ea12289e24d93b1062cbcb77b4fedf7ae78fb1dd44af75d767a28b5"
     },
     {
-      "path": "assets/js/data/resource-model.js",
-      "size": 5690,
-      "sha256": "df7853e0c2d40a9e5d0f9b4391dd80e85190f752f3cf06f325404c0f7eef70cf"
+      "path": "assets/v8/equipment-store.js",
+      "size": 1196,
+      "sha256": "1d48e420bb27876b8c4c80912ad23864ba0c35da7972d522b61e0566fe4b2ced"
     },
     {
-      "path": "assets/js/patches/m26-resource-model.js",
-      "size": 4412,
-      "sha256": "f29fc90f9b3080dc6c4971994c7985c8ab8488eba87969f23c41fdebe25b5ad5"
+      "path": "assets/v8/v8.css",
+      "size": 15868,
+      "sha256": "13b520867fd9ca61522f0ff21abd94f0e32194dff43ca6ac0f01e20e0e8b7854"
     },
     {
-      "path": "index.html",
-      "size": 1972,
-      "sha256": "9b13905cbb489709ff64dcdb0d14124e86c1e62167040fc2ca5757bdb755b0f0"
+      "path": "assets/v8/v81.css",
+      "size": 4791,
+      "sha256": "834cf5e064f6eafd8416af39f70e8e9a14af6696c20207c983c7b2515a8a55b5"
+    },
+    {
+      "path": "assets/v8/v81.js",
+      "size": 24287,
+      "sha256": "ab7234bf5150ff5e7458594efd03a3610931da6af3b93c4556f4876317d05bc7"
+    },
+    {
+      "path": "preview_offline.html",
+      "size": 36833,
+      "sha256": "49c5ed1d3a30291d250fff6f10c3bc383590f2b7e5c52e3cd82f7a0e8c76cf45"
+    },
+    {
+      "path": "v8.html",
+      "size": 599,
+      "sha256": "e3dbf7176dee448dfcddf50fd3505cf48539da7ace45950841a13b6d84d2237b"
     }
   ]
 }
