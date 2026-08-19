@@ -1,25 +1,15 @@
 {
-  "version": "V7 M24",
-  "result": "passed",
+  "version": "V7 M26",
+  "base": "V7 M24 current GitHub main",
   "checks": {
-    "m23_runtime_removed": true,
-    "m24_runtime_loaded": true,
-    "m24_css_loaded": true,
-    "large_m22_panel_removed": true,
-    "legacy_m23_panel_removed": true,
-    "compact_node_grid": true,
-    "mobile_node_select": true,
-    "right_result_summary": true,
-    "replacement_sheet": true,
-    "no_pc_horizontal_node_scroll": true,
-    "spell_list_restored": true,
-    "version_label": true
-  },
-  "javascript_files_checked": 4,
-  "css_files_checked": 4,
-  "rule_regression": {
-    "wizard_5_nodes": "6/2/2/2/2 with max rings 1/1/2/2/3",
-    "sorcerer_5_nodes": "2/1/1/1/1 with max rings 1/1/2/2/3"
-  },
-  "browser_visual_test": "not completed: sandbox Chromium process did not terminate reliably"
+    "resource_model_module": "created",
+    "ordinary_spell_slots_separate": true,
+    "pact_slots_separate": true,
+    "sorcery_points_separate": true,
+    "class_resources_dynamic": true,
+    "pc_spell_layout_flex_closure": true,
+    "character_sheet_resource_injection": true,
+    "current_build_resource_injection": true,
+    "spell_result_resource_injection": true
+  }
 }

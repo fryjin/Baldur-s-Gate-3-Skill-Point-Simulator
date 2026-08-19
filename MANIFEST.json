@@ -1,71 +1,35 @@
 {
-  "version": "V7 M24",
-  "generated": "2026-07-31",
+  "version": "V7 M26",
   "files": [
     {
-      "path": "M24_UI_SPEC.md",
-      "size": 1063,
-      "sha256": "0b2890e86e52378741d5d330d40693bf5b0c2c8176d5982f0c3a3a05b7d859f0"
-    },
-    {
       "path": "PATCH_README.md",
-      "size": 2341,
-      "sha256": "0c33268d2142a28dae1544ce303ce4895a4077a97a3fd998af19469f9c07bdd5"
-    },
-    {
-      "path": "STATUS.json",
-      "size": 317,
-      "sha256": "51f74bc00f02e8168af8dcfac39f3dc4c8e11f38e80e3206b718e45f612e1aa5"
+      "size": 1659,
+      "sha256": "84466a22613a17ba75264120d5434ed08a7e9655ceacadeff3750b8fbb91ee48"
     },
     {
       "path": "VALIDATION.json",
-      "size": 767,
-      "sha256": "e9a6c2765c94b978c671ef0d36de2b3e437ee4842fe888830b5ee28c5cc6b79f"
+      "size": 455,
+      "sha256": "7caf2b5a2a9ca4f3166961b98bab795553df9cd406aa0bf3fdc55324c85c8cb9"
     },
     {
-      "path": "assets/css/m21-icons-and-sheet.css",
-      "size": 3631,
-      "sha256": "19e462aa8178c9a26c07459d4875bf8978a588fc3f21e2332978f624efd39bd1"
+      "path": "assets/css/m26-resource-model.css",
+      "size": 4722,
+      "sha256": "01e8b7c991590420c63f5468e5b4912ddee1de75c05b623a25b483ac8fbf3984"
     },
     {
-      "path": "assets/css/m22-spell-progression.css",
-      "size": 1834,
-      "sha256": "2ce39aaa9bd30301472d8111dfa13be7e2d24bc848a1cafc99b0277a243f4a1e"
+      "path": "assets/js/data/resource-model.js",
+      "size": 5690,
+      "sha256": "df7853e0c2d40a9e5d0f9b4391dd80e85190f752f3cf06f325404c0f7eef70cf"
     },
     {
-      "path": "assets/css/m23-spell-learning.css",
-      "size": 6294,
-      "sha256": "d7014b0fc79180430e7d052984a249196f862af8ebe0982986e198a8a6acc3dc"
-    },
-    {
-      "path": "assets/css/m24-spell-learning.css",
-      "size": 6912,
-      "sha256": "29d979fc825a9d14696b808522addb1e28d4402410ce8e66a84ac4e0a001d841"
-    },
-    {
-      "path": "assets/js/data/spell-learning.js",
-      "size": 9687,
-      "sha256": "a9af5da3d03998173a37a707f0aae0c7f8a17376ea83030841a75e8f1097a572"
-    },
-    {
-      "path": "assets/js/data/spell-progression.js",
-      "size": 4011,
-      "sha256": "0de341b87beae24bb808b5f1155eb17d39894c47769bd146b2c988b0256c2412"
-    },
-    {
-      "path": "assets/js/patches/m24-spell-learning.js",
-      "size": 20724,
-      "sha256": "346d202e894c9d37c32b77b7d79b0e232b1a33e16980517a9c9a49650a4e6703"
-    },
-    {
-      "path": "assets/js/views/character-view.js",
-      "size": 12025,
-      "sha256": "467e9d41dfb89d8fddf1661b35cfdd777c0596830b0ef6d7c258f96536026d88"
+      "path": "assets/js/patches/m26-resource-model.js",
+      "size": 4412,
+      "sha256": "f29fc90f9b3080dc6c4971994c7985c8ab8488eba87969f23c41fdebe25b5ad5"
     },
     {
       "path": "index.html",
-      "size": 1821,
-      "sha256": "427c8f6d5be1bab746c8522a7c2081eafd7a4bd5ed5755bd591ba9928769f7e7"
+      "size": 1972,
+      "sha256": "9b13905cbb489709ff64dcdb0d14124e86c1e62167040fc2ca5757bdb755b0f0"
     }
   ]
 }

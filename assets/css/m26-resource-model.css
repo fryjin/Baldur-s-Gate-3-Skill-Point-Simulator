@@ -1,0 +1,33 @@
+/* V7 M26 — explicit class/spell resource model */
+.m26-resource-panel{display:grid;gap:7px;min-width:0}
+.m26-resource-head{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--gold);font-size:11px;font-weight:800}
+.m26-resource-head b{color:var(--text);font-size:10px}
+.m26-resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:6px;min-width:0}
+.m26-resource-card{display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;min-width:0;padding:8px 9px;border:1px solid rgba(223,189,114,.14);border-radius:8px;background:rgba(255,255,255,.018)}
+.m26-resource-glyph{display:grid;width:32px;height:32px;place-items:center;border-radius:8px;background:rgba(223,189,114,.09);color:var(--gold);font-size:15px;font-weight:900}
+.m26-resource-copy{display:grid;gap:5px;min-width:0}.m26-resource-copy>div:first-child{display:flex;align-items:baseline;justify-content:space-between;gap:6px}.m26-resource-copy b{color:var(--text);font-size:11px}.m26-resource-copy small{color:var(--muted);font-size:9px}.m26-resource-copy p{overflow:hidden;margin:0;color:var(--muted);font-size:9px;line-height:1.3;text-overflow:ellipsis;white-space:nowrap}
+.m26-resource-number{color:var(--gold-light);font-family:Georgia,serif;font-size:19px}
+.m26-resource-values{display:flex;flex-wrap:wrap;gap:4px}.m26-resource-values span{display:inline-flex;align-items:center;gap:5px;padding:3px 6px;border-radius:6px;background:rgba(0,0,0,.18);font-size:9px}.m26-resource-values span b{color:var(--muted);font-size:9px}.m26-resource-values strong{color:var(--gold-light);font-size:12px}
+.m26-resource-card.tone-pact{border-color:rgba(153,96,203,.28)}.m26-resource-card.tone-pact .m26-resource-glyph{background:rgba(127,67,176,.14);color:#cda7f0}
+.m26-resource-card.tone-sorcery{border-color:rgba(190,102,191,.25)}.m26-resource-card.tone-sorcery .m26-resource-glyph{background:rgba(190,102,191,.12);color:#e6a3e7}
+.m26-resource-card.tone-ki{border-color:rgba(87,166,177,.25)}.m26-resource-card.tone-ki .m26-resource-glyph{background:rgba(87,166,177,.12);color:#9ee2e8}
+.m26-resource-card.tone-rage{border-color:rgba(186,82,67,.25)}.m26-resource-card.tone-rage .m26-resource-glyph{background:rgba(186,82,67,.12);color:#f0a095}
+.m26-resource-card.tone-divine{border-color:rgba(220,194,107,.24)}.m26-resource-card.tone-nature{border-color:rgba(91,151,96,.24)}.m26-resource-card.tone-martial{border-color:rgba(183,143,84,.24)}
+
+.m26-spell-resources{flex:0 0 auto;padding:7px 0;border-bottom:1px solid rgba(223,189,114,.14)}
+.m26-spell-resources .m26-resource-grid{grid-template-columns:repeat(auto-fit,minmax(148px,1fr))}
+.m26-build-resources{padding:8px 12px 10px;border-top:1px solid rgba(223,189,114,.12)}.m26-build-resources .m26-resource-panel.compact .m26-resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.m26-build-resources .m26-resource-card{grid-template-columns:26px minmax(0,1fr);padding:6px}.m26-build-resources .m26-resource-glyph{width:25px;height:25px;font-size:11px}.m26-build-resources .m26-resource-copy p{display:none}.m26-build-resources .m26-resource-copy b{font-size:9px}.m26-build-resources .m26-resource-values span{padding:2px 4px}.m26-build-resources .m26-resource-number{font-size:15px}
+.m26-character-resources{margin:14px 0 2px;padding-top:12px;border-top:1px solid var(--line)}.m26-character-resources .m26-resource-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.m26-decision-resources{margin:8px 0 10px}.m26-decision-resources .m26-resource-card{padding:7px}.m26-decision-resources .m26-resource-copy p{display:none}
+
+/* M26 also closes the M24 implicit-grid collision on PC. */
+@media(min-width:768px){
+  .spell-layout{display:flex!important;flex-direction:column!important;height:100%;min-height:0;overflow:hidden}
+  .spell-toolbar,.spell-counts,.m26-spell-resources,.m24-learning-panel,.prepared-strip{flex:0 0 auto!important}
+  .m24-spell-meta{display:none!important}
+  .spell-list{flex:1 1 0!important;min-height:0!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important}
+  .m24-learning-panel{position:relative!important;z-index:1;overflow:visible!important;background:transparent!important}
+}
+@media(max-width:767px){
+  .m26-spell-resources{padding:6px 0}.m26-spell-resources .m26-resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.m26-resource-card{grid-template-columns:30px minmax(0,1fr);padding:7px}.m26-resource-glyph{width:28px;height:28px;font-size:12px}.m26-resource-copy p{display:none}.m26-resource-copy b{font-size:10px}.m26-resource-values span{padding:3px 5px}.m26-character-resources .m26-resource-grid{grid-template-columns:1fr}.m26-build-resources .m26-resource-panel{display:none}
+}
