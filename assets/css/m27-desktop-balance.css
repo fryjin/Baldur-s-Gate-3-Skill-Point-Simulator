@@ -1,0 +1,97 @@
+/* V7 M27 — PC three-column width rebalance */
+@media (min-width:1600px){
+  :root{
+    --step-w:150px;
+    --detail-w:366px;
+  }
+
+  .workspace,
+  .actionbar{
+    grid-template-columns:var(--step-w) minmax(0,1fr) var(--detail-w)!important;
+  }
+
+  .decision-pane{
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+
+  .decision-stage.with-inspector{
+    grid-template-columns:minmax(0,1.62fr) minmax(360px,.88fr)!important;
+    gap:16px!important;
+  }
+
+  /* Give CURRENT BUILD enough breathing room without wasting vertical space. */
+  .detail-pane{
+    min-width:0;
+  }
+
+  .compact-build-summary,
+  .effect-pane-scroll,
+  .full-build-disclosure{
+    min-width:0;
+  }
+
+  .m26-build-resources{
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+
+  .m26-build-resources .m26-resource-panel.compact .m26-resource-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+
+  /* Multi-value resources such as spell slots/pact slots need the full row. */
+  .m26-build-resources .m26-resource-card:has(.m26-resource-values){
+    grid-column:1/-1;
+  }
+
+  .m26-build-resources .m26-resource-card{
+    min-height:62px;
+    padding:8px!important;
+  }
+
+  .m26-build-resources .m26-resource-card:has(.m26-resource-values){
+    grid-template-columns:30px minmax(0,1fr)!important;
+  }
+
+  .m26-build-resources .m26-resource-values{
+    gap:5px!important;
+  }
+
+  .m26-build-resources .m26-resource-values span{
+    padding:3px 6px!important;
+  }
+
+  .m26-build-resources .m26-resource-copy b{
+    font-size:10px!important;
+  }
+
+  .m26-build-resources .m26-resource-number{
+    font-size:17px!important;
+  }
+
+  /* Right result cards should use the wider pane instead of remaining cramped. */
+  .effect-metric-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .m24-result-nodes{
+    grid-template-columns:1fr!important;
+  }
+}
+
+/* Extra-wide displays can afford a little more room for the result rail. */
+@media (min-width:1900px){
+  :root{--detail-w:386px}
+  .decision-stage.with-inspector{
+    grid-template-columns:minmax(0,1.66fr) minmax(372px,.86fr)!important;
+  }
+}
+
+/* 1440–1599: keep M15's two-column workspace behavior. */
+@media (min-width:1280px) and (max-width:1599px){
+  .m26-build-resources .m26-resource-panel.compact .m26-resource-grid{
+    grid-template-columns:1fr!important;
+  }
+}

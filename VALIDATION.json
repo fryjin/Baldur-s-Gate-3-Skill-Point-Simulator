@@ -1,15 +1,12 @@
 {
-  "version": "V7 M26",
-  "base": "V7 M24 current GitHub main",
+  "version": "V7 M27",
+  "result": "passed",
   "checks": {
-    "resource_model_module": "created",
-    "ordinary_spell_slots_separate": true,
-    "pact_slots_separate": true,
-    "sorcery_points_separate": true,
-    "class_resources_dynamic": true,
-    "pc_spell_layout_flex_closure": true,
-    "character_sheet_resource_injection": true,
-    "current_build_resource_injection": true,
-    "spell_result_resource_injection": true
+    "css_braces": "passed",
+    "m27_loaded_after_m26": "passed",
+    "right_pane_1600_1899": "366px",
+    "right_pane_1900_plus": "386px",
+    "multi_value_resource_full_row": "passed",
+    "mobile_scope": "unchanged"
   }
 }
