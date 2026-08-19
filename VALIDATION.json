@@ -1,12 +1,15 @@
 {
-  "version": "V7 M27",
+  "version": "V7 M28",
   "result": "passed",
   "checks": {
-    "css_braces": "passed",
-    "m27_loaded_after_m26": "passed",
-    "right_pane_1600_1899": "366px",
-    "right_pane_1900_plus": "386px",
-    "multi_value_resource_full_row": "passed",
-    "mobile_scope": "unchanged"
+    "m28_css_loaded": true,
+    "m28_js_loaded": true,
+    "m27_preserved": true,
+    "m26_preserved": true,
+    "mobile_patch_preserved": true,
+    "active_node_main_card": true,
+    "other_nodes_compact": true,
+    "equal_height_spell_cards": true,
+    "right_details_folded": true
   }
 }

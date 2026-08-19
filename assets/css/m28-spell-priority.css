@@ -1,0 +1,168 @@
+/* V7 M28 — spell-page visual hierarchy closure. Desktop only. */
+@media (min-width:768px){
+  body.m28-spell-page .decision-stage.with-inspector{
+    grid-template-columns:minmax(0,1fr) 342px!important;
+    gap:16px;
+  }
+
+  /* Keep the top summary light. */
+  body.m28-spell-page .spell-toolbar{padding-bottom:7px}
+  body.m28-spell-page .spell-counts{min-height:28px;padding-bottom:4px}
+  body.m28-spell-page .spell-counts span{min-height:24px;padding-inline:11px;font-size:12px}
+  body.m28-spell-page .m26-spell-resources{padding:5px 0 6px}
+  body.m28-spell-page .m26-spell-resources .m26-resource-grid{grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:5px}
+  body.m28-spell-page .m26-spell-resources .m26-resource-card{padding:6px 8px;min-height:50px}
+  body.m28-spell-page .m26-spell-resources .m26-resource-copy p{display:none}
+
+  /* Learning is navigation/constraint, not the main visual content. */
+  body.m28-spell-page .m24-learning-panel{
+    gap:0!important;
+    padding:7px 0 8px!important;
+    border-bottom:1px solid rgba(223,189,114,.14)!important;
+  }
+  body.m28-spell-page .m24-learning-head{
+    min-height:24px;margin-bottom:6px
+  }
+  body.m28-spell-page .m24-learning-head>div{gap:6px}
+  body.m28-spell-page .m24-learning-head span{font-size:10px;letter-spacing:.06em}
+  body.m28-spell-page .m24-learning-head b{font-size:11px}
+  body.m28-spell-page .m24-replacement-trigger{min-height:25px;padding:3px 8px}
+
+  body.m28-spell-page .m28-learning-layout{
+    display:grid;
+    grid-template-columns:minmax(190px,230px) minmax(0,1fr);
+    gap:8px;
+    min-width:0;
+  }
+  body.m28-spell-page .m28-current-node{
+    min-width:0;
+  }
+  body.m28-spell-page .m28-current-node-label,
+  body.m28-spell-page .m28-other-node-label{
+    display:block;margin-bottom:4px;color:var(--muted);font-size:9px;line-height:1.2
+  }
+  body.m28-spell-page .m28-current-node .m24-node{
+    width:100%;min-height:52px;padding:7px 9px;
+    grid-template-columns:28px minmax(0,1fr) auto;
+    border-color:rgba(223,189,114,.58);
+    background:linear-gradient(90deg,rgba(223,189,114,.12),rgba(223,189,114,.035));
+    box-shadow:inset 3px 0 var(--gold)
+  }
+  body.m28-spell-page .m28-current-node .m24-node>span{width:27px;height:27px}
+  body.m28-spell-page .m28-current-node .m24-node>b{font-size:12px}
+  body.m28-spell-page .m28-current-node .m24-node>small{font-size:10px}
+
+  body.m28-spell-page .m28-other-nodes{min-width:0}
+  body.m28-spell-page .m28-other-node-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(88px,1fr));
+    gap:4px;
+    min-width:0
+  }
+  body.m28-spell-page .m28-other-node-grid .m24-node{
+    min-height:40px;padding:5px 6px;
+    grid-template-columns:21px minmax(0,1fr);
+    grid-template-rows:auto auto;
+    column-gap:5px;
+    border-color:rgba(223,189,114,.1);
+    background:rgba(255,255,255,.012);
+    box-shadow:none
+  }
+  body.m28-spell-page .m28-other-node-grid .m24-node>span{width:20px;height:20px;font-size:9px}
+  body.m28-spell-page .m28-other-node-grid .m24-node>b{font-size:9px}
+  body.m28-spell-page .m28-other-node-grid .m24-node>small{font-size:8px}
+  body.m28-spell-page .m28-other-node-grid .m24-node>i{font-size:9px}
+  body.m28-spell-page .m28-other-node-grid .m24-node:hover{border-color:rgba(223,189,114,.34)}
+
+  body.m28-spell-page .m24-node-grid{display:none!important}
+  body.m28-spell-page .m24-active-brief{display:none!important}
+  body.m28-spell-page .m24-learning-warning{
+    margin-top:5px;padding:4px 7px;font-size:9px;line-height:1.25
+  }
+
+  /* Spell list is the main stage. Equal-height cards, one-line description. */
+  body.m28-spell-page .spell-list{
+    grid-auto-rows:108px!important;
+    gap:6px 10px!important;
+    padding-top:6px;
+  }
+  body.m28-spell-page .spell-item{
+    min-height:108px!important;
+    height:108px!important;
+    padding:9px 10px!important;
+    gap:10px!important;
+    border:1px solid rgba(223,189,114,.08)!important;
+    border-radius:8px!important;
+    background:rgba(7,6,5,.24)!important;
+    overflow:hidden!important;
+  }
+  body.m28-spell-page .spell-item:hover,
+  body.m28-spell-page .spell-item.focused{
+    border-color:rgba(223,189,114,.28)!important;
+    background:rgba(223,189,114,.045)!important;
+  }
+  body.m28-spell-page .spell-item.selected{
+    border-color:rgba(223,189,114,.46)!important;
+    background:linear-gradient(90deg,rgba(223,189,114,.09),rgba(223,189,114,.025))!important;
+    box-shadow:inset 2px 0 var(--gold)!important;
+  }
+  body.m28-spell-page .spell-list-image{width:43px!important;height:43px!important;border-radius:10px!important}
+  body.m28-spell-page .spell-copy{
+    grid-template-rows:auto auto minmax(1.4em,1fr) 20px!important;
+    gap:2px!important;
+  }
+  body.m28-spell-page .spell-copy strong{font-size:14px!important}
+  body.m28-spell-page .spell-meta{font-size:10px!important}
+  body.m28-spell-page .spell-copy p{
+    display:-webkit-box!important;
+    overflow:hidden!important;
+    margin:0!important;
+    font-size:11px!important;
+    line-height:1.35!important;
+    -webkit-line-clamp:1!important;
+    -webkit-box-orient:vertical!important;
+  }
+  body.m28-spell-page .spell-card-footer{min-height:20px!important}
+  body.m28-spell-page .spell-quick-effect{font-size:9px!important;line-height:18px!important}
+
+  /* Detail sidebar becomes a supporting inspector instead of a second main page. */
+  body.m28-spell-page .decision-inspector{border-color:rgba(223,189,114,.18)}
+  body.m28-spell-page .decision-inspector-head{min-height:40px;padding-inline:12px}
+  body.m28-spell-page .decision-inspector-body{padding:13px 13px 0!important}
+  body.m28-spell-page .decision-inspector-body .spell-detail-image{width:58px;height:58px;flex-basis:58px;border-radius:11px}
+  body.m28-spell-page .decision-inspector-body .spell-detail-title{gap:11px;margin-bottom:10px}
+  body.m28-spell-page .decision-inspector-body .spell-detail-title h2{font-size:22px}
+  body.m28-spell-page .decision-inspector-body .spell-description{font-size:12px;line-height:1.55}
+  body.m28-spell-page .decision-inspector-body .computed-effect{margin:9px 0;padding:8px}
+  body.m28-spell-page .decision-inspector-body .detail-row{padding:6px 0;font-size:12px}
+  body.m28-spell-page .decision-inspector-body .spell-actions{margin-top:10px;padding:10px 13px}
+
+  /* CURRENT BUILD = summary, not another management panel. */
+  body.m28-spell-page .compact-feature-summary{display:none!important}
+  body.m28-spell-page .m26-build-resources{padding:7px 10px 8px}
+  body.m28-spell-page .m26-build-resources .m26-resource-panel.compact .m26-resource-grid{
+    grid-template-columns:1fr 1fr!important;
+    gap:5px!important;
+  }
+  body.m28-spell-page .m26-build-resources .m26-resource-card:first-child:last-child,
+  body.m28-spell-page .m26-build-resources .m26-resource-card:has(.m26-resource-values){grid-column:1/-1}
+  body.m28-spell-page .m24-learning-result{gap:6px;margin:7px 0;padding:8px 0}
+  body.m28-spell-page .m24-result-nodes{display:none!important}
+  body.m28-spell-page .m28-learning-details{margin-top:3px;border-top:1px solid rgba(223,189,114,.08)}
+  body.m28-spell-page .m28-learning-details>summary{
+    cursor:pointer;list-style:none;padding:7px 2px 5px;color:var(--muted);font-size:10px;font-weight:700
+  }
+  body.m28-spell-page .m28-learning-details>summary::-webkit-details-marker{display:none}
+  body.m28-spell-page .m28-learning-details>summary::after{content:'＋';float:right;color:var(--gold)}
+  body.m28-spell-page .m28-learning-details[open]>summary::after{content:'－'}
+  body.m28-spell-page .m28-learning-details .m24-result-nodes{display:grid!important;grid-template-columns:1fr!important;max-height:180px;overflow:auto;padding-top:3px}
+}
+
+@media (min-width:1900px){
+  body.m28-spell-page .decision-stage.with-inspector{grid-template-columns:minmax(0,1fr) 360px!important}
+}
+
+/* M28 is a PC closure; the independent mobile layer stays untouched. */
+@media (max-width:767px){
+  .m28-learning-layout,.m28-learning-details{display:none!important}
+}
