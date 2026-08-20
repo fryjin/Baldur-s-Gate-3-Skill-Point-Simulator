@@ -1,22 +1,15 @@
 {
-  "patch": "V8.2.1 HD Vendor Fix",
-  "baseline_main": "d3bcd549b6b579e5cc42dfc37ae6344e1ce03ccd",
-  "local_checks": {
-    "vendor_py_compile": true,
-    "audit_py_compile": true,
-    "quoted_key_spell_parser_sample": true,
-    "historical_unquoted_key_parser_sample": true,
-    "row_count_fail_fast_present": true,
-    "mediawiki_api_discovery_present": true,
-    "keys_filter_present": true,
-    "partial_report_merge_present": true,
-    "duplicate_sha_audit_present": true
-  },
-  "network_checks_not_run_in_chat_sandbox": [
-    "full 191-spell bg3.wiki HD download",
-    "resolution of spellcrux",
-    "resolution of render-mind-body",
-    "resolution of staff-spellpower"
+  "patch": "V8 background restore",
+  "changes": [
+    "add assets/v8/background.css",
+    "link it after v82.css in v8.html",
+    "reuse existing assets/fantasy-forest-v6.webp"
   ],
-  "reason": "The actual network-enabled download/verification is intentionally performed in the user's Codespaces environment."
+  "risk": "visual-only; no JS/state/rule changes",
+  "checks": {
+    "asset_relative_path": "../fantasy-forest-v6.webp",
+    "app_background_transparent": true,
+    "pc_background_fixed": true,
+    "mobile_background_scroll": true
+  }
 }

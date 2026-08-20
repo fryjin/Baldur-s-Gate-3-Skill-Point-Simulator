@@ -1,0 +1,49 @@
+/* V8 scene background — restores V6 visual identity without changing V8 layout/rules. */
+:root{--v8-scene-image:url('../fantasy-forest-v6.webp')}
+
+html{background:#0a0907}
+
+body{
+  min-height:100vh;
+  background-color:var(--bg,#0a0907);
+  background-image:
+    linear-gradient(90deg,rgba(5,5,4,.90) 0%,rgba(5,5,4,.70) 18%,rgba(5,5,4,.48) 47%,rgba(5,5,4,.54) 70%,rgba(5,5,4,.78) 100%),
+    linear-gradient(180deg,rgba(5,5,4,.16) 0%,rgba(5,5,4,.26) 48%,rgba(5,5,4,.72) 100%),
+    var(--v8-scene-image);
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+#app,.v8-shell,.v8-content{background:transparent}
+
+.v8-main{position:relative}
+
+.v8-main::before{
+  content:"";
+  position:fixed;
+  inset:var(--top,58px) 0 0 var(--stage,214px);
+  z-index:-1;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 18%,rgba(15,13,10,.12),rgba(8,7,5,.28) 72%,rgba(8,7,5,.42));
+}
+
+@media (max-width:860px){
+  body{
+    background-attachment:scroll;
+    background-position:58% center;
+  }
+  .v8-main::before{
+    inset:var(--top,58px) 0 0 0;
+    background:linear-gradient(180deg,rgba(8,7,5,.20),rgba(8,7,5,.48));
+  }
+}
+
+@media (prefers-contrast:more){
+  body{
+    background-image:
+      linear-gradient(rgba(5,5,4,.78),rgba(5,5,4,.86)),
+      var(--v8-scene-image);
+  }
+}
