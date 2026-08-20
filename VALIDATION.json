@@ -1,31 +1,22 @@
 {
-  "version": "V8.2 bg3.wiki HD Resource Patch v2",
-  "target": "V8.2",
-  "generated_at": "2026-08-20",
-  "quality_policy": {
-    "preferred_spell_asset": "native tooltip artwork, normally 380x380",
-    "preferred_equipment_asset": "native item tooltip/Faded artwork, normally 380x380",
-    "thumbnail_normalization": true,
-    "minimum_complete_hd_edge": 380,
-    "artificial_upscale": false
+  "patch": "V8.2.1 HD Vendor Fix",
+  "baseline_main": "d3bcd549b6b579e5cc42dfc37ae6344e1ce03ccd",
+  "local_checks": {
+    "vendor_py_compile": true,
+    "audit_py_compile": true,
+    "quoted_key_spell_parser_sample": true,
+    "historical_unquoted_key_parser_sample": true,
+    "row_count_fail_fast_present": true,
+    "mediawiki_api_discovery_present": true,
+    "keys_filter_present": true,
+    "partial_report_merge_present": true,
+    "duplicate_sha_audit_present": true
   },
-  "checks": {
-    "python_vendor_script_compiles": true,
-    "spell_assets_js_syntax": true,
-    "equipment_images_js_syntax": true,
-    "v82_calls_spell_bindImageFallbacks": true,
-    "v82_calls_equipment_bindImageFallbacks": true,
-    "spell_hd_local_first": true,
-    "spell_tooltip_before_legacy_small_icon": true,
-    "equipment_hd_local_first": true,
-    "equipment_faded_before_legacy_small_icon": true,
-    "mediawiki_300px_thumb_to_original_normalization": true,
-    "native_dimension_detection_png_jpeg_webp": true,
-    "vendor_report_included_by_script": true,
-    "equipment_hd_source_rows": 130
-  },
-  "binary_download_status": {
-    "complete_hd_binary_pack_included": false,
-    "reason": "The current ChatGPT sandbox cannot reliably resolve/fetch bg3.wiki /w/images binary files. The included vendor script performs the actual original-file download from a network-enabled repository environment."
-  }
+  "network_checks_not_run_in_chat_sandbox": [
+    "full 191-spell bg3.wiki HD download",
+    "resolution of spellcrux",
+    "resolution of render-mind-body",
+    "resolution of staff-spellpower"
+  ],
+  "reason": "The actual network-enabled download/verification is intentionally performed in the user's Codespaces environment."
 }

@@ -1,9 +1,10 @@
 {
-  "version": 2,
+  "version": 3,
   "notes": [
-    "The URLs below are source hints. MediaWiki thumbnail URLs are normalized back to their original files before download.",
+    "The URLs below are source hints. MediaWiki thumbnail URLs are normalized back to original files before download.",
     "Spell tooltip artwork is preferred over 144x144 Controller UI icons.",
-    "Equipment tooltip/Faded artwork is preferred over 64px/144px UI icons."
+    "Equipment tooltip/Faded artwork is preferred over 64px/144px UI icons.",
+    "V3 adds targeted hints for the three equipment rows unresolved by the first network-enabled HD run. MediaWiki API discovery remains authoritative when it finds a better page file."
   ],
   "spell": {
     "dominateBeast": [
@@ -18,7 +19,21 @@
       "https://bg3.wiki/wiki/Special:FilePath/Darkvision_spell.webp"
     ]
   },
-  "equipment": {},
+  "equipment": {
+    "spellcrux": [
+      "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Icon.png"
+    ],
+    "render-mind-body": [
+      "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Faded.png",
+      "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Icon.png"
+    ],
+    "staff-spellpower": [
+      "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spell_Power_Faded.png",
+      "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spell_Power_Icon.png",
+      "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Faded.png",
+      "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Icon.png"
+    ]
+  },
   "reference_examples": {
     "moon-devotion-robe": [
       "https://bg3.wiki/w/images/a/a5/Moon_Devotion_Robe_Icon.png",
