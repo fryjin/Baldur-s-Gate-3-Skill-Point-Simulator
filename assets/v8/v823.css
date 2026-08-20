@@ -1,0 +1,47 @@
+/* V8.2.3 — PC UI acceptance / density pass. No rule-engine changes. */
+.v82-equipment-stage{max-width:1600px}
+.v82-equipment-stage .v8-gear-workspace{grid-template-columns:minmax(0,1fr) 320px;gap:16px}
+.v82-equipment-stage .v8-gear-card{grid-template-columns:minmax(0,1fr) 168px;min-height:104px}
+.v82-equipment-stage .v8-gear-side{padding:10px 12px;gap:7px}
+.v82-equipment-stage .v8-delta{min-height:34px;font-size:9.5px;line-height:1.5;overflow-wrap:anywhere}
+.v82-equipment-stage .v82-gear-search{min-width:330px;justify-content:flex-end}
+.v82-equipment-stage .v82-gear-search input{width:220px!important;min-width:180px}
+.v82-equipment-stage .v8-compare-sticky{padding:13px}
+.v82-equipment-stage .v8-compare-pane .v83-combat-line{grid-template-columns:1fr;gap:4px}
+.v82-equipment-stage .v8-compare-pane .v83-combat-line strong{white-space:normal;font-size:11px;line-height:1.35}
+
+.v823-final-grid{grid-template-columns:1fr;gap:12px;align-items:start}
+.v823-final-grid>.wide{grid-column:auto}
+.v823-final-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.v823-final-column{min-width:0;display:grid;gap:12px;align-content:start}
+.v823-final-column>.v8-summary-card{width:100%;align-self:start}
+.v823-final-grid>.v8-summary-card,.v823-final-columns .v8-summary-card{padding:14px}
+.v823-final-grid .v8-summary-card>p:last-child{margin-bottom:0}
+.v823-final-grid .v83-final-combat{grid-template-columns:1fr;gap:6px}
+.v823-final-grid .v83-combat-line{min-height:0;padding:8px 9px}
+.v823-final-grid .v83-final-saves{gap:5px}
+.v823-final-grid .v83-final-saves>div{padding:7px 8px}
+.v823-final-grid .v83-chapter-route{gap:9px}
+.v823-final-grid .v83-chapter-card{padding:11px}
+.v823-final-grid .v82-final-list>div{padding:5px 0}
+.v823-final-grid .v82-final-spells{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+.v82-equipment-stage,.v8-final-stage{
+  background:linear-gradient(90deg,rgba(6,5,4,.17),rgba(6,5,4,.06) 48%,rgba(6,5,4,.18));
+}
+
+@media(max-width:1280px) and (min-width:768px){
+  .v82-equipment-stage .v8-gear-workspace{grid-template-columns:minmax(0,1fr) 280px}
+  .v82-equipment-stage .v8-gear-card{grid-template-columns:minmax(0,1fr) 150px}
+  .v82-equipment-stage .v82-gear-search{min-width:280px}
+  .v82-equipment-stage .v82-gear-search input{width:185px!important}
+}
+
+@media(max-width:767px){
+  .v82-equipment-stage .v8-gear-card{grid-template-columns:minmax(0,1fr) 96px}
+  .v82-equipment-stage .v82-gear-search{width:100%;min-width:0}
+  .v82-equipment-stage .v82-gear-search input{width:100%!important;min-width:0}
+  .v823-final-columns{grid-template-columns:1fr}
+  .v823-final-grid .v82-final-spells{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .v82-equipment-stage,.v8-final-stage{background:rgba(6,5,4,.10)}
+}
