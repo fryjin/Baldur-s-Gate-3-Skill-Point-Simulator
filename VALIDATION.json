@@ -1,45 +1,17 @@
 {
-  "version": "V8.2",
-  "result": "passed-static-and-rule-smoke",
-  "javascript_files_checked": 7,
-  "css_files_checked": 3,
-  "built_in_equipment": 130,
-  "built_in_by_act": {
-    "1": 45,
-    "2": 39,
-    "3": 46
-  },
-  "rule_smoke_tests": [
-    "starting Fighter has heavy armour proficiency",
-    "multiclass Fighter does not grant heavy armour",
-    "War Domain subclass can grant heavy armour after multiclass",
-    "two-handed weapon clears offhand",
-    "default dual wield requires light weapons",
-    "Dual Wielder permits eligible non-light one-handed weapons",
-    "ranged offhand requires hand crossbow pair",
-    "Helldusk self-proficiency does not block casting",
-    "Dexterity floor changes initiative"
-  ],
+  "version": "V8.2 Wiki Image Patch v1",
+  "target": "V8.2",
   "checks": {
-    "v8_entry_module": true,
-    "import_input": true,
-    "character_ui_in_v8": true,
-    "eight_character_steps": true,
-    "expertise_toggle": true,
-    "spell_learning_bridge": true,
-    "equipment_12_slots": true,
-    "chapter_delta_store": true,
-    "two_handed_rule": true,
-    "dual_wielder_rule": true,
-    "proficiency_rule": true,
-    "casting_block": true,
-    "conditional_effect_separation": true,
-    "generated_catalog_layer": true,
-    "forge_importer": true
-  },
-  "known_limitations": [
-    "V8.2 requires the existing V7 assets/js modules in the same repository and must run over HTTP/GitHub Pages.",
-    "Built-in catalog contains 130 curated items; the full external game item dump is not bundled.",
-    "Complex conditional passives are preserved as conditionals unless a deterministic rule mapper exists."
-  ]
+    "v82_calls_spell_bindImageFallbacks": true,
+    "spell_local_first": true,
+    "spell_bg3wiki_fallback": true,
+    "equipment_card_images": true,
+    "equipment_slot_images": true,
+    "equipment_detail_images": true,
+    "equipment_final_build_images": true,
+    "equipment_local_first": true,
+    "equipment_bg3wiki_multicandidate": true,
+    "vendor_script_included": true,
+    "equipment_source_rows": 130
+  }
 }

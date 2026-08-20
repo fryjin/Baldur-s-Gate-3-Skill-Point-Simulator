@@ -1,103 +1,75 @@
-# 博德之门 3 · 构筑规划器 V8.2
+# BG3 Planner V8.2 — bg3.wiki 图片补丁 v1
 
-V8.2 是 V8 的第一次完整合流版本：**人物构筑 UI 已正式迁入 V8，同时接入 Equipment Rules 与可扩展装备数据层**。
+## 解决的问题
 
-## 上传方式
+1. 修复 V8.2 没有执行 `bindImageFallbacks()`，导致仓库里**已有法术图片也停留在占位图**的问题。
+2. 法术图片改为：**已有本地 PNG → 本地 vendored WEBP → bg3.wiki Controller Icon → 公共 bg3.wiki 镜像兜底**。
+3. 装备候选列表、装备槽位、装备详情、最终配装开始展示真实装备图片。
+4. 装备图片改为：**本地 vendored WEBP/PNG → bg3.wiki Item Icon 多候选自动探测**。
+5. 提供一次性本地下载工具，将网页图片真正落盘后再上传 GitHub，避免长期热链及限流问题。
 
-这是覆盖当前 GitHub 仓库的升级包，不是独立站点。将压缩包内容上传/覆盖到现有仓库根目录，并继续保留 V7 的：
+## 直接上传即可生效
 
-```text
-assets/js/*
-assets/spells/*
-index.html
-```
+前提：项目已经升级至 **V8.2**。
 
-然后访问：
-
-```text
-/v8.html
-```
-
-V7 仍可通过 `/index.html` 使用，V8.2 不会删除旧入口。
-
-## V8.2 完整流程
+将本补丁包内容直接覆盖到仓库根目录。关键文件：
 
 ```text
-I 人物构筑
-  目标等级
-  逐级职业
-  子职业与成长
-  属性
-  技能与专精
-  职业能力
-  戏法与法术
-  人物确认
-
-II 装备构筑
-  第一章
-  第二章
-  第三章
-
-III 最终构筑
-  人物 + 装备 + 职业资源 + 条件效果 + 规则警告
+assets/js/data/spell-assets.js
+assets/v8/v82.js
+assets/v8/v82.css
+assets/v8/equipment-images.js
+tools/vendor-bg3-wiki-assets.py
+EQUIPMENT_IMAGE_SOURCES.csv
 ```
 
-人物页面现在直接调用 V7 Store/Selectors/Rules 修改同一份人物数据，不再要求“返回 V7 编辑”。
+覆盖后 `/v8.html` 会立即使用本地图片，并在本地缺图时自动尝试 bg3.wiki。
 
-## 装备数据覆盖
+## 推荐：正式发布前把所有图片落盘
 
-内置 **130 件高价值/高使用率装备**：
-
-- ACT 1：45
-- ACT 2：39
-- ACT 3：46
-- 穿戴类：88
-- 武器：37
-- 盾牌：5
-
-数据层已设计成可扩展格式，并提供 `tools/import-bg3forge-items.mjs`，可以把外部 BG3 Forge `items.json` 导入为 `assets/v8/equipment-generated.js`。
-
-> 130 件是 V8.2 内置可直接使用的精选装备，不宣称已经把游戏全部装备逐条内嵌。全量数据的接入路径已经完成，后续只需要提供/导入数据文件并继续补充规则映射。
-
-## Equipment Rules 已实现
-
-- 12 个装备槽位；
-- 章节装备继承与章节差量；
-- 双手武器自动占用副手；
-- 盾牌副手；
-- Light 双持规则；
-- Dual Wielder 专长兼容；
-- 双手弩远程双持；
-- 护甲/盾牌/武器熟练检查；
-- 未熟练护甲/盾牌造成施法阻断警告；
-- 护甲实际 AC；
-- 轻甲/中甲/重甲/布衣敏捷计算；
-- 特殊中甲完整敏捷；
-- 武僧/野蛮人无甲 AC；
-- 属性 Floor / 属性加值；
-- HP（体质变化）；
-- 先攻；
-- 法术 DC / 法术攻击；
-- 攻击/武器伤害修正；
-- 重击阈值；
-- 条件效果与装备授予能力单独汇总。
-
-复杂的条件效果不会被强行换算成虚假的常驻数值。
-
-## 本地运行
-
-V8.2 会直接 import 现有 V7 ES Modules，因此不要用 `file://` 双击 `v8.html`。
-
-在仓库根目录启动：
+在完整仓库根目录执行：
 
 ```bash
-python -m http.server 8080
+python tools/vendor-bg3-wiki-assets.py
 ```
 
-然后打开：
+脚本会读取：
 
 ```text
-http://localhost:8080/v8.html
+assets/js/data/spells.js
+assets/v8/equipment-catalog.js
 ```
 
-或者直接上传 GitHub Pages 测试。
+并按项目 key/id 下载到：
+
+```text
+assets/spells/<spellKey>.webp|png
+assets/equipment/<equipmentId>.webp|png
+```
+
+最后生成：
+
+```text
+BG3_WIKI_ASSET_REPORT.json
+```
+
+之后把新增图片一起提交/上传即可。脚本可重复执行，已有图片会跳过。
+
+## 为什么没有强制只写一个图片地址
+
+bg3.wiki 的法术 ControllerUI 图标通常为 `<Spell Name> Icon.webp`；物品列表图标更常见的是 `Unfaded Icon.png`，但部分物品使用 `Item Icon.png` / WEBP 或特殊文件名。因此装备解析器按多个候选依次尝试，失败后才保留文字占位，不会出现破图。
+
+## 缓存说明
+
+补丁使用新的失败缓存 key：
+
+```text
+bg3-v8-wiki-image-failures-v1
+bg3-v8-equipment-image-failures-v1
+```
+
+如果 bg3.wiki 某次被限流导致图片失败，关闭当前标签页重新打开即可清空 `sessionStorage` 失败记录。
+
+## 来源与版权提醒
+
+图片来源目标为 `bg3.wiki`。bg3.wiki 的相关文件页面会区分 Wiki 页面许可与 Larian Studios 游戏素材；游戏图标本身属于 Larian Studios 内容。此补丁仅做项目资源映射与本地化工具，不改变原素材权利状态。公开发布前请按 Larian Fan Content Policy / BG3 Fan Content Terms 及 bg3.wiki 页面说明使用。
