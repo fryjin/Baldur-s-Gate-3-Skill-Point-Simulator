@@ -1,0 +1,2659 @@
+{
+  "source": "https://bg3.wiki/",
+  "policy": "prefer native 380x380 tooltip/Faded artwork; do not upscale smaller UI icons",
+  "items": [
+    {
+      "type": "equipment",
+      "key": "haste-helm",
+      "zh": "急速头盔",
+      "name": "Haste Helm",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/haste-helm.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "warped-intellect",
+      "zh": "扭曲智力头带",
+      "name": "Warped Headband of Intellect",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/warped-intellect.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "helmet-smiting",
+      "zh": "惩击头盔",
+      "name": "Helmet of Smiting",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/helmet-smiting.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "circlet-blasting",
+      "zh": "爆裂头环",
+      "name": "Circlet of Blasting",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/circlet-blasting.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "grymskull-helm",
+      "zh": "格林骷髅头盔",
+      "name": "Grymskull Helm",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/grymskull-helm.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "deathstalker-mantle",
+      "zh": "死亡追猎者斗篷",
+      "name": "The Deathstalker Mantle",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/deathstalker-mantle.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "graceful-cloth",
+      "zh": "优雅布衣",
+      "name": "The Graceful Cloth",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/graceful-cloth.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "luminous-armour",
+      "zh": "光耀护甲",
+      "name": "Luminous Armour",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/luminous-armour.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "adamantine-scale",
+      "zh": "精金鳞甲",
+      "name": "Adamantine Scale Mail",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/adamantine-scale.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "adamantine-splint",
+      "zh": "精金板条甲",
+      "name": "Adamantine Splint Armour",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/adamantine-splint.png",
+      "size": [
+        1540,
+        1222
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "protecty-sparkswall",
+      "zh": "保护火花之墙",
+      "name": "The Protecty Sparkswall",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/protecty-sparkswall.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "spidersilk-armour",
+      "zh": "蛛丝护甲",
+      "name": "Spidersilk Armour",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/spidersilk-armour.webp",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "gloves-dexterity",
+      "zh": "敏捷手套",
+      "name": "Gloves of Dexterity",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/gloves-dexterity.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "gloves-power",
+      "zh": "力量手套",
+      "name": "Gloves of Power",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/gloves-power.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "missile-snaring",
+      "zh": "飞弹拦截手套",
+      "name": "Gloves of Missile Snaring",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/missile-snaring.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "sparkle-hands",
+      "zh": "火花之手",
+      "name": "The Sparkle Hands",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/sparkle-hands.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "belligerent-skies",
+      "zh": "好战天空手套",
+      "name": "Gloves of Belligerent Skies",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/belligerent-skies.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "cinder-sizzle",
+      "zh": "余烬与嘶鸣手套",
+      "name": "Gloves of Cinder and Sizzle",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/cinder-sizzle.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "boots-speed",
+      "zh": "速度之靴",
+      "name": "Boots of Speed",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/boots-speed.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "night-walkers",
+      "zh": "瓦解夜行者",
+      "name": "Disintegrating Night Walkers",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/night-walkers.png",
+      "size": [
+        2800,
+        3300
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "stormy-clamour",
+      "zh": "风暴喧嚣之靴",
+      "name": "Boots of Stormy Clamour",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/stormy-clamour.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "watersparkers",
+      "zh": "水花行者",
+      "name": "The Watersparkers",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/watersparkers.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "amulet-misty-step",
+      "zh": "迷踪步护符",
+      "name": "Amulet of Misty Step",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/amulet-misty-step.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "psychic-spark",
+      "zh": "心灵火花",
+      "name": "Psychic Spark",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/psychic-spark.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "periapt-wound",
+      "zh": "伤口闭合护符",
+      "name": "Periapt of Wound Closure",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/periapt-wound.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "broodmothers-revenge",
+      "zh": "育母复仇",
+      "name": "Broodmother's Revenge",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/broodmothers-revenge.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "ring-protection",
+      "zh": "防护戒指",
+      "name": "Ring of Protection",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/ring-protection.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "caustic-band",
+      "zh": "腐蚀戒指",
+      "name": "Caustic Band",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/caustic-band.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "crusher-ring",
+      "zh": "粉碎者之戒",
+      "name": "Crusher's Ring",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/crusher-ring.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "strange-conduit",
+      "zh": "奇异导管戒指",
+      "name": "Strange Conduit Ring",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/strange-conduit.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "whispering-promise",
+      "zh": "低语承诺",
+      "name": "The Whispering Promise",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/whispering-promise.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "phalar-aluve",
+      "zh": "法拉·阿鲁维",
+      "name": "Phalar Aluve",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/phalar-aluve.webp",
+      "size": [
+        1524,
+        1080
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "undermountain-king",
+      "zh": "山丘巨王短刀",
+      "name": "Knife of the Undermountain King",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/undermountain-king.webp",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "blood-lathander",
+      "zh": "洛山达之血",
+      "name": "The Blood of Lathander",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/blood-lathander.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "returning-pike",
+      "zh": "回归长矛",
+      "name": "Returning Pike",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/returning-pike.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "unseen-menace",
+      "zh": "隐形威胁",
+      "name": "Unseen Menace",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/unseen-menace.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "cacophony",
+      "zh": "杂音",
+      "name": "Cacophony",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/cacophony.png",
+      "size": [
+        923,
+        923
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "club-hill-giant",
+      "zh": "山丘巨人力量短棒",
+      "name": "Club of Hill Giant Strength",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/club-hill-giant.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "spellsparkler",
+      "zh": "法术火花",
+      "name": "The Spellsparkler",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/spellsparkler.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "mourning-frost",
+      "zh": "悼霜",
+      "name": "Mourning Frost",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/mourning-frost.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "staff-arcane-blessing",
+      "zh": "奥术祝福法杖",
+      "name": "Staff of Arcane Blessing",
+      "status": "kept-existing",
+      "path": "assets/hd/equipment/staff-arcane-blessing.png",
+      "size": [
+        300,
+        300
+      ],
+      "candidate_size": [
+        300,
+        300
+      ],
+      "source": "https://bg3.wiki/w/images/a/af/Magic_Staff_A_Icon.png"
+    },
+    {
+      "type": "equipment",
+      "key": "titanstring-bow",
+      "zh": "泰坦弦弓",
+      "name": "Titanstring Bow",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/titanstring-bow.png",
+      "size": [
+        677,
+        677
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "joltshooter",
+      "zh": "震击射手",
+      "name": "The Joltshooter",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/joltshooter.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "adamantine-shield",
+      "zh": "精金盾牌",
+      "name": "Adamantine Shield",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/adamantine-shield.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "safeguard-shield",
+      "zh": "守卫盾",
+      "name": "Safeguard Shield",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/safeguard-shield.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "helmet-arcane-acuity",
+      "zh": "奥术敏锐头盔",
+      "name": "Helmet of Arcane Acuity",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/helmet-arcane-acuity.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "hat-fire-acuity",
+      "zh": "火焰敏锐帽",
+      "name": "Hat of Fire Acuity",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/hat-fire-acuity.png",
+      "size": [
+        543,
+        543
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "covert-cowl",
+      "zh": "隐秘兜帽",
+      "name": "Covert Cowl",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/covert-cowl.png",
+      "size": [
+        610,
+        610
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "cloak-protection",
+      "zh": "防护斗篷",
+      "name": "Cloak of Protection",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/cloak-protection.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "cloak-elemental-absorption",
+      "zh": "元素吸收斗篷",
+      "name": "Cloak of Elemental Absorption",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/cloak-elemental-absorption.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "potent-robe",
+      "zh": "强能长袍",
+      "name": "Potent Robe",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/potent-robe.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "yuan-ti",
+      "zh": "元提鳞甲",
+      "name": "Yuan-Ti Scale Mail",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/yuan-ti.png",
+      "size": [
+        1540,
+        1222
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "dark-justiciar-half",
+      "zh": "黑暗审判官半身甲",
+      "name": "Dark Justiciar Half-Plate",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/5/50/Dark_Justiciar_Half-Plate_Icon.png",
+      "path": "assets/hd/equipment/dark-justiciar-half.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 56694,
+      "page": "https://bg3.wiki/wiki/Dark_Justiciar_Half-Plate",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/1/16/Dark_Justiciar_Half-Plate_Unfaded_Icon.png",
+          "final": "https://bg3.wiki/w/images/1/16/Dark_Justiciar_Half-Plate_Unfaded_Icon.png",
+          "status": "ok",
+          "size": [
+            64,
+            64
+          ],
+          "bytes": 9451
+        },
+        {
+          "url": "https://bg3.wiki/w/images/9/98/Dark_Justiciar_Mail_Unfaded_Icon.png",
+          "final": "https://bg3.wiki/w/images/9/98/Dark_Justiciar_Mail_Unfaded_Icon.png",
+          "status": "ok",
+          "size": [
+            64,
+            64
+          ],
+          "bytes": 7315
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Dark_Justiciar_Half-Plate_Faded.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Dark_Justiciar_Half-Plate_Faded.webp",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Dark_Justiciar_Half-Plate_Icon.png",
+          "final": "https://bg3.wiki/w/images/5/50/Dark_Justiciar_Half-Plate_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 56694
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "dwarven-splintmail",
+      "zh": "矮人板条甲",
+      "name": "Dwarven Splintmail",
+      "status": "kept-existing",
+      "path": "assets/hd/equipment/dwarven-splintmail.webp",
+      "size": [
+        287,
+        707
+      ],
+      "candidate_size": [
+        287,
+        707
+      ],
+      "source": "https://bg3.wiki/w/images/3/38/Dwarven_Splintmail_High_Elf_Back_Model.webp"
+    },
+    {
+      "type": "equipment",
+      "key": "flawed-helldusk",
+      "zh": "残缺狱火暮光甲",
+      "name": "Flawed Helldusk Armour",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/flawed-helldusk.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "balanced-hands",
+      "zh": "平衡之手手套",
+      "name": "Gloves of the Balanced Hands",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/balanced-hands.png",
+      "size": [
+        2800,
+        3760
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "flawed-helldusk-gloves",
+      "zh": "残缺狱火暮光手套",
+      "name": "Flawed Helldusk Gloves",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/flawed-helldusk-gloves.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "gloves-crushing",
+      "zh": "粉碎手套",
+      "name": "Gloves of Crushing",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/gloves-crushing.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "dark-justiciar-gauntlets",
+      "zh": "黑暗审判官手套",
+      "name": "Dark Justiciar Gauntlets",
+      "status": "kept-existing",
+      "path": "assets/hd/equipment/dark-justiciar-gauntlets.png",
+      "size": [
+        64,
+        64
+      ],
+      "candidate_size": [
+        64,
+        64
+      ],
+      "source": "https://bg3.wiki/w/images/f/ff/Dark_Justiciar_Gauntlets_Unfaded_Icon.png"
+    },
+    {
+      "type": "equipment",
+      "key": "evasive-shoes",
+      "zh": "闪避之鞋",
+      "name": "Evasive Shoes",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/evasive-shoes.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "boots-brilliance",
+      "zh": "辉煌之靴",
+      "name": "Boots of Brilliance",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/boots-brilliance.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "spineshudder",
+      "zh": "脊椎震颤护符",
+      "name": "Spineshudder Amulet",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/spineshudder.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "surgeon-subjugation",
+      "zh": "外科医生征服护符",
+      "name": "Surgeon's Subjugation Amulet",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/surgeon-subjugation.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "harpers-amulet",
+      "zh": "竖琴手护符",
+      "name": "Amulet of the Harpers",
+      "status": "existing-hd",
+      "path": "assets/hd/equipment/harpers-amulet.png",
+      "size": [
+        380,
+        380
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "spellcrux",
+      "zh": "法术核心护符",
+      "name": "Spellcrux Amulet",
+      "status": "unresolved",
+      "page": "https://bg3.wiki/wiki/Spellcrux_Amulet",
+      "candidates": [
+        "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Faded.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Faded.webp",
+        "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Icon.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Icon.webp",
+        "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Unfaded_Icon.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Unfaded_Icon.webp"
+      ],
+      "probes": [
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Faded.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Faded.webp",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Icon.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Icon.webp",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Unfaded_Icon.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Unfaded_Icon.webp",
+          "status": "failed"
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "risky-ring",
+      "zh": "风险戒指",
+      "name": "Risky Ring",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+      "path": "assets/hd/equipment/risky-ring.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 45935,
+      "page": "https://bg3.wiki/wiki/Risky_Ring",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 45935
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "callous-glow",
+      "zh": "无情光芒之戒",
+      "name": "Callous Glow Ring",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+      "path": "assets/hd/equipment/callous-glow.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 45935,
+      "page": "https://bg3.wiki/wiki/Callous_Glow_Ring",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 45935
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "coruscation-ring",
+      "zh": "闪耀戒指",
+      "name": "Coruscation Ring",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/3/3d/Ring_A_Simple_Gold_1_Faded.png",
+      "path": "assets/hd/equipment/coruscation-ring.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 216755,
+      "page": "https://bg3.wiki/wiki/Coruscation_Ring",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/3/3d/Ring_A_Simple_Gold_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/3/3d/Ring_A_Simple_Gold_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 216755
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "mental-inhibition",
+      "zh": "精神抑制戒指",
+      "name": "Ring of Mental Inhibition",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/e/e1/Ring_B_1_Faded.png",
+      "path": "assets/hd/equipment/mental-inhibition.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 237760,
+      "page": "https://bg3.wiki/wiki/Ring_of_Mental_Inhibition",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/e/e1/Ring_B_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/e/e1/Ring_B_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 237760
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "snowburst",
+      "zh": "雪爆戒指",
+      "name": "Snowburst Ring",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/d/d2/Ring_A_Gem_A_Gold_1_Faded.png",
+      "path": "assets/hd/equipment/snowburst.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 56871,
+      "page": "https://bg3.wiki/wiki/Snowburst_Ring",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/d/d2/Ring_A_Gem_A_Gold_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/d/d2/Ring_A_Gem_A_Gold_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 56871
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "killers-sweetheart",
+      "zh": "杀手甜心",
+      "name": "Killer's Sweetheart",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/6/69/Ring_I_Gold_A_1_Faded.png",
+      "path": "assets/hd/equipment/killers-sweetheart.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 45917,
+      "page": "https://bg3.wiki/wiki/Killer's_Sweetheart",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/6/69/Ring_I_Gold_A_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/6/69/Ring_I_Gold_A_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 45917
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "drakethroat",
+      "zh": "龙喉战刃",
+      "name": "Drakethroat Glaive",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/1/15/Glaive_PlusTwo_Icon.png",
+      "path": "assets/hd/equipment/drakethroat.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 38997,
+      "page": "https://bg3.wiki/wiki/Drakethroat_Glaive",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/1/15/Glaive_PlusTwo_Icon.png",
+          "final": "https://bg3.wiki/w/images/1/15/Glaive_PlusTwo_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 38997
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "charge-bound-warhammer",
+      "zh": "充能束缚战锤",
+      "name": "Charge-Bound Warhammer",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/d/d1/Warhammer_PlusOne_Icon.png",
+      "path": "assets/hd/equipment/charge-bound-warhammer.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 51308,
+      "page": "https://bg3.wiki/wiki/Charge-Bound_Warhammer",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/d/d1/Warhammer_PlusOne_Icon.png",
+          "final": "https://bg3.wiki/w/images/d/d1/Warhammer_PlusOne_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 51308
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "render-mind-body",
+      "zh": "身心撕裂者",
+      "name": "Render of Mind and Body",
+      "status": "unresolved",
+      "page": "https://bg3.wiki/wiki/Render_of_Mind_and_Body",
+      "candidates": [
+        "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Faded.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Faded.webp",
+        "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Icon.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Icon.webp",
+        "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Unfaded_Icon.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Unfaded_Icon.webp"
+      ],
+      "probes": [
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Faded.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Faded.webp",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Icon.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Icon.webp",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Unfaded_Icon.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Unfaded_Icon.webp",
+          "status": "failed"
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "sword-life-stealing",
+      "zh": "夺命之剑",
+      "name": "Sword of Life Stealing",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/0/01/Sword_of_Life_Stealing_ingame.png",
+      "path": "assets/hd/equipment/sword-life-stealing.png",
+      "size": [
+        563,
+        563
+      ],
+      "bytes": 623674,
+      "page": "https://bg3.wiki/wiki/Sword_of_Life_Stealing",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/0/01/Sword_of_Life_Stealing_ingame.png",
+          "final": "https://bg3.wiki/w/images/0/01/Sword_of_Life_Stealing_ingame.png",
+          "status": "ok",
+          "size": [
+            563,
+            563
+          ],
+          "bytes": 623674
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "halberd-vigilance",
+      "zh": "警戒戟",
+      "name": "Halberd of Vigilance",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/5/58/Halberd_of_Vigilance_ingame.png",
+      "path": "assets/hd/equipment/halberd-vigilance.png",
+      "size": [
+        713,
+        713
+      ],
+      "bytes": 978283,
+      "page": "https://bg3.wiki/wiki/Halberd_of_Vigilance",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/5/58/Halberd_of_Vigilance_ingame.png",
+          "final": "https://bg3.wiki/w/images/5/58/Halberd_of_Vigilance_ingame.png",
+          "status": "ok",
+          "size": [
+            713,
+            713
+          ],
+          "bytes": 978283
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "moonlight-glaive",
+      "zh": "月光战刃",
+      "name": "Moonlight Glaive",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/e/ef/Glaive_PlusOne_Icon.png",
+      "path": "assets/hd/equipment/moonlight-glaive.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 40780,
+      "page": "https://bg3.wiki/wiki/Moonlight_Glaive",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/e/ef/Glaive_PlusOne_Icon.png",
+          "final": "https://bg3.wiki/w/images/e/ef/Glaive_PlusOne_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 40780
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "shars-spear",
+      "zh": "莎尔黄昏之矛",
+      "name": "Shar's Spear of Evening",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/9/96/Sel%C3%BBne%27s_Spear_of_Night_Icon.png",
+      "path": "assets/hd/equipment/shars-spear.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 278724,
+      "page": "https://bg3.wiki/wiki/Shar's_Spear_of_Evening",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/9/96/Sel%C3%BBne%27s_Spear_of_Night_Icon.png",
+          "final": "https://bg3.wiki/w/images/9/96/Sel%C3%BBne%27s_Spear_of_Night_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 278724
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "selunes-spear",
+      "zh": "塞伦涅夜矛",
+      "name": "Selûne's Spear of Night",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/9/96/Sel%C3%BBne%27s_Spear_of_Night_Icon.png",
+      "path": "assets/hd/equipment/selunes-spear.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 278724,
+      "page": "https://bg3.wiki/wiki/Sel%C3%BBne's_Spear_of_Night",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/9/96/Sel%C3%BBne%27s_Spear_of_Night_Icon.png",
+          "final": "https://bg3.wiki/w/images/9/96/Sel%C3%BBne%27s_Spear_of_Night_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 278724
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "darkfire-shortbow",
+      "zh": "暗火短弓",
+      "name": "Darkfire Shortbow",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/b/b5/Darkfire_Shortbow_ingame.png",
+      "path": "assets/hd/equipment/darkfire-shortbow.png",
+      "size": [
+        596,
+        596
+      ],
+      "bytes": 674720,
+      "page": "https://bg3.wiki/wiki/Darkfire_Shortbow",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/b/b5/Darkfire_Shortbow_ingame.png",
+          "final": "https://bg3.wiki/w/images/b/b5/Darkfire_Shortbow_ingame.png",
+          "status": "ok",
+          "size": [
+            596,
+            596
+          ],
+          "bytes": 674720
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "neer-misser",
+      "zh": "绝不失手",
+      "name": "Ne'er Misser",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/0/0e/Hand_Crossbow_PlusOne_Faded.png",
+      "path": "assets/hd/equipment/neer-misser.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 47443,
+      "page": "https://bg3.wiki/wiki/Ne'er_Misser",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/0/0e/Hand_Crossbow_PlusOne_Faded.png",
+          "final": "https://bg3.wiki/w/images/0/0e/Hand_Crossbow_PlusOne_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 47443
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "hellfire-hand-crossbow",
+      "zh": "地狱火手弩",
+      "name": "Hellfire Hand Crossbow",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/0/0e/Hand_Crossbow_PlusOne_Faded.png",
+      "path": "assets/hd/equipment/hellfire-hand-crossbow.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 47443,
+      "page": "https://bg3.wiki/wiki/Hellfire_Hand_Crossbow",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/0/0e/Hand_Crossbow_PlusOne_Faded.png",
+          "final": "https://bg3.wiki/w/images/0/0e/Hand_Crossbow_PlusOne_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 47443
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "ketheric-shield",
+      "zh": "凯瑟里克之盾",
+      "name": "Ketheric's Shield",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/8/8b/Ketheric%27s_Shield_Icon.png",
+      "path": "assets/hd/equipment/ketheric-shield.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 64722,
+      "page": "https://bg3.wiki/wiki/Ketheric's_Shield",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/8/8b/Ketheric%27s_Shield_Icon.png",
+          "final": "https://bg3.wiki/w/images/8/8b/Ketheric%27s_Shield_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 64722
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "birthright",
+      "zh": "天赋权利",
+      "name": "Birthright",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/1/1b/Birthright_Icon.png",
+      "path": "assets/hd/equipment/birthright.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 64657,
+      "page": "https://bg3.wiki/wiki/Birthright",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/1/1b/Birthright_Icon.png",
+          "final": "https://bg3.wiki/w/images/1/1b/Birthright_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 64657
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "hood-weave",
+      "zh": "织法兜帽",
+      "name": "Hood of the Weave",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/5/57/Hood_of_the_Weave_Icon.png",
+      "path": "assets/hd/equipment/hood-weave.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 56517,
+      "page": "https://bg3.wiki/wiki/Hood_of_the_Weave",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/5/57/Hood_of_the_Weave_Icon.png",
+          "final": "https://bg3.wiki/w/images/5/57/Hood_of_the_Weave_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 56517
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "helm-balduran",
+      "zh": "博德安之盔",
+      "name": "Helm of Balduran",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/1/1b/Helm_of_Balduran_Icon.png",
+      "path": "assets/hd/equipment/helm-balduran.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 56682,
+      "page": "https://bg3.wiki/wiki/Helm_of_Balduran",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/1/1b/Helm_of_Balduran_Icon.png",
+          "final": "https://bg3.wiki/w/images/1/1b/Helm_of_Balduran_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 56682
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "sarevok-helm",
+      "zh": "沙洛佛克角盔",
+      "name": "Sarevok's Horned Helmet",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/d/d4/Sarevok%27s_Horned_Helmet_Icon.png",
+      "path": "assets/hd/equipment/sarevok-helm.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 54808,
+      "page": "https://bg3.wiki/wiki/Sarevok's_Horned_Helmet",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/d/d4/Sarevok%27s_Horned_Helmet_Icon.png",
+          "final": "https://bg3.wiki/w/images/d/d4/Sarevok%27s_Horned_Helmet_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 54808
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "mask-soul-perception",
+      "zh": "灵魂感知面具",
+      "name": "Mask of Soul Perception",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/e/e1/Mask_of_Soul_Perception_Icon.png",
+      "path": "assets/hd/equipment/mask-soul-perception.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 43138,
+      "page": "https://bg3.wiki/wiki/Mask_of_Soul_Perception",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/e/e1/Mask_of_Soul_Perception_Icon.png",
+          "final": "https://bg3.wiki/w/images/e/e1/Mask_of_Soul_Perception_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 43138
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "pyroquickness",
+      "zh": "烈焰迅捷帽",
+      "name": "Pyroquickness Hat",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/c/cc/Pyroquickness_Hat_Icon.png",
+      "path": "assets/hd/equipment/pyroquickness.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 36158,
+      "page": "https://bg3.wiki/wiki/Pyroquickness_Hat",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/c/cc/Pyroquickness_Hat_Icon.png",
+          "final": "https://bg3.wiki/w/images/c/cc/Pyroquickness_Hat_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 36158
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "cloak-weave",
+      "zh": "织法斗篷",
+      "name": "Cloak of the Weave",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/1/10/Cloak_of_the_Weave_Faded.png",
+      "path": "assets/hd/equipment/cloak-weave.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 57065,
+      "page": "https://bg3.wiki/wiki/Cloak_of_the_Weave",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/1/10/Cloak_of_the_Weave_Faded.png",
+          "final": "https://bg3.wiki/w/images/1/10/Cloak_of_the_Weave_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 57065
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "cloak-displacement",
+      "zh": "移位斗篷",
+      "name": "Cloak of Displacement",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/f/fe/Cloak_of_Displacement_Faded.png",
+      "path": "assets/hd/equipment/cloak-displacement.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 44296,
+      "page": "https://bg3.wiki/wiki/Cloak_of_Displacement",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/f/fe/Cloak_of_Displacement_Faded.png",
+          "final": "https://bg3.wiki/w/images/f/fe/Cloak_of_Displacement_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 44296
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "shade-slayer-cloak",
+      "zh": "暗影杀手斗篷",
+      "name": "Shade-Slayer Cloak",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/2/2d/The_Deathstalker_Mantle_Faded.png",
+      "path": "assets/hd/equipment/shade-slayer-cloak.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 229156,
+      "page": "https://bg3.wiki/wiki/Shade-Slayer_Cloak",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/2/2d/The_Deathstalker_Mantle_Faded.png",
+          "final": "https://bg3.wiki/w/images/2/2d/The_Deathstalker_Mantle_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 229156
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "armour-agility",
+      "zh": "敏捷护甲",
+      "name": "Armour of Agility",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/9/96/Armour_of_Agility_Icon.png",
+      "path": "assets/hd/equipment/armour-agility.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 64249,
+      "page": "https://bg3.wiki/wiki/Armour_of_Agility",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/9/96/Armour_of_Agility_Icon.png",
+          "final": "https://bg3.wiki/w/images/9/96/Armour_of_Agility_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 64249
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "helldusk-armour",
+      "zh": "狱火暮光甲",
+      "name": "Helldusk Armour",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/c/cb/Helldusk_Armour_Icon.png",
+      "path": "assets/hd/equipment/helldusk-armour.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 61407,
+      "page": "https://bg3.wiki/wiki/Helldusk_Armour",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/c/cb/Helldusk_Armour_Icon.png",
+          "final": "https://bg3.wiki/w/images/c/cb/Helldusk_Armour_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 61407
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "bhaalist-armour",
+      "zh": "巴尔信徒护甲",
+      "name": "Bhaalist Armour",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/0/01/Bhaalist_Armour_Icon.png",
+      "path": "assets/hd/equipment/bhaalist-armour.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 73172,
+      "page": "https://bg3.wiki/wiki/Bhaalist_Armour",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/0/01/Bhaalist_Armour_Icon.png",
+          "final": "https://bg3.wiki/w/images/0/01/Bhaalist_Armour_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 73172
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "robe-weave",
+      "zh": "织法长袍",
+      "name": "Robe of the Weave",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/0/0c/Robe_of_the_Weave_Icon.png",
+      "path": "assets/hd/equipment/robe-weave.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 62419,
+      "page": "https://bg3.wiki/wiki/Robe_of_the_Weave",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/0/0c/Robe_of_the_Weave_Icon.png",
+          "final": "https://bg3.wiki/w/images/0/0c/Robe_of_the_Weave_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 62419
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "bonespike-garb",
+      "zh": "骨刺服",
+      "name": "Bonespike Garb",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/2/2a/Bonespike_Garb_Icon.png",
+      "path": "assets/hd/equipment/bonespike-garb.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 66229,
+      "page": "https://bg3.wiki/wiki/Bonespike_Garb",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/2/2a/Bonespike_Garb_Icon.png",
+          "final": "https://bg3.wiki/w/images/2/2a/Bonespike_Garb_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 66229
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "gauntlets-hill-giant",
+      "zh": "山丘巨人力量护手",
+      "name": "Gauntlets of Hill Giant Strength",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/1/19/Gauntlets_of_Hill_Giant_Strength_Icon.png",
+      "path": "assets/hd/equipment/gauntlets-hill-giant.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 65332,
+      "page": "https://bg3.wiki/wiki/Gauntlets_of_Hill_Giant_Strength",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/1/19/Gauntlets_of_Hill_Giant_Strength_Icon.png",
+          "final": "https://bg3.wiki/w/images/1/19/Gauntlets_of_Hill_Giant_Strength_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 65332
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "legacy-masters",
+      "zh": "大师遗产",
+      "name": "Legacy of the Masters",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/4/44/Legacy_of_the_masters_dyed.png",
+      "path": "assets/hd/equipment/legacy-masters.png",
+      "size": [
+        2800,
+        3760
+      ],
+      "bytes": 4487837,
+      "page": "https://bg3.wiki/wiki/Legacy_of_the_Masters",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/4/44/Legacy_of_the_masters_dyed.png",
+          "final": "https://bg3.wiki/w/images/4/44/Legacy_of_the_masters_dyed.png",
+          "status": "ok",
+          "size": [
+            2800,
+            3760
+          ],
+          "bytes": 4487837
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "helldusk-gloves",
+      "zh": "狱火暮光手套",
+      "name": "Helldusk Gloves",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/3/3c/Helldusk_Gloves_Icon.png",
+      "path": "assets/hd/equipment/helldusk-gloves.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 39825,
+      "page": "https://bg3.wiki/wiki/Helldusk_Gloves",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/3/3c/Helldusk_Gloves_Icon.png",
+          "final": "https://bg3.wiki/w/images/3/3c/Helldusk_Gloves_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 39825
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "soul-catching",
+      "zh": "灵魂捕捉手套",
+      "name": "Gloves of Soul Catching",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/f/f9/Gloves_of_Soul_Catching_Icon.png",
+      "path": "assets/hd/equipment/soul-catching.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 46722,
+      "page": "https://bg3.wiki/wiki/Gloves_of_Soul_Catching",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/f/f9/Gloves_of_Soul_Catching_Icon.png",
+          "final": "https://bg3.wiki/w/images/f/f9/Gloves_of_Soul_Catching_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 46722
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "spellmight",
+      "zh": "法术强能手套",
+      "name": "Spellmight Gloves",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/b/b1/Gloves_Leather_D_Faded.png",
+      "path": "assets/hd/equipment/spellmight.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 57455,
+      "page": "https://bg3.wiki/wiki/Spellmight_Gloves",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/b/b1/Gloves_Leather_D_Faded.png",
+          "final": "https://bg3.wiki/w/images/b/b1/Gloves_Leather_D_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 57455
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "craterflesh",
+      "zh": "裂肉手套",
+      "name": "Craterflesh Gloves",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/b/b0/Gloves_Metal_C_Faded.png",
+      "path": "assets/hd/equipment/craterflesh.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 58024,
+      "page": "https://bg3.wiki/wiki/Craterflesh_Gloves",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/b/b0/Gloves_Metal_C_Faded.png",
+          "final": "https://bg3.wiki/w/images/b/b0/Gloves_Metal_C_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 58024
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "helldusk-boots",
+      "zh": "狱火暮光长靴",
+      "name": "Helldusk Boots",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/8/82/Helldusk_Boots_Icon.png",
+      "path": "assets/hd/equipment/helldusk-boots.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 52190,
+      "page": "https://bg3.wiki/wiki/Helldusk_Boots",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/8/82/Helldusk_Boots_Icon.png",
+          "final": "https://bg3.wiki/w/images/8/82/Helldusk_Boots_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 52190
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "boots-persistence",
+      "zh": "坚毅之靴",
+      "name": "Boots of Persistence",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/a/ae/Boots_of_Persistence_Icon.png",
+      "path": "assets/hd/equipment/boots-persistence.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 54932,
+      "page": "https://bg3.wiki/wiki/Boots_of_Persistence",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/a/ae/Boots_of_Persistence_Icon.png",
+          "final": "https://bg3.wiki/w/images/a/ae/Boots_of_Persistence_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 54932
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "bonespike-boots",
+      "zh": "骨刺长靴",
+      "name": "Bonespike Boots",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/f/f5/Bonespike_Boots_Faded.png",
+      "path": "assets/hd/equipment/bonespike-boots.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 50584,
+      "page": "https://bg3.wiki/wiki/Bonespike_Boots",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/f/f5/Bonespike_Boots_Faded.png",
+          "final": "https://bg3.wiki/w/images/f/f5/Bonespike_Boots_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 50584
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "amulet-health",
+      "zh": "强健护符",
+      "name": "Amulet of Greater Health",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/2/27/Amulet_of_Greater_Health_Icon.png",
+      "path": "assets/hd/equipment/amulet-health.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 36037,
+      "page": "https://bg3.wiki/wiki/Amulet_of_Greater_Health",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/2/27/Amulet_of_Greater_Health_Icon.png",
+          "final": "https://bg3.wiki/w/images/2/27/Amulet_of_Greater_Health_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 36037
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "amulet-devout",
+      "zh": "虔诚护符",
+      "name": "Amulet of the Devout",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/c/c2/Amulet_of_the_devout.png",
+      "path": "assets/hd/equipment/amulet-devout.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 31324,
+      "page": "https://bg3.wiki/wiki/Amulet_of_the_Devout",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/c/c2/Amulet_of_the_devout.png",
+          "final": "https://bg3.wiki/w/images/c/c2/Amulet_of_the_devout.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 31324
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "fey-semblance",
+      "zh": "妖精外貌护符",
+      "name": "Fey Semblance Amulet",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/e/e1/Amulet_Necklace_C_Gold_A_1_Faded.png",
+      "path": "assets/hd/equipment/fey-semblance.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 230665,
+      "page": "https://bg3.wiki/wiki/Fey_Semblance_Amulet",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/e/e1/Amulet_Necklace_C_Gold_A_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/e/e1/Amulet_Necklace_C_Gold_A_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 230665
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "khalids-gift",
+      "zh": "卡立德的礼物",
+      "name": "Khalid's Gift",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/7/7f/Amulet_Necklace_A_Bronze_A_1_Faded.png",
+      "path": "assets/hd/equipment/khalids-gift.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 46145,
+      "page": "https://bg3.wiki/wiki/Khalid's_Gift",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/7/7f/Amulet_Necklace_A_Bronze_A_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/7/7f/Amulet_Necklace_A_Bronze_A_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 46145
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "band-mystic-scoundrel",
+      "zh": "神秘恶棍戒指",
+      "name": "Band of the Mystic Scoundrel",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+      "path": "assets/hd/equipment/band-mystic-scoundrel.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 45935,
+      "page": "https://bg3.wiki/wiki/Band_of_the_Mystic_Scoundrel",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/2/22/Ring_E_Gold_A_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 45935
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "ring-regeneration",
+      "zh": "再生戒指",
+      "name": "Ring of Regeneration",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/a/a5/Ring_of_Regeneration_Icon.png",
+      "path": "assets/hd/equipment/ring-regeneration.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 28705,
+      "page": "https://bg3.wiki/wiki/Ring_of_Regeneration",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/a/a5/Ring_of_Regeneration_Icon.png",
+          "final": "https://bg3.wiki/w/images/a/a5/Ring_of_Regeneration_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 28705
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "feywild-sparks",
+      "zh": "妖精荒野火花戒指",
+      "name": "Ring of Feywild Sparks",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/b/b8/Ring_H_Gold_A_1_Faded.png",
+      "path": "assets/hd/equipment/feywild-sparks.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 47727,
+      "page": "https://bg3.wiki/wiki/Ring_of_Feywild_Sparks",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/b/b8/Ring_H_Gold_A_1_Faded.png",
+          "final": "https://bg3.wiki/w/images/b/b8/Ring_H_Gold_A_1_Faded.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 47727
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "free-action",
+      "zh": "自由行动戒指",
+      "name": "Ring of Free Action",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/d/d9/Ring_of_Free_Action_Icon.png",
+      "path": "assets/hd/equipment/free-action.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 25284,
+      "page": "https://bg3.wiki/wiki/Ring_of_Free_Action",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/d/d9/Ring_of_Free_Action_Icon.png",
+          "final": "https://bg3.wiki/w/images/d/d9/Ring_of_Free_Action_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 25284
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "markoheshkir",
+      "zh": "玛科赫什基",
+      "name": "Markoheshkir",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/8/87/Markoheshkir_Icon.png",
+      "path": "assets/hd/equipment/markoheshkir.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 246245,
+      "page": "https://bg3.wiki/wiki/Markoheshkir",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/8/87/Markoheshkir_Icon.png",
+          "final": "https://bg3.wiki/w/images/8/87/Markoheshkir_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 246245
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "staff-spellpower",
+      "zh": "法术力量法杖",
+      "name": "Staff of Spellpower",
+      "status": "unresolved",
+      "page": "https://bg3.wiki/wiki/Staff_of_Spellpower",
+      "candidates": [
+        "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Faded.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Faded.webp",
+        "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Icon.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Icon.webp",
+        "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Unfaded_Icon.png",
+        "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Unfaded_Icon.webp"
+      ],
+      "probes": [
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Faded.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Faded.webp",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Icon.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Icon.webp",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Unfaded_Icon.png",
+          "status": "failed"
+        },
+        {
+          "url": "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Unfaded_Icon.webp",
+          "status": "failed"
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "rhapsody",
+      "zh": "狂想曲",
+      "name": "Rhapsody",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/7/70/Rhapsody_Icon.png",
+      "path": "assets/hd/equipment/rhapsody.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 36102,
+      "page": "https://bg3.wiki/wiki/Rhapsody",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/7/70/Rhapsody_Icon.png",
+          "final": "https://bg3.wiki/w/images/7/70/Rhapsody_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 36102
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "nyrulna",
+      "zh": "尼鲁纳",
+      "name": "Nyrulna",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/3/35/Nyrulna_Icon.png",
+      "path": "assets/hd/equipment/nyrulna.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 56687,
+      "page": "https://bg3.wiki/wiki/Nyrulna",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/3/35/Nyrulna_Icon.png",
+          "final": "https://bg3.wiki/w/images/3/35/Nyrulna_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 56687
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "baldurans-giantslayer",
+      "zh": "博德安巨人杀手",
+      "name": "Balduran's Giantslayer",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/f/f1/Balduran_Giantslayer_Icon.png",
+      "path": "assets/hd/equipment/baldurans-giantslayer.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 53770,
+      "page": "https://bg3.wiki/wiki/Balduran's_Giantslayer",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/f/f1/Balduran_Giantslayer_Icon.png",
+          "final": "https://bg3.wiki/w/images/f/f1/Balduran_Giantslayer_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 53770
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "bloodthirst",
+      "zh": "嗜血",
+      "name": "Bloodthirst",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/f/fa/Bloodthirst_Icon.png",
+      "path": "assets/hd/equipment/bloodthirst.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 24354,
+      "page": "https://bg3.wiki/wiki/Bloodthirst",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/f/fa/Bloodthirst_Icon.png",
+          "final": "https://bg3.wiki/w/images/f/fa/Bloodthirst_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 24354
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "crimson-mischief",
+      "zh": "猩红恶作剧",
+      "name": "Crimson Mischief",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/7/73/Crimson_Mischief_Icon.png",
+      "path": "assets/hd/equipment/crimson-mischief.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 58148,
+      "page": "https://bg3.wiki/wiki/Crimson_Mischief",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/7/73/Crimson_Mischief_Icon.png",
+          "final": "https://bg3.wiki/w/images/7/73/Crimson_Mischief_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 58148
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "duellists-prerogative",
+      "zh": "决斗者特权",
+      "name": "Duellist's Prerogative",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/4/4a/Duellist%27s_Prerogative_Icon.png",
+      "path": "assets/hd/equipment/duellists-prerogative.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 67965,
+      "page": "https://bg3.wiki/wiki/Duellist's_Prerogative",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/4/4a/Duellist%27s_Prerogative_Icon.png",
+          "final": "https://bg3.wiki/w/images/4/4a/Duellist%27s_Prerogative_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 67965
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "silver-sword-astral",
+      "zh": "星界银剑",
+      "name": "Silver Sword of the Astral Plane",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/1/1b/Silver_Sword_of_the_Astral_Plane_ingame.webp",
+      "path": "assets/hd/equipment/silver-sword-astral.webp",
+      "size": [
+        770,
+        909
+      ],
+      "bytes": 269314,
+      "page": "https://bg3.wiki/wiki/Silver_Sword_of_the_Astral_Plane",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/1/1b/Silver_Sword_of_the_Astral_Plane_ingame.webp",
+          "final": "https://bg3.wiki/w/images/1/1b/Silver_Sword_of_the_Astral_Plane_ingame.webp",
+          "status": "ok",
+          "size": [
+            770,
+            909
+          ],
+          "bytes": 269314
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "devotees-mace",
+      "zh": "信徒钉头锤",
+      "name": "Devotee's Mace",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/f/ff/Devotee%27s_Mace_Faded.webp",
+      "path": "assets/hd/equipment/devotees-mace.webp",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 72130,
+      "page": "https://bg3.wiki/wiki/Devotee's_Mace",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/f/ff/Devotee%27s_Mace_Faded.webp",
+          "final": "https://bg3.wiki/w/images/f/ff/Devotee%27s_Mace_Faded.webp",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 72130
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "dolor-amarus",
+      "zh": "苦痛之刃",
+      "name": "Dolor Amarus",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/e/e2/Dolor_Amarus_Icon.png",
+      "path": "assets/hd/equipment/dolor-amarus.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 26336,
+      "page": "https://bg3.wiki/wiki/Dolor_Amarus",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/e/e2/Dolor_Amarus_Icon.png",
+          "final": "https://bg3.wiki/w/images/e/e2/Dolor_Amarus_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 26336
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "gontr-mael",
+      "zh": "贡特尔·梅尔",
+      "name": "Gontr Mael",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/d/de/Gontr_Mael_Icon.png",
+      "path": "assets/hd/equipment/gontr-mael.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 69609,
+      "page": "https://bg3.wiki/wiki/Gontr_Mael",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/d/de/Gontr_Mael_Icon.png",
+          "final": "https://bg3.wiki/w/images/d/de/Gontr_Mael_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 69609
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "dead-shot",
+      "zh": "致命一击",
+      "name": "The Dead Shot",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/8/82/The_Dead_Shot_ingame.png",
+      "path": "assets/hd/equipment/dead-shot.png",
+      "size": [
+        627,
+        627
+      ],
+      "bytes": 765088,
+      "page": "https://bg3.wiki/wiki/The_Dead_Shot",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/8/82/The_Dead_Shot_ingame.png",
+          "final": "https://bg3.wiki/w/images/8/82/The_Dead_Shot_ingame.png",
+          "status": "ok",
+          "size": [
+            627,
+            627
+          ],
+          "bytes": 765088
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "hellfire-engine-crossbow",
+      "zh": "地狱火引擎弩",
+      "name": "Hellfire Engine Crossbow",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/7/71/Hellfire_Engine_Crossbow_Icon.png",
+      "path": "assets/hd/equipment/hellfire-engine-crossbow.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 53124,
+      "page": "https://bg3.wiki/wiki/Hellfire_Engine_Crossbow",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/7/71/Hellfire_Engine_Crossbow_Icon.png",
+          "final": "https://bg3.wiki/w/images/7/71/Hellfire_Engine_Crossbow_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 53124
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "viconia-fortress",
+      "zh": "维康妮亚行走堡垒",
+      "name": "Viconia's Walking Fortress",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/8/88/Viconia%27s_Walking_Fortress_Icon.png",
+      "path": "assets/hd/equipment/viconia-fortress.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 45274,
+      "page": "https://bg3.wiki/wiki/Viconia's_Walking_Fortress",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/8/88/Viconia%27s_Walking_Fortress_Icon.png",
+          "final": "https://bg3.wiki/w/images/8/88/Viconia%27s_Walking_Fortress_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 45274
+        }
+      ]
+    },
+    {
+      "type": "equipment",
+      "key": "shield-undevout",
+      "zh": "不虔之盾",
+      "name": "Shield of the Undevout",
+      "status": "downloaded-hd",
+      "source": "https://bg3.wiki/w/images/0/0e/Shield_of_the_Undevout_Icon.png",
+      "path": "assets/hd/equipment/shield-undevout.png",
+      "size": [
+        380,
+        380
+      ],
+      "bytes": 85981,
+      "page": "https://bg3.wiki/wiki/Shield_of_the_Undevout",
+      "probes": [
+        {
+          "url": "https://bg3.wiki/w/images/0/0e/Shield_of_the_Undevout_Icon.png",
+          "final": "https://bg3.wiki/w/images/0/0e/Shield_of_the_Undevout_Icon.png",
+          "status": "ok",
+          "size": [
+            380,
+            380
+          ],
+          "bytes": 85981
+        }
+      ]
+    }
+  ]
+}
