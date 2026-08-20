@@ -1,15 +1,23 @@
 {
-  "patch": "V8 background restore",
-  "changes": [
-    "add assets/v8/background.css",
-    "link it after v82.css in v8.html",
-    "reuse existing assets/fantasy-forest-v6.webp"
-  ],
-  "risk": "visual-only; no JS/state/rule changes",
-  "checks": {
-    "asset_relative_path": "../fantasy-forest-v6.webp",
-    "app_background_transparent": true,
-    "pc_background_fixed": true,
-    "mobile_background_scroll": true
-  }
+  "patch": "V8.2.2 equipment rule deepening + final linkage",
+  "baseline_v82_git_blob": "e340701c664f137bc61cec17fbeb8b714ab6de51",
+  "static_checks": {
+    "equipment_rules_node_check": true,
+    "validator_node_check": true,
+    "patcher_py_compile": true,
+    "patcher_marker_replacement_test": true
+  },
+  "runtime_validation_script": "tools/validate-v82-equipment-rules.mjs",
+  "runtime_validation_requires_full_repo": true,
+  "runtime_scenarios": [
+    "clothing preserves Monk Unarmoured Defence",
+    "fighter Defense style adds +1 AC while armoured",
+    "Ranger Knight grants heavy armour proficiency",
+    "non-proficient wearable armour requirement blocks casting",
+    "Archery style adds +2 ranged attack",
+    "Pact of the Blade uses CHA for planned main-hand melee",
+    "equipment ability changes propagate to skills",
+    "duplicate named unique item is detected",
+    "two-handed main-hand transaction clears off-hand"
+  ]
 }
