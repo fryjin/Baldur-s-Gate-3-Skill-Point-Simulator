@@ -1,0 +1,85 @@
+{
+  "version": "V8.2 HD Resource Patch v2",
+  "files": [
+    {
+      "path": "EQUIPMENT_IMAGE_SOURCES.csv",
+      "bytes": 50056,
+      "sha256": "0fb3f27c3ae889b1c2692b6d7d8d53b7890eea5444eb6b2b7360d8fca9539699"
+    },
+    {
+      "path": "HD_EQUIPMENT_SOURCE_CANDIDATES.csv",
+      "bytes": 51494,
+      "sha256": "b2433a62bc04aa548da4b58df7e727bab73b361be7e7ef15cbf64d985acd7a9a"
+    },
+    {
+      "path": "HD_SOURCE_EXAMPLES.csv",
+      "bytes": 849,
+      "sha256": "f601dee426517f624cfc7bc4fcf84cfba72fcd9f74d236126b06ac707469e345"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6445,
+      "sha256": "8193f3c76adacff31db57822c384602c00529fec5b7ef14440a26ee5cbbdc44f"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 1319,
+      "sha256": "3910ef3cf35e4fa6cb224767dfab8b7dfa444fe35b5602f9ca84cf0925a1e13c"
+    },
+    {
+      "path": "assets/equipment/README.md",
+      "bytes": 240,
+      "sha256": "e465620e613c072b111757733762fa17fa78e841d2375d1d85224940ad4a862c"
+    },
+    {
+      "path": "assets/hd/README.md",
+      "bytes": 875,
+      "sha256": "d984d03212e001ef5d0598663fce9e3a3a0a6cad6725c73757a9972d6cb03a8c"
+    },
+    {
+      "path": "assets/hd/equipment/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "assets/hd/spells/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "assets/js/data/spell-assets.js",
+      "bytes": 4368,
+      "sha256": "c268a3fdbb3098043eb5890e50694e211a674d1d5e3b183643322bcde61537c5"
+    },
+    {
+      "path": "assets/v8/equipment-images.js",
+      "bytes": 2657,
+      "sha256": "0b69897691c82a682267e9ccc92423cfebe5bc19fe7aa3262ce853af6c1a27fa"
+    },
+    {
+      "path": "assets/v8/v82.css",
+      "bytes": 24346,
+      "sha256": "56a89bc3f1e84f1142112c8d89cb84a2c5a59d0286f18bcaec9a21c1bbd9b359"
+    },
+    {
+      "path": "assets/v8/v82.js",
+      "bytes": 22672,
+      "sha256": "88fd80622e629749d76c922ea517d3473437f284c3f71626d0438e499c2e154d"
+    },
+    {
+      "path": "tools/bg3-wiki-hd-overrides.json",
+      "bytes": 1185,
+      "sha256": "57101990e6f6187d762058d80461f1e7774c9929dde02b5f5422e5cc4bbf1ad2"
+    },
+    {
+      "path": "tools/vendor-bg3-wiki-assets-hd.py",
+      "bytes": 15954,
+      "sha256": "487900870942ea9315dfd8dbfc81704f2b0e01f97067c0e38cdf83883c55e6e9"
+    },
+    {
+      "path": "tools/vendor-bg3-wiki-assets.py",
+      "bytes": 382,
+      "sha256": "5a69d32bf65ff72a9d59e48bde6bbc219ebdf4d5a39a809784899c9cc8173971"
+    }
+  ]
+}

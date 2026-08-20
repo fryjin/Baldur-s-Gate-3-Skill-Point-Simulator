@@ -1,17 +1,31 @@
 {
-  "version": "V8.2 Wiki Image Patch v1",
+  "version": "V8.2 bg3.wiki HD Resource Patch v2",
   "target": "V8.2",
+  "generated_at": "2026-08-20",
+  "quality_policy": {
+    "preferred_spell_asset": "native tooltip artwork, normally 380x380",
+    "preferred_equipment_asset": "native item tooltip/Faded artwork, normally 380x380",
+    "thumbnail_normalization": true,
+    "minimum_complete_hd_edge": 380,
+    "artificial_upscale": false
+  },
   "checks": {
+    "python_vendor_script_compiles": true,
+    "spell_assets_js_syntax": true,
+    "equipment_images_js_syntax": true,
     "v82_calls_spell_bindImageFallbacks": true,
-    "spell_local_first": true,
-    "spell_bg3wiki_fallback": true,
-    "equipment_card_images": true,
-    "equipment_slot_images": true,
-    "equipment_detail_images": true,
-    "equipment_final_build_images": true,
-    "equipment_local_first": true,
-    "equipment_bg3wiki_multicandidate": true,
-    "vendor_script_included": true,
-    "equipment_source_rows": 130
+    "v82_calls_equipment_bindImageFallbacks": true,
+    "spell_hd_local_first": true,
+    "spell_tooltip_before_legacy_small_icon": true,
+    "equipment_hd_local_first": true,
+    "equipment_faded_before_legacy_small_icon": true,
+    "mediawiki_300px_thumb_to_original_normalization": true,
+    "native_dimension_detection_png_jpeg_webp": true,
+    "vendor_report_included_by_script": true,
+    "equipment_hd_source_rows": 130
+  },
+  "binary_download_status": {
+    "complete_hd_binary_pack_included": false,
+    "reason": "The current ChatGPT sandbox cannot reliably resolve/fetch bg3.wiki /w/images binary files. The included vendor script performs the actual original-file download from a network-enabled repository environment."
   }
 }

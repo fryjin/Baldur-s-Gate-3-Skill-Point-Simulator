@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "notes": [
+    "The URLs below are source hints. MediaWiki thumbnail URLs are normalized back to their original files before download.",
+    "Spell tooltip artwork is preferred over 144x144 Controller UI icons.",
+    "Equipment tooltip/Faded artwork is preferred over 64px/144px UI icons."
+  ],
+  "spell": {
+    "dominateBeast": [
+      "https://bg3.wiki/w/images/4/45/Dominate_Beast.webp",
+      "https://bg3.wiki/w/images/thumb/4/45/Dominate_Beast.webp/300px-Dominate_Beast.webp",
+      "https://bg3.wiki/wiki/Special:FilePath/Dominate_Beast.webp"
+    ],
+    "bane": [
+      "https://bg3.wiki/wiki/Special:FilePath/Bane_spell.webp"
+    ],
+    "darkvision": [
+      "https://bg3.wiki/wiki/Special:FilePath/Darkvision_spell.webp"
+    ]
+  },
+  "equipment": {},
+  "reference_examples": {
+    "moon-devotion-robe": [
+      "https://bg3.wiki/w/images/a/a5/Moon_Devotion_Robe_Icon.png",
+      "https://bg3.wiki/w/images/thumb/a/a5/Moon_Devotion_Robe_Icon.png/300px-Moon_Devotion_Robe_Icon.png.webp",
+      "https://bg3.wiki/wiki/Special:FilePath/Moon_Devotion_Robe_Icon.png"
+    ],
+    "ring-d-1": [
+      "https://bg3.wiki/w/images/a/a1/Ring_D_1_Faded.png"
+    ]
+  }
+}

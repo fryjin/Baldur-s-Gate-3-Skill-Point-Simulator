@@ -1,12 +1,15 @@
-const failureKey='bg3-v8-equipment-image-failures-v1';
+const failureKey='bg3-v8-equipment-image-failures-v2';
 let failures=new Set();try{failures=new Set(JSON.parse(sessionStorage.getItem(failureKey)||'[]'))}catch{}
 let observer=null;
 const save=()=>{try{sessionStorage.setItem(failureKey,JSON.stringify([...failures].slice(-1200)))}catch{}};
 const fileUrl=file=>`https://bg3.wiki/wiki/Special:FilePath/${encodeURIComponent(file)}`;
 const baseName=item=>String(item?.en||item?.name||'').trim().replace(/\s+/g,'_');
-export function equipmentImageCandidates(item){const base=baseName(item),localBase=`./assets/equipment/${item.id}`;return[
+export function equipmentImageCandidates(item){const base=baseName(item),hdBase=`./assets/hd/equipment/${item.id}`,localBase=`./assets/equipment/${item.id}`;return[
+  `${hdBase}.webp`,`${hdBase}.png`,`${hdBase}.jpg`,
+  fileUrl(`${base}_Faded.png`),fileUrl(`${base}_Faded.webp`),
   item.image||'',`${localBase}.webp`,`${localBase}.png`,
-  fileUrl(`${base}_Unfaded_Icon.png`),fileUrl(`${base}_Unfaded_Icon.webp`),fileUrl(`${base}_Item_Icon.png`),fileUrl(`${base}_Icon.webp`)
+  fileUrl(`${base}_Icon.png`),fileUrl(`${base}_Icon.webp`),
+  fileUrl(`${base}_Unfaded_Icon.png`),fileUrl(`${base}_Unfaded_Icon.webp`),fileUrl(`${base}_Item_Icon.png`)
 ].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i&&!failures.has(x))}
 const enc=list=>encodeURIComponent(JSON.stringify(list));
 const dec=value=>{try{return JSON.parse(decodeURIComponent(value||''))}catch{return[]}};

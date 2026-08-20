@@ -1,15 +1,17 @@
 import{spellImageManifest}from"./spell-image-manifest.js";
-const failureKey="bg3-v8-wiki-image-failures-v1";
+const failureKey="bg3-v8-wiki-image-failures-v2";
 let failures=new Set();
 try{failures=new Set(JSON.parse(sessionStorage.getItem(failureKey)||"[]"))}catch{}
 let observer=null;
 function saveFailures(){try{sessionStorage.setItem(failureKey,JSON.stringify([...failures].slice(-1000)))}catch{}}
 function fallbackSvg(spell){const label=(spell?.name||"法术").slice(0,2),level=spell?.level?`${spell.level}环`:"戏法";const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4a392d"/><stop offset="1" stop-color="#17120f"/></linearGradient></defs><rect width="160" height="160" rx="24" fill="url(#g)"/><circle cx="80" cy="65" r="39" fill="none" stroke="#d5b96f" stroke-width="3" opacity=".46"/><text x="80" y="77" text-anchor="middle" fill="#efe3cc" font-size="28" font-family="serif">${label}</text><text x="80" y="131" text-anchor="middle" fill="#bbaa89" font-size="17" font-family="sans-serif">${level}</text></svg>`;return`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`}
 export const expectedSpellImagePath=key=>spellImageManifest[key]||"";
-const iconFile=name=>String(name||"").trim().replace(/\s+/g,"_")+"_Icon.webp";
-const wikiFile=name=>`https://bg3.wiki/wiki/Special:FilePath/${encodeURIComponent(iconFile(name))}`;
+const cleanName=name=>String(name||"").trim().replace(/\//g," ").replace(/\s+/g," ");
+const wikiFile=file=>`https://bg3.wiki/wiki/Special:FilePath/${encodeURIComponent(file.replace(/\s+/g,"_"))}`;
+const iconFile=name=>cleanName(name).replace(/\s+/g,"_")+"_Icon.webp";
 const mirrorFile=name=>`https://raw.githubusercontent.com/kennedymindeman/bg3-item-spawner/main/icons/${encodeURIComponent(iconFile(name))}`;
-function candidates(spell){const local=expectedSpellImagePath(spell.key),vendorWebp=`./assets/spells/${spell.key}.webp`,wiki=wikiFile(spell.en||spell.name),mirror=mirrorFile(spell.en||spell.name);return[local,vendorWebp,wiki,mirror].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i&&!failures.has(x))}
+const tooltipFiles=spell=>{const n=cleanName(spell.en||spell.name),files=[`${n}.webp`,`${n}.png`,`${n} spell.webp`,`${n} Spell.webp`];if(spell.key==="bane")files.unshift("Bane spell.webp");if(spell.key==="darkvision")files.unshift("Darkvision spell.webp");return files.map(wikiFile)};
+function candidates(spell){const hd=[`./assets/hd/spells/${spell.key}.webp`,`./assets/hd/spells/${spell.key}.png`,`./assets/hd/spells/${spell.key}.jpg`],local=expectedSpellImagePath(spell.key),vendorWebp=`./assets/spells/${spell.key}.webp`,tooltips=tooltipFiles(spell),controller=wikiFile(iconFile(spell.en||spell.name)),mirror=mirrorFile(spell.en||spell.name);return[...hd,...tooltips,local,vendorWebp,controller,mirror].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i&&!failures.has(x))}
 function encodeCandidates(list){return encodeURIComponent(JSON.stringify(list))}
 function decodeCandidates(value){try{return JSON.parse(decodeURIComponent(value||""))}catch{return[]}}
 export function spellImageTag(spell,className="spell-image",alt){const placeholder=fallbackSvg(spell),eager=className.includes("detail"),list=candidates(spell);return`<img class="${className}" src="${placeholder}" alt="${alt||`${spell.name}图标`}" width="96" height="96" decoding="async" loading="${eager?"eager":"lazy"}" fetchpriority="${eager?"high":"low"}" referrerpolicy="no-referrer" data-placeholder="${placeholder}" ${list.length?`data-spell-candidates="${encodeCandidates(list)}"`:""}>`}

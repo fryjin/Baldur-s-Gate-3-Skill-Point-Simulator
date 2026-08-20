@@ -1,0 +1,4 @@
+﻿name,class,provided_url,normalized_original_url,note
+Moon Devotion Robe,equipment icon example,https://bg3.wiki/w/images/thumb/a/a5/Moon_Devotion_Robe_Icon.png/300px-Moon_Devotion_Robe_Icon.png.webp,https://bg3.wiki/w/images/a/a5/Moon_Devotion_Robe_Icon.png,thumbnail normalized to original; exact native dimensions should be verified by downloader
+Ring D 1,equipment tooltip / Faded example,https://bg3.wiki/w/images/a/a1/Ring_D_1_Faded.png,https://bg3.wiki/w/images/a/a1/Ring_D_1_Faded.png,already points to original file; Faded assets are preferred for equipment
+Dominate Beast,spell tooltip example,https://bg3.wiki/w/images/thumb/4/45/Dominate_Beast.webp/300px-Dominate_Beast.webp,https://bg3.wiki/w/images/4/45/Dominate_Beast.webp,thumbnail normalized to original; bg3.wiki spell tooltip category reports Dominate Beast.webp as 380x380
