@@ -1,5 +1,5 @@
 {
-  "version": "V8.1",
+  "version": "V8.2",
   "files": [
     {
       "path": "DESIGN_SYSTEM.md",
@@ -7,34 +7,59 @@
       "sha256": "66b3ded12709b5d9ca6dfeb889e894483581e4971205aec6d3d13ce73d65c5cf"
     },
     {
+      "path": "EQUIPMENT_DATA_PIPELINE.md",
+      "size": 1165,
+      "sha256": "048e86ec4d0c20b395f377601897675264858f9f4326285f3d750b1bc79aeb05"
+    },
+    {
+      "path": "MIGRATION_V7_TO_V8.md",
+      "size": 856,
+      "sha256": "a67292ea02e27ea29b35ffc574767284358e7ff59ee0fbf26f6a408fe6083d20"
+    },
+    {
       "path": "README.md",
-      "size": 2104,
-      "sha256": "0c14d869067d673b720d6af3f1dbd99b20a95ba429b7a7a0a7a2f9203fa5cc0c"
+      "size": 2507,
+      "sha256": "faeb931d9ef0e6270ae7aadcec0ef0067672c9ad9e1425f345de343ae45f8013"
     },
     {
       "path": "STATUS.json",
-      "size": 217,
-      "sha256": "487268f6d1c96cb4e41388595bf852763e52784ff85070551f4bb203f4c030a8"
+      "size": 359,
+      "sha256": "96c69d6e4827c3aa0f35b46b7c6ff865aef02adb1d12ad4e1e8c2a50938911ed"
     },
     {
-      "path": "V8_1_DATA_BRIDGE_SPEC.md",
-      "size": 2667,
-      "sha256": "073ccdcf932b28175060057358be36397602ac43148ef14e5551e9943f78c8be"
+      "path": "V8_2_PRODUCT_SPEC.md",
+      "size": 3755,
+      "sha256": "68b416066d8d5f2906dc1aff974a0cf71af605e39d956908a6ae0d204e75920f"
     },
     {
       "path": "VALIDATION.json",
-      "size": 566,
-      "sha256": "5edbf90cbe4b6de4de3d4fcc47f3a149fa3cebf208729c736daf618fed86525b"
+      "size": 1576,
+      "sha256": "2e64567435541973ef8fb2ea62945fd014545bdda046046221fe4ad1220dd422"
     },
     {
-      "path": "assets/v8/equipment-data.js",
-      "size": 6301,
-      "sha256": "319b83ed8ea12289e24d93b1062cbcb77b4fedf7ae78fb1dd44af75d767a28b5"
+      "path": "assets/v8/character-editor.js",
+      "size": 29777,
+      "sha256": "990887bd1c0e2275dfa6252b3c94dc982aa5dcdcf13ab3988c5834421b8f1a0d"
+    },
+    {
+      "path": "assets/v8/equipment-catalog.js",
+      "size": 39618,
+      "sha256": "483968eb46698eeb140428a6bf198db438df2372234672986e2a6d6a9a56df7b"
+    },
+    {
+      "path": "assets/v8/equipment-generated.js",
+      "size": 300,
+      "sha256": "ae69504b7420c46e342fcd512a43ebfda6bc58bebb7b7a16d42b53efdc607874"
+    },
+    {
+      "path": "assets/v8/equipment-rules.js",
+      "size": 12033,
+      "sha256": "8dba2bdb3fd9e21ec570b04ab2fe2d1642095823df547235539168ba26fea612"
     },
     {
       "path": "assets/v8/equipment-store.js",
-      "size": 1196,
-      "sha256": "1d48e420bb27876b8c4c80912ad23864ba0c35da7972d522b61e0566fe4b2ced"
+      "size": 2308,
+      "sha256": "8eee409ec3874e8abeaaad8c59cfa073fc8e360efc8f099edba5261f93617e51"
     },
     {
       "path": "assets/v8/v8.css",
@@ -47,19 +72,24 @@
       "sha256": "834cf5e064f6eafd8416af39f70e8e9a14af6696c20207c983c7b2515a8a55b5"
     },
     {
-      "path": "assets/v8/v81.js",
-      "size": 24287,
-      "sha256": "ab7234bf5150ff5e7458594efd03a3610931da6af3b93c4556f4876317d05bc7"
+      "path": "assets/v8/v82.css",
+      "size": 23523,
+      "sha256": "d4e99522f8014c11279b2ceb6a3fdec37123bf4c0de87e39f18b83586580a55c"
     },
     {
-      "path": "preview_offline.html",
-      "size": 36833,
-      "sha256": "49c5ed1d3a30291d250fff6f10c3bc383590f2b7e5c52e3cd82f7a0e8c76cf45"
+      "path": "assets/v8/v82.js",
+      "size": 22343,
+      "sha256": "b6aaaae6c8496e873998e540a17a0ef362681407eb5a5e2e7ce48725f8ae607d"
+    },
+    {
+      "path": "tools/import-bg3forge-items.mjs",
+      "size": 8052,
+      "sha256": "defee81e5427a0b8efb588f68ac74368551595d08fd7169b165eecaf9c633712"
     },
     {
       "path": "v8.html",
-      "size": 599,
-      "sha256": "e3dbf7176dee448dfcddf50fd3505cf48539da7ace45950841a13b6d84d2237b"
+      "size": 792,
+      "sha256": "bea5b1db28163c60c51aa7cebf7bc454b5a941f4a31df5a6f523639686bc3bad"
     }
   ]
 }

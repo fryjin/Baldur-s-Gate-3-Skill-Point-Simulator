@@ -1,8 +1,10 @@
 {
-  "version": "V8.1",
-  "milestone": "V7 character data/rules bridge + chapter equipment persistence",
+  "version": "V8.2",
+  "milestone": "人物构筑 UI 正式迁入 V8 + Equipment Rules + Equipment Data Layer",
   "state": "ready-for-upload",
   "entry": "v8.html",
-  "v7_index_replaced": false,
-  "equipment_rules": "beta"
+  "base_requirement": "existing V7 repository assets/js + assets/spells",
+  "character_store": "bg3-planner-v7",
+  "equipment_store": "bg3-planner-v8-equipment",
+  "built_in_equipment": 130
 }
