@@ -1,21 +1,33 @@
 {
-  "patch": "V8.2.4 Readability & Density Pass",
-  "baseline": {
-    "v82.js": "b006e3e16d11f9565d68840e050c5580b61aa65a",
-    "v8.html": "012b1871ba78e23a025471de352347d84c6da1ce"
+  "patch": "V8.2.5 Full Build Acceptance + Local HD Asset Fast Path",
+  "rule_engine_modified": false,
+  "primary_acceptance_build": "Paladin 6 / Sorcerer 6",
+  "expected_final": {
+    "hp": 136,
+    "ac": 26,
+    "initiative": 0,
+    "spellDC": 18,
+    "spellAttack": 10,
+    "mainAttack": 10,
+    "rangedAttack": 6,
+    "crit": 19
   },
-  "rule_engine_changed": false,
-  "targets": [
-    "raise desktop microcopy from 7-10px to 9.5-13px tiers",
-    "fix oversized equipment checkbox",
-    "improve equipment/result scanability",
-    "compress empty final cards",
-    "preserve scenic background",
-    "avoid horizontal overflow"
-  ],
+  "asset_target": {
+    "spell": 189,
+    "equipment": 130,
+    "total": 319
+  },
+  "baseline": {
+    "spell-assets.js": "d59dac49c8cff319bf65dee861d7c9b97f65cd14",
+    "equipment-images.js": "083716e6465c1dd08993a3081949450af88c8d41",
+    "v82.js": "1097476b3cc44c7848da6809f306f7f6ccbd04cb",
+    "v8.html": "e49baf1babd9b336af7c68b2cc0682b73bb5e38c"
+  },
   "checks": {
-    "patcher_py_compile": true,
-    "css_invariants": true,
-    "synthetic_patch_test": true
+    "generate-hd-asset-manifest.py_compile": true,
+    "apply-v825-image-fast-path.py_compile": true,
+    "validate-v825-image-fast-path.mjs_syntax": true,
+    "validate-v825-full-build.mjs_syntax": true,
+    "embedded_loader_syntax": true
   }
 }
