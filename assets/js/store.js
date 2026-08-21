@@ -2,6 +2,7 @@ import{loadDatabase,saveDatabase,createId}from"./persistence.js";
 import{classes,abilities,skills,backgrounds}from"./data/core.js";
 import{feats,featureChoiceDefinitions}from"./data/progression.js";
 import{spellData}from"./data/spells.js";
+import{canSetPointBuyScore}from"./data/point-buy.js";
 
 const listeners=new Set();
 let db=normalizeDatabase(loadDatabase());
@@ -80,14 +81,14 @@ export function updateBuild(id,updater){const current=db.builds[id];if(!current)
 export function setTargetLevel(id,target){return updateBuild(id,b=>{b.targetLevel=Math.max(1,Math.min(12,Number(target)||1))})}
 export function setLevelClass(id,index,classKey){if(!classes[classKey])return;return updateBuild(id,b=>{if(index>=0&&index<b.targetLevel)b.levels[index]=classKey})}
 export function setSubclass(id,classKey,name){if(!classes[classKey]?.subclasses.includes(name))return;return updateBuild(id,b=>{b.subclasses[classKey]=name})}
-export function setAbilityScore(id,key,value){if(!abilities.some(a=>a.key===key))return;return updateBuild(id,b=>{b.abilities.scores[key]=Math.max(8,Math.min(15,Number(value)||8))})}
+export function setAbilityScore(id,key,value){if(!abilities.some(a=>a.key===key))return;return updateBuild(id,b=>{const next=Math.max(8,Math.min(15,Number(value)||8));if(canSetPointBuyScore(b.abilities.scores,key,next))b.abilities.scores[key]=next})}
 export function setAbilityBonus(id,slot,key){if(!abilities.some(a=>a.key===key))return;return updateBuild(id,b=>{b.abilities[slot]=key})}
 export function setFeatChoice(id,index,type){return updateBuild(id,b=>{const next=feats[type]?type:"none";if(next!=="none"&&!feats[next]?.repeatable&&b.feats.some((item,i)=>i!==index&&item?.type===next))return;while(b.feats.length<=index)b.feats.push({type:"none",a1:"str",a2:"str"});b.feats[index]={...b.feats[index],type:next}})}
 export function setFeatAsi(id,index,slot,key){if(!abilities.some(a=>a.key===key))return;return updateBuild(id,b=>{while(b.feats.length<=index)b.feats.push({type:"none",a1:"str",a2:"str"});b.feats[index]={...b.feats[index],type:"asi",[slot]:key}})}
 export function toggleSkill(id,source,key,limit){return updateBuild(id,b=>{let list;if(source==="class")list=b.skills.class;else if(source==="race"){b.skills.race=b.skills.race===key?"":key;return}else{const classKey=source.replace("multi-","");list=b.skills.multiclass[classKey]||(b.skills.multiclass[classKey]=[])}const at=list.indexOf(key);if(at>=0)list.splice(at,1);else if(list.length<limit)list.push(key)})}
 export function setExpertise(id,slot,key){return updateBuild(id,b=>{if(key)b.expertise[slot]=key;else delete b.expertise[slot]})}
 export function toggleClassChoice(id,groupId,key,limit){return updateBuild(id,b=>{const list=b.classChoices[groupId]||(b.classChoices[groupId]=[]);const at=list.indexOf(key);if(at>=0)list.splice(at,1);else if(list.length<limit)list.push(key)})}
-export function toggleSpell(id,sourceKey,spellKey){const spell=spellData.find(x=>x.key===spellKey);if(!spell)return;return updateBuild(id,b=>{const choice=b.spellChoices[sourceKey]||(b.spellChoices[sourceKey]={cantrips:[],spells:[],prepared:[]});const list=spell.level===0?choice.cantrips:choice.spells;const at=list.indexOf(spellKey);if(at>=0){list.splice(at,1);choice.prepared=choice.prepared.filter(x=>x!==spellKey)}else list.push(spellKey)})}
+export function toggleSpell(id,sourceKey,spellKey,limit=99){const spell=spellData.find(x=>x.key===spellKey);if(!spell)return;return updateBuild(id,b=>{const choice=b.spellChoices[sourceKey]||(b.spellChoices[sourceKey]={cantrips:[],spells:[],prepared:[]});const list=spell.level===0?choice.cantrips:choice.spells;const at=list.indexOf(spellKey);if(at>=0){list.splice(at,1);choice.prepared=choice.prepared.filter(x=>x!==spellKey)}else if(list.length<limit)list.push(spellKey)})}
 export function togglePreparedSpell(id,sourceKey,spellKey,limit=99){return updateBuild(id,b=>{const choice=b.spellChoices[sourceKey]||(b.spellChoices[sourceKey]={cantrips:[],spells:[],prepared:[]});if(!choice.spells.includes(spellKey))choice.spells.push(spellKey);const at=choice.prepared.indexOf(spellKey);if(at>=0)choice.prepared.splice(at,1);else if(choice.prepared.length<limit)choice.prepared.push(spellKey)})}
 export function togglePreparedChoice(id,sourceKey,spellKey,limit=99){return updateBuild(id,b=>{const choice=b.spellChoices[sourceKey]||(b.spellChoices[sourceKey]={cantrips:[],spells:[],prepared:[]});const at=choice.prepared.indexOf(spellKey);if(at>=0){choice.prepared.splice(at,1);choice.spells=choice.spells.filter(x=>x!==spellKey)}else if(choice.prepared.length<limit){if(!choice.spells.includes(spellKey))choice.spells.push(spellKey);choice.prepared.push(spellKey)}})}
 export function updateIdentity(id,patch){return updateBuild(id,b=>{b.identity={...b.identity,...patch};if(patch.name!==undefined)b.name=String(patch.name).slice(0,40)})}

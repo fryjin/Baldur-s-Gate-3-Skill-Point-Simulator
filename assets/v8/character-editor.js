@@ -8,15 +8,16 @@ import{
 import{feats,featDetails,skillDescriptions,classDescriptions,subclassDescriptions}from'../js/data/progression.js';
 import{
   characterSummary,finalScores,fmt,validationIssues,progressionNodes,usedPointBuy,pointCosts,skillStages,skillBonus,
-  activeFeatureGroups,spellSources,spellChoice,spellLimits,spellsForSource,featSlots,levelClassLevel
+  activeFeatureGroups,spellSources,spellChoice,spellLimits,spellsForSource,featSlots,levelClassLevel,pointBuyBudget
 }from'../js/selectors.js';
 import{spellData}from'../js/data/spells.js';
 import{spellImageTag}from'../js/data/spell-assets.js';
 import{buildResourceModel}from'../js/data/resource-model.js';
 import{
   learningMode,learningPlan,migrateLearningState,nodeProgress,activeNodeForState,assignToNode,removeLearnedSpell,
-  replacementPlan,replaceLearnedSpell
+  replacementPlan,replaceLearnedSpell,learningSummary
 }from'../js/data/spell-learning.js';
+import{cantripPlan}from'../js/data/spell-progression.js';
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 const abilityMap=Object.fromEntries(abilities.map(x=>[x.key,x]));
@@ -63,10 +64,11 @@ function progressionStep(build,ui){
 }
 
 function abilitiesStep(build){
-  const used=usedPointBuy(build),scores=build.abilities.scores;
-  return`${stepHead('CHARACTER · 04','初始属性与属性提升','使用 27 点点购完成初始属性；创建加值 +2 / +1 不能放在同一属性。',`<strong>${used}<small>/27</small></strong>`)}
-  <div class="v82-pointbar"><span>点购使用</span><div><i style="width:${Math.min(100,used/27*100)}%"></i></div><b class="${used===27?'ok':used>27?'bad':''}">${used}/27</b></div>
-  <div class="v82-ability-editor">${abilities.map(a=>{const v=scores[a.key];return`<div class="v82-ability-row"><div><b>${a.name}</b><small>${a.code}</small></div><button data-ability="${a.key}" data-ability-delta="-1" ${v<=8?'disabled':''}>−</button><strong>${v}</strong><button data-ability="${a.key}" data-ability-delta="1" ${v>=15?'disabled':''}>＋</button><span>成本 ${pointCosts[v]??'—'}</span></div>`}).join('')}</div>
+  const used=usedPointBuy(build),scores=build.abilities.scores,remaining=pointBuyBudget-used;
+  return`${stepHead('CHARACTER · 04','初始属性与属性提升',`使用 ${pointBuyBudget} 点点购完成初始属性；达到预算后无法继续提高属性。创建加值 +2 / +1 不能放在同一属性。`,`<strong>${used}<small>/${pointBuyBudget}</small></strong>`)}
+  <div class="v82-pointbar"><span>点购使用</span><div><i style="width:${Math.min(100,used/pointBuyBudget*100)}%"></i></div><b class="${used===pointBuyBudget?'ok':used>pointBuyBudget?'bad':''}">${used}/${pointBuyBudget}</b></div>
+  <div class="v82-ability-editor">${abilities.map(a=>{const v=scores[a.key],nextCost=v<15?(pointCosts[v+1]-pointCosts[v]):Infinity,canRaise=v<15&&used+nextCost<=pointBuyBudget;return`<div class="v82-ability-row"><div><b>${a.name}</b><small>${a.code}</small></div><button data-ability="${a.key}" data-ability-delta="-1" ${v<=8?'disabled':''}>−</button><strong>${v}</strong><button data-ability="${a.key}" data-ability-delta="1" ${canRaise?'':'disabled'} title="${canRaise?`提高到 ${v+1} 需要 ${nextCost} 点`:`剩余点数不足以提高到 ${Math.min(15,v+1)}`}">＋</button><span>成本 ${pointCosts[v]??'—'}${v<15?` · 下一级 +${nextCost}`:''}</span></div>`}).join('')}</div>
+  <div class="v826-pointbuy-note ${remaining<0?'bad':''}"><span>${remaining>=0?`剩余 <b>${remaining}</b> 点。加号会根据下一档成本自动锁定。`:`当前旧数据已超出预算 <b>${-remaining}</b> 点，请先降低属性。`}</span><small>单项范围 8–15；14、15 的点购成本更高。</small></div>
   <div class="v82-form-grid two v82-bonus-box"><label><span>创建加值 +2</span><select data-bonus="bonus2">${abilities.map(a=>opt(a.key,a.name,build.abilities.bonus2)).join('')}</select></label><label><span>创建加值 +1</span><select data-bonus="bonus1">${abilities.map(a=>opt(a.key,a.name,build.abilities.bonus1)).join('')}</select></label></div>`
 }
 
@@ -94,9 +96,18 @@ function learningState(build,source){return migrateLearningState(build.spellLear
 function sourceOption(source,current){return opt(source.key,`${source.name} ${source.level}级 · 最高${source.maxLevel}环`,current)}
 function spellSelected(choice,source,sp){return sp.level===0?choice.cantrips.includes(sp.key):source.mode==='prepared'?choice.prepared.includes(sp.key):choice.spells.includes(sp.key)}
 function spellMeta(sp){return`${sp.level===0?'戏法':sp.level+'环'} · ${sp.school} · ${sp.action||'动作'}`}
-function spellCard(sp,source,choice,ui,state,activeNode){
-  const selected=spellSelected(choice,source,sp),prepared=choice.prepared.includes(sp.key),locked=sp.level>0&&state&&activeNode&&!selected&&sp.level>activeNode.maxSpellLevel;
-  return`<article class="v82-spell-card ${selected?'selected':''} ${prepared?'prepared':''} ${locked?'locked':''}"><button class="v82-spell-open" data-spell-detail="${sp.key}">${spellImageTag(sp,'v82-spell-image')}<div><div class="v82-spell-title"><b>${esc(sp.name)}</b>${selected?'<i>已选</i>':''}</div><small>${esc(spellMeta(sp))}</small><p>${esc(sp.desc)}</p></div></button><div class="v82-spell-actions">${source.mode==='spellbook'&&sp.level>0&&selected?`<button data-spell-prepare="${sp.key}" class="${prepared?'active':''}">${prepared?'取消准备':'准备'}</button>`:''}<button data-spell-toggle="${sp.key}" ${locked?'disabled':''}>${selected?(source.mode==='prepared'&&sp.level>0?'取消准备':'移除'):(source.mode==='prepared'&&sp.level>0?'准备':'选择')}</button></div></article>`
+function spellCard(sp,source,choice,ui,state,activeNode,limits){
+  const selected=spellSelected(choice,source,sp),prepared=choice.prepared.includes(sp.key),progress=state&&activeNode?nodeProgress(state,activeNode):null;
+  const ringLocked=sp.level>0&&state&&activeNode&&!selected&&sp.level>activeNode.maxSpellLevel;
+  const nodeFull=sp.level>0&&state&&activeNode&&!selected&&Boolean(progress?.complete);
+  const knownFull=sp.level>0&&state&&!selected&&choice.spells.length>=limits.spells;
+  const cantripFull=sp.level===0&&!selected&&choice.cantrips.length>=limits.cantrips;
+  const preparedFull=sp.level>0&&source.mode==='prepared'&&!selected&&choice.prepared.length>=limits.prepared;
+  const locked=ringLocked||nodeFull||knownFull||cantripFull||preparedFull;
+  const reason=ringLocked?`当前节点最高 ${activeNode.maxSpellLevel} 环`:nodeFull?'当前等级学习名额已满':knownFull?`${source.mode==='spellbook'?'法术书':'已知法术'}总名额已满`:cantripFull?'戏法名额已满':preparedFull?'准备法术名额已满':'';
+  const prepareLocked=source.mode==='spellbook'&&sp.level>0&&selected&&!prepared&&choice.prepared.length>=limits.prepared;
+  const action=selected?(source.mode==='prepared'&&sp.level>0?'取消准备':'移除'):(source.mode==='prepared'&&sp.level>0?'准备':'选择');
+  return`<article class="v82-spell-card ${selected?'selected':''} ${prepared?'prepared':''} ${locked?'locked':''}"><button class="v82-spell-open" data-spell-detail="${sp.key}">${spellImageTag(sp,'v82-spell-image')}<div><div class="v82-spell-title"><b>${esc(sp.name)}</b>${selected?'<i>已选</i>':''}</div><small>${esc(spellMeta(sp))}</small><p>${esc(sp.desc)}</p></div></button><div class="v82-spell-actions">${reason&&!selected?`<small class="v826-spell-lock">${esc(reason)}</small>`:''}${source.mode==='spellbook'&&sp.level>0&&selected?`<button data-spell-prepare="${sp.key}" class="${prepared?'active':''}" ${prepareLocked?'disabled':''}>${prepared?'取消准备':prepareLocked?'准备已满':'准备'}</button>`:''}<button data-spell-toggle="${sp.key}" ${locked?'disabled':''}>${action}</button></div></article>`
 }
 function spellInspector(sp,source,choice){if(!sp)return`<div class="v82-spell-inspector empty"><span>当前法术</span><p>选择一个法术查看完整说明。</p></div>`;const selected=spellSelected(choice,source,sp),prepared=choice.prepared.includes(sp.key);return`<aside class="v82-spell-inspector"><div class="v82-inspector-title">${spellImageTag(sp,'v82-spell-image large')}<div><span>${esc(spellMeta(sp))}</span><h2>${esc(sp.name)}</h2><small>${esc(sp.en||'')}</small></div></div><p>${esc(sp.desc)}</p><dl><div><dt>施法</dt><dd>${esc(sp.action||'动作')}</dd></div><div><dt>距离</dt><dd>${esc(sp.range||'—')}</dd></div><div><dt>持续</dt><dd>${esc(sp.duration||'—')}</dd></div><div><dt>专注</dt><dd>${sp.concentration?'是':'否'}</dd></div></dl><div class="v82-inspector-state"><span>当前状态</span><b>${prepared?'已准备':selected?'已选择':'未选择'}</b></div></aside>`}
 
@@ -106,12 +117,27 @@ function spellsStep(build,ui){
   const choice=spellChoice(build,source.key),limits=spellLimits(build,source),mode=learningMode(source),state=mode==='prepared'?null:learningState(build,source),plan=state?learningPlan(source):[],preferred=ui.spellNode?.[source.key],activeNode=state?activeNodeForState(source,state,preferred):null;if(activeNode){ui.spellNode=ui.spellNode||{};ui.spellNode[source.key]=activeNode.id}
   const query=ui.spellQuery||'',level=ui.spellLevel??'all';let list=spellsForSource(source,query,level);
   const detail=spellData.find(x=>x.key===ui.spellDetail&&x.classes.includes(source.key))||list[0]||null;
-  const count2=source.mode==='prepared'?choice.prepared.length:choice.spells.length,label2=source.mode==='spellbook'?'法术书':source.mode==='prepared'?'准备':'已知';
-  return`${stepHead('CHARACTER · 07','戏法与法术','选择来源后按职业真实学习/准备规则处理；已知法术职业保留逐级学习节点。',`<strong>${choice.cantrips.length}<small>/${limits.cantrips} 戏法</small></strong>`)}
-  <div class="v82-spell-toolbar"><select data-spell-source>${sources.map(s=>sourceOption(s,source.key)).join('')}</select><div class="v82-spell-counts"><span>戏法 <b>${choice.cantrips.length}/${limits.cantrips}</b></span><span>${label2} <b>${count2}/${source.mode==='prepared'?limits.prepared:limits.spells}</b></span>${source.mode==='spellbook'?`<span>准备 <b>${choice.prepared.length}/${limits.prepared}</b></span>`:''}</div></div>
-  ${state?`<div class="v82-learning-strip"><div class="v82-current-learning"><span>当前学习节点</span><b>${esc(activeNode?.title||'—')}</b><small>${activeNode?`${nodeProgress(state,activeNode).selected}/${nodeProgress(state,activeNode).total} · 最高${activeNode.maxSpellLevel}环`:''}</small></div><div class="v82-learning-nodes">${plan.map(n=>{const p=nodeProgress(state,n);return`<button data-learning-node="${n.id}" class="${n.id===activeNode?.id?'active':''} ${p.complete?'complete':''}">${n.classLevel}<small>${p.selected}/${p.total}</small></button>`}).join('')}</div>${replacementPlan(source).length?'<button class="secondary" data-open-replace>替换法术</button>':''}</div>`:''}
-  <div class="v82-spell-search"><input data-spell-search placeholder="搜索法术名称、英文名或效果" value="${esc(query)}"><div>${['all',0,1,2,3,4,5,6].filter(v=>v==='all'||Number(v)<=source.maxLevel).map(v=>`<button data-spell-level="${v}" class="${String(level)===String(v)?'active':''}">${v==='all'?'全部':v===0?'戏法':v+'环'}</button>`).join('')}</div></div>
-  <div class="v82-spell-workspace"><div class="v82-spell-list">${list.length?list.map(sp=>spellCard(sp,source,choice,ui,state,activeNode)).join(''):'<div class="v82-empty">当前筛选没有法术。</div>'}</div>${spellInspector(detail,source,choice)}</div>`
+  const count2=source.mode==='prepared'?choice.prepared.length:choice.spells.length,label2=source.mode==='spellbook'?'升级法术书':source.mode==='prepared'?'准备':'已知';
+  const cantripGrowth=cantripPlan(source),cantripGrowthText=cantripGrowth.map(x=>`${x.classLevel}级 ${x.classLevel===1?x.count:'+'+x.count}`).join(' · ')||'当前职业无戏法';
+  const p=state&&activeNode?nodeProgress(state,activeNode):null,nodeRemain=p?Math.max(0,p.total-p.selected):0,learned=state?learningSummary(source,state):null;
+  const nodeRing=activeNode?`1–${activeNode.maxSpellLevel}环`:`1–${source.maxLevel}环`,quotaTotal=source.mode==='prepared'?limits.prepared:limits.spells;
+  const ruleNote=source.mode==='prepared'
+    ?`准备法术<strong>没有每环固定配额</strong>：在当前最高 ${source.maxLevel} 环范围内任意组合，但准备总数不能超过 ${limits.prepared}。法术位数量不是准备数量。`
+    :source.mode==='spellbook'
+      ?`升级获得的法术书必须<strong>按职业等级节点逐级加入</strong>；当前节点只有自己的新增名额和最高环阶。准备法术另受 ${limits.prepared} 个上限约束。`
+      :`已知法术<strong>没有每环固定配额</strong>：必须按职业等级逐级学习。当前节点只能使用本级新增名额，且不能选择高于当级解锁的环阶。`;
+  return`${stepHead('CHARACTER · 07','戏法与法术','先完成戏法总额，再按职业等级逐级处理法术学习/准备；高环法术会受当前学习节点硬限制。',`<strong>${choice.cantrips.length}<small>/${limits.cantrips} 戏法</small></strong>`)}
+  <div class="v82-spell-toolbar"><select data-spell-source>${sources.map(s=>sourceOption(s,source.key)).join('')}</select><div class="v82-spell-counts"><span>戏法 <b>${choice.cantrips.length}/${limits.cantrips}</b></span><span>${label2} <b>${count2}/${quotaTotal}</b></span>${source.mode==='spellbook'?`<span>准备 <b>${choice.prepared.length}/${limits.prepared}</b></span>`:''}</div></div>
+  <div class="v826-spell-rules">
+    <div class="v826-spell-rule"><span>当前职业等级</span><b>${esc(source.name)} ${source.level}级</b><small>当前最高 ${source.maxLevel} 环</small></div>
+    <div class="v826-spell-rule"><span>戏法名额</span><b>${choice.cantrips.length} / ${limits.cantrips}</b><small>${esc(cantripGrowthText)}</small></div>
+    <div class="v826-spell-rule"><span>${esc(label2)}名额</span><b>${count2} / ${quotaTotal}</b><small>${state?`已学环阶：${esc(learned?.text||'尚未学习')}`:`可准备 1–${source.maxLevel} 环`}</small></div>
+    <div class="v826-spell-rule"><span>${state?'当前学习节点':'准备规则'}</span><b>${state?esc(activeNode?.title||'已完成'):`总上限 ${limits.prepared}`}</b><small>${state&&activeNode?`本级新增 ${p?.total||0} · 剩余 ${nodeRemain} · 可选 ${nodeRing}`:`最高 ${source.maxLevel} 环内任意组合`}</small></div>
+    <p class="v826-spell-rule-note">${ruleNote}</p>
+  </div>
+  ${state?`<div class="v82-learning-strip"><div class="v82-current-learning"><span>按顺序学习 · 当前节点</span><b>${esc(activeNode?.title||'—')}</b><small class="${nodeRemain?'v826-learning-warning':''}">${activeNode?`${p.selected}/${p.total} · 本级新增 ${p.total} 个 · 剩余 ${nodeRemain} 个 · 最高 ${activeNode.maxSpellLevel} 环`:''}</small></div><div class="v82-learning-nodes">${plan.map(n=>{const np=nodeProgress(state,n),isActive=n.id===activeNode?.id;return`<button ${isActive?'':'disabled'} class="${isActive?'active':''} ${np.complete?'complete':''}" title="${esc(n.title)}：新增 ${n.count} 个，最高 ${n.maxSpellLevel} 环"><b>${n.classLevel}</b><small>${np.selected}/${np.total} · ≤${n.maxSpellLevel}环</small></button>`}).join('')}</div>${replacementPlan(source).length?'<button class="secondary" data-open-replace>替换法术</button>':''}</div>`:''}
+  <div class="v82-spell-search"><input data-spell-search placeholder="搜索法术名称、英文名或效果" value="${esc(query)}"><div>${['all',0,1,2,3,4,5,6].filter(v=>v==='all'||Number(v)<=source.maxLevel).map(v=>{const ringLocked=state&&activeNode&&v!=='all'&&Number(v)>0&&Number(v)>activeNode.maxSpellLevel;return`<button data-spell-level="${v}" class="${String(level)===String(v)?'active':''} ${ringLocked?'v826-ring-locked':''}">${v==='all'?'全部':v===0?'戏法':v+'环'}</button>`}).join('')}</div></div>
+  <div class="v82-spell-workspace"><div class="v82-spell-list">${list.length?list.map(sp=>spellCard(sp,source,choice,ui,state,activeNode,limits)).join(''):'<div class="v82-empty">当前筛选没有法术。</div>'}</div>${spellInspector(detail,source,choice)}</div>`
 }
 
 function reviewStep(build){
@@ -177,10 +203,10 @@ export function bindCharacterEditor(build,ui,{rerender,goEquipment}){
   const search=document.querySelector('[data-spell-search]');if(search)search.oninput=()=>{ui.spellQuery=search.value;rerender()};
   document.querySelectorAll('[data-spell-level]').forEach(btn=>btn.onclick=()=>{ui.spellLevel=btn.dataset.spellLevel==='all'?'all':Number(btn.dataset.spellLevel);rerender()});
   document.querySelectorAll('[data-spell-detail]').forEach(btn=>btn.onclick=()=>{ui.spellDetail=btn.dataset.spellDetail;rerender()});
-  document.querySelectorAll('[data-spell-prepare]').forEach(btn=>btn.onclick=e=>{e.stopPropagation();const source=spellSources(build).find(x=>x.key===ui.spellSource)||spellSources(build)[0],limits=spellLimits(build,source);togglePreparedSpell(build.id,source.key,btn.dataset.spellPrepare,limits.prepared)});
+  document.querySelectorAll('[data-spell-prepare]').forEach(btn=>btn.onclick=e=>{e.stopPropagation();if(btn.disabled)return;const source=spellSources(build).find(x=>x.key===ui.spellSource)||spellSources(build)[0],limits=spellLimits(build,source),choice=spellChoice(build,source.key),key=btn.dataset.spellPrepare;if(!choice.prepared.includes(key)&&choice.prepared.length>=limits.prepared)return alert('准备法术已达上限。');togglePreparedSpell(build.id,source.key,key,limits.prepared)});
   document.querySelectorAll('[data-spell-toggle]').forEach(btn=>btn.onclick=()=>{const source=spellSources(build).find(x=>x.key===ui.spellSource)||spellSources(build)[0],sp=spellData.find(x=>x.key===btn.dataset.spellToggle),choice=spellChoice(build,source.key),limits=spellLimits(build,source);if(!sp)return;
-    if(sp.level===0){if(!choice.cantrips.includes(sp.key)&&choice.cantrips.length>=limits.cantrips)return alert('戏法选择已达上限。');return toggleSpell(build.id,source.key,sp.key)}
-    if(source.mode==='prepared')return togglePreparedChoice(build.id,source.key,sp.key,limits.prepared);
+    if(sp.level===0){if(!choice.cantrips.includes(sp.key)&&choice.cantrips.length>=limits.cantrips)return alert('戏法选择已达上限。');return toggleSpell(build.id,source.key,sp.key,limits.cantrips)}
+    if(source.mode==='prepared'){if(!choice.prepared.includes(sp.key)&&choice.prepared.length>=limits.prepared)return alert('准备法术已达上限。');return togglePreparedChoice(build.id,source.key,sp.key,limits.prepared);}
     const res=setKnownSpell(build,source,sp.key,ui);if(!res.ok)alert(res.reason)
   })
 }

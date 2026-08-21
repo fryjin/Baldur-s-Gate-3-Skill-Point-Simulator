@@ -28,6 +28,16 @@ const HALF_CASTERS=new Set(['paladin','ranger']);
 const THIRD_CASTERS=new Set(['fighter','rogue']);
 
 export function cantripLimit(source){return at(CANTRIPS[source.key]||[],source.level)}
+export function cantripPlan(source){
+  if(!source)return[];
+  const out=[];let previous=0;
+  for(let level=1;level<=source.level;level++){
+    const current=cantripLimit({...source,level}),count=Math.max(0,current-previous);
+    if(count)out.push({classLevel:level,count,total:current});
+    previous=current
+  }
+  return out
+}
 export function learnedLimit(source){
   if(source.key==='wizard')return 6+Math.max(0,source.level-1)*2;
   return at(KNOWN[source.key]||[],source.level)

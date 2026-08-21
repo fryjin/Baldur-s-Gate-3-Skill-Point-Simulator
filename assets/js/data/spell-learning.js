@@ -74,7 +74,7 @@ export function migrateLearningState(existing,source,choice){
   const base=emptyLearningState(source),selected=selectedSpellKeys(choice),selectedSet=new Set(selected),used=new Set();
   if(existing?.version===1&&Array.isArray(existing.slots)){
     const old=new Map(existing.slots.map(slot=>[slot.id,slot]));
-    base.replacements=Array.isArray(existing.replacements)?existing.replacements.filter(item=>replacementPlan(source).some(node=>node.classLevel===item.classLevel)):[];
+    base.replacements=Array.isArray(existing.replacements)?existing.replacements.filter(item=>!item.migrated&&replacementPlan(source).some(node=>node.classLevel===item.classLevel)):[];
     for(const slot of base.slots){
       const prior=old.get(slot.id),key=prior?.spellKey;
       if(key&&selectedSet.has(key)&&!used.has(key)&&spellByKey(key)?.level<=effectiveMax(slot,{...base,replacements:base.replacements})){
@@ -89,16 +89,7 @@ export function migrateLearningState(existing,source,choice){
     const slot=open().filter(item=>item.maxSpellLevel>=level).sort((a,b)=>a.maxSpellLevel-b.maxSpellLevel||a.classLevel-b.classLevel)[0];
     if(slot){slot.spellKey=key;used.add(key);remaining.splice(remaining.indexOf(key),1)}
   }
-  const replacementNodes=replacementPlan(source).filter(node=>!base.replacements.some(item=>item.classLevel===node.classLevel));
-  for(const key of[...remaining]){
-    const level=spellByKey(key)?.level||0;
-    const node=replacementNodes.filter(item=>item.maxSpellLevel>=level).sort((a,b)=>a.maxSpellLevel-b.maxSpellLevel||a.classLevel-b.classLevel)[0];
-    const slot=open()[0];
-    if(!node||!slot)continue;
-    slot.spellKey=key;slot.history.push({classLevel:node.classLevel,from:"",to:key,migrated:true});
-    base.replacements.push({classLevel:node.classLevel,slotId:slot.id,from:"",to:key,maxSpellLevel:node.maxSpellLevel,migrated:true});
-    replacementNodes.splice(replacementNodes.indexOf(node),1);used.add(key);remaining.splice(remaining.indexOf(key),1)
-  }
+  // Do not invent replacement history for legacy high-ring selections.
   base.unassigned=remaining;base.updatedAt=Date.now();return base
 }
 export function nodeProgress(state,node){
@@ -106,11 +97,14 @@ export function nodeProgress(state,node){
   return{selected:slots.filter(slot=>slot.spellKey).length,total:slots.length,complete:slots.length>0&&slots.every(slot=>slot.spellKey)}
 }
 export function activeNodeForState(source,state,preferred=""){
-  const plan=learningPlan(source);
+  const plan=learningPlan(source),open=plan.find(node=>!nodeProgress(state,node).complete);
+  if(open)return open;
   if(preferred&&plan.some(node=>node.id===preferred))return plan.find(node=>node.id===preferred);
-  return plan.find(node=>!nodeProgress(state,node).complete)||plan.at(-1)||null
+  return plan.at(-1)||null
 }
 export function assignToNode(state,node,spellKey){
+  const earlierOpen=state.slots.some(slot=>slot.classLevel<node.classLevel&&!slot.spellKey);
+  if(earlierOpen)return{ok:false,reason:"请先完成更早等级的法术学习名额。"};
   const spell=spellByKey(spellKey);if(!spell||spell.level<1||spell.level>node.maxSpellLevel)return{ok:false,reason:`当前学习节点最高只能选择 ${node.maxSpellLevel} 环法术。`};
   if(state.slots.some(slot=>slot.spellKey===spellKey))return{ok:false,reason:"该法术已经在其他学习节点中。"};
   const slot=state.slots.find(item=>item.nodeId===node.id&&!item.spellKey);if(!slot)return{ok:false,reason:`${node.title}的学习名额已经用完。`};
@@ -131,13 +125,19 @@ export function replaceLearnedSpell(state,source,classLevel,slotId,newSpellKey){
   const from=slot.spellKey;slot.spellKey=newSpellKey;slot.history.push({classLevel:node.classLevel,from,to:newSpellKey});
   state.replacements.push({classLevel:node.classLevel,slotId:slot.id,from,to:newSpellKey,maxSpellLevel:node.maxSpellLevel});state.updatedAt=Date.now();return{ok:true,from,to:newSpellKey,slot}
 }
-export function learningValidation(source,state,choice){
-  if(learningMode(source)==="prepared")return{valid:true,issues:[]};
+export function learningIntegrityIssues(source,state,choice){
+  if(learningMode(source)==="prepared")return[];
   const issues=[],selected=new Set(selectedSpellKeys(choice)),assigned=state?.slots?.map(slot=>slot.spellKey).filter(Boolean)||[];
-  for(const node of learningPlan(source)){const progress=nodeProgress(state,node);if(progress.selected<progress.total)issues.push(`${node.title}还需学习 ${progress.total-progress.selected} 个法术`)}
   for(const key of assigned)if(!selected.has(key))issues.push(`${spellByKey(key)?.name||key}存在学习记录但不在当前法术列表中`);
   for(const key of selected)if(!assigned.includes(key))issues.push(`${spellByKey(key)?.name||key}没有合法的学习等级`);
-  for(const key of state?.unassigned||[])issues.push(`${spellByKey(key)?.name||key}无法分配到合法学习节点`);
+  for(const key of state?.unassigned||[])if(!issues.some(x=>x.startsWith(spellByKey(key)?.name||key)))issues.push(`${spellByKey(key)?.name||key}无法分配到合法学习节点`);
+  return issues
+}
+export function learningValidation(source,state,choice){
+  if(learningMode(source)==="prepared")return{valid:true,issues:[]};
+  const issues=[];
+  for(const node of learningPlan(source)){const progress=nodeProgress(state,node);if(progress.selected<progress.total)issues.push(`${node.title}还需学习 ${progress.total-progress.selected} 个法术`)}
+  issues.push(...learningIntegrityIssues(source,state,choice));
   return{valid:issues.length===0,issues}
 }
 export function learningRingCounts(state){
