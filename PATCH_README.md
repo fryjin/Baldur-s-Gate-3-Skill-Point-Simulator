@@ -1,59 +1,74 @@
-# BG3 HD Asset Finalize
+# HD Asset Finalize V2 — spells.js parser hotfix
 
-## 本轮结论
+## 为什么上一版失败
 
-最后两个 unresolved 不再继续找图：
+当前 `assets/js/data/spells.js` 不是单纯的：
 
-- `greenFlameBlade` / Green-Flame Blade
-- `wordOfRadiance` / Word of Radiance
+```js
+export const spellData=[...];
+```
 
-核验后，这两项不是当前 BG3 正式可用法术，应从项目法术数据中清理，而不是补图片。
+数组后面还有其他 JavaScript 内容。
 
-## 本轮处理内容
+上一版脚本把 `spellData=` 后面的**整份文件剩余内容**传给 `json.loads()`，所以在数组结束后遇到后续 JS 时出现：
 
-### `tools/finalize-hd-assets.py`
+```text
+JSONDecodeError: Extra data
+```
 
-执行后会：
+更重要的是，旧的重写逻辑如果被强行绕过，还可能把数组后面的 JS 删除。
 
-1. 将 `spellData` 从 191 条修正为 **189 条**。
-2. 删除 `greenFlameBlade`、`wordOfRadiance`。
-3. 从 `BG3_WIKI_HD_ASSET_REPORT.json` 移除对应目标。
-4. 检查本地已经存在的手工补图，并把旧 unresolved 状态自动改为 resolved：
-   - `spellcrux`
-   - `render-mind-body`
-   - `staff-spellpower`
-   - `shield`
-5. 重新计算报告：
-   - spell = 189
-   - equipment = 130
-   - total target keys = 319
-6. 删除误上传的重复报告：
-   - `assets/hd/spells/BG3_WIKI_HD_ASSET_REPORT.json`
+## V2 修复
 
-### `tools/audit-hd-assets.py` v2
+改为 `json.JSONDecoder().raw_decode()`：
 
-修复两个旧问题：
+1. 精确定位 `export const spellData=`
+2. 只解析紧随其后的 JSON 数组
+3. 记录数组结束位置
+4. 只替换数组本身
+5. 数组之前、之后的所有 JavaScript 原样保留
 
-1. Windows 反斜杠导致所有图片被归到 `other`。
-2. 把物理图片文件数量误当成覆盖率。
+validator 也使用相同方式读取。
 
-新 audit 按 **唯一 asset key** 计算覆盖率。
+## 你刚才的仓库状态
 
-因此同一 spell 同时存在 `.png` 与 `.webp` 时：
-- raw files 会 +2；
-- coverage 仍只算 1 个 spell key。
+上一轮 `finalize-hd-assets.py` 在写入 `spells.js` 之前就异常退出，因此：
 
-## 执行顺序
+- `spells.js` 没有被上一版破坏
+- HD report 也没有被 Finalize 改写
+- `audit-hd-assets.py` 运行过，因此 `BG3_WIKI_HD_ASSET_AUDIT.json` 目前只是一个“Finalize 前”的临时审计结果
 
-在完整仓库根目录运行：
+直接覆盖 V2 脚本后重新执行即可。
+
+## 执行
+
+上传/覆盖这个包后：
 
 ```bash
 python tools/finalize-hd-assets.py
+node --check assets/js/data/spells.js
 python tools/audit-hd-assets.py
 python tools/validate-hd-finalization.py
 ```
 
-预期最终：
+预期：
+
+```text
+spell_rows_before: 191
+spell_rows_after: 189
+report_items_after: 319
+report_unresolved_after: 0
+spell_module_suffix_preserved: true
+```
+
+Audit：
+
+```text
+missing_target_keys: 0
+stale_report_unresolved_rows: 0
+```
+
+Validator：
 
 ```text
 HD asset finalization validation: PASS
@@ -62,20 +77,13 @@ equipment keys: 130
 target keys: 319
 ```
 
-audit 核心应为：
+## 提交
 
-```text
-missing_target_keys: 0
-stale_report_unresolved_rows: 0
-```
-
-`raw_image_files` 可能大于 319，这是正常的。
-
-## 提交建议
-
-确认 PASS 后只提交：
+验证 PASS 后：
 
 ```bash
+git status -sb
+
 git add assets/js/data/spells.js
 git add BG3_WIKI_HD_ASSET_REPORT.json
 git add BG3_WIKI_HD_ASSET_AUDIT.json
