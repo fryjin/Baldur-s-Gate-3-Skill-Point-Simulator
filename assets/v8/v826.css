@@ -1,0 +1,22 @@
+/* V8.2.6 — Character Rule Guardrails */
+.v826-pointbuy-note{margin:10px 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 12px;border:1px solid rgba(201,164,86,.24);background:rgba(7,7,5,.28);color:var(--muted);font-size:11px}
+.v826-pointbuy-note b{color:var(--gold);font-size:12px}
+.v826-pointbuy-note.bad{border-color:rgba(216,86,69,.5);background:rgba(100,22,18,.18)}
+.v826-spell-rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0}
+.v826-spell-rule{min-width:0;padding:10px 11px;border:1px solid rgba(201,164,86,.22);background:rgba(7,7,5,.3)}
+.v826-spell-rule>span{display:block;color:var(--muted);font-size:9.5px;margin-bottom:4px}
+.v826-spell-rule>b{display:block;color:var(--text);font-size:13px;line-height:1.35}
+.v826-spell-rule>small{display:block;margin-top:4px;color:var(--muted);font-size:9.5px;line-height:1.4}
+.v826-spell-rule-note{grid-column:1/-1;margin:0;padding:8px 11px;border-left:2px solid var(--gold);background:rgba(201,164,86,.07);color:#cfc5b2;font-size:10.5px;line-height:1.55}
+.v826-spell-rule-note strong{color:var(--gold)}
+.v82-learning-nodes button:disabled{opacity:.48;cursor:not-allowed}
+.v82-learning-nodes button.active:disabled{opacity:1}
+.v82-learning-nodes button small{display:block}
+.v82-spell-search button.v826-ring-locked{opacity:.5}
+.v82-spell-search button.v826-ring-locked::after{content:" · 当前节点未解锁";font-size:8px}
+.v826-spell-lock{display:block;margin:0 0 5px;color:#d69a62;font-size:9.5px;line-height:1.35}
+.v82-spell-card.locked{opacity:.72}
+.v82-spell-card.locked .v82-spell-actions button[disabled]{opacity:.55;cursor:not-allowed}
+.v826-learning-warning{color:#d8b969!important}
+@media(max-width:1100px){.v826-spell-rules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.v826-spell-rules{grid-template-columns:1fr 1fr}.v826-spell-rule{padding:9px}.v826-spell-rule-note{font-size:10px}.v82-spell-search button.v826-ring-locked::after{content:" · 🔒"}}

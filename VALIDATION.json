@@ -1,33 +1,20 @@
 {
-  "patch": "V8.2.5 Full Build Acceptance + Local HD Asset Fast Path",
-  "rule_engine_modified": false,
-  "primary_acceptance_build": "Paladin 6 / Sorcerer 6",
-  "expected_final": {
-    "hp": 136,
-    "ac": 26,
-    "initiative": 0,
-    "spellDC": 18,
-    "spellAttack": 10,
-    "mainAttack": 10,
-    "rangedAttack": 6,
-    "crit": 19
-  },
-  "asset_target": {
-    "spell": 189,
-    "equipment": 130,
-    "total": 319
-  },
+  "patch": "V8.2.6 Character Rule Guardrails",
+  "point_buy_budget": 27,
+  "known_spell_rule": "per-class-level acquisition quota + max ring, no fixed per-ring quota",
+  "prepared_spell_rule": "total prepared limit within unlocked rings, no fixed per-ring quota",
   "baseline": {
-    "spell-assets.js": "d59dac49c8cff319bf65dee861d7c9b97f65cd14",
-    "equipment-images.js": "083716e6465c1dd08993a3081949450af88c8d41",
-    "v82.js": "1097476b3cc44c7848da6809f306f7f6ccbd04cb",
-    "v8.html": "e49baf1babd9b336af7c68b2cc0682b73bb5e38c"
+    "selectors.js": "1706fb7f47592d22d99537e61f9ae5f4f13aa3e7",
+    "store.js": "85f0d38b365b9e95551347ccb2a15ff8bb7a296c",
+    "spell-learning.js": "20db29b4e86f86ce3358f7b4e6ac48322265726d",
+    "spell-progression.js": "d0f9c7fce915b95f816963af303f9ea8b742789a",
+    "character-editor.js": "c02577cf6202bea9cd929d1a0aa4299681cf54b5",
+    "v82.js": "76a141ac5a70e0cd0fa5e68ac562925655e6e4fb",
+    "v8.html": "2fad951428938f3b2597486716937942fa729011"
   },
   "checks": {
-    "generate-hd-asset-manifest.py_compile": true,
-    "apply-v825-image-fast-path.py_compile": true,
-    "validate-v825-image-fast-path.mjs_syntax": true,
-    "validate-v825-full-build.mjs_syntax": true,
-    "embedded_loader_syntax": true
+    "apply-v826-character-guardrails.py_compile": true,
+    "point-buy.js_syntax": true,
+    "validate-v826-character-guardrails.mjs_syntax": true
   }
 }
