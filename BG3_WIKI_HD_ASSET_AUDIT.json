@@ -1,0 +1,639 @@
+{
+  "audit_version": "2.0",
+  "root": "/workspaces/Baldur-s-Gate-3-Skill-Point-Simulator",
+  "summary": {
+    "raw_image_files": 374,
+    "raw_image_files_by_kind": {
+      "equipment": 130,
+      "spell": 244
+    },
+    "unique_local_asset_keys": 319,
+    "target_asset_keys": 319,
+    "missing_target_keys": 0,
+    "stale_report_unresolved_rows": 0,
+    "keys_with_multiple_file_variants": 55,
+    "duplicate_sha_groups_requiring_review": 6
+  },
+  "coverage": {
+    "spell": {
+      "target_keys": 189,
+      "present_keys": 189,
+      "missing_keys": 0,
+      "coverage_pct": 100.0
+    },
+    "equipment": {
+      "target_keys": 130,
+      "present_keys": 130,
+      "missing_keys": 0,
+      "coverage_pct": 100.0
+    }
+  },
+  "missing_target_keys": [],
+  "stale_report_unresolved_rows": [],
+  "keys_with_multiple_file_variants": [
+    {
+      "type": "spell",
+      "key": "acidArrow",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/acidArrow.png",
+        "assets/hd/spells/acidArrow.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "acidSplash",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/acidSplash.png",
+        "assets/hd/spells/acidSplash.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "aid",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/aid.png",
+        "assets/hd/spells/aid.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "animalFriendship",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/animalFriendship.png",
+        "assets/hd/spells/animalFriendship.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "bane",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/bane.png",
+        "assets/hd/spells/bane.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "bladeWard",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/bladeWard.png",
+        "assets/hd/spells/bladeWard.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "blindness",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/blindness.png",
+        "assets/hd/spells/blindness.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "blur",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/blur.png",
+        "assets/hd/spells/blur.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "boneChill",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/boneChill.png",
+        "assets/hd/spells/boneChill.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "calmEmotions",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/calmEmotions.png",
+        "assets/hd/spells/calmEmotions.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "charmPerson",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/charmPerson.png",
+        "assets/hd/spells/charmPerson.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "cureWounds",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/cureWounds.png",
+        "assets/hd/spells/cureWounds.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "dancingLights",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/dancingLights.png",
+        "assets/hd/spells/dancingLights.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "darkness",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/darkness.png",
+        "assets/hd/spells/darkness.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "darkvision",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/darkvision.png",
+        "assets/hd/spells/darkvision.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "detectThoughts",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/detectThoughts.png",
+        "assets/hd/spells/detectThoughts.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "disguiseSelf",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/disguiseSelf.png",
+        "assets/hd/spells/disguiseSelf.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "dissonantWhispers",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/dissonantWhispers.png",
+        "assets/hd/spells/dissonantWhispers.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "faerieFire",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/faerieFire.png",
+        "assets/hd/spells/faerieFire.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "featherFall",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/featherFall.png",
+        "assets/hd/spells/featherFall.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "fireBolt",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/fireBolt.png",
+        "assets/hd/spells/fireBolt.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "friends",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/friends.png",
+        "assets/hd/spells/friends.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "guidance",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/guidance.png",
+        "assets/hd/spells/guidance.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "healingWord",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/healingWord.png",
+        "assets/hd/spells/healingWord.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "heroism",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/heroism.png",
+        "assets/hd/spells/heroism.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "hideousLaughter",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/hideousLaughter.png",
+        "assets/hd/spells/hideousLaughter.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "holdPerson",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/holdPerson.png",
+        "assets/hd/spells/holdPerson.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "lesserRestoration",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/lesserRestoration.png",
+        "assets/hd/spells/lesserRestoration.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "light",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/light.png",
+        "assets/hd/spells/light.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "longstrider",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/longstrider.png",
+        "assets/hd/spells/longstrider.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "mageHand",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/mageHand.png",
+        "assets/hd/spells/mageHand.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "magicMissile",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/magicMissile.png",
+        "assets/hd/spells/magicMissile.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "minorIllusion",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/minorIllusion.png",
+        "assets/hd/spells/minorIllusion.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "mirrorImage",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/mirrorImage.png",
+        "assets/hd/spells/mirrorImage.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "mistyStep",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/mistyStep.png",
+        "assets/hd/spells/mistyStep.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "passTrace",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/passTrace.png",
+        "assets/hd/spells/passTrace.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "poisonSpray",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/poisonSpray.png",
+        "assets/hd/spells/poisonSpray.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "prayerHealing",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/prayerHealing.png",
+        "assets/hd/spells/prayerHealing.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "produceFlame",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/produceFlame.png",
+        "assets/hd/spells/produceFlame.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "rayEnfeeblement",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/rayEnfeeblement.png",
+        "assets/hd/spells/rayEnfeeblement.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "rayOfFrost",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/rayOfFrost.png",
+        "assets/hd/spells/rayOfFrost.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "sacredFlame",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/sacredFlame.png",
+        "assets/hd/spells/sacredFlame.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "scorchingRay",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/scorchingRay.png",
+        "assets/hd/spells/scorchingRay.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "shatter",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/shatter.png",
+        "assets/hd/spells/shatter.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "shillelagh",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/shillelagh.png",
+        "assets/hd/spells/shillelagh.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "shockingGrasp",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/shockingGrasp.png",
+        "assets/hd/spells/shockingGrasp.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "silence",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/silence.png",
+        "assets/hd/spells/silence.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "sleep",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/sleep.png",
+        "assets/hd/spells/sleep.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "speakAnimals",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/speakAnimals.png",
+        "assets/hd/spells/speakAnimals.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "speakDead",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/speakDead.png",
+        "assets/hd/spells/speakDead.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "thaumaturgy",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/thaumaturgy.png",
+        "assets/hd/spells/thaumaturgy.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "thunderwave",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/thunderwave.png",
+        "assets/hd/spells/thunderwave.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "trueStrike",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/trueStrike.png",
+        "assets/hd/spells/trueStrike.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "viciousMockery",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/viciousMockery.png",
+        "assets/hd/spells/viciousMockery.webp"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "web",
+      "file_count": 2,
+      "paths": [
+        "assets/hd/spells/web.png",
+        "assets/hd/spells/web.webp"
+      ]
+    }
+  ],
+  "duplicate_sha_groups_requiring_review": [
+    {
+      "sha256": "0df2fc1326da2de95d79156547ba80e1621b348ea33460177126f4c2382f5016",
+      "different_asset_keys": 2,
+      "review": true,
+      "files": [
+        {
+          "path": "assets/hd/equipment/deathstalker-mantle.png",
+          "type": "equipment",
+          "key": "deathstalker-mantle"
+        },
+        {
+          "path": "assets/hd/equipment/shade-slayer-cloak.png",
+          "type": "equipment",
+          "key": "shade-slayer-cloak"
+        }
+      ]
+    },
+    {
+      "sha256": "45fa8a2f891fdbbe34d7547facc0f40f43803d47cd59cb8e60b8c15195808a10",
+      "different_asset_keys": 2,
+      "review": true,
+      "files": [
+        {
+          "path": "assets/hd/equipment/selunes-spear.png",
+          "type": "equipment",
+          "key": "selunes-spear"
+        },
+        {
+          "path": "assets/hd/equipment/shars-spear.png",
+          "type": "equipment",
+          "key": "shars-spear"
+        }
+      ]
+    },
+    {
+      "sha256": "59dd225c3a329bc99a2d2f97cca9850d7aaa68b29ff2161a48d00c4764bbb983",
+      "different_asset_keys": 3,
+      "review": true,
+      "files": [
+        {
+          "path": "assets/hd/equipment/band-mystic-scoundrel.png",
+          "type": "equipment",
+          "key": "band-mystic-scoundrel"
+        },
+        {
+          "path": "assets/hd/equipment/callous-glow.png",
+          "type": "equipment",
+          "key": "callous-glow"
+        },
+        {
+          "path": "assets/hd/equipment/risky-ring.png",
+          "type": "equipment",
+          "key": "risky-ring"
+        }
+      ]
+    },
+    {
+      "sha256": "b3d3c3d0b2705e7c46519315bd971725e812b924e85918419ab182171df795e0",
+      "different_asset_keys": 2,
+      "review": true,
+      "files": [
+        {
+          "path": "assets/hd/equipment/amulet-misty-step.png",
+          "type": "equipment",
+          "key": "amulet-misty-step"
+        },
+        {
+          "path": "assets/hd/equipment/psychic-spark.png",
+          "type": "equipment",
+          "key": "psychic-spark"
+        }
+      ]
+    },
+    {
+      "sha256": "e13f930fc9c5484481e3476de292fd0b1b31719c2b5ba4af3c1c9456aee203d3",
+      "different_asset_keys": 2,
+      "review": true,
+      "files": [
+        {
+          "path": "assets/hd/equipment/caustic-band.png",
+          "type": "equipment",
+          "key": "caustic-band"
+        },
+        {
+          "path": "assets/hd/equipment/strange-conduit.png",
+          "type": "equipment",
+          "key": "strange-conduit"
+        }
+      ]
+    },
+    {
+      "sha256": "e4c2b7dd3dc0e61fa90ee7a31f833b0cc4fe21615f5137ef8afc14ed2d38759f",
+      "different_asset_keys": 2,
+      "review": true,
+      "files": [
+        {
+          "path": "assets/hd/equipment/hellfire-hand-crossbow.png",
+          "type": "equipment",
+          "key": "hellfire-hand-crossbow"
+        },
+        {
+          "path": "assets/hd/equipment/neer-misser.png",
+          "type": "equipment",
+          "key": "neer-misser"
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "source": "https://bg3.wiki/",
   "policy": "prefer native 380x380 tooltip/Faded artwork; do not upscale smaller UI icons",
-  "vendor_version": "2.1",
+  "vendor_version": "2.1+finalize-2",
   "parsed_rows": {
-    "spell": 191,
+    "spell": 189,
     "equipment": 130
   },
   "last_run": {
@@ -13,10 +13,10 @@
     "dry_run": false
   },
   "counts": {
-    "existing-hd": 60,
+    "existing-hd": 64,
     "kept-existing": 3,
     "downloaded-hd": 252,
-    "unresolved": 6
+    "unresolved": 0
   },
   "items": [
     {
@@ -850,7 +850,7 @@
       "key": "spellcrux",
       "zh": "法术核心护符",
       "name": "Spellcrux Amulet",
-      "status": "unresolved",
+      "status": "existing-hd",
       "page": "https://bg3.wiki/wiki/Spellcrux_Amulet",
       "candidates": [
         "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Faded.png",
@@ -885,7 +885,9 @@
           "url": "https://bg3.wiki/wiki/Special:FilePath/Spellcrux_Amulet_Unfaded_Icon.webp",
           "status": "failed"
         }
-      ]
+      ],
+      "path": "assets/hd/equipment/spellcrux.png",
+      "reconciled_from_local_file": true
     },
     {
       "type": "equipment",
@@ -1108,7 +1110,7 @@
       "key": "render-mind-body",
       "zh": "身心撕裂者",
       "name": "Render of Mind and Body",
-      "status": "unresolved",
+      "status": "existing-hd",
       "page": "https://bg3.wiki/wiki/Render_of_Mind_and_Body",
       "candidates": [
         "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Faded.png",
@@ -1143,7 +1145,9 @@
           "url": "https://bg3.wiki/wiki/Special:FilePath/Render_of_Mind_and_Body_Unfaded_Icon.webp",
           "status": "failed"
         }
-      ]
+      ],
+      "path": "assets/hd/equipment/render-mind-body.png",
+      "reconciled_from_local_file": true
     },
     {
       "type": "equipment",
@@ -2257,7 +2261,7 @@
       "key": "staff-spellpower",
       "zh": "法术力量法杖",
       "name": "Staff of Spellpower",
-      "status": "unresolved",
+      "status": "existing-hd",
       "page": "https://bg3.wiki/wiki/Staff_of_Spellpower",
       "candidates": [
         "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Faded.png",
@@ -2292,7 +2296,9 @@
           "url": "https://bg3.wiki/wiki/Special:FilePath/Staff_of_Spellpower_Unfaded_Icon.webp",
           "status": "failed"
         }
-      ]
+      ],
+      "path": "assets/hd/equipment/staff-spellpower.png",
+      "reconciled_from_local_file": true
     },
     {
       "type": "equipment",
@@ -2821,48 +2827,6 @@
             380
           ],
           "bytes": 150062
-        }
-      ]
-    },
-    {
-      "type": "spell",
-      "key": "greenFlameBlade",
-      "zh": "绿焰剑",
-      "name": "Green-Flame Blade",
-      "status": "unresolved",
-      "page": "https://bg3.wiki/wiki/Green-Flame_Blade",
-      "candidates": [
-        "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade.png",
-        "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_spell.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_Spell.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_Icon.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_Icon.png"
-      ],
-      "probes": [
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade.png",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_spell.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_Spell.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_Icon.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Green-Flame_Blade_Icon.png",
-          "status": "failed"
         }
       ]
     },
@@ -3817,48 +3781,6 @@
             380
           ],
           "bytes": 44936
-        }
-      ]
-    },
-    {
-      "type": "spell",
-      "key": "wordOfRadiance",
-      "zh": "光耀圣言",
-      "name": "Word of Radiance",
-      "status": "unresolved",
-      "page": "https://bg3.wiki/wiki/Word_of_Radiance",
-      "candidates": [
-        "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance.png",
-        "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_spell.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_Spell.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_Icon.webp",
-        "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_Icon.png"
-      ],
-      "probes": [
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance.png",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_spell.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_Spell.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_Icon.webp",
-          "status": "failed"
-        },
-        {
-          "url": "https://bg3.wiki/wiki/Special:FilePath/Word_of_Radiance_Icon.png",
-          "status": "failed"
         }
       ]
     },
@@ -5831,7 +5753,7 @@
       "key": "shield",
       "zh": "护盾术",
       "name": "Shield",
-      "status": "unresolved",
+      "status": "existing-hd",
       "page": "https://bg3.wiki/wiki/Shield",
       "candidates": [
         "https://bg3.wiki/wiki/Special:FilePath/Shield.webp",
@@ -5866,7 +5788,9 @@
           "url": "https://bg3.wiki/wiki/Special:FilePath/Shield_Icon.png",
           "status": "failed"
         }
-      ]
+      ],
+      "path": "assets/hd/spells/shield.webp",
+      "reconciled_from_local_file": true
     },
     {
       "type": "spell",
@@ -11838,5 +11762,20 @@
         }
       ]
     }
-  ]
+  ],
+  "finalization": {
+    "version": "2",
+    "invalid_spell_keys_removed": [
+      "greenFlameBlade",
+      "wordOfRadiance"
+    ],
+    "reconciled_from_local_files": [
+      "equipment:render-mind-body",
+      "equipment:spellcrux",
+      "equipment:staff-spellpower",
+      "spell:shield"
+    ],
+    "target_asset_keys": 319,
+    "spell_module_suffix_preserved": true
+  }
 }
