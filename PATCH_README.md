@@ -1,50 +1,91 @@
-# V8.2.3 UI Acceptance
+# BG3 HD Asset Finalize
 
-本轮只处理 V8.2.2 实际页面验收暴露出的 UI/信息密度问题，不修改装备规则引擎。
+## 本轮结论
 
-## 当前截图确认
+最后两个 unresolved 不再继续找图：
 
-V8.2.2 已经成功：
-- 装备候选卡显示真实数值变化。
-- 右侧显示生命 / AC / 先攻 / 豁免 / 施法 / 武器结果。
-- 最终页存在最终属性、豁免、武器、施法来源、章节数值演进。
-- 森林背景已恢复。
+- `greenFlameBlade` / Green-Flame Blade
+- `wordOfRadiance` / Word of Radiance
 
-## 本轮修复
+核验后，这两项不是当前 BG3 正式可用法术，应从项目法术数据中清理，而不是补图片。
 
-### 装备页
-- 候选卡右侧结果区 120px → 168px。
-- 搜索框 PC 约 220px。
-- 实际变化文本自然换行。
-- 实时规则栏 300px → 320px。
-- 右侧武器结果改成上下排版，避免挤压。
+## 本轮处理内容
 
-### 最终页
-旧结构是一个双列 Grid，同一行两张卡共享行高，所以短卡会被长卡撑出大量空白。
+### `tools/finalize-hd-assets.py`
 
-新结构：
-- 最终装备：全宽
-- 左列独立堆叠：最终属性 → 武器面板 → 职业资源 → 技能熟练
-- 右列独立堆叠：最终豁免 → 施法来源 → 职业能力 → 核心法术
-- 章节路线：全宽
-- 精确/条件/错误模块：全宽
+执行后会：
 
-这样左右列互不撑高。
+1. 将 `spellData` 从 191 条修正为 **189 条**。
+2. 删除 `greenFlameBlade`、`wordOfRadiance`。
+3. 从 `BG3_WIKI_HD_ASSET_REPORT.json` 移除对应目标。
+4. 检查本地已经存在的手工补图，并把旧 unresolved 状态自动改为 resolved：
+   - `spellcrux`
+   - `render-mind-body`
+   - `staff-spellpower`
+   - `shield`
+5. 重新计算报告：
+   - spell = 189
+   - equipment = 130
+   - total target keys = 319
+6. 删除误上传的重复报告：
+   - `assets/hd/spells/BG3_WIKI_HD_ASSET_REPORT.json`
 
-## 安装
+### `tools/audit-hd-assets.py` v2
 
-解压到仓库根目录后：
+修复两个旧问题：
+
+1. Windows 反斜杠导致所有图片被归到 `other`。
+2. 把物理图片文件数量误当成覆盖率。
+
+新 audit 按 **唯一 asset key** 计算覆盖率。
+
+因此同一 spell 同时存在 `.png` 与 `.webp` 时：
+- raw files 会 +2；
+- coverage 仍只算 1 个 spell key。
+
+## 执行顺序
+
+在完整仓库根目录运行：
 
 ```bash
-python tools/apply-v823-ui-acceptance.py
-node --check assets/v8/v82.js
-git status -sb
+python tools/finalize-hd-assets.py
+python tools/audit-hd-assets.py
+python tools/validate-hd-finalization.py
 ```
 
-预览确认后再提交：
+预期最终：
+
+```text
+HD asset finalization validation: PASS
+spell keys: 189
+equipment keys: 130
+target keys: 319
+```
+
+audit 核心应为：
+
+```text
+missing_target_keys: 0
+stale_report_unresolved_rows: 0
+```
+
+`raw_image_files` 可能大于 319，这是正常的。
+
+## 提交建议
+
+确认 PASS 后只提交：
 
 ```bash
-git add assets/v8/v823.css assets/v8/v82.js v8.html tools/apply-v823-ui-acceptance.py
-git commit -m "Refine V8.2.3 equipment and final UI"
+git add assets/js/data/spells.js
+git add BG3_WIKI_HD_ASSET_REPORT.json
+git add BG3_WIKI_HD_ASSET_AUDIT.json
+git add tools/finalize-hd-assets.py
+git add tools/audit-hd-assets.py
+git add tools/validate-hd-finalization.py
+git add -u assets/hd/spells/BG3_WIKI_HD_ASSET_REPORT.json
+
+git commit -m "Finalize HD asset coverage"
 git push origin main
 ```
+
+不要使用 `git add .`。

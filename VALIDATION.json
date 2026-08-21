@@ -1,9 +1,26 @@
 {
-  "patch": "V8.2.3 UI Acceptance",
-  "baseline_v82_blob": "ca1267212bbb3d6bad0b4354afaa065316fe11f5",
-  "rule_engine_changed": false,
+  "patch": "HD Asset Finalize",
+  "invalid_spell_keys": [
+    "greenFlameBlade",
+    "wordOfRadiance"
+  ],
+  "expected_targets": {
+    "spell": 189,
+    "equipment": 130,
+    "total": 319
+  },
   "checks": {
-    "patcher_py_compile": true,
-    "synthetic_patch_test": true
+    "finalize-hd-assets.py_compile": true,
+    "audit-hd-assets.py_compile": true,
+    "validate-hd-finalization.py_compile": true,
+    "synthetic_full_flow": true
+  },
+  "rule_ui_changes": false,
+  "expected_result": {
+    "spell_keys": 189,
+    "equipment_keys": 130,
+    "target_keys": 319,
+    "missing_target_keys": 0,
+    "stale_report_unresolved_rows": 0
   }
 }
