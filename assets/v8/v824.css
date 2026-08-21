@@ -1,0 +1,244 @@
+/* V8.2.4 — Readability & Density Pass
+   Typography/readability only. Rule engine remains unchanged. */
+
+/* ---------- Shared desktop typography scale ---------- */
+@media (min-width:768px){
+  /* Left stage navigation */
+  .v8-brand b{font-size:17px}
+  .v8-brand small{font-size:11px}
+  .v8-nav-group b{font-size:14px}
+  .v8-nav-group small{font-size:11px;line-height:1.45}
+  .v8-nav-group>span{font-size:10px}
+  .v82-character-subnav span{font-size:9px}
+  .v82-character-subnav b{font-size:11.5px}
+  .v82-character-subnav small{font-size:9.5px}
+  .v8-stage-help span{font-size:11px}
+  .v8-stage-help p{font-size:10.5px;line-height:1.55}
+  .v8-stage-help small{font-size:9.5px}
+
+  /* Top bar */
+  .v81-build-picker select{font-size:12px}
+  .v81-source-badge{font-size:10px}
+  .v8-build-mini span{font-size:12px}
+  .v81-top-bridge button,.v81-top-bridge a{font-size:11px}
+
+  /* Page/editor headings */
+  .v8-page-head>span,.kicker{font-size:11px}
+  .v8-page-head p{font-size:13px;line-height:1.65}
+  .v82-editor-head>div>span{font-size:10px}
+  .v82-editor-head p{font-size:12.5px;line-height:1.65}
+  .v82-editor-head>strong small{font-size:11px}
+  .v81-status-strip{font-size:11px}
+
+  /* ACT / section headers */
+  .v8-act-tabs button>span{font-size:10px}
+  .v8-act-tabs button>b{font-size:15px}
+  .v8-act-tabs button small{font-size:10px}
+  .v8-section-label span{font-size:11.5px}
+  .v8-section-label b{font-size:10.5px}
+
+  /* Equipment slots */
+  .v8-slot>span{font-size:12px}
+  .v8-slot b{font-size:11px}
+  .v8-slot small{font-size:9.5px}
+
+  /* Equipment toolbar */
+  .v8-gear-toolbar span{font-size:10px}
+  .v8-gear-toolbar b{font-size:15px}
+  .v8-gear-toolbar small{font-size:10px}
+  .v82-gear-search label{font-size:11px;gap:7px}
+
+  /* Equipment cards */
+  .v8-gear-title b{font-size:14px}
+  .v8-gear-title i{font-size:10px}
+  .v8-gear-main small{font-size:10.5px}
+  .v8-gear-main p{font-size:12px;line-height:1.55}
+  .v8-tag-list.mini span{font-size:10px;padding:3px 7px}
+  .v82-gear-warning{font-size:10px}
+  .v8-score{font-size:10.5px}
+  .v82-equipment-stage .v8-delta{font-size:11.5px;line-height:1.5}
+  .v8-gear-side button{font-size:13px}
+
+  /* Right live result pane */
+  .v8-current-slot span{font-size:10.5px}
+  .v8-current-slot b{font-size:17px}
+  .v8-current-slot small{font-size:11px;line-height:1.55}
+  .v8-stat-compare span{font-size:10px}
+  .v8-stat-compare b{font-size:20px}
+  .v8-stat-compare small{font-size:9.5px}
+  .v83-combat-line b{font-size:11.5px}
+  .v83-combat-line small{font-size:10px}
+  .v82-equipment-stage .v8-compare-pane .v83-combat-line strong{font-size:12px}
+  .v82-rule-warnings b{font-size:10.5px}
+  .v82-rule-warnings p{font-size:10px;line-height:1.5}
+  .v82-conditional summary{font-size:10.5px}
+  .v82-conditional p{font-size:10px;line-height:1.5}
+  .v8-route-progress>span{font-size:10.5px}
+  .v8-route-progress>div{font-size:10.5px}
+
+  /* Final hero */
+  .v8-stat-row span{font-size:10.5px}
+  .v8-stat-row b{font-size:22px}
+  .v8-summary-card>span{font-size:11.5px}
+  .v8-summary-card p{font-size:12px;line-height:1.6}
+
+  /* Final attributes */
+  .v82-final-scores small{font-size:10px}
+  .v82-final-scores b{font-size:20px}
+  .v82-final-scores em{font-size:9.5px}
+
+  /* Final saves / casting / weapon */
+  .v83-final-saves small{font-size:10px}
+  .v83-final-saves b{font-size:20px}
+  .v83-final-saves em{font-size:9px}
+  .v83-casting-list b{font-size:11px}
+  .v83-casting-list small{font-size:10px}
+  .v83-casting-list strong{font-size:14px}
+
+  /* Final lists */
+  .v82-final-list b{font-size:11px}
+  .v82-final-list small{font-size:10px;line-height:1.45}
+  .v82-final-spells b{font-size:10.5px;line-height:1.3}
+  .v82-final-spells small{font-size:9.5px}
+  .v83-chapter-card>div:first-child b{font-size:12px}
+  .v83-chapter-card>div:first-child small{font-size:9.5px}
+  .v83-chapter-metrics span{font-size:9.5px}
+  .v83-chapter-metrics b{font-size:14px}
+  .v83-chapter-card p{font-size:10px}
+  .v83-effect-grid b{font-size:11px}
+  .v83-effect-grid small{font-size:10px}
+
+  /* Character editor readability — keep density, remove 7/8px text */
+  .v82-form-grid label,.v82-replace-sheet label{font-size:10.5px}
+  .v82-context-note b,.v82-context-note span{font-size:11px}
+  .v82-route-level>span{font-size:9.5px}
+  .v82-route-level small{font-size:9.5px}
+  .v82-node-switcher button>span{font-size:10px}
+  .v82-node-switcher b{font-size:11.5px}
+  .v82-node-switcher small{font-size:9.5px}
+  .v82-current-node span{font-size:10.5px}
+  .v82-current-node b{font-size:11.5px}
+  .v82-choice-card b{font-size:13px}
+  .v82-choice-card small{font-size:9.5px}
+  .v82-choice-card p{font-size:10.5px}
+  .v82-asi-box label{font-size:9.5px}
+  .v82-pointbar{font-size:10.5px}
+  .v82-ability-row small,.v82-ability-row>span{font-size:9.5px}
+  .v82-skill-card b{font-size:12px}
+  .v82-skill-card small{font-size:9.5px}
+  .v82-skill-card p{font-size:10px}
+  .v82-spell-counts span{font-size:9.5px}
+  .v82-spell-counts b{font-size:10.5px}
+  .v82-current-learning span,.v82-current-learning small{font-size:9.5px}
+  .v82-current-learning b{font-size:12px}
+  .v82-spell-title b{font-size:12px}
+  .v82-spell-title i{font-size:9px}
+  .v82-spell-open small{font-size:9.5px}
+
+  /* V8.1 summary/read-only surfaces */
+  .v81-ability-grid span,.v81-ability-grid small{font-size:9.5px}
+  .v81-detail-head span{font-size:11px}
+  .v81-detail-head b{font-size:10px}
+  .v81-list>div,.v81-list b{font-size:11px}
+  .v81-spell-group>span,.v81-spell-group b{font-size:10px}
+  .v81-resource b{font-size:11px}
+  .v81-resource small,.v81-resource-values span{font-size:9.5px}
+}
+
+/* ---------- Fix V8.2.3 checkbox regression ---------- */
+/* V8.2.3 used `.v82-gear-search input`, which also stretched checkboxes. */
+.v82-equipment-stage .v82-gear-search input[type="checkbox"]{
+  width:16px!important;
+  min-width:16px!important;
+  max-width:16px!important;
+  height:16px!important;
+  padding:0!important;
+  margin:0;
+  flex:0 0 16px;
+  accent-color:#c9a456;
+}
+.v82-equipment-stage .v82-gear-search input[data-search]{
+  width:240px!important;
+  min-width:200px;
+}
+
+/* ---------- Density rebalance ---------- */
+.v82-equipment-stage .v8-gear-card{min-height:108px}
+.v82-equipment-stage .v8-gear-main{padding:12px}
+.v82-equipment-stage .v8-gear-side{padding:11px 12px}
+.v82-equipment-stage .v8-delta{min-height:36px}
+.v82-equipment-stage .v8-compare-sticky{gap:11px}
+.v823-final-grid{gap:10px}
+.v823-final-columns{gap:10px}
+.v823-final-column{gap:10px}
+
+/* Empty final-result blocks should be compact, not visually equal to populated cards. */
+.v823-final-column>.v8-summary-card:has(> .v82-final-list > p:only-child),
+.v823-final-column>.v8-summary-card:has(> .v82-final-spells > p:only-child){
+  padding-top:11px;
+  padding-bottom:11px;
+  min-height:0;
+}
+.v823-final-column .v82-final-list>p:only-child,
+.v823-final-column .v82-final-spells>p:only-child{
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.4;
+}
+.v823-final-column .v82-final-spells:has(> p:only-child){
+  display:block;
+  margin-top:4px;
+}
+
+/* Final cards: slightly stronger local surface improves legibility over scenic background. */
+.v823-final-grid>.v8-summary-card,
+.v823-final-columns .v8-summary-card{
+  background:rgba(7,7,5,.24);
+}
+.v823-final-grid .v82-final-scores>div,
+.v823-final-grid .v83-final-saves>div,
+.v823-final-grid .v83-casting-list>div,
+.v823-final-grid .v83-combat-line{
+  background:rgba(8,8,6,.33);
+}
+
+/* Avoid widening the entire layout when text becomes larger. */
+.v8-gear-title i,
+.v8-gear-main small,
+.v82-final-list small{
+  overflow-wrap:anywhere;
+}
+
+/* ---------- Tablet ---------- */
+@media(max-width:1280px) and (min-width:768px){
+  .v82-equipment-stage .v82-gear-search input[data-search]{
+    width:195px!important;
+    min-width:165px;
+  }
+  .v8-nav-group small{font-size:10px}
+  .v8-gear-main p{font-size:11.5px}
+  .v82-equipment-stage .v8-delta{font-size:11px}
+}
+
+/* ---------- Mobile: readable without inflating into desktop cards ---------- */
+@media(max-width:767px){
+  .v8-brand small{font-size:10px}
+  .v8-nav-group b{font-size:13px}
+  .v8-nav-group small{font-size:10px}
+  .v8-page-head p{font-size:12px}
+  .v8-section-label span{font-size:11px}
+  .v8-slot b{font-size:10px}
+  .v8-slot small{font-size:9px}
+  .v8-gear-title b{font-size:13px}
+  .v8-gear-main small{font-size:10px}
+  .v8-gear-main p{font-size:11.5px}
+  .v8-tag-list.mini span{font-size:9.5px}
+  .v82-equipment-stage .v8-delta{font-size:10.5px}
+  .v8-summary-card>span{font-size:11px}
+  .v8-summary-card p{font-size:11.5px}
+  .v82-final-scores small{font-size:9.5px}
+  .v82-final-scores em{font-size:9px}
+  .v82-final-list b{font-size:10.5px}
+  .v82-final-list small{font-size:9.5px}
+}

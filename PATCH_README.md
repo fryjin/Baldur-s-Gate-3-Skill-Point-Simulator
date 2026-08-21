@@ -1,98 +1,108 @@
-# HD Asset Finalize V2 — spells.js parser hotfix
+# V8.2.4 Readability & Density Pass
 
-## 为什么上一版失败
+## 本轮目标
 
-当前 `assets/js/data/spells.js` 不是单纯的：
+V8.2.3 已解决主要结构问题，但 1920px 桌面截图仍暴露两个明显问题：
 
-```js
-export const spellData=[...];
+1. 大量正文仍是 7–10px，正常坐姿阅读困难。
+2. `.v82-gear-search input` 同时命中了 checkbox，导致“只看本章新增”复选框被拉成巨大蓝色方块。
+
+V8.2.4 不修改规则引擎，只处理 Typography / Density / Empty State。
+
+## 字号策略
+
+不是全局统一 16px，而是建立层级：
+
+- 页面标题：维持 29–31px
+- 一级导航/装备名：14–17px
+- 正文说明：12–13px
+- 辅助说明/英文名/来源：10–11px
+- 最低可读字号：桌面原则上不再使用 7–8px 作为普通信息正文
+
+重点提高：
+- 左侧导航辅助文字
+- 装备槽名称
+- 装备英文名、来源、效果说明、标签
+- 实际数值变化
+- 右侧实时规则结果
+- 最终属性 / 豁免 / 武器 / 法术 / 章节路线
+- 人物编辑器中的 7–9px 辅助信息
+
+## Checkbox 修复
+
+V8.2.3：
+
+```css
+.v82-equipment-stage .v82-gear-search input {
+  width:220px!important;
+}
 ```
 
-数组后面还有其他 JavaScript 内容。
+会同时拉伸文本框和 checkbox。
 
-上一版脚本把 `spellData=` 后面的**整份文件剩余内容**传给 `json.loads()`，所以在数组结束后遇到后续 JS 时出现：
+V8.2.4 改为：
+- `input[data-search]` 单独控制搜索框宽度
+- `input[type=checkbox]` 固定 16×16
 
-```text
-JSONDecodeError: Extra data
-```
+## 空状态压缩
 
-更重要的是，旧的重写逻辑如果被强行绕过，还可能把数组后面的 JS 删除。
+当前 1 级测试角色没有：
+- 职业资源
+- 职业能力
+- 核心法术等部分内容
 
-## V2 修复
+V8.2.4 使用 `:has()` 对只有“暂无/无”的最终页卡片做紧凑处理，不让空卡占据和完整模块相同的视觉高度。
 
-改为 `json.JSONDecoder().raw_decode()`：
+## 背景与对比
 
-1. 精确定位 `export const spellData=`
-2. 只解析紧随其后的 JSON 数组
-3. 记录数组结束位置
-4. 只替换数组本身
-5. 数组之前、之后的所有 JavaScript 原样保留
+保留森林场景，不重新盖成纯黑。
+只给最终结果卡片增加轻微局部暗底，提升小字号放大后的阅读稳定性。
 
-validator 也使用相同方式读取。
+## 安装
 
-## 你刚才的仓库状态
-
-上一轮 `finalize-hd-assets.py` 在写入 `spells.js` 之前就异常退出，因此：
-
-- `spells.js` 没有被上一版破坏
-- HD report 也没有被 Finalize 改写
-- `audit-hd-assets.py` 运行过，因此 `BG3_WIKI_HD_ASSET_AUDIT.json` 目前只是一个“Finalize 前”的临时审计结果
-
-直接覆盖 V2 脚本后重新执行即可。
-
-## 执行
-
-上传/覆盖这个包后：
+把 ZIP 解压到完整仓库根目录：
 
 ```bash
-python tools/finalize-hd-assets.py
-node --check assets/js/data/spells.js
-python tools/audit-hd-assets.py
-python tools/validate-hd-finalization.py
+python tools/apply-v824-readability.py
+node --check assets/v8/v82.js
+
+grep -n "v824.css" v8.html
+grep -n "V8.2.4" assets/v8/v82.js | head
 ```
 
-预期：
+成功输出：
 
 ```text
-spell_rows_before: 191
-spell_rows_after: 189
-report_items_after: 319
-report_unresolved_after: 0
-spell_module_suffix_preserved: true
+Applied V8.2.4 Readability & Density Pass.
+Changed: assets/v8/v82.js, v8.html
+Added/updated: assets/v8/v824.css
 ```
 
-Audit：
+## 预览验收
+
+访问：
 
 ```text
-missing_target_keys: 0
-stale_report_unresolved_rows: 0
+/v8?v=824
 ```
 
-Validator：
+检查：
 
-```text
-HD asset finalization validation: PASS
-spell keys: 189
-equipment keys: 130
-target keys: 319
-```
+1. 左侧导航无需凑近看。
+2. “只看本章新增”恢复正常 16px checkbox。
+3. 装备名/英文名/说明/标签层级清楚。
+4. 右侧实时数值可快速扫读。
+5. 最终页属性/豁免/武器/章节数据不再出现 7–8px 信息文字。
+6. 空模块明显压缩。
+7. 无新增横向滚动。
 
-## 提交
+## 提交建议
 
-验证 PASS 后：
+确认预览无异常：
 
 ```bash
-git status -sb
-
-git add assets/js/data/spells.js
-git add BG3_WIKI_HD_ASSET_REPORT.json
-git add BG3_WIKI_HD_ASSET_AUDIT.json
-git add tools/finalize-hd-assets.py
-git add tools/audit-hd-assets.py
-git add tools/validate-hd-finalization.py
-git add -u assets/hd/spells/BG3_WIKI_HD_ASSET_REPORT.json
-
-git commit -m "Finalize HD asset coverage"
+git add assets/v8/v824.css assets/v8/v82.js v8.html tools/apply-v824-readability.py
+git commit -m "Improve V8.2.4 readability and density"
 git push origin main
 ```
 

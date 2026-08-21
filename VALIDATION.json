@@ -1,17 +1,21 @@
 {
-  "patch": "HD Asset Finalize V2 parser hotfix",
-  "root_cause": "spells.js contains JavaScript after the spellData JSON array",
-  "fix": "JSONDecoder.raw_decode + in-place array replacement preserving module suffix",
-  "expected": {
-    "spell": 189,
-    "equipment": 130,
-    "targets": 319,
-    "unresolved": 0
+  "patch": "V8.2.4 Readability & Density Pass",
+  "baseline": {
+    "v82.js": "b006e3e16d11f9565d68840e050c5580b61aa65a",
+    "v8.html": "012b1871ba78e23a025471de352347d84c6da1ce"
   },
+  "rule_engine_changed": false,
+  "targets": [
+    "raise desktop microcopy from 7-10px to 9.5-13px tiers",
+    "fix oversized equipment checkbox",
+    "improve equipment/result scanability",
+    "compress empty final cards",
+    "preserve scenic background",
+    "avoid horizontal overflow"
+  ],
   "checks": {
-    "finalize-hd-assets.py_compile": true,
-    "validate-hd-finalization.py_compile": true,
-    "audit-hd-assets.py_compile": true,
-    "synthetic_suffix_preservation_test": true
+    "patcher_py_compile": true,
+    "css_invariants": true,
+    "synthetic_patch_test": true
   }
 }
