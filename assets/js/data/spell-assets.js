@@ -1,8 +1,13 @@
 import{spellImageManifest}from"./spell-image-manifest.js";
-const failureKey="bg3-v8-wiki-image-failures-v2";
+import{spellData}from"./spells.js";
+import{spellHdAssets}from"./hd-asset-manifest.js";
+
+const failureKey="bg3-v8-wiki-image-failures-v3";
 let failures=new Set();
 try{failures=new Set(JSON.parse(sessionStorage.getItem(failureKey)||"[]"))}catch{}
 let observer=null;
+const spellByKey=new Map(spellData.map(x=>[x.key,x]));
+
 function saveFailures(){try{sessionStorage.setItem(failureKey,JSON.stringify([...failures].slice(-1000)))}catch{}}
 function fallbackSvg(spell){const label=(spell?.name||"法术").slice(0,2),level=spell?.level?`${spell.level}环`:"戏法";const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4a392d"/><stop offset="1" stop-color="#17120f"/></linearGradient></defs><rect width="160" height="160" rx="24" fill="url(#g)"/><circle cx="80" cy="65" r="39" fill="none" stroke="#d5b96f" stroke-width="3" opacity=".46"/><text x="80" y="77" text-anchor="middle" fill="#efe3cc" font-size="28" font-family="serif">${label}</text><text x="80" y="131" text-anchor="middle" fill="#bbaa89" font-size="17" font-family="sans-serif">${level}</text></svg>`;return`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`}
 export const expectedSpellImagePath=key=>spellImageManifest[key]||"";
@@ -11,9 +16,52 @@ const wikiFile=file=>`https://bg3.wiki/wiki/Special:FilePath/${encodeURIComponen
 const iconFile=name=>cleanName(name).replace(/\s+/g,"_")+"_Icon.webp";
 const mirrorFile=name=>`https://raw.githubusercontent.com/kennedymindeman/bg3-item-spawner/main/icons/${encodeURIComponent(iconFile(name))}`;
 const tooltipFiles=spell=>{const n=cleanName(spell.en||spell.name),files=[`${n}.webp`,`${n}.png`,`${n} spell.webp`,`${n} Spell.webp`];if(spell.key==="bane")files.unshift("Bane spell.webp");if(spell.key==="darkvision")files.unshift("Darkvision spell.webp");return files.map(wikiFile)};
-function candidates(spell){const hd=[`./assets/hd/spells/${spell.key}.webp`,`./assets/hd/spells/${spell.key}.png`,`./assets/hd/spells/${spell.key}.jpg`],local=expectedSpellImagePath(spell.key),vendorWebp=`./assets/spells/${spell.key}.webp`,tooltips=tooltipFiles(spell),controller=wikiFile(iconFile(spell.en||spell.name)),mirror=mirrorFile(spell.en||spell.name);return[...hd,...tooltips,local,vendorWebp,controller,mirror].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i&&!failures.has(x))}
-function encodeCandidates(list){return encodeURIComponent(JSON.stringify(list))}
-function decodeCandidates(value){try{return JSON.parse(decodeURIComponent(value||""))}catch{return[]}}
-export function spellImageTag(spell,className="spell-image",alt){const placeholder=fallbackSvg(spell),eager=className.includes("detail"),list=candidates(spell);return`<img class="${className}" src="${placeholder}" alt="${alt||`${spell.name}图标`}" width="96" height="96" decoding="async" loading="${eager?"eager":"lazy"}" fetchpriority="${eager?"high":"low"}" referrerpolicy="no-referrer" data-placeholder="${placeholder}" ${list.length?`data-spell-candidates="${encodeCandidates(list)}"`:""}>`}
-function load(img){if(img.dataset.loading)return;const list=decodeCandidates(img.dataset.spellCandidates);if(!list.length)return;img.dataset.loading="1";let index=0;const tryNext=()=>{if(index>=list.length){img.src=img.dataset.placeholder||img.src;img.removeAttribute("data-spell-candidates");delete img.dataset.loading;return}const src=list[index++];const ok=()=>{img.classList.add("is-loaded");img.removeAttribute("data-spell-candidates");delete img.dataset.loading;cleanup()};const fail=()=>{failures.add(src);saveFailures();cleanup();tryNext()};const cleanup=()=>{img.removeEventListener("load",ok);img.removeEventListener("error",fail)};img.addEventListener("load",ok,{once:true});img.addEventListener("error",fail,{once:true});img.src=src};tryNext()}
-export function bindImageFallbacks(root=document){const imgs=[...root.querySelectorAll("img[data-spell-candidates]")];if(!("IntersectionObserver"in window)){imgs.forEach(load);return}observer??=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){observer.unobserve(entry.target);load(entry.target)}}),{rootMargin:"260px 0px"});imgs.forEach(img=>{if(img.classList.contains("spell-detail-image")||img.classList.contains("v82-final-spell-img"))load(img);else observer.observe(img)})}
+function legacyCandidates(spell){const local=expectedSpellImagePath(spell.key),vendorWebp=`./assets/spells/${spell.key}.webp`,tooltips=tooltipFiles(spell),controller=wikiFile(iconFile(spell.en||spell.name)),mirror=mirrorFile(spell.en||spell.name);return[...tooltips,local,vendorWebp,controller,mirror].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i&&!failures.has(x))}
+
+function tryList(img,list,placeholder){
+  let i=0;
+  const next=()=>{
+    if(i>=list.length){img.src=placeholder;img.classList.add("image-missing");return}
+    const src=list[i++];
+    const ok=()=>{cleanup();img.classList.add("is-loaded")};
+    const fail=()=>{failures.add(src);saveFailures();cleanup();next()};
+    const cleanup=()=>{img.removeEventListener("load",ok);img.removeEventListener("error",fail)};
+    img.addEventListener("load",ok,{once:true});
+    img.addEventListener("error",fail,{once:true});
+    img.src=src
+  };
+  next()
+}
+function bindPrimary(img){
+  if(img.dataset.primaryBound)return;
+  img.dataset.primaryBound="1";
+  img.addEventListener("load",()=>img.classList.add("is-loaded"),{once:true});
+  img.addEventListener("error",()=>{
+    const spell=spellByKey.get(img.dataset.spellKey);
+    const placeholder=img.dataset.placeholder||fallbackSvg(spell);
+    img.src=placeholder;
+    tryList(img,spell?legacyCandidates(spell):[],placeholder)
+  },{once:true})
+}
+function loadDeferred(img){
+  if(img.dataset.loading)return;
+  img.dataset.loading="1";
+  const spell=spellByKey.get(img.dataset.spellKey);
+  const placeholder=img.dataset.placeholder||fallbackSvg(spell);
+  tryList(img,spell?legacyCandidates(spell):[],placeholder);
+  delete img.dataset.loading
+}
+
+export function spellImageTag(spell,className="spell-image",alt){
+  const placeholder=fallbackSvg(spell),eager=className.includes("detail"),primary=spellHdAssets[spell.key]||"";
+  const src=primary||placeholder;
+  return`<img class="${className}" src="${src}" alt="${alt||`${spell.name}图标`}" width="96" height="96" decoding="async" loading="${eager?"eager":"lazy"}" fetchpriority="${eager?"high":"low"}" referrerpolicy="no-referrer" data-spell-key="${spell.key}" data-placeholder="${placeholder}" ${primary?'data-spell-primary="1"':'data-spell-pending="1"'}>`
+}
+export function bindImageFallbacks(root=document){
+  const primary=[...root.querySelectorAll("img[data-spell-primary]")];primary.forEach(bindPrimary);
+  const pending=[...root.querySelectorAll("img[data-spell-pending]")];
+  if(!pending.length)return;
+  if(!("IntersectionObserver"in window)){pending.forEach(loadDeferred);return}
+  observer??=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){observer.unobserve(entry.target);loadDeferred(entry.target)}}),{rootMargin:"180px 0px"});
+  pending.forEach(img=>observer.observe(img))
+}

@@ -1,0 +1,112 @@
+{
+  "version": "V8.2.5 full build acceptance",
+  "character": {
+    "route": "Paladin 6 / Sorcerer 6",
+    "level": 12,
+    "validationIssues": [],
+    "featSlots": 2,
+    "base": {
+      "scores": {
+        "str": 18,
+        "dex": 10,
+        "con": 14,
+        "int": 8,
+        "wis": 8,
+        "cha": 19
+      },
+      "hp": 88,
+      "ac": 18,
+      "initiative": 0,
+      "spellDC": 16,
+      "spellAttack": 8
+    },
+    "resources": [
+      {
+        "key": "spell-slots",
+        "value": "14",
+        "entries": [
+          {
+            "label": "1环",
+            "value": "4"
+          },
+          {
+            "label": "2环",
+            "value": "3"
+          },
+          {
+            "label": "3环",
+            "value": "3"
+          },
+          {
+            "label": "4环",
+            "value": "3"
+          },
+          {
+            "label": "5环",
+            "value": "1"
+          }
+        ],
+        "recharge": "长休"
+      },
+      {
+        "key": "lay-on-hands",
+        "value": "4",
+        "entries": null,
+        "recharge": "长休"
+      },
+      {
+        "key": "channel-oath",
+        "value": "1",
+        "entries": null,
+        "recharge": "短休"
+      },
+      {
+        "key": "sorcery",
+        "value": "6",
+        "entries": null,
+        "recharge": "长休"
+      }
+    ]
+  },
+  "chapters": {
+    "act1": {
+      "slots": 11,
+      "hp": 88,
+      "ac": 22,
+      "initiative": 4,
+      "spellDC": 16,
+      "spellAttack": 8,
+      "mainAttack": 9,
+      "rangedAttack": 9
+    },
+    "act2": {
+      "slots": 12,
+      "hp": 100,
+      "ac": 24,
+      "initiative": 4,
+      "spellDC": 17,
+      "spellAttack": 9,
+      "mainAttack": 9,
+      "rangedAttack": 9
+    },
+    "act3": {
+      "slots": 11,
+      "hp": 136,
+      "ac": 26,
+      "initiative": 0,
+      "spellDC": 18,
+      "spellAttack": 10,
+      "mainAttack": 10,
+      "rangedAttack": 6,
+      "crit": 19
+    }
+  },
+  "focusedRules": {
+    "act2StoredAsDelta": true,
+    "rangedOffClearedByDeadShot": true,
+    "twoHandedClearsShield": true,
+    "multiclassPaladinDoesNotGrantHeavy": true,
+    "unproficientArmourBlocksCasting": true,
+    "conditionalDamageSeparated": true
+  }
+}

@@ -1,0 +1,531 @@
+{
+  "version": "V8.2.5 asset fast path",
+  "target_keys": {
+    "spell": 189,
+    "equipment": 130,
+    "total": 319
+  },
+  "selected_extension_counts": {
+    "spell": {
+      ".webp": 186,
+      ".png": 3
+    },
+    "equipment": {
+      ".png": 124,
+      ".webp": 6
+    }
+  },
+  "raw_hd_files": 374,
+  "raw_hd_bytes": 44171249,
+  "selected_primary_bytes": 41237409,
+  "extra_variant_bytes_in_repo": 2933840,
+  "keys_with_multiple_variants": 55,
+  "estimated_avoided_local_probe_requests_per_full_catalog_walk": 127,
+  "before": {
+    "strategy": "placeholder + IntersectionObserver + guessed .webp/.png/.jpg probes + remote fallbacks",
+    "final_spell_images_forced_eager": true
+  },
+  "after": {
+    "strategy": "generated exact local manifest + direct native lazy src; JS only activates on local error",
+    "final_spell_images_forced_eager": false,
+    "remote_fallbacks_requested_on_success": 0
+  },
+  "multiple_variants": [
+    {
+      "type": "spell",
+      "key": "acidArrow",
+      "selected": "./assets/hd/spells/acidArrow.webp",
+      "variants": [
+        "./assets/hd/spells/acidArrow.webp",
+        "./assets/hd/spells/acidArrow.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "acidSplash",
+      "selected": "./assets/hd/spells/acidSplash.webp",
+      "variants": [
+        "./assets/hd/spells/acidSplash.webp",
+        "./assets/hd/spells/acidSplash.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "aid",
+      "selected": "./assets/hd/spells/aid.webp",
+      "variants": [
+        "./assets/hd/spells/aid.webp",
+        "./assets/hd/spells/aid.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "animalFriendship",
+      "selected": "./assets/hd/spells/animalFriendship.webp",
+      "variants": [
+        "./assets/hd/spells/animalFriendship.webp",
+        "./assets/hd/spells/animalFriendship.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "bane",
+      "selected": "./assets/hd/spells/bane.webp",
+      "variants": [
+        "./assets/hd/spells/bane.webp",
+        "./assets/hd/spells/bane.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "bladeWard",
+      "selected": "./assets/hd/spells/bladeWard.webp",
+      "variants": [
+        "./assets/hd/spells/bladeWard.webp",
+        "./assets/hd/spells/bladeWard.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "blindness",
+      "selected": "./assets/hd/spells/blindness.webp",
+      "variants": [
+        "./assets/hd/spells/blindness.webp",
+        "./assets/hd/spells/blindness.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "blur",
+      "selected": "./assets/hd/spells/blur.webp",
+      "variants": [
+        "./assets/hd/spells/blur.webp",
+        "./assets/hd/spells/blur.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "boneChill",
+      "selected": "./assets/hd/spells/boneChill.webp",
+      "variants": [
+        "./assets/hd/spells/boneChill.webp",
+        "./assets/hd/spells/boneChill.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "calmEmotions",
+      "selected": "./assets/hd/spells/calmEmotions.webp",
+      "variants": [
+        "./assets/hd/spells/calmEmotions.webp",
+        "./assets/hd/spells/calmEmotions.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "charmPerson",
+      "selected": "./assets/hd/spells/charmPerson.webp",
+      "variants": [
+        "./assets/hd/spells/charmPerson.webp",
+        "./assets/hd/spells/charmPerson.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "cureWounds",
+      "selected": "./assets/hd/spells/cureWounds.webp",
+      "variants": [
+        "./assets/hd/spells/cureWounds.webp",
+        "./assets/hd/spells/cureWounds.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "dancingLights",
+      "selected": "./assets/hd/spells/dancingLights.webp",
+      "variants": [
+        "./assets/hd/spells/dancingLights.webp",
+        "./assets/hd/spells/dancingLights.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "darkness",
+      "selected": "./assets/hd/spells/darkness.webp",
+      "variants": [
+        "./assets/hd/spells/darkness.webp",
+        "./assets/hd/spells/darkness.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "darkvision",
+      "selected": "./assets/hd/spells/darkvision.webp",
+      "variants": [
+        "./assets/hd/spells/darkvision.webp",
+        "./assets/hd/spells/darkvision.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "detectThoughts",
+      "selected": "./assets/hd/spells/detectThoughts.webp",
+      "variants": [
+        "./assets/hd/spells/detectThoughts.webp",
+        "./assets/hd/spells/detectThoughts.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "disguiseSelf",
+      "selected": "./assets/hd/spells/disguiseSelf.webp",
+      "variants": [
+        "./assets/hd/spells/disguiseSelf.webp",
+        "./assets/hd/spells/disguiseSelf.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "dissonantWhispers",
+      "selected": "./assets/hd/spells/dissonantWhispers.webp",
+      "variants": [
+        "./assets/hd/spells/dissonantWhispers.webp",
+        "./assets/hd/spells/dissonantWhispers.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "faerieFire",
+      "selected": "./assets/hd/spells/faerieFire.webp",
+      "variants": [
+        "./assets/hd/spells/faerieFire.webp",
+        "./assets/hd/spells/faerieFire.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "featherFall",
+      "selected": "./assets/hd/spells/featherFall.webp",
+      "variants": [
+        "./assets/hd/spells/featherFall.webp",
+        "./assets/hd/spells/featherFall.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "fireBolt",
+      "selected": "./assets/hd/spells/fireBolt.webp",
+      "variants": [
+        "./assets/hd/spells/fireBolt.webp",
+        "./assets/hd/spells/fireBolt.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "friends",
+      "selected": "./assets/hd/spells/friends.webp",
+      "variants": [
+        "./assets/hd/spells/friends.webp",
+        "./assets/hd/spells/friends.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "guidance",
+      "selected": "./assets/hd/spells/guidance.webp",
+      "variants": [
+        "./assets/hd/spells/guidance.webp",
+        "./assets/hd/spells/guidance.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "healingWord",
+      "selected": "./assets/hd/spells/healingWord.webp",
+      "variants": [
+        "./assets/hd/spells/healingWord.webp",
+        "./assets/hd/spells/healingWord.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "heroism",
+      "selected": "./assets/hd/spells/heroism.webp",
+      "variants": [
+        "./assets/hd/spells/heroism.webp",
+        "./assets/hd/spells/heroism.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "hideousLaughter",
+      "selected": "./assets/hd/spells/hideousLaughter.webp",
+      "variants": [
+        "./assets/hd/spells/hideousLaughter.webp",
+        "./assets/hd/spells/hideousLaughter.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "holdPerson",
+      "selected": "./assets/hd/spells/holdPerson.webp",
+      "variants": [
+        "./assets/hd/spells/holdPerson.webp",
+        "./assets/hd/spells/holdPerson.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "lesserRestoration",
+      "selected": "./assets/hd/spells/lesserRestoration.webp",
+      "variants": [
+        "./assets/hd/spells/lesserRestoration.webp",
+        "./assets/hd/spells/lesserRestoration.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "light",
+      "selected": "./assets/hd/spells/light.webp",
+      "variants": [
+        "./assets/hd/spells/light.webp",
+        "./assets/hd/spells/light.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "longstrider",
+      "selected": "./assets/hd/spells/longstrider.webp",
+      "variants": [
+        "./assets/hd/spells/longstrider.webp",
+        "./assets/hd/spells/longstrider.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "mageHand",
+      "selected": "./assets/hd/spells/mageHand.webp",
+      "variants": [
+        "./assets/hd/spells/mageHand.webp",
+        "./assets/hd/spells/mageHand.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "magicMissile",
+      "selected": "./assets/hd/spells/magicMissile.webp",
+      "variants": [
+        "./assets/hd/spells/magicMissile.webp",
+        "./assets/hd/spells/magicMissile.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "minorIllusion",
+      "selected": "./assets/hd/spells/minorIllusion.webp",
+      "variants": [
+        "./assets/hd/spells/minorIllusion.webp",
+        "./assets/hd/spells/minorIllusion.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "mirrorImage",
+      "selected": "./assets/hd/spells/mirrorImage.webp",
+      "variants": [
+        "./assets/hd/spells/mirrorImage.webp",
+        "./assets/hd/spells/mirrorImage.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "mistyStep",
+      "selected": "./assets/hd/spells/mistyStep.webp",
+      "variants": [
+        "./assets/hd/spells/mistyStep.webp",
+        "./assets/hd/spells/mistyStep.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "passTrace",
+      "selected": "./assets/hd/spells/passTrace.webp",
+      "variants": [
+        "./assets/hd/spells/passTrace.webp",
+        "./assets/hd/spells/passTrace.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "poisonSpray",
+      "selected": "./assets/hd/spells/poisonSpray.webp",
+      "variants": [
+        "./assets/hd/spells/poisonSpray.webp",
+        "./assets/hd/spells/poisonSpray.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "prayerHealing",
+      "selected": "./assets/hd/spells/prayerHealing.webp",
+      "variants": [
+        "./assets/hd/spells/prayerHealing.webp",
+        "./assets/hd/spells/prayerHealing.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "produceFlame",
+      "selected": "./assets/hd/spells/produceFlame.webp",
+      "variants": [
+        "./assets/hd/spells/produceFlame.webp",
+        "./assets/hd/spells/produceFlame.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "rayEnfeeblement",
+      "selected": "./assets/hd/spells/rayEnfeeblement.webp",
+      "variants": [
+        "./assets/hd/spells/rayEnfeeblement.webp",
+        "./assets/hd/spells/rayEnfeeblement.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "rayOfFrost",
+      "selected": "./assets/hd/spells/rayOfFrost.webp",
+      "variants": [
+        "./assets/hd/spells/rayOfFrost.webp",
+        "./assets/hd/spells/rayOfFrost.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "sacredFlame",
+      "selected": "./assets/hd/spells/sacredFlame.webp",
+      "variants": [
+        "./assets/hd/spells/sacredFlame.webp",
+        "./assets/hd/spells/sacredFlame.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "scorchingRay",
+      "selected": "./assets/hd/spells/scorchingRay.webp",
+      "variants": [
+        "./assets/hd/spells/scorchingRay.webp",
+        "./assets/hd/spells/scorchingRay.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "shatter",
+      "selected": "./assets/hd/spells/shatter.webp",
+      "variants": [
+        "./assets/hd/spells/shatter.webp",
+        "./assets/hd/spells/shatter.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "shillelagh",
+      "selected": "./assets/hd/spells/shillelagh.webp",
+      "variants": [
+        "./assets/hd/spells/shillelagh.webp",
+        "./assets/hd/spells/shillelagh.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "shockingGrasp",
+      "selected": "./assets/hd/spells/shockingGrasp.webp",
+      "variants": [
+        "./assets/hd/spells/shockingGrasp.webp",
+        "./assets/hd/spells/shockingGrasp.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "silence",
+      "selected": "./assets/hd/spells/silence.webp",
+      "variants": [
+        "./assets/hd/spells/silence.webp",
+        "./assets/hd/spells/silence.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "sleep",
+      "selected": "./assets/hd/spells/sleep.webp",
+      "variants": [
+        "./assets/hd/spells/sleep.webp",
+        "./assets/hd/spells/sleep.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "speakAnimals",
+      "selected": "./assets/hd/spells/speakAnimals.webp",
+      "variants": [
+        "./assets/hd/spells/speakAnimals.webp",
+        "./assets/hd/spells/speakAnimals.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "speakDead",
+      "selected": "./assets/hd/spells/speakDead.webp",
+      "variants": [
+        "./assets/hd/spells/speakDead.webp",
+        "./assets/hd/spells/speakDead.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "thaumaturgy",
+      "selected": "./assets/hd/spells/thaumaturgy.webp",
+      "variants": [
+        "./assets/hd/spells/thaumaturgy.webp",
+        "./assets/hd/spells/thaumaturgy.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "thunderwave",
+      "selected": "./assets/hd/spells/thunderwave.webp",
+      "variants": [
+        "./assets/hd/spells/thunderwave.webp",
+        "./assets/hd/spells/thunderwave.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "trueStrike",
+      "selected": "./assets/hd/spells/trueStrike.webp",
+      "variants": [
+        "./assets/hd/spells/trueStrike.webp",
+        "./assets/hd/spells/trueStrike.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "viciousMockery",
+      "selected": "./assets/hd/spells/viciousMockery.webp",
+      "variants": [
+        "./assets/hd/spells/viciousMockery.webp",
+        "./assets/hd/spells/viciousMockery.png"
+      ]
+    },
+    {
+      "type": "spell",
+      "key": "web",
+      "selected": "./assets/hd/spells/web.webp",
+      "variants": [
+        "./assets/hd/spells/web.webp",
+        "./assets/hd/spells/web.png"
+      ]
+    }
+  ],
+  "next_optional_step": "If real network waterfall is still heavy, generate ~192px WebP thumbnails and use srcset; do not do this until measured."
+}
